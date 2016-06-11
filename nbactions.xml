@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-clean package</actionName>
+            <displayName>clean package</displayName>
+            <goals>
+                <goal>mvn</goal>
+                <goal>clean</goal>
+                <goal>package</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>mvn</activatedProfile>
+                <activatedProfile>clean</activatedProfile>
+                <activatedProfile>package</activatedProfile>
+            </activatedProfiles>
+        </action>
+        <action>
+            <actionName>CUSTOM-mvn clean package</actionName>
+            <displayName>mvn clean package</displayName>
+            <goals>
+                <goal>mvn</goal>
+                <goal>clean</goal>
+                <goal>package</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-spring-boot:run</actionName>
+            <displayName>spring-boot:run</displayName>
+            <goals>
+                <goal>spring-boot:run</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>spring-boot:run</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>
