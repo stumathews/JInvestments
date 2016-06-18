@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/contacts")
 public class ContactController {
     
     private final static Logger log = LoggerFactory.getLogger(Application.class);
@@ -28,10 +28,10 @@ public class ContactController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String home(Map<String, Object> model) {       
+    public String contacts(Map<String, Object> model) {       
         //model.put("contacts", contactRepo.findAll());
-        justDoIt();
-        return "home";
+        //justDoIt();
+        return "contacts";
     }
 
     @RequestMapping(method = RequestMethod.POST)
