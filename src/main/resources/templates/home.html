@@ -3,6 +3,7 @@
     <head>
         <title>Spring Boot Contacts</title>
         <link rel="stylesheet" th:href="@{/style.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
     </head>
     <body>
         <h2>Spring Boot Contacts</h2>
@@ -26,5 +27,14 @@
                 <span th:text="${contact.emailAddress}">emailAddress</span>
             </li>
         </ul>
+    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
+    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+        $(document).ready(function(){
+                console.log("JQuery Ready.");
+            });
+    /*]]>*/
+    </script>
     </body>
 </html>
