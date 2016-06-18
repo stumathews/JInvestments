@@ -12,12 +12,14 @@ import org.springframework.data.neo4j.config.Neo4jConfiguration;
 @EnableNeo4jRepositories
 class ApplicationConfig extends Neo4jConfiguration {
 
-	public ApplicationConfig() {
-		setBasePackage("contacts");
+	public ApplicationConfig() 
+        {
+            setBasePackage("contacts");
 	}
 
 	@Bean
-	GraphDatabaseService graphDatabaseService() {
-		return new GraphDatabaseFactory().newEmbeddedDatabase("our.db");
+	GraphDatabaseService graphDatabaseService() 
+        {
+            return new GraphDatabaseFactory().newEmbeddedDatabase("our.db");
 	}
 }
