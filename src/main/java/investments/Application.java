@@ -1,4 +1,4 @@
-package contacts;
+package investments;
 
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
