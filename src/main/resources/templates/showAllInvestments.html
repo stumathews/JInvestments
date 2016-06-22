@@ -12,7 +12,19 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h2>Investment Tracking Home/Dashboard</h2>            
+            <!--<p th:text="${investments.isEmpty()} == false ? 'These are all the investments that are loaded in the database' : 'No investments in the database.'">These are all the investments that are loaded in the database</p>-->
+            <table class="table table-hover" >
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tr th:each="investment : ${investments}">
+                <td>
+                    <a href="#" th:text="${investment.name}"/>
+                </td>                    
+             </tr>
+            </table>
         </div>       
         
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>

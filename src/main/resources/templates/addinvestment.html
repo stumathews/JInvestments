@@ -12,7 +12,11 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h2>Investment Tracking Home/Dashboard</h2>            
+            <h2>Add New Investment</h2>  
+            <form action="#" th:action="@{/investments}" method="post">                   
+                <p>Name: <input type="text" name="name" id="name" /></p>
+                <input type="submit" value="add"/>
+            </form>
         </div>       
         
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
