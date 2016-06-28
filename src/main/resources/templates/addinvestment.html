@@ -16,6 +16,9 @@
             <form action="#" th:action="@{/investments}" method="post">                   
                 <p>Name: <input type="text" name="name" id="name" /></p>
                 <input type="submit" value="add"/>
+                <select  name="regionId" id="regionId">
+                    <option th:each="region : ${regions}" value="1" th:value="${region.id}" th:text="${region.name}">region</option>
+                </select>
             </form>
         </div>       
         

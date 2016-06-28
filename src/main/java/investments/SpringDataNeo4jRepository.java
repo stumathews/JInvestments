@@ -1,5 +1,6 @@
 package investments;
 
+import investments.DEL.Investment;
 import org.springframework.data.neo4j.repository.GraphRepository;
 
 /**
@@ -8,5 +9,5 @@ import org.springframework.data.neo4j.repository.GraphRepository;
  */
 public interface SpringDataNeo4jRepository extends GraphRepository<Investment>
 {
-    Investment findByName(String name);    
+    Investment findByName(String name);       
 }
