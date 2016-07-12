@@ -32,8 +32,41 @@
     <script th:inline="javascript">
     /*<![CDATA[*/
         $(document).ready(function(){
-                console.log("JQuery Ready.");
+                console.log("JQuery Ready.");                
             });
+            
+        if( typeof Object.create != 'function'){
+            Object.create = function(o) {
+                var F = function(){}
+                F.prototype = o;
+                return new F();
+            };
+        }
+                
+        var MYAPP = {};
+        
+        MYAPP.person = { 
+            "name" : "Stuart", 
+            "age" : 29
+        }
+        
+        MYAPP.person.name = "Stuart Robert Charles";
+        
+        console.log("person name is " + MYAPP.person.name);
+        console.log("person age is " + MYAPP.person.age);
+        
+        
+        MYAPP.dog = {
+            name : "property1",
+            "age" : 25,
+            isMale : false            
+        };
+        
+        console.log("dog name is " + MYAPP.dog.name);
+        console.log("dog age is " + MYAPP.dog.age);
+        console.log("dog isMale? = " + MYAPP.dog.isMale);
+        
+        
     /*]]>*/
     </script>
     </body>
