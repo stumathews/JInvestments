@@ -3,7 +3,7 @@
     <head>
         <title>Investment Tracking</title>
         <link rel="stylesheet" th:href="@{/style.css}" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
+        <link rel="stylesheet" href="C:\Users\Stuart\Documents\bootstrap\3.3.5\css\bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" media="screen" />        
     </head>
     <body>        
         <div class="col-md-2">
@@ -12,15 +12,24 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h2>Add New Investment</h2>  
-            <form action="#" th:action="@{/investments}" method="post">                   
-                <p>Name: <input type="text" name="name" id="name" /></p>
-                <input type="submit" value="add"/>
-                <select  name="regionId" id="regionId">
-                    <option th:each="region : ${regions}" value="1" th:value="${region.id}" th:text="${region.name}">region</option>
-                </select>
-            </form>
-        </div>       
+            <h2>Add New Investment</h2> 
+            <div class="col-md-6">                 
+                <form action="#" th:action="@{/investments}" method="post">  
+                    <fieldset class="form-group">
+                        <label for="title">Name</label>
+                        <input class="form-control" id="name" name="name" type="text" autofocus="true" placeholder="Type in the name of your investment" />                                        
+                    </fieldset>     
+                    <fieldset class="form-group">
+                        <label for="regionId">Region</label>
+                        <select class="form-control" name="regionId" id="regionId">
+                            <option th:each="region : ${regions}" value="1" th:value="${region.id}" th:text="${region.name}">region</option>
+                        </select>
+                        <small class="text-muted">In which region is your investment based or is affected by</small>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Submit</button>                
+                </form>            
+            </div>  
+        </div>
         
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
     <script th:src="@{/webjars//bootstrap/3.3.5/js/bootstrap.min.js}"/>
