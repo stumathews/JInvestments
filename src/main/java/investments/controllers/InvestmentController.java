@@ -1,4 +1,5 @@
 package investments.controllers;
+import investments.BOLO.InvestmentForm;
 import investments.DEL.AssetRegion;
 import investments.DataAccess;
 import investments.DEL.Investment;
@@ -27,7 +28,7 @@ public class InvestmentController extends BaseController
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(investments.BOLO.InvestmentForm investmentForm)
+    public String submit(InvestmentForm investmentForm)
     {  
         Investment del = new Investment();
         HashSet<AssetRegion> regions = new HashSet<>();
