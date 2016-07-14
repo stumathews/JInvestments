@@ -1,5 +1,6 @@
-package investments.DEL;
+package investments.db.del;
 
+import investments.db.del.AssetRegion;
 import investments.InvestmentBase;
 import java.util.LinkedHashSet;
 import java.util.Set;

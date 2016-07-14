@@ -1,6 +1,6 @@
 package investments.controllers;
 
-import investments.DEL.Investment;
+import investments.db.del.Investment;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

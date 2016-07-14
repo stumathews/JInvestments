@@ -1,4 +1,4 @@
-package investments.DEL;
+package investments.db.del;
 
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;

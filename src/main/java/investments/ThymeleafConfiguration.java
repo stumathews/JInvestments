@@ -15,7 +15,7 @@ public class ThymeleafConfiguration {
     resolver.setPrefix("src/main/resources/templates/");
     resolver.setTemplateMode("HTML5");
     resolver.setCharacterEncoding("UTF-8");
-    resolver.setCacheable(false);
+    resolver.setCacheable(false); // Allows refreshing .html files and saving without needing to redeploy
     return resolver;
   }
 }

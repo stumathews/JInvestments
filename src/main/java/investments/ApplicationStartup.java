@@ -1,6 +1,6 @@
 package investments;
 
-import investments.DEL.AssetRegion;
+import investments.db.del.AssetRegion;
 import org.neo4j.graphdb.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +16,7 @@ public class ApplicationStartup
 implements ApplicationListener<ApplicationReadyEvent> {
 
     protected static Logger log = LoggerFactory.getLogger(ApplicationStartup.class);
+    
     @Autowired
     private Neo4jOperations neo4jdb;
     
@@ -32,34 +33,28 @@ implements ApplicationListener<ApplicationReadyEvent> {
  
      if(neo4jdb.count(AssetRegion.class) == 0 )
      {
-        AssetRegion assetRegions[] = new AssetRegion[] {
-        new AssetRegion("JAPAN"), 
-        new AssetRegion("JAPANESE SMALLER COMPANIES"),
-        new AssetRegion("ASIA PACIFIC EXCLUDING JAPAN"),
-        new AssetRegion("CHINA / GREATER CHINA SECTOR"),
-        new AssetRegion("NORTH AMERICA"),
-        new AssetRegion("NORTH AMERICAN SMALLER COMPANIES"),
-        new AssetRegion("EUROPE INCLUDING UK"),
-        new AssetRegion("EUROPE EXCLUDING UK"),
-        new AssetRegion("EUROPEAN SMALLER COMPANIES"),
-        new AssetRegion("GLOBAL"),
-        new AssetRegion("GLOBAL EMERGING MARKETS") };
-          
-        for( AssetRegion region : assetRegions)
+        AssetRegion assetRegions[] = new AssetRegion[] 
         {
-            Transaction tx = graphDatabase.beginTx();
-            try
-            {
+            new AssetRegion("JAPAN"), 
+            new AssetRegion("JAPANESE SMALLER COMPANIES"),
+            new AssetRegion("ASIA PACIFIC EXCLUDING JAPAN"),
+            new AssetRegion("CHINA / GREATER CHINA SECTOR"),
+            new AssetRegion("NORTH AMERICA"),
+            new AssetRegion("NORTH AMERICAN SMALLER COMPANIES"),
+            new AssetRegion("EUROPE INCLUDING UK"),
+            new AssetRegion("EUROPE EXCLUDING UK"),
+            new AssetRegion("EUROPEAN SMALLER COMPANIES"),
+            new AssetRegion("GLOBAL"),
+            new AssetRegion("GLOBAL EMERGING MARKETS") 
+        };
+          
+        for(AssetRegion region : assetRegions) {
+            try (Transaction tx = graphDatabase.beginTx()) {
                 log.info("Saving region: " + region.getName());
                 neo4jdb.save(region);
                 tx.success();
             }
-            finally
-            {
-                tx.close();
-            }
         } 
      }
-  }
- 
-} // class
+  } 
+}

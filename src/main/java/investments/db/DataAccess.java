@@ -1,7 +1,8 @@
-package investments;
+package investments.db;
 
-import investments.DEL.AssetRegion;
-import investments.DEL.Investment;
+import investments.db.SpringDataNeo4jRepository;
+import investments.db.del.AssetRegion;
+import investments.db.del.Investment;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,12 @@ import org.springframework.data.neo4j.template.Neo4jOperations;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+/***
+ * This is the data access layer of the application.
+ * All access to the database to piped through this layer.
+ * This layer contains access code to the neo4jdb databases and spring data interfaces 
+ * @author Stuart
+ */
 @Repository
 public class DataAccess
 {
@@ -18,7 +25,7 @@ public class DataAccess
     SpringDataNeo4jRepository springData;
     
     @Autowired 
-    AssetRegionSpringDataRepository assetRegionSpringRepository;
+    AssetRegionSpringDataRepository assetRegionDB;
     
     @Autowired
     private Neo4jOperations neo4jdb;
@@ -30,9 +37,8 @@ public class DataAccess
     public List<Investment> getAllInvestments()
     {
         Result<Investment> investments = neo4jdb.findAll(Investment.class);
-        List<Investment> all = new ArrayList<Investment>();
-        for( Investment i : investments)
-        {
+        List<Investment> all = new ArrayList<>();
+        for( Investment i : investments) {
             all.add(i);
         }
         return all;
@@ -67,7 +73,7 @@ public class DataAccess
     @Transactional
     public AssetRegion getRegionById(Long regionId)
     {
-        return assetRegionSpringRepository.findOne(regionId);
+        return assetRegionDB.findOne(regionId);
     }
     
 }
