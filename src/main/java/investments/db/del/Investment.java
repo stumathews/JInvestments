@@ -1,14 +1,14 @@
 package investments.db.del;
 
-import investments.db.del.AssetRegion;
 import investments.InvestmentBase;
-import java.util.LinkedHashSet;
 import java.util.Set;
-import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.Fetch;
+
+
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
-import org.springframework.data.neo4j.annotation.RelatedTo;
+
+
 
 /***
  * Represents a single investment
@@ -20,9 +20,9 @@ public class Investment extends InvestmentBase
     @GraphId
     protected Long id;
     
-    @RelatedTo(type = "HAS_REGIONS", direction = Direction.BOTH)
     @Fetch
-    public Set<AssetRegion> regions = new LinkedHashSet<AssetRegion>();
+    private Set<AssetRegion> regions;
+   
     
     public Investment() {} 
     
