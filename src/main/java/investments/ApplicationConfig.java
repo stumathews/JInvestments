@@ -20,7 +20,7 @@ class ApplicationConfig extends Neo4jConfiguration
 
     @Bean
     GraphDatabaseService graphDatabaseService() 
-    {
+    {                
         return new GraphDatabaseFactory().newEmbeddedDatabase("our.db");
     }
 }
