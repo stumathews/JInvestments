@@ -10,5 +10,5 @@ public class AssetClass
     
     @GraphId
     Long id;
-    String Name;
+    String name;
 }

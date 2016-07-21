@@ -1,12 +1,14 @@
 package investments.db.del;
 
-import investments.InvestmentBase;
+
 import java.util.Set;
+import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.Fetch;
 
 
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
+import org.springframework.data.neo4j.annotation.RelatedTo;
 
 
 
@@ -15,16 +17,29 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
  * @author Stuart
  */
 @NodeEntity
-public class Investment extends InvestmentBase
+public class Investment
 {    
     @GraphId
     protected Long id;
     
+    @RelatedTo(type = "IS_IN_REGIONS", direction = Direction.OUTGOING)
     @Fetch
     private Set<AssetRegion> regions;
    
     
     public Investment() {} 
+    
+    String name;
+
+    public String getName()
+    {
+        return name;
+    }   
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
     
     public Long getId()
     {

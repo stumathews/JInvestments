@@ -14,7 +14,6 @@ public class AssetRegion
     @Fetch
     private Set<Investment> investments;
 
-
     public Set<Investment> getInvestments()
     {
         return investments;
@@ -37,14 +36,14 @@ public class AssetRegion
 
     public String getName()
     {
-        return Name;
+        return name;
     }
 
     public void setName(String Name)
     {
-        this.Name = Name;
+        this.name = Name;
     }
-    String Name;
+    String name;
     
     public AssetRegion(){}
     public AssetRegion(Long id)
@@ -54,11 +53,11 @@ public class AssetRegion
     public AssetRegion(Long id, String name )
     {
         this(id);
-        this.Name = name;
+        this.name = name;
     }
     public AssetRegion(String name)
     {
-        this.Name = name;
+        this.name = name;
     }
     
 }
