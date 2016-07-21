@@ -16,6 +16,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface SpringDataNeo4jRepository extends GraphRepository<Investment>
 {    
     Investment findByName(@Param("name") String name);
-    @Query("MATCH (m:Investment)-[:HAS_REGIONS]-(a:AssetRegion) RETURN m.name, collect(a.name) as cast LIMIT {limit}")    
+    @Query("MATCH (m:Investment)-[:IS_IN_REGIONS]->(a:AssetRegion) RETURN m.name as movie, collect(a.name) as cast LIMIT {limit}")    
     List<Map<String,Object>> graph(@Param("limit") int limit);
 }
