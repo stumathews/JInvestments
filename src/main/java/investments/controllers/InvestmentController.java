@@ -20,12 +20,13 @@ public class InvestmentController extends BaseController
 
     public InvestmentController(){}
     
+  
     @RequestMapping(value="/{id}/view")
     public String showInvestment(@PathVariable Long id)
     {
         log.info("Viewing investment: " + id);
         
-        return "redirect:/";
+        return "/viewInvestment";
     }
     
     @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
