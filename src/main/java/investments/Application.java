@@ -1,6 +1,6 @@
 package investments;
 
-import investments.db.SpringDataNeo4jRepository;
+import investments.db.InvestmentRepository;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Application extends SpringBootServletInitializer 
 {    
     @Autowired
-    SpringDataNeo4jRepository springData;
+    InvestmentRepository springData;
     
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

@@ -8,7 +8,20 @@ package investments.BOLO;
  */
 public class InvestmentForm
 {    
-    private Long regionId;    
+    public Long regionId; 
+    public String name;
+    public String whyReasonStatement;   
+
+    public String getWhyReasonStatement()
+    {
+        return whyReasonStatement;
+    }
+
+    public void setWhyReasonStatement(String whyReasonStatement)
+    {
+        this.whyReasonStatement = whyReasonStatement;
+    }
+    
 
     public Long getRegionId()
     {
@@ -20,8 +33,6 @@ public class InvestmentForm
         this.regionId = regionId;
     }
     
-    protected String name;
-
     public String getName()
     {
         return name;
@@ -31,4 +42,5 @@ public class InvestmentForm
     {
         this.name = name;
     }
+    
 }

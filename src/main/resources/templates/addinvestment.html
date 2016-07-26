@@ -18,13 +18,20 @@
                     <fieldset class="form-group">
                         <label for="title">Name</label>
                         <input class="form-control" id="name" name="name" type="text" autofocus="true" placeholder="Type in the name of your investment" />                                        
+                        <small class="text-muted">What is the name of this investment?</small>
                     </fieldset>     
                     <fieldset class="form-group">
                         <label for="regionId">Region</label>
                         <select class="form-control" name="regionId" id="regionId">
                             <option th:each="region : ${regions}" value="1" th:value="${region.id}" th:text="${region.name}">region</option>
                         </select>
-                        <small class="text-muted">In which region is your investment based or is affected by</small>
+                        <small class="text-muted">In which region is your investment based or is affected by?</small>
+                    </fieldset>
+                    <!--whyReasonStatement-->
+                    <fieldset class="form-group">
+                        <label for="whyReasonStatement">Investment Statement</label>
+                            <input class="form-control" id="whyReasonStatement" name="whyReasonStatement" type="textarea" autofocus="true" placeholder="Why is this an investment" />                                        
+                        <small class="text-muted">Should define why it is an investment</small>
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Submit</button>                
                 </form>            

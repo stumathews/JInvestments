@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,14 +20,29 @@ public class InvestmentController extends BaseController
 
     public InvestmentController(){}
     
+    @RequestMapping(value="/{id}/view")
+    public String showInvestment(@PathVariable Long id)
+    {
+        log.info("Viewing investment: " + id);
+        
+        return "redirect:/";
+    }
+    
+    @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
+    public String deleteInvestment(@PathVariable Long id)
+    {
+        log.info("Deleting investment: " + id);
+        dataAccess.deleteInvestmentbyId(id);
+        return "redirect:/";
+    }
+    
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String home(Map<String, Object> model)
     {
-        model.put("investments", dataAccess.getAllInvestments()); 
-        
+        model.put("investments", dataAccess.getAllInvestments());         
         return "showAllInvestments";
     }
-    
+
     @RequestMapping(method = RequestMethod.POST)
     public String submit(InvestmentForm investmentForm)
     {  
@@ -38,6 +54,7 @@ public class InvestmentController extends BaseController
         
         del.setName(investmentForm.getName());
         del.setRegions(regions);
+        del.setWhyReasonStatement(investmentForm.getWhyReasonStatement());
         
         dataAccess.save(del);    
         

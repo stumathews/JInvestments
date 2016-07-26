@@ -9,4 +9,4 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * @author Stuart
  */
 @RepositoryRestResource(path="assetregions")
-public interface AssetRegionSpringDataRepository extends GraphRepository<AssetRegion> { }
+public interface AssetRegionRepository extends GraphRepository<AssetRegion> { }

@@ -24,12 +24,24 @@ public class Investment
     
     @RelatedTo(type = "IS_IN_REGIONS", direction = Direction.OUTGOING)
     @Fetch
-    private Set<AssetRegion> regions;
-   
+    private Set<AssetRegion> regions;   
+    public String name;
+    public String whyReasonStatement;  
     
     public Investment() {} 
     
-    String name;
+
+    public String getWhyReasonStatement()
+    {
+        return whyReasonStatement;
+    }
+
+    public void setWhyReasonStatement(String whyReasonStatement)
+    {
+        this.whyReasonStatement = whyReasonStatement;
+    }
+    
+      
 
     public String getName()
     {

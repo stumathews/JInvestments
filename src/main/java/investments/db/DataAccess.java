@@ -1,6 +1,6 @@
 package investments.db;
 
-import investments.db.SpringDataNeo4jRepository;
+import investments.db.InvestmentRepository;
 import investments.db.del.AssetRegion;
 import investments.db.del.Investment;
 import java.util.ArrayList;
@@ -22,16 +22,22 @@ import org.springframework.transaction.annotation.Transactional;
 public class DataAccess
 {
     @Autowired
-    SpringDataNeo4jRepository springData;
+    InvestmentRepository investmentRepository;
     
     @Autowired 
-    AssetRegionSpringDataRepository assetRegionDB;
+    AssetRegionRepository assetRegionRepository;
     
     @Autowired
     private Neo4jOperations neo4jdb;
     
     @Autowired
     GraphDatabase graphDatabase;
+    
+    @Transactional 
+    public void deleteInvestmentbyId(Long id)
+    {
+        investmentRepository.delete(id);
+    }
     
     @Transactional
     public List<Investment> getAllInvestments()
@@ -73,7 +79,7 @@ public class DataAccess
     @Transactional
     public AssetRegion getRegionById(Long regionId)
     {
-        return assetRegionDB.findOne(regionId);
+        return assetRegionRepository.findOne(regionId);
     }
     
 }
