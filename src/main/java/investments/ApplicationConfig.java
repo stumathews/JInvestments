@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.neo4j.config.EnableNeo4jRepositories;
 import org.springframework.data.neo4j.config.Neo4jConfiguration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Configuration
 @EnableTransactionManagement 
@@ -22,5 +24,11 @@ class ApplicationConfig extends Neo4jConfiguration
     GraphDatabaseService graphDatabaseService() 
     {                
         return new GraphDatabaseFactory().newEmbeddedDatabase("our.db");
+    }
+    
+    @Bean 
+    Logger logger()
+    {
+        return LoggerFactory.getLogger(this.getClass());
     }
 }
