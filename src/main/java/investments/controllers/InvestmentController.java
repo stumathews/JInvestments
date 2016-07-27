@@ -22,10 +22,11 @@ public class InvestmentController extends BaseController
     
   
     @RequestMapping(value="/{id}/view")
-    public String showInvestment(@PathVariable Long id)
+    public String showInvestment(Map<String, Object> model, @PathVariable Long id)
     {
         log.info("Viewing investment: " + id);
-        
+        Investment investment = dataAccess.getInvestmentById(id);
+        model.put("investment", investment);        
         return "/viewInvestment";
     }
     
