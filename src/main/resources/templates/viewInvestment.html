@@ -12,7 +12,16 @@
             </div>
         </div>
         <div class="col-md-10">
-            View investment
+            <h1>Investment Details</h1>
+            <dl class="dl-horizontal">
+                <dt>Investment Name</dt>
+                <dd th:text="${investment.name}">Investment Name</dd>
+                <dt>Investment Reason</dt>
+                <dd th:text="${investment.whyReasonStatement}">Why statement</dd>
+                <dt>Investment Region</dt>
+                <dd th:text="${investment.regions[0].name}">the region of investment</dd>
+                
+            </dl>
         </div>       
        
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
