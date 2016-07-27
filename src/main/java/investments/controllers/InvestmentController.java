@@ -57,6 +57,7 @@ public class InvestmentController extends BaseController
         del.setName(investmentForm.getName());
         del.setRegions(regions);
         del.setWhyReasonStatement(investmentForm.getWhyReasonStatement());
+        del.setInitialInvestment(investmentForm.getInitialInvestment());
         
         dataAccess.save(del);    
         

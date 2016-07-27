@@ -26,7 +26,18 @@ public class Investment
     @Fetch
     private Set<AssetRegion> regions;   
     public String name;
-    public String whyReasonStatement;  
+    public String whyReasonStatement;
+    public float initialInvestment;
+
+    public float getInitialInvestment() {
+        return initialInvestment;
+    }
+
+    public void setInitialInvestment(float initialInvestment) {
+        this.initialInvestment = initialInvestment;
+    }
+
+
     
     public Investment() {} 
     
