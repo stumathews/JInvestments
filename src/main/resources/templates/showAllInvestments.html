@@ -19,6 +19,7 @@
             </div>
         </div>
         <div class="col-md-10">
+            <h1>Investments</h1>
             <form method="POST" >                
                 <p th:text="${investments.isEmpty()} == false ? 'These are all the investments that are loaded in the database' : 'No investments in the database.'">These are all the investments that are loaded in the database</p>
                 <table class="table table-hover" >
@@ -41,6 +42,7 @@
                     <td><a href="#" th:href="|${investment.id}/delete|">Delete</a></td>
                  </tr>
                 </table> 
+                <h3>Dependencies graph</h3>
                 <div id="graph">
                 </div> 
             </form>
