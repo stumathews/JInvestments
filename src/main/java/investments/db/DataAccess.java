@@ -4,13 +4,17 @@ import investments.db.InvestmentRepository;
 import investments.db.del.AssetRegion;
 import investments.db.del.Investment;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
+import org.neo4j.graphdb.NotFoundException;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.neo4j.conversion.Result;
 import org.springframework.data.neo4j.core.GraphDatabase;
 import org.springframework.data.neo4j.template.Neo4jOperations;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 
 /***
  * This is the data access layer of the application.
@@ -32,6 +36,9 @@ public class DataAccess
     
     @Autowired
     GraphDatabase graphDatabase;
+    
+    @Autowired
+    Logger logger;
     
     @Transactional 
     public void deleteInvestmentbyId(Long id)
@@ -80,6 +87,19 @@ public class DataAccess
     public AssetRegion getRegionById(Long regionId)
     {
         return assetRegionRepository.findOne(regionId);
+    }
+
+    @Transactional
+    public Investment getInvestmentById(Long id) throws NotFoundException
+    {
+        Investment investement = investmentRepository.findOne(id);
+        
+        if( investement == null){
+            String message = String.format("Investment(id=%f found not be found", id);
+            logger.info(message);
+            throw new NotFoundException(message);
+        }
+        return investement;
     }
     
 }
