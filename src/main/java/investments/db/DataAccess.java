@@ -2,6 +2,7 @@ package investments.db;
 
 import investments.db.InvestmentRepository;
 import investments.db.del.AssetRegion;
+import investments.db.del.Factor;
 import investments.db.del.Investment;
 import java.util.ArrayList;
 import java.util.Formatter;
@@ -51,14 +52,14 @@ public class DataAccess
     {
         Result<Investment> investments = neo4jdb.findAll(Investment.class);
         List<Investment> all = new ArrayList<>();
-        for( Investment i : investments) {
+        for( Investment i : investments) {            
             all.add(i);
         }
         return all;
     }
 
     @Transactional
-    public void save(Investment investment)
+    public void saveInvestment(Investment investment)
     {
         neo4jdb.save(investment);
     }
@@ -100,6 +101,12 @@ public class DataAccess
             throw new NotFoundException(message);
         }
         return investement;
+    }
+
+    @Transactional
+    public void updateInvestment(Investment investment)
+    {
+        investmentRepository.save(investment);
     }
     
 }

@@ -13,18 +13,46 @@
         </div>
         <div class="col-md-10">
             <h1>Investment Details</h1>
-            <dl class="dl-horizontal">
-                <dt>Investment Name</dt>
-                <dd th:text="${investment.name}">Investment Name</dd>
-                <dt>Investment Reason</dt>
-                <dd th:text="${investment.whyReasonStatement}">Why statement</dd>
-                <dt>Investment Region</dt>
-                <dd th:text="${investment.regions[0].name}">the region of investment</dd>
-                <dt>Initial investment</dt>
-                <dd th:text="${investment.initialInvestment}">initial investment</dd>
+            <table class="table table-hover" >
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Regions</th>
+                            <th>Initial investment (£)</th>
+                        </tr>
+                    </thead>
+                    
+                    <td>
+                        <a href="#" th:text="${investment.name}" th:href="|${investment.id}/view|"/>
+                    </td>
+                    <td th:each="region : ${investment.regions}">
+                        <span th:text="${region.name}">regions</span>
+                    </td>       
+                    <td th:text="${investment.initialInvestment}">
+                        
+                    </td>                 
+                </table> 
+            <h3>Investment reason/statement</h3>
+            <p th:text="${investment.whyReasonStatement}">Investment Reason</p>              
+            <h3>Factors</h3>
+            <table class="table table-hover" >
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>                            
+                        </tr>
+                    </thead>
+                    
+                    <tr th:each="factor : ${investment.factors}">
+                        <td><a href="#" th:text="${factor.name}"/></td>
+                        <td><a href="#" th:text="${factor.description}"/></td>
+                    </tr>                    
+                </table> 
+                <a class="btn btn-default" href="#" th:href="|@{/factors/new}?id=${investment.id}|" role="button">Add a factor</a>              
                 
-            </dl>
-        </div>       
+            
+        </div>
+        
        
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
     <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>

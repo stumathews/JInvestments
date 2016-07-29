@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Investment Tracking</title>
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <link rel="stylesheet" href="C:\Users\Stuart\Documents\bootstrap\3.3.5\css\bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" media="screen" />        
+    </head>
+    <body>        
+        <div class="col-md-2">
+            <div id="wrapper">               
+                <div th:replace="common :: leftnav"></div>          
+            </div>
+        </div>
+        <div class="col-md-10">
+            <h2>Add New Factor</h2> 
+                <form action="#" th:action="@{/factors}" method="post">  
+                    <fieldset class="form-group">
+                        <label for="title">Investment</label>
+                        <p class="form-control-static" th:text="${investment.name}">investment</p>
+                        <input type="hidden" name="investmentId" id="investmentId" th:value="${investment.id}"/>
+                        <small class="text-muted">What is the name of this investment?</small>
+                    </fieldset>    
+                    
+                    <fieldset class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name"/>                            
+                        <small class="text-muted">Title for the factor</small>
+                    </fieldset> 
+                    
+                    <fieldset class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" name="description" id="description"/>                            
+                        <small class="text-muted">What is the factor</small>
+                    </fieldset>  
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>                
+                </form>            
+        </div>
+        
+    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    
+    <script th:src="@{/common.js}"/>
+    <script th:src="@{/webjars//bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+        $(document).ready(function(){
+                console.log("JQuery Ready.");
+            });
+    /*]]>*/
+    </script>
+    </body>
+</html>

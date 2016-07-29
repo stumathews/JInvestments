@@ -2,6 +2,7 @@ package investments.controllers;
 import investments.BOLO.InvestmentForm;
 import investments.db.del.AssetRegion;
 import investments.db.DataAccess;
+import investments.db.del.Factor;
 import investments.db.del.Investment;
 import java.util.HashSet;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class InvestmentController extends BaseController
 
     public InvestmentController(){}
     
-  
+    
     @RequestMapping(value="/{id}/view")
     public String showInvestment(Map<String, Object> model, @PathVariable Long id)
     {
@@ -58,8 +59,9 @@ public class InvestmentController extends BaseController
         del.setRegions(regions);
         del.setWhyReasonStatement(investmentForm.getWhyReasonStatement());
         del.setInitialInvestment(investmentForm.getInitialInvestment());
+        del.addFactor(new Factor("dummy_name","dummy_desc"));
         
-        dataAccess.save(del);    
+        dataAccess.saveInvestment(del);    
         
         log.info("Creating investment: " + investmentForm.getName());
         log.info("Selected region was " + region.getName());

@@ -13,34 +13,37 @@
         </div>
         <div class="col-md-10">
             <h2>Add New Investment</h2> 
-            <div class="col-md-4">                 
                 <form action="#" th:action="@{/investments}" method="post">  
                     <fieldset class="form-group">
                         <label for="title">Name</label>
                         <input class="form-control" id="name" name="name" type="text" autofocus="true" placeholder="Type in the name of your investment" />                                        
                         <small class="text-muted">What is the name of this investment?</small>
                     </fieldset>     
+                    <!--whyReasonStatement-->
+                    <fieldset class="form-group">
+                        <label for="whyReasonStatement">Investment Statement</label>                                  
+                        <textarea class="form-control" rows="5" id="whyReasonStatement" name="whyReasonStatement" placeholder="Why is this an investment"></textarea>
+                        <small class="text-muted">Should define why it is an investment</small>
+                    </fieldset>
                     <fieldset class="form-group">
                         <label for="regionId">Region</label>
                         <select class="form-control" name="regionId" id="regionId">
                             <option th:each="region : ${regions}" value="1" th:value="${region.id}" th:text="${region.name}">region</option>
                         </select>
                         <small class="text-muted">In which region is your investment based or is affected by?</small>
-                    </fieldset>
-                    <!--whyReasonStatement-->
+                    </fieldset>                    
+                    <!-- Amount invested -->
                     <fieldset class="form-group">
-                        <label for="whyReasonStatement">Investment Statement</label>
-                            <input class="form-control" id="whyReasonStatement" name="whyReasonStatement" type="textarea" autofocus="true" placeholder="Why is this an investment" />                                        
-                        <small class="text-muted">Should define why it is an investment</small>
-                    </fieldset>
-                    <fieldset class="form-group">
-                        <label for="initialInvestment">Investment Statement</label>
-                        <input class="form-control" id="initialInvestment" name="initialInvestment" type="textarea" autofocus="true" placeholder="What was the initial investment amount" />
-                        <small class="text-muted">What is the initial investment amount</small>
+                        <label  for="initialInvestment">Amount (in pounds)</label>
+                        <div class="input-group">
+                          <div class="input-group-addon">$</div>
+                          <input type="text" class="form-control" id="initialInvestment"  name="initialInvestment" placeholder="Amount"/>
+                          <div class="input-group-addon">.00</div>
+                        </div>
+                        <small class="text-muted">What is the initial investment amount (£)</small>
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Submit</button>                
                 </form>            
-            </div>  
         </div>
         
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    

@@ -1,6 +1,7 @@
 package investments.db.del;
 
 
+import java.util.HashSet;
 import java.util.Set;
 import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.Fetch;
@@ -24,10 +25,30 @@ public class Investment
     
     @RelatedTo(type = "IS_IN_REGIONS", direction = Direction.OUTGOING)
     @Fetch
-    private Set<AssetRegion> regions;   
+    private Set<AssetRegion> regions;  
+    
+    @RelatedTo(type = "FACTORS", direction = Direction.OUTGOING)
+    @Fetch
+    private Set<Factor> factors = new HashSet<>();
+
     public String name;
     public String whyReasonStatement;
     public float initialInvestment;
+    
+    public void addFactor(Factor factor)
+    {
+        factors.add(factor);
+    }
+    
+    public Set<Factor> getFactors()
+    {
+        return factors;
+    }
+
+    public void setFactors(Set<Factor> factors)
+    {
+        this.factors = factors;
+    }
 
     public float getInitialInvestment() {
         return initialInvestment;
@@ -39,7 +60,9 @@ public class Investment
 
 
     
-    public Investment() {} 
+    public Investment() {
+    
+    } 
     
 
     public String getWhyReasonStatement()
