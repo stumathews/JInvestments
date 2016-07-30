@@ -1,37 +1,16 @@
 package investments.BOLO;
 
+import investments.db.del.InvestmentBase;
+
 
 
 /**
  * POJO that represents a investment form.
  * @author Stuart
  */
-public class InvestmentForm
+public class InvestmentForm extends InvestmentBase
 {    
-    public Long regionId; 
-    public String name;
-    public String whyReasonStatement;
-
-    public float initialInvestment;
-
-    public float getInitialInvestment() {
-        return initialInvestment;
-    }
-
-    public void setInitialInvestment(float initialInvestment) {
-        this.initialInvestment = initialInvestment;
-    }
-
-    public String getWhyReasonStatement()
-    {
-        return whyReasonStatement;
-    }
-
-    public void setWhyReasonStatement(String whyReasonStatement)
-    {
-        this.whyReasonStatement = whyReasonStatement;
-    }
-    
+    public Long regionId;        
 
     public Long getRegionId()
     {
@@ -43,14 +22,4 @@ public class InvestmentForm
         this.regionId = regionId;
     }
     
-    public String getName()
-    {
-        return name;
-    }   
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    
-}
+ }

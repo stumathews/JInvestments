@@ -54,11 +54,11 @@ public class Application extends SpringBootServletInitializer
         int i=0;
         while (result.hasNext()) {
             Map<String, Object> row = result.next();
-            nodes.add(map("name",row.get("movie"),"label","movie"));
+            nodes.add(map("name",row.get("investment"),"label","investment"));
             int target=i;
             i++;
-            for (Object name : (Collection) row.get("cast")) {
-                Map<String, Object> actor = map("name", name,"label","actor");
+            for (Object name : (Collection) row.get("region")) {
+                Map<String, Object> actor = map("name", name,"label","region");
                 int source = nodes.indexOf(actor);
                 if (source == -1) {
                     nodes.add(actor);

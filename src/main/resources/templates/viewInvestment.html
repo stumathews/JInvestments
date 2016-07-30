@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h1>Investment Details</h1>
+            <h1>Investment</h1>
             <table class="table table-hover" >
                     <thead>
                         <tr>
@@ -22,9 +22,7 @@
                         </tr>
                     </thead>
                     
-                    <td>
-                        <a href="#" th:text="${investment.name}" th:href="|${investment.id}/view|"/>
-                    </td>
+                    <td th:text="${investment.name}"></td>
                     <td th:each="region : ${investment.regions}">
                         <span th:text="${region.name}">regions</span>
                     </td>       
@@ -32,25 +30,32 @@
                         
                     </td>                 
                 </table> 
-            <h3>Investment reason/statement</h3>
-            <p th:text="${investment.whyReasonStatement}">Investment Reason</p>              
+                <dl class="dl-horizontal">
+                    <dt>Investment reason</dt>
+                    <dd th:text="${investment.whyReasonStatement}">Investment reason/statement</dd>
+                    <dt>Value proposition</dt>
+                    <dd th:text="${investment.valueProposition}">value proposition</dd>
+                    <dt>Desirability proposition</dt>
+                    <dd th:text="${investment.desirabilityStatement}">desirabilityStatement</dd>
+                </dl>
+                
             <h3>Factors</h3>
             <table class="table table-hover" >
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Description</th>                            
+                            <th>Description</th>   
+                            <th>Disassociate</th>
                         </tr>
                     </thead>
                     
                     <tr th:each="factor : ${investment.factors}">
-                        <td><a href="#" th:text="${factor.name}"/></td>
-                        <td><a href="#" th:text="${factor.description}"/></td>
+                        <td th:text="${factor.name}"></td>
+                        <td th:text="${factor.description}"></td>
+                        <td><a href="#" th:href="|@{/factors/disassociate}/${investment.id}/${factor.id}|">Yes</a></td>
                     </tr>                    
                 </table> 
-                <a class="btn btn-default" href="#" th:href="|@{/factors/new}?id=${investment.id}|" role="button">Add a factor</a>              
-                
-            
+                <a class="btn btn-default" href="#" th:href="|@{/factors/new}?id=${investment.id}|" role="button">Add a factor</a>            
         </div>
         
        

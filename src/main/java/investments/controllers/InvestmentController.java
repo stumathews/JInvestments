@@ -25,7 +25,7 @@ public class InvestmentController extends BaseController
     @RequestMapping(value="/{id}/view")
     public String showInvestment(Map<String, Object> model, @PathVariable Long id)
     {
-        log.info("Viewing investment: " + id);
+        logger.info("Viewing investment: " + id);
         Investment investment = dataAccess.getInvestmentById(id);
         model.put("investment", investment);        
         return "/viewInvestment";
@@ -34,7 +34,7 @@ public class InvestmentController extends BaseController
     @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
     public String deleteInvestment(@PathVariable Long id)
     {
-        log.info("Deleting investment: " + id);
+        logger.info("Deleting investment: " + id);
         dataAccess.deleteInvestmentbyId(id);
         return "redirect:/";
     }
@@ -59,12 +59,13 @@ public class InvestmentController extends BaseController
         del.setRegions(regions);
         del.setWhyReasonStatement(investmentForm.getWhyReasonStatement());
         del.setInitialInvestment(investmentForm.getInitialInvestment());
-        del.addFactor(new Factor("dummy_name","dummy_desc"));
+        del.setValueProposition(investmentForm.getValueProposition());        
+        del.setDesirabilityStatement(investmentForm.getDesirabilityStatement());
         
         dataAccess.saveInvestment(del);    
         
-        log.info("Creating investment: " + investmentForm.getName());
-        log.info("Selected region was " + region.getName());
+        logger.info("Creating investment: " + investmentForm.getName());
+        logger.info("Selected region was " + region.getName());
         return "redirect:/investments/";
     }   
     

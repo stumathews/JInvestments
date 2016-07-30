@@ -32,6 +32,9 @@ public class DataAccess
     @Autowired 
     AssetRegionRepository assetRegionRepository;
     
+    @Autowired 
+    FactorRepository factorRepository;
+    
     @Autowired
     private Neo4jOperations neo4jdb;
     
@@ -107,6 +110,28 @@ public class DataAccess
     public void updateInvestment(Investment investment)
     {
         investmentRepository.save(investment);
+    }
+
+    @Transactional
+    public Factor getFactorById(Long fid)
+    {
+        return factorRepository.findOne(fid);
+    }
+
+    @Transactional
+    public List<Factor> getAllFactors()
+    {
+        ArrayList<Factor> factors = new ArrayList<>();
+        for( Factor factor : factorRepository.findAll()){
+            factors.add(factor);
+        }
+        return factors;
+    }
+
+    @Transactional
+    public void deleteFactorBy(Long id)
+    {
+        factorRepository.delete(id);
     }
     
 }

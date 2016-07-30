@@ -11,9 +11,15 @@
                 <div th:replace="common :: leftnav"></div>          
             </div>
         </div>
-        <div class="col-md-10">
-            <h2>Add New Investment</h2> 
-                <form action="#" th:action="@{/investments}" method="post">  
+        <div class="md-col-12">
+                <h2>Add New Investment</h2> 
+        </div>
+        <form action="#" th:action="@{/investments}" method="post">  
+            
+            
+        <div class="col-md-5">
+            
+                
                     <fieldset class="form-group">
                         <label for="title">Name</label>
                         <input class="form-control" id="name" name="name" type="text" autofocus="true" placeholder="Type in the name of your investment" />                                        
@@ -24,6 +30,22 @@
                         <label for="whyReasonStatement">Investment Statement</label>                                  
                         <textarea class="form-control" rows="5" id="whyReasonStatement" name="whyReasonStatement" placeholder="Why is this an investment"></textarea>
                         <small class="text-muted">Should define why it is an investment</small>
+                    </fieldset>
+                    <!--valueProposition-->
+                    <fieldset class="form-group">
+                        <label for="valueProposition">Value proposition</label>                                  
+                        <textarea class="form-control" rows="5" id="whyReasonStatement" name="valueProposition" placeholder="Why is this an investment"></textarea>
+                        <small class="text-muted">Why is this valuable to people?</small>
+                    </fieldset>                    
+                    <button type="submit" class="btn btn-primary">Submit</button>                
+                          
+        </div>
+        <div class="md-col-5">
+            <!--desirabilityStatement-->
+                    <fieldset class="form-group">
+                        <label for="desirabilityStatement">Desirability Statement</label>                                  
+                        <textarea class="form-control" rows="5" id="desirabilityStatement" name="desirabilityStatement" placeholder="Why is this an investment"></textarea>
+                        <small class="text-muted">Why is this desirable to people?</small>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="regionId">Region</label>
@@ -42,9 +64,8 @@
                         </div>
                         <small class="text-muted">What is the initial investment amount (£)</small>
                     </fieldset>
-                    <button type="submit" class="btn btn-primary">Submit</button>                
-                </form>            
         </div>
+        </form>  
         
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    
     <script th:src="@{/common.js}"/>

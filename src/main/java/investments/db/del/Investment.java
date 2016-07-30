@@ -18,7 +18,7 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
  * @author Stuart
  */
 @NodeEntity
-public class Investment
+public class Investment extends InvestmentBase
 {    
     @GraphId
     protected Long id;
@@ -30,10 +30,6 @@ public class Investment
     @RelatedTo(type = "FACTORS", direction = Direction.OUTGOING)
     @Fetch
     private Set<Factor> factors = new HashSet<>();
-
-    public String name;
-    public String whyReasonStatement;
-    public float initialInvestment;
     
     public void addFactor(Factor factor)
     {
@@ -50,13 +46,7 @@ public class Investment
         this.factors = factors;
     }
 
-    public float getInitialInvestment() {
-        return initialInvestment;
-    }
 
-    public void setInitialInvestment(float initialInvestment) {
-        this.initialInvestment = initialInvestment;
-    }
 
 
     
@@ -65,27 +55,6 @@ public class Investment
     } 
     
 
-    public String getWhyReasonStatement()
-    {
-        return whyReasonStatement;
-    }
-
-    public void setWhyReasonStatement(String whyReasonStatement)
-    {
-        this.whyReasonStatement = whyReasonStatement;
-    }
-    
-      
-
-    public String getName()
-    {
-        return name;
-    }   
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
     
     public Long getId()
     {
@@ -105,6 +74,11 @@ public class Investment
     public void setRegions(Set<AssetRegion> regions)
     {
         this.regions = regions;
+    }
+
+    public void disassociateFactor(Factor factor)
+    {
+        factors.remove(factor);        
     }
 
 }

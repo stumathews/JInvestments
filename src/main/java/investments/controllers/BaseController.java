@@ -5,10 +5,10 @@ import org.slf4j.LoggerFactory;
 
 public class BaseController
 {
-    protected static Logger log;
+    protected static Logger logger;
     
     public BaseController()
     {
-        log = LoggerFactory.getLogger(this.getClass());
+        logger = LoggerFactory.getLogger(this.getClass());
     }    
 }

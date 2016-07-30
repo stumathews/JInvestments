@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Investment Tracking</title>
+        <title>Factors</title>
         <link rel="stylesheet" th:href="@{/style.css}" />
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
     <style type="text/css">
     .node { stroke: #222; stroke-width: 1.5px; }
     .node.actor { fill: #888; }
     .node.movie { fill: #BBB; }
-    .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }  
+    .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }
+    #graph {margin-left: 30%;}    
     </style>
     </head>
     <body>        
@@ -18,34 +19,29 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h1>Investments</h1>
+            <h1>Factors</h1>
             <form method="POST" >                
-                <p th:text="${investments.isEmpty()} == false ? 'These are all the investments that are loaded in the database' : 'No investments in the database.'">These are all the investments that are loaded in the database</p>
+                <p th:text="${factors.isEmpty()} == false ? 'These are all the factors that are loaded in the database' : 'No factors in the database.'">These are all the factors that are loaded in the database</p>
                 <table class="table table-hover" >
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Regions</th>
-                            <th>Investment statement</th>
+                            <th>Description</th>  
+                            <th>Linked investments</th>
                             <th></th> <!--Delete -->                                                       
                         </tr>
                     </thead>
-                    <tr th:each="investment : ${investments}">
+                    <tr th:each="factor : ${factors}">
                     <td>
-                        <a href="#" th:text="${investment.name}" th:href="|${investment.id}/view|"/>
+                        <a href="#" th:text="${factor.name}" th:href="|${factor.id}/view|"/>
                     </td>
-                    <td th:each="region : ${investment.regions}">
-                        <span th:text="${region.name}">regions</span>
-                    </td>
-                    <td th:text="${investment.whyReasonStatement}"></td>
-                    <td><a href="#" th:href="|${investment.id}/delete|">Delete</a></td>
+                    
+                    <td th:text="${factor.description}"></td>
+                    <td th:text="${factor.investments.size()}"></td>
+                    <td><a href="#" th:href="|/factors/${factor.id}/delete|">Delete</a></td>
                  </tr>
-                </table> 
-                <h3>Dependencies Graph</h3>
-                <div id="graph">
-                </div> 
+                </table>
             </form>
-            <a th:href="@{/investments/ShowAddInvestmentPage}">Add an investment</a>
         </div>       
        
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
