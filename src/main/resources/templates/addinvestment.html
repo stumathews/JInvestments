@@ -14,68 +14,70 @@
         <div class="md-col-12">
                 <h2>Add New Investment</h2> 
         </div>
-        <form action="#" th:action="@{/investments}" method="post">  
-            
-            
-        <div class="col-md-5">
-            
-                
-                    <fieldset class="form-group">
-                        <label for="title">Name</label>
-                        <input class="form-control" id="name" name="name" type="text" autofocus="true" placeholder="Type in the name of your investment" />                                        
-                        <small class="text-muted">What is the name of this investment?</small>
-                    </fieldset>     
-                    <!--whyReasonStatement-->
-                    <fieldset class="form-group">
-                        <label for="whyReasonStatement">Investment Statement</label>                                  
-                        <textarea class="form-control" rows="5" id="whyReasonStatement" name="whyReasonStatement" placeholder="Why is this an investment"></textarea>
-                        <small class="text-muted">Should define why it is an investment</small>
-                    </fieldset>
-                    <!--valueProposition-->
-                    <fieldset class="form-group">
-                        <label for="valueProposition">Value proposition</label>                                  
-                        <textarea class="form-control" rows="5" id="whyReasonStatement" name="valueProposition" placeholder="Why is this an investment"></textarea>
-                        <small class="text-muted">Why is this valuable to people?</small>
-                    </fieldset>                    
-                    <button type="submit" class="btn btn-primary">Submit</button>                
-                          
-        </div>
-        <div class="md-col-5">
-            <!--desirabilityStatement-->
-                    <fieldset class="form-group">
-                        <label for="desirabilityStatement">Desirability Statement</label>                                  
-                        <textarea class="form-control" rows="5" id="desirabilityStatement" name="desirabilityStatement" placeholder="Why is this an investment"></textarea>
-                        <small class="text-muted">Why is this desirable to people?</small>
-                    </fieldset>
-                    <fieldset class="form-group">
-                        <label for="regionId">Region</label>
-                        <select class="form-control" name="regionId" id="regionId">
-                            <option th:each="region : ${regions}" value="1" th:value="${region.id}" th:text="${region.name}">region</option>
-                        </select>
-                        <small class="text-muted">In which region is your investment based or is affected by?</small>
-                    </fieldset>                    
-                    <!-- Amount invested -->
-                    <fieldset class="form-group">
-                        <label  for="initialInvestment">Amount (in pounds)</label>
-                        <div class="input-group">
-                          <div class="input-group-addon">$</div>
-                          <input type="text" class="form-control" id="initialInvestment"  name="initialInvestment" placeholder="Amount"/>
-                          <div class="input-group-addon">.00</div>
-                        </div>
-                        <small class="text-muted">What is the initial investment amount (£)</small>
-                    </fieldset>
-        </div>
-        </form>  
-        
-    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    
-    <script th:src="@{/common.js}"/>
-    <script th:src="@{/webjars//bootstrap/3.3.5/js/bootstrap.min.js}"/>
-    <script th:inline="javascript">
-    /*<![CDATA[*/
-        $(document).ready(function(){
-                console.log("JQuery Ready.");
-            });
-    /*]]>*/
-    </script>
+        <form action="#" th:action="@{/investments}" method="post"> 
+            <div class="col-md-10"> 
+                <fieldset class="form-group">
+                    <label for="title">Name</label>
+                    <input class="form-control" id="name" name="name" type="text" autofocus="true" placeholder="Type in the name of your investment" />                                        
+                    <small class="text-muted">What is the name of this investment?</small>
+                </fieldset>     
+                <!--whyReasonStatement-->
+                <fieldset class="form-group">
+                    <label for="whyReasonStatement">Investment Statement</label>                                  
+                    <textarea class="form-control" rows="5" id="whyReasonStatement" name="whyReasonStatement" placeholder="Why is this an investment"></textarea>
+                    <small class="text-muted">Should define why it is an investment</small>
+                </fieldset>
+                <!--valueProposition-->
+                <fieldset class="form-group">
+                    <label for="valueProposition">Value proposition</label>                                  
+                    <textarea class="form-control" rows="5" id="valueProposition" name="valueProposition" placeholder="Why is this investment valuable to people?"></textarea>
+                    <small class="text-muted">Why is this valuable to people?</small>
+                </fieldset>
+                <!--desirabilityStatement-->
+                <fieldset class="form-group">
+                    <label for="desirabilityStatement">Desirability Statement</label>                                  
+                    <textarea class="form-control" rows="5" id="desirabilityStatement" name="desirabilityStatement" placeholder="Why is desirable to people"></textarea>
+                    <small class="text-muted">Why is this desirable to people?</small>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="regionId">Region</label>
+                    <select class="form-control" name="regionId" id="regionId">
+                        <option th:each="region : ${regions}" value="1" th:value="${region.id}" th:text="${region.name}">region</option>
+                    </select>
+                    <small class="text-muted">In which region is your investment based or is affected by?</small>
+                </fieldset>                    
+                <!-- Amount invested -->
+                <fieldset class="form-group">
+                    <label  for="initialInvestment">Initial Investment Amount (in pounds)</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                      <input type="text" class="form-control" id="initialInvestment"  name="initialInvestment" placeholder="Amount"/>
+                      <div class="input-group-addon">.00</div>
+                    </div>
+                    <small class="text-muted">What is the initial investment amount (£)</small>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="forcastBuyCriteria">Forcast Buy Criteria</label>                                  
+                    <textarea class="form-control" rows="5" id="forcastBuyCriteria" name="forcastBuyCriteria" placeholder="What criteria would you follow to buy into this investment in the future"></textarea>
+                    <small class="text-muted">What would make you buy this investment in the future?</small>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="forcastSellCriteria">Forcast Sell Criteria</label>                                  
+                    <textarea class="form-control" rows="5" id="forcastSellCriteria" name="forcastSellCriteria" placeholder="What criteria would you follow to sell off this investment in the future"></textarea>
+                    <small class="text-muted">What would make you sell off this investment in the future?</small>
+                </fieldset>                                
+                <button type="submit" class="btn btn-primary">Submit</button>   
+            </div>
+        </form>        
+        <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    
+        <script th:src="@{/common.js}"/>
+        <script th:src="@{/webjars//bootstrap/3.3.5/js/bootstrap.min.js}"/>
+        <script th:inline="javascript">
+        /*<![CDATA[*/
+            $(document).ready(function(){
+                    console.log("JQuery Ready.");
+                });
+        /*]]>*/
+        </script>
     </body>
 </html>
