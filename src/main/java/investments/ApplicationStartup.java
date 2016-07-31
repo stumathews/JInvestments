@@ -35,17 +35,19 @@ implements ApplicationListener<ApplicationReadyEvent> {
      {
         AssetRegion assetRegions[] = new AssetRegion[] 
         {
-            new AssetRegion("JAPAN"), 
-            new AssetRegion("JAPANESE SMALLER COMPANIES"),
-            new AssetRegion("ASIA PACIFIC EXCLUDING JAPAN"),
-            new AssetRegion("CHINA / GREATER CHINA SECTOR"),
-            new AssetRegion("NORTH AMERICA"),
-            new AssetRegion("NORTH AMERICAN SMALLER COMPANIES"),
-            new AssetRegion("EUROPE INCLUDING UK"),
-            new AssetRegion("EUROPE EXCLUDING UK"),
-            new AssetRegion("EUROPEAN SMALLER COMPANIES"),
-            new AssetRegion("GLOBAL"),
-            new AssetRegion("GLOBAL EMERGING MARKETS") 
+            new AssetRegion("UK ALL COMPANIES (Fund Sector)"), 
+            new AssetRegion("UK SMALLER COMPANIES (Fund Sector)"),
+            new AssetRegion("JAPAN (Fund Sector)"), 
+            new AssetRegion("JAPANESE SMALLER COMPANIES (Fund Sector)"),
+            new AssetRegion("ASIA PACIFIC EXCLUDING JAPAN (Fund Sector)"),
+            new AssetRegion("CHINA / GREATER CHINA SECTOR (Fund Sector)"),
+            new AssetRegion("NORTH AMERICA (Fund Sector)"),
+            new AssetRegion("NORTH AMERICAN SMALLER COMPANIES (Fund Sector)"),
+            new AssetRegion("EUROPE INCLUDING UK (Fund Sector)"),
+            new AssetRegion("EUROPE EXCLUDING UK (Fund Sector)"),
+            new AssetRegion("EUROPEAN SMALLER COMPANIES (Fund Sector)"),
+            new AssetRegion("GLOBAL (Fund Sector)"),
+            new AssetRegion("GLOBAL EMERGING MARKETS (Fund Sector)") 
         };
           
         for(AssetRegion region : assetRegions) {
