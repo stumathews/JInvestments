@@ -43,9 +43,10 @@
                 </table> 
                 <h3>Dependencies Graph</h3>
                 <div id="graph">
-                </div> 
+                </div>                
             </form>
-            <a th:href="@{/investments/ShowAddInvestmentPage}">Add an investment</a>
+            <a th:href="@{/investments/ShowAddInvestmentPage}">Add an investment</a>  
+            
         </div>       
        
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
@@ -88,7 +89,7 @@
         node.append("name")
                 .text(function (d) { return d.name; })
 
-    
+
 
         // force feed algo ticks
         force.on("tick", function() {
@@ -102,6 +103,10 @@
         });
         
     });
+
+    
+    
+                    
 });  
     /*]]>*/
     </script>
