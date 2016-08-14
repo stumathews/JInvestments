@@ -14,8 +14,19 @@ public class InvestmentBase
     public String desirabilityStatement;
     public float initialInvestment;
     public String name;
+    public String symbol;
     public String valueProposition;
     public String whyReasonStatement;
+        
+    public String getSymbol()
+    {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol)
+    {
+        this.symbol = symbol;
+    }
 
     public String getDesirabilityStatement()
     {

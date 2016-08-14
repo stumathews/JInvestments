@@ -61,6 +61,7 @@ public class InvestmentController extends BaseController
         del.setInitialInvestment(investmentForm.getInitialInvestment());
         del.setValueProposition(investmentForm.getValueProposition());        
         del.setDesirabilityStatement(investmentForm.getDesirabilityStatement());
+        del.setSymbol(investmentForm.getSymbol());
         
         dataAccess.saveInvestment(del);    
         
