@@ -5,8 +5,10 @@ import investments.db.DataAccess;
 import investments.db.FactorRepository;
 import investments.db.InvestmentRepository;
 import investments.db.del.AssetRegion;
-import investments.db.del.Factor;
+import investments.db.del.InfluenceFactor;
 import investments.db.del.Investment;
+import investments.db.del.InvestmentGroup;
+import investments.db.del.Risk;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +33,14 @@ public class HomeController extends BaseController {
     {     
         List<Investment> investments = dataAccess.getAllInvestments();
         List<AssetRegion> assetRegions = dataAccess.getAllRegions();
-        List<Factor> factors = dataAccess.getAllFactors();        
+        List<InfluenceFactor> factors = dataAccess.getAllFactors();  
+        List<InvestmentGroup> groups = dataAccess.getAllGroups();
+        List<Risk> risks = dataAccess.getAllRisks();
         model.put("investments", investments);
         model.put("regions", assetRegions);
         model.put("factors", factors);
+        model.put("groups", groups);
+        model.put("risks", risks);
         
         model.put("title", "Investement Tracker");
         

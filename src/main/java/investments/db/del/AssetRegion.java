@@ -1,5 +1,6 @@
 package investments.db.del;
 
+import java.util.HashSet;
 import java.util.Set;
 import org.springframework.data.neo4j.annotation.Fetch;
 import org.springframework.data.neo4j.annotation.GraphId;
@@ -10,9 +11,9 @@ public class AssetRegion
 {
     @GraphId
     Long id;
-   
+    String name;
     @Fetch
-    private Set<Investment> investments;
+    private Set<Investment> investments = new HashSet<>();
 
     public Set<Investment> getInvestments()
     {
@@ -43,21 +44,30 @@ public class AssetRegion
     {
         this.name = Name;
     }
-    String name;
+        
+    public AssetRegion()
+    {
     
-    public AssetRegion(){}
+    }
+    
     public AssetRegion(Long id)
     {
         this.id = id;
     }
+    
     public AssetRegion(Long id, String name )
     {
         this(id);
         this.name = name;
     }
+    
     public AssetRegion(String name)
     {
         this.name = name;
     }
-    
+
+    public void addInvestment(Investment localInvestment)
+    {
+        investments.add(localInvestment);
+    }    
 }

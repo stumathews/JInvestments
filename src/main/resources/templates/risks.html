@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Factors</title>
+        <title>Investment Risks</title>
         <link rel="stylesheet" th:href="@{/style.css}" />
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
     <style type="text/css">
@@ -19,30 +19,33 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h1>Factors</h1>
+            <h1>Investment Risks</h1>
             <form method="POST" >                
-                <p th:text="${factors.isEmpty()} == false ? 'These are all the factors that are loaded in the database' : 'No factors in the database.'">These are all the factors that are loaded in the database</p>
+                <p th:text="${risks.isEmpty()} == false ? 'These are all the risks that are loaded in the database' : 'No risks in the database.'">These are all the factors that are loaded in the database</p>
                 <table class="table table-hover" >
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Description</th>  
+                            <th>Description</th> 
+                            <th>Type</th>
                             <th>Linked investments</th>
                             <th></th> <!--Delete -->                                                       
                         </tr>
                     </thead>
-                    <tr th:each="factor : ${factors}">
+                    <tr th:each="risk : ${risks}">
                     <td>
-                        <a th:href="|/factors/${factor.id}|" th:text="${factor.name}" />
+                        <a href="#" th:text="${risk.name}" th:href="|/risk/${risk.id}|"/>
                     </td>
                     
-                    <td th:text="${factor.description}"></td>
-                    <td> <a th:text="${factor.investments.size()}" th:href="|/factors/${factor.id}|"></a></td>
-                    <td><a href="#" th:href="|/factors/${factor.id}/delete|">Delete</a></td>
+                    <td th:text="${risk.description}"></td>
+                    <td th:text="${risk.type}"></td>
+                    <td><a th:href="|/risk/${risk.id}|" th:text="${risk.investments.size()}">investments</a></td>
+                    <td><a href="#" th:href="|/risk/${risk.id}/delete|">Delete</a></td>
                  </tr>
                 </table>
             </form>
         </div>       
+       
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
     <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
     <script th:src="@{/webjars/d3js/3.5.17/d3.min.js}"/>

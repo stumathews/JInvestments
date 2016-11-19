@@ -6,9 +6,8 @@
 package investments.controllers;
 
 import investments.BOLO.FactorForm;
-import investments.BOLO.InvestmentForm;
 import investments.db.DataAccess;
-import investments.db.del.Factor;
+import investments.db.del.InfluenceFactor;
 import investments.db.del.Investment;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +29,8 @@ public class FactorController extends BaseController
     @RequestMapping(method=RequestMethod.GET)
     public String showFactors(Map<String, Object> model)
     {
-        List<Factor> factors = dataAccess.getAllFactors();
+        List<InfluenceFactor> factors = dataAccess.getAllFactors();
+        
         model.put("factors", factors);
         return "showAllFactors";
     }
@@ -40,7 +40,10 @@ public class FactorController extends BaseController
     {
         
         Investment investment = dataAccess.getInvestmentById(factorForm.getInvestmentId());
-        investment.addFactor(new Factor(factorForm.getName(), factorForm.getDescription()));
+        InfluenceFactor factor = new InfluenceFactor(factorForm.getName(), factorForm.getDescription());
+        factor.addInvestment(investment);        
+        investment.addFactor(factor);
+        
         dataAccess.updateInvestment(investment);
         return "redirect:/investments/"+investment.getId().toString()+"/view";
     }
@@ -49,7 +52,7 @@ public class FactorController extends BaseController
     public String disassociate(HttpServletRequest request, @PathVariable Long iid, @PathVariable Long fid)
     {        
         Investment investment = dataAccess.getInvestmentById(iid);
-        Factor factor = dataAccess.getFactorById(fid);
+        InfluenceFactor factor = dataAccess.getFactorById(fid);
         logger.info(String.format("Dissasociate factor %s from investment %s", factor.getName(), investment.getName()));
         investment.disassociateFactor(factor);
         dataAccess.updateInvestment(investment);
@@ -65,6 +68,14 @@ public class FactorController extends BaseController
         logger.info("Deleting investment: " + id);
         dataAccess.deleteFactorBy(id);
         return "redirect:/";
+    }
+    
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    public String viewFactor(@PathVariable Long id, Map<String, Object> model)
+    {        
+        InfluenceFactor factor = dataAccess.getFactorById(id);
+        model.put("factor", factor);
+        return "viewfactor";
     }
     
     @RequestMapping(value="/new", method=RequestMethod.GET)

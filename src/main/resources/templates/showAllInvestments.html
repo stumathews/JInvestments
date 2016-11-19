@@ -19,14 +19,19 @@
         </div>
         <div class="col-md-10">
             <h1>Investments</h1>
+            <div id="wrapper">               
+                <div th:replace="common :: investment_actions"></div>          
+            </div>
             <form method="POST" >                
                 <p th:text="${investments.isEmpty()} == false ? 'These are all the investments that are loaded in the database' : 'No investments in the database.'">These are all the investments that are loaded in the database</p>
                 <table class="table table-hover" >
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Regions</th>
-                            <th>Investment statement</th>
+                            <th>Regions</th> 
+                            <th>Risks</th>
+                            <th>Factors</th>
+                            <th>Groups</th>
                             <th></th> <!--Delete -->                                                       
                         </tr>
                     </thead>
@@ -34,18 +39,36 @@
                     <td>
                         <a href="#" th:text="${investment.name}" th:href="|${investment.id}/view|"/>
                     </td>
-                    <td th:each="region : ${investment.regions}">
-                        <span th:text="${region.name}">regions</span>
+                    <td>
+                        <span th:each="region : ${investment.regions}">
+                            <a th:href="|/region/${region.id}|" th:text="${region.name}">regions</a><br/>
+                        </span>  
                     </td>
-                    <td th:text="${investment.whyReasonStatement}"></td>
+                    <td>
+                        <span th:each="risk : ${investment.risks}">
+                            <a th:text="${risk.name}" th:href="|/risk/${risk.id}|"></a><br/>
+                        </span>   
+                    </td>
+                    <td>
+                        <span th:each="factor : ${investment.influenceFactors}">                            
+                           <a th:text="${factor.name}" th:href="|/factors/${factor.id}|"></a><br/>
+                        </span>   
+                    </td>
+                    <td>
+                        <span th:each="group : ${investment.groups}">
+                            <a th:text="${group.name}" th:href="|/group/${group.id}|"></a><br/>
+                        </span>   
+                    </td>
                     <td><a href="#" th:href="|${investment.id}/delete|">Delete</a></td>
                  </tr>
-                </table> 
+                </table>                
+                <div id="wrapper">               
+                    <div th:replace="common :: investment_actions"></div>          
+                </div> 
                 <h3>Dependencies Graph</h3>
                 <div id="graph">
                 </div>                
             </form>
-            <a th:href="@{/investments/ShowAddInvestmentPage}">Add an investment</a>  
             
         </div>       
        

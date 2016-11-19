@@ -2,10 +2,11 @@ package investments.db;
 
 import investments.db.InvestmentRepository;
 import investments.db.del.AssetRegion;
-import investments.db.del.Factor;
+import investments.db.del.InfluenceFactor;
 import investments.db.del.Investment;
+import investments.db.del.InvestmentGroup;
+import investments.db.del.Risk;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.List;
 import org.neo4j.graphdb.NotFoundException;
 import org.slf4j.Logger;
@@ -35,6 +36,12 @@ public class DataAccess
     @Autowired 
     FactorRepository factorRepository;
     
+    @Autowired 
+    GroupRepository groupRepository;
+    
+    @Autowired
+    RiskRepository riskRepository;
+    
     @Autowired
     private Neo4jOperations neo4jdb;
     
@@ -43,7 +50,7 @@ public class DataAccess
     
     @Autowired
     Logger logger;
-    
+        
     @Transactional 
     public void deleteInvestmentbyId(Long id)
     {
@@ -52,8 +59,8 @@ public class DataAccess
     
     @Transactional
     public List<Investment> getAllInvestments()
-    {
-        Result<Investment> investments = neo4jdb.findAll(Investment.class);
+    {        
+        Result<Investment> investments = investmentRepository.findAll();
         List<Investment> all = new ArrayList<>();
         for( Investment i : investments) {            
             all.add(i);
@@ -62,15 +69,19 @@ public class DataAccess
     }
 
     @Transactional
-    public void saveInvestment(Investment investment)
-    {
-        neo4jdb.save(investment);
+    public Investment saveInvestment(Investment investment)
+    {        
+        logger.warn("Persisting investment, name="+investment.getName());
+        Investment result = investmentRepository.save(investment);
+        logger.info("Successfully persisted investment, name = "+ result.getName());
+        logger.info("risk count="+result.getRisks().size());
+        return result;
     }
     
     @Transactional
-    public void saveRegion(AssetRegion region)
+    public AssetRegion saveRegion(AssetRegion region)
     {
-        neo4jdb.save(region);                
+        return neo4jdb.save(region);                
     }
     
     @Transactional
@@ -108,21 +119,21 @@ public class DataAccess
 
     @Transactional
     public void updateInvestment(Investment investment)
-    {
+    {        
         investmentRepository.save(investment);
     }
 
     @Transactional
-    public Factor getFactorById(Long fid)
+    public InfluenceFactor getFactorById(Long fid)
     {
         return factorRepository.findOne(fid);
     }
 
     @Transactional
-    public List<Factor> getAllFactors()
+    public List<InfluenceFactor> getAllFactors()
     {
-        ArrayList<Factor> factors = new ArrayList<>();
-        for( Factor factor : factorRepository.findAll()){
+        ArrayList<InfluenceFactor> factors = new ArrayList<>();
+        for( InfluenceFactor factor : factorRepository.findAll()){
             factors.add(factor);
         }
         return factors;
@@ -132,6 +143,58 @@ public class DataAccess
     public void deleteFactorBy(Long id)
     {
         factorRepository.delete(id);
+    }
+
+    @Transactional
+    public List<InvestmentGroup> getAllGroups()
+    {
+        ArrayList<InvestmentGroup> groups = new ArrayList<>();
+        for( InvestmentGroup group : groupRepository.findAll())
+        {
+            groups.add(group);
+        }
+        return groups;
+    }
+    
+    @Transactional
+    public InvestmentGroup addGroup(InvestmentGroup group)
+    {
+        return groupRepository.save(group);
+    }
+    
+    @Transactional
+    public Risk addRisk(Risk risk)
+    {
+        return riskRepository.save(risk);
+    }
+    
+    @Transactional
+    public List<Risk> getAllRisks()
+    {
+        List<Risk> risks = new ArrayList<>();
+        for( Risk r : riskRepository.findAll()){
+            logger.info("Found risk=",r.getName());
+            risks.add(r);
+        }
+        return risks;
+    }
+
+    @Transactional
+    public InvestmentGroup getGroupById(Long groupId)
+    {
+        return groupRepository.findOne(groupId);
+    }
+
+    @Transactional
+    public Risk getRiskById(Long id)
+    {
+        return riskRepository.findOne(id);
+    }
+    
+    @Transactional
+    public void addFactor(InfluenceFactor factor)
+    {
+        factorRepository.save(factor);
     }
     
 }

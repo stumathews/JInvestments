@@ -18,44 +18,50 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
  * @author Stuart
  */
 @NodeEntity
-public class Investment extends InvestmentBase
+public class Investment extends ValueProvider
 {    
     @GraphId
     protected Long id;
     
     @RelatedTo(type = "IS_IN_REGIONS", direction = Direction.OUTGOING)
     @Fetch
-    private Set<AssetRegion> regions;  
+    private Set<AssetRegion> regions = new HashSet<>();  
     
-    @RelatedTo(type = "FACTORS", direction = Direction.OUTGOING)
     @Fetch
-    private Set<Factor> factors = new HashSet<>();
+    protected Set<Risk> risks = new HashSet<>();
     
-    public void addFactor(Factor factor)
+    @Fetch
+    protected Set<InvestmentGroup> groups = new HashSet<>();
+    protected String description;
+    private String symbol;
+
+   
+    public Investment() 
     {
-        factors.add(factor);
-    }
-    
-    public Set<Factor> getFactors()
-    {
-        return factors;
-    }
-
-    public void setFactors(Set<Factor> factors)
-    {
-        this.factors = factors;
-    }
-
-
-
-
-    
-    public Investment() {
-    
+        
     } 
     
+     public String getDescription()
+    {
+        return description;
+    }
 
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
     
+    
+    public Set<InvestmentGroup> getGroups()
+    {
+        return groups;
+    }
+
+    public void setGroups(Set<InvestmentGroup> groups)
+    {
+        this.groups = groups;
+    }
+       
     public Long getId()
     {
         return id;
@@ -66,6 +72,10 @@ public class Investment extends InvestmentBase
         this.id = id;
     }
 
+    /**
+     * Regions that this investment is in
+     * @return 
+     */
     public Set getRegions()
     {
         return regions;
@@ -76,9 +86,45 @@ public class Investment extends InvestmentBase
         this.regions = regions;
     }
 
-    public void disassociateFactor(Factor factor)
+    /**
+     * Get symbol that represents this investment (on the stock market)
+     * @return 
+     */
+    public String getSymbol()
     {
-        factors.remove(factor);        
+        return symbol;
     }
 
+    public void setSymbol(String symbol)
+    {
+        this.symbol = symbol;
+    }
+
+    /**
+     * The risks that this company has (either specific or systemic)
+     * @return
+     */
+    public Set getRisks()
+    {
+        return risks;
+    }
+
+    public void addRisk(Risk risk)
+    {
+        risks.add(risk);        
+    }
+    public void setRisks(Set<Risk> risks)
+    {
+        this.risks = risks;
+    }
+
+    public void addGroup(InvestmentGroup group)
+    {
+        groups.add(group);
+    }
+
+    public void addRegion(AssetRegion region)
+    {
+        regions.add(region);
+    }
 }

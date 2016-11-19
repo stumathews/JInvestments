@@ -1,10 +1,16 @@
 <div th:fragment="leftnav">   
     <img class="img-responsive" src="logo" th:src="@{/logo.jpg}"/>
     <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><a href="#" th:href="@{/}">Home</a></li>
-        <li role="presentation"><a href="#" th:href="@{/investments/}">Investments</a></li>
-        <li role="presentation"><a href="#" th:href="@{/investments/ShowAddInvestmentPage}">New Investment</a></li>        
+        <li role="presentation"><a href="#" th:href="@{/}">Home - Summary</a></li>
+        <li role="presentation"><a href="#" th:href="@{/investments/}">Investments</a></li>        
         <li role="presentation"><a href="#" th:href="@{/factors}">Factors</a></li>        
+        <li role="presentation"><a href="#" th:href="@{/group}">Groups</a></li>        
+        <li role="presentation"><a href="#" th:href="@{/risk}">Risks</a></li>        
+        <li role="presentation"><a href="#" th:href="@{/region}">Regions</a></li>   
     </ul>   
     
+</div>
+
+<div id="investment_actions" th:fragment="investment_actions">    
+    <a  class="btn btn-primary" href="#" th:href="@{/investments/ShowAddInvestmentPage}">New Investment</a>    
 </div>

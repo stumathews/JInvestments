@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Factors</title>
+        <title>Investment Groups</title>
         <link rel="stylesheet" th:href="@{/style.css}" />
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
     <style type="text/css">
@@ -19,9 +19,9 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h1>Factors</h1>
+            <h1>Investment Groups</h1>
             <form method="POST" >                
-                <p th:text="${factors.isEmpty()} == false ? 'These are all the factors that are loaded in the database' : 'No factors in the database.'">These are all the factors that are loaded in the database</p>
+                <p th:text="${groups.isEmpty()} == false ? 'These are all the groups that are loaded in the database' : 'No groups in the database.'">These are all the factors that are loaded in the database</p>
                 <table class="table table-hover" >
                     <thead>
                         <tr>
@@ -31,18 +31,19 @@
                             <th></th> <!--Delete -->                                                       
                         </tr>
                     </thead>
-                    <tr th:each="factor : ${factors}">
+                    <tr th:each="group : ${groups}">
                     <td>
-                        <a th:href="|/factors/${factor.id}|" th:text="${factor.name}" />
+                        <a href="#" th:text="${group.name}" th:href="|/group/${group.id}|"/>
                     </td>
                     
-                    <td th:text="${factor.description}"></td>
-                    <td> <a th:text="${factor.investments.size()}" th:href="|/factors/${factor.id}|"></a></td>
-                    <td><a href="#" th:href="|/factors/${factor.id}/delete|">Delete</a></td>
+                    <td th:text="${group.description}"></td>
+                    <td> <a th:href="|/group/${group.id}|"  th:text="${group.investments.size()}"></a></td>
+                    <td><a href="#" th:href="|/group/${group.id}/delete|">Delete</a></td>
                  </tr>
                 </table>
             </form>
         </div>       
+       
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
     <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
     <script th:src="@{/webjars/d3js/3.5.17/d3.min.js}"/>
