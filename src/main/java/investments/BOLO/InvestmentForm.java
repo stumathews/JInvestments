@@ -1,16 +1,15 @@
 package investments.BOLO;
 
-import investments.db.del.InvestmentBase;
-
-
+import investments.db.del.Investment;
 
 /**
  * POJO that represents a investment form.
  * @author Stuart
  */
-public class InvestmentForm extends InvestmentBase
+public class InvestmentForm extends Investment
 {    
     public Long regionId;        
+    private String symbol;
 
     public Long getRegionId()
     {
@@ -21,5 +20,5 @@ public class InvestmentForm extends InvestmentBase
     {
         this.regionId = regionId;
     }
-    
+   
  }
