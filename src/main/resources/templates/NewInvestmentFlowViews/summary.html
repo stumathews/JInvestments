@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Factors</title>
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
+    <style type="text/css">
+    .node { stroke: #222; stroke-width: 1.5px; }
+    .node.actor { fill: #888; }
+    .node.movie { fill: #BBB; }
+    .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }
+    #graph {margin-left: 30%;}    
+    </style>
+    </head>
+    <body>        
+        <div class="col-md-2">
+            <div id="wrapper">               
+                <div th:replace="common :: leftnav"></div>          
+            </div>
+        </div>
+        <div class="col-md-10">            
+            <h1>Summary</h1>
+            <p>Summary of new investment:<span th:text="${investment.name}"></span></p>
+            <p>Factors</p>
+            <ul>
+                <li th:each="factor : ${investment.influenceFactorsList}">
+                    <a href="#" th:text="${factor.id}"/>
+                </li>
+            </ul>
+            <p>Risks</p>
+            <ul>
+                <li th:each="risk : ${investment.risksList}">
+                    <a href="#" th:text="${risk.id}"/>
+                </li>
+            </ul>
+            <p>Regions</p>
+            <ul>
+                <li th:each="region : ${investment.regionsList}">
+                    <a href="#" th:text="${region.id}"/>
+                </li>
+            </ul>
+            <p>Groups</p>
+            <ul>
+                <li th:each="group : ${investment.groupsList}">
+                    <a href="#" th:text="${group.id}"/>
+                </li>
+            </ul>
+            <a class="btn btn-primary" th:href="|${flowExecutionUrl}&amp;_eventId=commit|">Save</a>
+            <a class="btn btn-primary" th:href="|${flowExecutionUrl}&amp;_eventId=cancel|">Cancel</a>
+            <div th:replace="common :: webflow_diag"></div>
+        </div>       
+    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
+    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:src="@{/webjars/d3js/3.5.17/d3.min.js}"/>
+    <script th:src="@{/common.js}"/>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+     
+    /*]]>*/
+    </script>
+    
+    </body>
+</html>

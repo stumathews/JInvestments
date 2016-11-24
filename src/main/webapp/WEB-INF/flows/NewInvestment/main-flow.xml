@@ -1,16 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:flow="http://www.springframework.org/schema/webflow-config"
-       xsi:schemaLocation="http://www.springframework.org/schema/webflow 
-       http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"
-       start-state="collect_basics"> 
-<var name="investment" class="investments.db.del.Investment"/>   
-<view-state id="collect_basics">
-    <transition on="cancel" to="cancel"/>
-</view-state>
-<view-state id="cancel" model="investment" view="addInvestment">
-    
-</view-state>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"> 
+    <var name="investment" class="investments.BOLO.InvestmentForm"/>    
+    <view-state id="collect_basics" 
+                model="investment" 
+                view="NewInvestmentFlowViews/collect_basics">                    
+                <transition on="next" to="collect_factors"/>    
+    </view-state>    
+    <view-state id="collect_factors" 
+                view="NewInvestmentFlowViews/collect_factors" 
+                model="investment">
+        <on-entry>                        
+            <evaluate expression="flowScope.influenceFactors = dataAccess.getAllFactors()"/>              
+        </on-entry>
+        <on-render>
+            <evaluate expression="investment.influenceFactorsList.clear()"/>
+        </on-render>
+        <transition on="next" to="collect_risks"/>
+        <transition on="add_factor" to="add_factor"/>
+    </view-state>
+    <subflow-state id="add_factor" subflow="NewFactor">  
+        <input name="investment"/>      
+        <transition on="finished" to="collect_factors"/>
+    </subflow-state>
+    <view-state id="collect_risks" 
+                view="NewInvestmentFlowViews/collect_risks" 
+                model="investment">        
+        <on-entry>                        
+            <evaluate expression="flowScope.risks = dataAccess.getAllRisks()"/>              
+        </on-entry>
+        <on-render>
+            <evaluate expression="investment.risksList.clear()"/>
+        </on-render>
+        <transition on="next" to="collect_regions"/>        
+    </view-state>
+    <view-state id="collect_regions" 
+                view="NewInvestmentFlowViews/collect_regions"
+                model="investment">
+        <on-entry>                        
+            <evaluate expression="flowScope.regions = dataAccess.getAllRegions()"/>              
+        </on-entry>
+        <on-render>
+            <evaluate expression="investment.regionsList.clear()"/>
+        </on-render>
+        <transition on="next" to="collect_groups"/>
+    </view-state>
+    <view-state id="collect_groups" 
+                view="NewInvestmentFlowViews/collect_groups" 
+                model="investment">
+        <on-entry>                        
+            <evaluate expression="flowScope.groups = dataAccess.getAllGroups()"/>              
+        </on-entry>
+        <on-render>
+            <evaluate expression="investment.groupsList.clear()"/>
+        </on-render>
+        <transition on="next" to="summary"/>
+    </view-state>
+    <view-state id="summary"
+                view="NewInvestmentFlowViews/summary"
+                model="investment">
+    </view-state>
+    <end-state id="commit"/>
 
 </flow>

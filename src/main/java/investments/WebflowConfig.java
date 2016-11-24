@@ -6,9 +6,18 @@
 package investments;
 
 import java.util.Arrays;
+import java.util.Formatter;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ConversionServiceFactoryBean;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.convert.support.DefaultConversionService;
+import org.springframework.core.convert.support.GenericConversionService;
+import org.springframework.format.support.FormattingConversionServiceFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.webflow.config.AbstractFlowConfiguration;
 import org.springframework.webflow.definition.registry.FlowDefinitionRegistry;
@@ -28,7 +37,7 @@ public class WebflowConfig extends AbstractFlowConfiguration
     public FlowDefinitionRegistry flowRegistry() {
     return getFlowDefinitionRegistryBuilder(flowBuilderServices())
         .setBasePath("/WEB-INF/flows")
-        .addFlowLocationPattern("/**/*-flow.xml")
+        .addFlowLocationPattern("/**/*-flow.xml")        
         .build();
     } 
     
@@ -44,6 +53,7 @@ public class WebflowConfig extends AbstractFlowConfiguration
     public FlowHandlerAdapter flowHandlerAdapter() {
 		FlowHandlerAdapter handlerAdapter = new FlowHandlerAdapter();
 		handlerAdapter.setFlowExecutor(flowExecutor());		
+                handlerAdapter.setSaveOutputToFlashScopeOnRedirect(true);
 		return handlerAdapter;
     }
     
@@ -55,10 +65,10 @@ public class WebflowConfig extends AbstractFlowConfiguration
     @Bean
     public FlowBuilderServices flowBuilderServices() {
         return getFlowBuilderServicesBuilder()
-                .setViewFactoryCreator(mvcViewFactoryCreator())
+                .setViewFactoryCreator(mvcViewFactoryCreator())                
                 .setDevelopmentMode(true)
                 .build();
-    }
+    }   
     
     @Bean
     public MvcViewFactoryCreator mvcViewFactoryCreator()

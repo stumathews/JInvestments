@@ -1,5 +1,6 @@
 package investments.db.del;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.data.neo4j.annotation.Fetch;
@@ -7,7 +8,7 @@ import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 
 @NodeEntity
-public class AssetRegion
+public class AssetRegion implements Serializable
 {
     @GraphId
     Long id;

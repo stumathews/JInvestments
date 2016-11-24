@@ -7,10 +7,71 @@
         <li role="presentation"><a href="#" th:href="@{/group}">Groups</a></li>        
         <li role="presentation"><a href="#" th:href="@{/risk}">Risks</a></li>        
         <li role="presentation"><a href="#" th:href="@{/region}">Regions</a></li>   
+        <li role="presentation"><a href="#" th:href="@{/NewInvestment}">New investment workflow</a></li>   
     </ul>   
     
 </div>
 
 <div id="investment_actions" th:fragment="investment_actions">    
     <a  class="btn btn-primary" href="#" th:href="@{/investments/ShowAddInvestmentPage}">New Investment</a>    
+</div>
+
+<div id="webflow_diag" th:fragment="webflow_diag">  
+    <br/>
+    <div class="alert alert-warning">
+        <h5>Webflow diagnostics:</h5>        
+        <table class="table table-hover" >
+            <head>
+            <th>key</th>
+            <th>value</th>
+            </head>
+            <tr th:each="instance : ${flowRequestContext.flowScope.asMap()}">
+                <td><span th:text="${instance.key}">keyvalue</span></td>
+                <td><span th:text="${instance.value}">num</span></td>
+            </tr>
+        </table>
+        <strong>Warning!</strong> Indicates a warning that might need attention.
+    
+    
+        
+        size:<span th:text="${investment.risksList.size()}"></span>
+        <table>
+            <thead>
+            <th>Risk</th>
+            </thead>
+            <tr th:each="risk, stat : ${investment.risksList}">
+                <td th:text="${risk.id}"></td>
+            </tr>
+        </table>
+        
+        
+        size:<span th:text="${investment.influenceFactorsList.size()}"></span>
+        <table>
+            <thead>
+            <th>Factor</th>
+            </thead>
+            <tr th:each="factor, stat : ${investment.influenceFactorsList}">
+                <td th:text="${factor.id}"></td>
+            </tr>
+        </table>
+
+        size:<span th:text="${investment.groupsList.size()}"></span>
+        <table>
+            <thead>
+            <th>Groups</th>
+            </thead>
+            <tr th:each="factor, stat : ${investment.groupsList}">
+                <td th:text="${factor.id}"></td>
+            </tr>
+        </table>
+        size:<span th:text="${investment.risksList.size()}"></span>
+        <table>
+            <thead>
+            <th>Regions</th>
+            </thead>
+            <tr th:each="region, stat : ${investment.regionsList}">
+                <td th:text="${region.id}"></td>
+            </tr>
+        </table>
+    </div>
 </div>

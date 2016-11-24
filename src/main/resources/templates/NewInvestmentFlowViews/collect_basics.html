@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Investment Tracking</title>
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <link rel="stylesheet" href="C:\Users\Stuart\Documents\bootstrap\3.3.5\css\bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" media="screen" />        
+    </head>
+    <body>        
+        <div class="col-md-2">
+            <div id="wrapper">               
+                <div th:replace="common :: leftnav"></div>          
+            </div>
+        </div>
+        <div class="md-col-12">
+                <h2>Add New Investment</h2> 
+        </div>        
+                   
+        <form  th:object="${investment}" th:action="${flowExecutionUrl}" th:method="post">
+            <div class="col-md-10"> 
+                <div class="error" th:if="${#fields.hasErrors('*')}">
+                    <span th:each="err : ${#fields.errors('*')}">
+                      <span th:text="${err}">Input is incorrect</span><br />
+                    </span>
+                </div>
+                <fieldset class="form-group">
+                    <label for="theName">Name</label>
+                    <input class="form-control" id="theName" type="text" th:value="*{name}" th:field="*{name}" placeholder="Whats the name of this investment?"/>             
+                    <small class="text-muted">What is the name of this investment?</small>                    
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="description">Description</label>                                  
+                    <textarea class="form-control" rows="5" id="description" name="description" placeholder="What describes this investment?"></textarea>
+                    <small class="text-muted">Describe this investment?</small>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="valueProposition">Value proposition</label>                                  
+                    <textarea class="form-control" rows="5" id="valueProposition" name="valueProposition" placeholder="Why is this investment valuable to people?"></textarea>
+                    <small class="text-muted">Why is this valuable to people?</small>
+                </fieldset>                
+                <fieldset class="form-group">
+                    <label for="desirabilityStatement">Desirability Statement</label>                                  
+                    <textarea class="form-control" rows="5" id="desirabilityStatement" name="desirabilityStatement" placeholder="Why is desirable to people"></textarea>
+                    <small class="text-muted">Why is this desirable to people?</small>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="initialInvestment">Initial Investment</label>                                  
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control" rows="5" id="initialInvestment" name="initialInvestment" placeholder="Initial investmemt"></input>
+                        <div class="input-group-addon">.00</div>
+                    </div>
+                    <small class="text-muted">How much did you invest initially</small>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="value">Current Value</label>                                  
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control" rows="5" id="value" name="value" placeholder="Current investment value"></input>
+                        <div class="input-group-addon">.00</div>
+                    </div>
+                    <small class="text-muted">What is the current value of the investment</small>
+                </fieldset>
+                <button class="btn btn-primary" type="submit" name="_eventId_next" value="next">Next</button>    
+            </div>              
+        </form>
+        
+        
+        <a th:href="|${flowExecutionUrl}&amp;_eventId=next|">Add new Factor</a>
+        
+        <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    
+        <script th:src="@{/common.js}"/>
+        <script th:src="@{/webjars//bootstrap/3.3.5/js/bootstrap.min.js}"/>
+        <script th:inline="javascript">
+        /*<![CDATA[*/
+            $(document).ready(function(){
+                    console.log("JQuery Ready.");
+                });
+        /*]]>*/
+        </script>
+    </body>
+</html>

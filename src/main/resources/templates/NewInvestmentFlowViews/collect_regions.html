@@ -18,26 +18,35 @@
                 <div th:replace="common :: leftnav"></div>          
             </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10">            
             <h1>Investment Regions</h1>
-            <form method="POST" >                
-                <p th:text="${regions.isEmpty()} == false ? 'These are all the regions that are loaded in the database' : 'No risks in the database.'">These are all the factors that are loaded in the database</p>
+            <p>Select that regions for investment '<span th:text="${investment.name}"></span>' </p>
+            <form th:object="${investment}" th:action="${flowExecutionUrl}" th:method="post">          
+                <p th:text="${regions.isEmpty()} == false ? '' : 'No regions in the database.'">These are all the regions that are loaded in the database</p>
                 <table class="table table-hover" >
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Name</th>
                             <th>Count</th>
+                            <th></th>
                         </tr>
                     </thead>
-                    <tr th:each="region : ${regions}">
-                    <td>
-                        <a href="#" th:text="${region.name}" th:href="|/region/${region.id}|"/>
-                    </td>
-                    <td><a th:href="|/region/${region.id}|" th:text="${region.investments.size()}">investment</a><br/></td>
-                 </tr>
+                    
+                    <tr th:each="region, stat : ${regions}">
+                        <td>
+                            <input type="checkbox" th:field="*{regionsList[__${stat.index}__].id}" th:value="${region.id}"  th:name="regionsList[__${stat.index}__].id" />
+                        </td>
+                        <td><a href="#" th:text="${region.name}" th:href="|/region/${region.id}|"/></td>
+                        <td><a th:href="|/region/${region.id}|" th:text="${region.investments.size()}">investment</a><br/></td>                        
+                        <td><a href="#" th:href="|/region/${region.id}/delete|">Delete</a></td>
+                    </tr>
                 </table>
+                <button class="btn btn-primary" type="submit" name="_eventId_next" value="next">Next</button>  
             </form>
-        </div>       
+        <div th:replace="common :: webflow_diag"></div>
+        </div> 
+        
        
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
     <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
@@ -45,7 +54,7 @@
     <script th:src="@{/common.js}"/>
     <script th:inline="javascript">
     /*<![CDATA[*/
-    
+     
     /*]]>*/
     </script>
     </body>

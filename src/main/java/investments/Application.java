@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import org.neo4j.io.fs.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,14 +32,15 @@ public class Application extends SpringBootServletInitializer
     
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
+        return application.sources(Application.class);        
     }
-
+    
+        
     public static void main(String[] args) throws Exception {
         FileUtils.deleteRecursively(new File("our.db"));        
         SpringApplication.run(Application.class, args);
     }
-    
+            
     @RequestMapping("/graph")
     public Map<String, Object> graph(@RequestParam(value = "limit",required = false) Integer limit) {
         return makeGraph(limit == null ? 100 : limit);
@@ -77,4 +79,15 @@ public class Application extends SpringBootServletInitializer
         return result;
     }
 
+    /*
+    @Bean(name="conversionService")
+    public ConversionService getConversionService() {
+        //ConversionServiceFactoryBean factory = new ConversionServiceFactoryBean();
+        GenericConversionService cs = new DefaultConversionService();
+        cs.addConverter(new StringToInfluenceFactorConverter());
+        cs.addConverter(new MyGenericConverter());
+
+        return cs;
+    }*/
+    
 }

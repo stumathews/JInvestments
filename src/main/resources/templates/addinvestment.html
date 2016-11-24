@@ -18,7 +18,7 @@
             <div class="col-md-10"> 
                 <fieldset class="form-group">
                     <label for="title">Name</label>
-                    <input class="form-control" id="name" name="name" type="text" autofocus="true" placeholder="Type in the name of your investment" />                                        
+                    <input class="form-control" id="name" th:value="*{name}" th:name="*{name}" type="text" autofocus="true" placeholder="Type in the name of your investment" />                                        
                     <small class="text-muted">What is the name of this investment?</small>
                 </fieldset>     
                 <!--whyReasonStatement-->

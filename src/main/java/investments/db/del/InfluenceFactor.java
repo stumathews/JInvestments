@@ -5,6 +5,7 @@
  */
 package investments.db.del;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -17,7 +18,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
  * @author Stuart
  */
 @NodeEntity
-public class InfluenceFactor
+public class InfluenceFactor implements Serializable
 {   
     @GraphId
     protected Long id;    

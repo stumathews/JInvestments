@@ -1,16 +1,10 @@
 package investments;
 
-import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.webflow.mvc.builder.MvcViewFactoryCreator;
-import org.springframework.webflow.mvc.servlet.FlowHandlerAdapter;
-import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
 import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.view.AjaxThymeleafViewResolver;
-import org.thymeleaf.spring4.view.FlowAjaxThymeleafView;
+import org.thymeleaf.spring4.view.ThymeleafView;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
@@ -41,10 +35,10 @@ public class ThymeleafConfiguration {
     }
   
     @Bean
-    public AjaxThymeleafViewResolver thymeleafViewResolver(){
+    public ThymeleafViewResolver thymeleafViewResolver(){
         //  compatibility with AJAX-based events (redirects) in Spring WebFlow
-    	AjaxThymeleafViewResolver viewResolver = new AjaxThymeleafViewResolver(); 
-        viewResolver.setViewClass(FlowAjaxThymeleafView.class);
+    	ThymeleafViewResolver viewResolver = new ThymeleafViewResolver(); 
+        viewResolver.setViewClass(ThymeleafView.class);
     	viewResolver.setTemplateEngine(getTemplateEngine());
 	return viewResolver;
     }

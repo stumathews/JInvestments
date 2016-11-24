@@ -5,6 +5,7 @@
  */
 package investments.db.del;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.data.neo4j.annotation.Fetch;
@@ -16,7 +17,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
  * @author Stuart
  */
 @NodeEntity
-public class Risk
+public class Risk implements Serializable
 {
     @GraphId
     private Long id;

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Factors</title>
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
+    <style type="text/css">
+    .node { stroke: #222; stroke-width: 1.5px; }
+    .node.actor { fill: #888; }
+    .node.movie { fill: #BBB; }
+    .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }
+    #graph {margin-left: 30%;}    
+    </style>
+    </head>
+    <body>        
+        <div class="col-md-2">
+            <div id="wrapper">               
+                <div th:replace="common :: leftnav"></div>          
+            </div>
+        </div>
+        <div class="col-md-10">            
+            <h1>Risks</h1>
+            <p>Select any risks that apply to investment '<span th:text="${investment.name}"></span>'</p>
+            <form th:object="${investment}" th:action="${flowExecutionUrl}" th:method="post">                
+                <p th:text="${risks.isEmpty()} == false ? '' : 'No risks in the database.'">These are all the factors that are loaded in the database</p>
+                <table class="table table-hover" >
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Description</th>  
+                            <th>Linked investments</th>
+                            <th></th> <!--Delete -->                                                       
+                        </tr>
+                    </thead>
+                    <tr th:each="risk, stat : ${risks}">
+                        <td>                                                     
+                            <input type="checkbox" th:field="*{risksList[__${stat.index}__].id}" th:value="${risk.id}"  th:name="risksList[__${stat.index}__].id" />
+                        </td>
+                    <td>
+                        <a th:href="|/risk/${risk.id}|" th:text="${risk.name}" />
+                    </td>
+                    
+                    <td th:text="${risk.description}"></td>                    
+                    <td><a href="#" th:href="|/risk/${risk.id}/delete|">Delete</a></td>
+                 </tr>
+                </table>
+                <button class="btn btn-primary" type="submit" name="_eventId_next" value="next">Next</button>  
+                <a class="btn btn-primary pull-right" th:href="|${flowExecutionUrl}&amp;_eventId=add_risk|">Add new Risk</a>
+            </form>
+            
+            <div th:replace="common :: webflow_diag"></div>
+        </div>       
+    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
+    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:src="@{/webjars/d3js/3.5.17/d3.min.js}"/>
+    <script th:src="@{/common.js}"/>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+     $(document).ready(function(){
+                console.log("JQuery Ready.");
+      
+});  
+    /*]]>*/
+    </script>
+    
+    </body>
+</html>

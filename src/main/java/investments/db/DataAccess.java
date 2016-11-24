@@ -17,7 +17,6 @@ import org.springframework.data.neo4j.template.Neo4jOperations;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
 /***
  * This is the data access layer of the application.
  * All access to the database to piped through this layer.
@@ -132,6 +131,7 @@ public class DataAccess
     @Transactional
     public List<InfluenceFactor> getAllFactors()
     {
+        logger.info("Getting all factors...");
         ArrayList<InfluenceFactor> factors = new ArrayList<>();
         for( InfluenceFactor factor : factorRepository.findAll()){
             factors.add(factor);

@@ -100,9 +100,12 @@ public class InvestmentController extends BaseController
                     InfluenceFactor factor3 = new InfluenceFactor("Supply","Supply");
                     factor3.setInfluence("Supply");
                     
-                    factors.add(factor3);
+                    InfluenceFactor factor4 = new InfluenceFactor("test","test");
+                    factor4.setInfluence("Blah bah blah");
                     factors.add(factor1);
                     factors.add(factor2);
+                    factors.add(factor3);
+                    factors.add(factor4);
                 }
                 
                 Investment savedInvestment = dataAccess.saveInvestment(localInvestment);

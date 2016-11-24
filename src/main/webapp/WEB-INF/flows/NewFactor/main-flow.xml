@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/webflow 
+       http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+<var name="factor" class="investments.db.del.InfluenceFactor"/>
+<input name="investment" required="true"/>
+       <view-state id="add_factor" view="NewInvestmentFactorFlow/new_factor" model="factor">
+           <transition on="finished" to="saveFactor"/>
+       </view-state>
+       <action-state id="saveFactor">           
+           <evaluate expression="dataAccess.addFactor(factor)"/>
+           <transition to="finished"/>
+       </action-state>          
+       <end-state id="finished">           
+       </end-state>
+</flow>

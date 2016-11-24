@@ -19,7 +19,7 @@ class ApplicationConfig extends Neo4jConfiguration
     {
         setBasePackage("investments");            
     }
-
+        
     @Bean
     GraphDatabaseService graphDatabaseService() 
     {                
@@ -31,4 +31,5 @@ class ApplicationConfig extends Neo4jConfiguration
     {
         return LoggerFactory.getLogger(this.getClass());
     }
+   
 }

@@ -13,38 +13,9 @@ import java.util.List;
  */
 public class Company extends Investment
 {
-    private List<Service> services;
-    private List<Product> products;
+    
     private List<Person> keyPeople;
     private String industry;
-
-    /**
-     * Services that this company provides
-     * @return 
-     */
-    public List<Service> getServices()
-    {
-        return services;
-    }
-
-    public void setServices(List<Service> services)
-    {
-        this.services = services;
-    }
-
-    /**
-     * Products that this company sells/offers
-     * @return 
-     */
-    public List<Product> getProducts()
-    {
-        return products;
-    }
-
-    public void setProducts(List<Product> products)
-    {
-        this.products = products;
-    }
 
     /**
      * Key people who influence this company

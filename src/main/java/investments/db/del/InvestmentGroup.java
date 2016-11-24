@@ -5,6 +5,7 @@
  */
 package investments.db.del;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.data.neo4j.annotation.Fetch;
@@ -16,7 +17,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
  * @author Stuart
  */
 @NodeEntity
-public class InvestmentGroup
+public class InvestmentGroup implements Serializable
 {
     @GraphId
     private Long id;
@@ -45,12 +46,12 @@ public class InvestmentGroup
         this.description = description;
     }
     
-    public long getId()
+    public Long getId()
     {
         return id;
     }
 
-    public void setId(long id)
+    public void setId(Long id)
     {
         this.id = id;
     }

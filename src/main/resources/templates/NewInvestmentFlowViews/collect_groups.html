@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Investment Groups</title>
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
+    <style type="text/css">
+    .node { stroke: #222; stroke-width: 1.5px; }
+    .node.actor { fill: #888; }
+    .node.movie { fill: #BBB; }
+    .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }
+    #graph {margin-left: 30%;}    
+    </style>
+    </head>
+    <body>        
+        <div class="col-md-2">
+            <div id="wrapper">               
+                <div th:replace="common :: leftnav"></div>          
+            </div>
+        </div>
+        <div class="col-md-10">            
+            <h1>Investment Groups</h1>
+            <p>Groups for the investment:<span th:text="${investment.name}"></span></p>
+            <form th:object="${investment}" th:action="${flowExecutionUrl}" th:method="post">          
+                <p th:text="${groups.isEmpty()} == false ? '' : 'No groups in the database.'">These are all the groups that are loaded in the database</p>
+                <table class="table table-hover" >
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>                    
+                    <tr th:each="group, stat : ${groups}">
+                        <td>                                                       
+                           <input type="checkbox" th:field="*{groupsList[__${stat.index}__].id}" th:value="${group.id}"  th:name="groupsList[__${stat.index}__].id" />
+                        </td>
+                        <td><a href="#" th:text="${group.name}" th:href="|/group/${group.id}|"/></td>
+                        <td><a th:href="|/group/${group.id}|" th:text="${group.investments.size()}">investment</a><br/></td>                        
+                    </tr>
+                </table>
+                <button class="btn btn-primary" type="submit" name="_eventId_next" value="next">Next</button>  
+            </form>
+        <div th:replace="common :: webflow_diag"></div>
+        </div> 
+        
+       
+    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
+    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:src="@{/webjars/d3js/3.5.17/d3.min.js}"/>
+    <script th:src="@{/common.js}"/>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+     
+    /*]]>*/
+    </script>
+    </body>
+</html>
