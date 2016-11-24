@@ -3,12 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
 http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"> 
+    
     <var name="investment" class="investments.BOLO.InvestmentForm"/>    
     <view-state id="collect_basics" 
                 model="investment" 
                 view="NewInvestmentFlowViews/collect_basics">                    
                 <transition on="next" to="collect_factors"/>    
     </view-state>    
+    
     <view-state id="collect_factors" 
                 view="NewInvestmentFlowViews/collect_factors" 
                 model="investment">
@@ -21,10 +23,12 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
         <transition on="next" to="collect_risks"/>
         <transition on="add_factor" to="add_factor"/>
     </view-state>
+    
     <subflow-state id="add_factor" subflow="NewFactor">  
         <input name="investment"/>      
         <transition on="finished" to="collect_factors"/>
     </subflow-state>
+    
     <view-state id="collect_risks" 
                 view="NewInvestmentFlowViews/collect_risks" 
                 model="investment">        
@@ -35,7 +39,14 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
             <evaluate expression="investment.risksList.clear()"/>
         </on-render>
         <transition on="next" to="collect_regions"/>        
+        <transition on="add_risk" to="add_risk"/>  
     </view-state>
+    
+    <subflow-state id="add_risk" subflow="NewRisk">  
+        <input name="investment"/>      
+        <transition on="finished" to="collect_risks"/>
+    </subflow-state>
+    
     <view-state id="collect_regions" 
                 view="NewInvestmentFlowViews/collect_regions"
                 model="investment">
@@ -46,7 +57,14 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
             <evaluate expression="investment.regionsList.clear()"/>
         </on-render>
         <transition on="next" to="collect_groups"/>
+        <transition on="add_region" to="add_region"/>  
     </view-state>
+    
+    <subflow-state id="add_region" subflow="NewRegion">  
+        <input name="investment"/>      
+        <transition on="finished" to="collect_regions"/>
+    </subflow-state>
+    
     <view-state id="collect_groups" 
                 view="NewInvestmentFlowViews/collect_groups" 
                 model="investment">
@@ -57,11 +75,31 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
             <evaluate expression="investment.groupsList.clear()"/>
         </on-render>
         <transition on="next" to="summary"/>
+        <transition on="add_group" to="add_group"/>  
     </view-state>
+    
+    <subflow-state id="add_group" subflow="NewGroup">  
+        <input name="investment"/>      
+        <transition on="finished" to="collect_groups"/>
+    </subflow-state>
+    
     <view-state id="summary"
                 view="NewInvestmentFlowViews/summary"
                 model="investment">
+        <transition on="commit" to="commit" />
     </view-state>
-    <end-state id="commit"/>
-
+    
+    <view-state id="cancel" view="NewInvestmentFlowViews/cancel">
+    </view-state>
+    
+    <action-state id="commit">
+        <evaluate expression="flowScope.groups = dataAccess.getAllGroups()"/>
+        <transition to="end"/>
+    </action-state>
+    <end-state id="end"/>
+    <end-state id="canceled"/>
+    
+    <global-transitions>
+        <transition on="cancel" to="cancel"/>
+    </global-transitions>
 </flow>

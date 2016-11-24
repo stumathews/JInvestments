@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/webflow 
+       http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+<var name="region" class="investments.db.del.AssetRegion"/>
+<input name="investment" required="true"/>
+       <view-state id="add_region" view="NewInvestmentNewRegionFlow/new_region" model="region">
+           <transition on="finished" to="saveRegion"/>
+       </view-state>
+       <action-state id="saveRegion">           
+           <evaluate expression="dataAccess.addRegion(region)"/>
+           <transition to="finished"/>
+       </action-state>          
+       <end-state id="finished">           
+       </end-state>
+</flow>

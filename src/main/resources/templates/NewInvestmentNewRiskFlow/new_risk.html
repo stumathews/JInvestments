@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Investment Tracking</title>
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <link rel="stylesheet" href="C:\Users\Stuart\Documents\bootstrap\3.3.5\css\bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" media="screen" />        
+    </head>
+    <body>        
+        <div class="col-md-2">
+            <div id="wrapper">               
+                <div th:replace="common :: leftnav"></div>          
+            </div>
+        </div>
+        <div class="col-md-10">            
+            <h2>Add New Risk</h2> 
+                
+                              
+        </div>
+        
+    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    
+    <script th:src="@{/common.js}"/>
+    <script th:src="@{/webjars//bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+        $(document).ready(function(){
+                console.log("JQuery Ready.");
+            });
+    /*]]>*/
+    </script>
+    </body>
+</html>

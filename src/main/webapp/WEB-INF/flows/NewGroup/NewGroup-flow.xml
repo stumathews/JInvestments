@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/webflow 
+       http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+<var name="group" class="investments.db.del.InvestmentGroup"/>
+<input name="investment" required="true"/>
+       <view-state id="add_group" view="NewInvestmentNewGroupFlow/new_group" model="group">
+           <transition on="finished" to="saveGroup"/>
+       </view-state>
+       <action-state id="saveGroup">           
+           <evaluate expression="dataAccess.addGroup(group)"/>
+           <transition to="finished"/>
+       </action-state>          
+       <end-state id="finished">           
+       </end-state>
+</flow>
