@@ -94,7 +94,7 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
         <evaluate expression="flowScope.groups = investmentService.saveInvestmentFlow(investment)"/>
         <transition to="end"/>
     </action-state>
-    <end-state id="end"/>
+    <end-state id="end" view="externalRedirect:/investments/"/>
     <end-state id="canceled" view="NewInvestmentFlowViews/cancel"/>
     
     <global-transitions>

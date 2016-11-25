@@ -17,6 +17,8 @@ import investments.db.del.Risk;
 import investments.db.del.RiskType;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequestMapping("/risk")
@@ -34,11 +36,12 @@ public class RiskController extends BaseController
         return "risks";
     }
     
-    @RequestMapping(method=RequestMethod.POST)
-    public String newRisk(Risk risk, Map<String, Object> model)
+    @RequestMapping(value="/new", method=RequestMethod.GET)
+    public String addRiskWithInvestment(HttpServletRequest request, Map<String, Object> model, Long investmentId )
     {
         return getRisks(model);
-    }
+    }  
+    
         
     @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
     public String deleteRisk(@PathVariable int riskId, Map<String, Object> model)
@@ -53,5 +56,19 @@ public class RiskController extends BaseController
         model.put("risk", risk);
         return "viewRisk";
     }  
+    
+    @RequestMapping(value="/disassociate/{iid}/{rid}", method = RequestMethod.GET)
+    public String disassociate(HttpServletRequest request, @PathVariable Long iid, @PathVariable Long rid)
+    {        
+        Investment investment = dataAccess.getInvestmentById(iid);
+        Risk risk = dataAccess.getRiskById(rid);
+        logger.info(String.format("Dissasociate risk %s from investment %s", risk.getName(), investment.getName()));
+        investment.disassociateRisk(risk);
+        dataAccess.updateInvestment(investment);
+        
+        String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
+        
+    }
 }
 

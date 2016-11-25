@@ -6,16 +6,33 @@
         <li role="presentation"><a href="#" th:href="@{/factors}">Factors</a></li>        
         <li role="presentation"><a href="#" th:href="@{/group}">Groups</a></li>        
         <li role="presentation"><a href="#" th:href="@{/risk}">Risks</a></li>        
-        <li role="presentation"><a href="#" th:href="@{/region}">Regions</a></li>   
-        <li role="presentation"><a href="#" th:href="@{/NewInvestment}">New investment workflow</a></li>   
+        <li role="presentation"><a href="#" th:href="@{/region}">Regions</a></li>           
     </ul>   
     
 </div>
 
 <div id="investment_actions" th:fragment="investment_actions">    
-    <a  class="btn btn-primary" href="#" th:href="@{/investments/ShowAddInvestmentPage}">New Investment</a>    
+    <a  class="btn btn-primary" href="#" th:href="@{/NewInvestment}">New Investment</a>  
+    <br/>    
 </div>
 
+
+<div id="generic_webflow_diag" th:fragment="generic_webflow_diag">
+    <div class="alert alert-warning">
+        <h5>Webflow diagnostics:</h5>        
+        <table class="table table-hover" >
+            <head>
+            <th>key</th>
+            <th>value</th>
+            </head>
+            <tr th:each="instance : ${flowRequestContext.flowScope.asMap()}">
+                <td><span th:text="${instance.key}">keyvalue</span></td>
+                <td><span th:text="${instance.value}">num</span></td>
+            </tr>
+        </table>
+        <strong>Warning!</strong> Indicates a warning that might need attention.
+    </div>
+</div>
 <div id="webflow_diag" th:fragment="webflow_diag">  
     <br/>
     <div class="alert alert-warning">

@@ -117,9 +117,9 @@ public class DataAccess
     }
 
     @Transactional
-    public void updateInvestment(Investment investment)
+    public Investment updateInvestment(Investment investment)
     {        
-        investmentRepository.save(investment);
+        return investmentRepository.save(investment);
     }
 
     @Transactional
@@ -195,6 +195,11 @@ public class DataAccess
     public void addFactor(InfluenceFactor factor)
     {
         factorRepository.save(factor);
+    }
+
+    public Risk getriskById(Long fid)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

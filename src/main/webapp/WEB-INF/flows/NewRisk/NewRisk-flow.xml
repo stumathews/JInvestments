@@ -4,15 +4,15 @@
        xmlns:flow="http://www.springframework.org/schema/webflow-config"
        xsi:schemaLocation="http://www.springframework.org/schema/webflow 
        http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
-<var name="risk" class="investments.db.del.Risk"/>
-<input name="investment" required="true"/>
+    <var name="risk" class="investments.db.del.Risk"/>
+    
        <view-state id="add_risk" view="NewInvestmentNewRiskFlow/new_risk" model="risk">
            <transition on="finished" to="saveRisk"/>
        </view-state>
        <action-state id="saveRisk">           
            <evaluate expression="dataAccess.addRisk(risk)"/>
            <transition to="finished"/>
-       </action-state>          
-       <end-state id="finished">           
+       </action-state>      
+       <end-state id="finished" view="externalRedirect:/risk/">           
        </end-state>
 </flow>

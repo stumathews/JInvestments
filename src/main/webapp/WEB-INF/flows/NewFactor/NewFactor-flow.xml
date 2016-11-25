@@ -5,7 +5,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/webflow 
        http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
 <var name="factor" class="investments.db.del.InfluenceFactor"/>
-<input name="investment" required="true"/>
        <view-state id="add_factor" view="NewInvestmentFactorFlow/new_factor" model="factor">
            <transition on="finished" to="saveFactor"/>
        </view-state>
@@ -13,6 +12,6 @@
            <evaluate expression="dataAccess.addFactor(factor)"/>
            <transition to="finished"/>
        </action-state>          
-       <end-state id="finished">           
+       <end-state id="finished" view="externalRedirect:/factors/">           
        </end-state>
 </flow>

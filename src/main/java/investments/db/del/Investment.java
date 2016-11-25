@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import org.neo4j.graphdb.Direction;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.neo4j.annotation.Fetch;
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
@@ -16,7 +17,6 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
  * Represents a single investment
  * @author Stuart
  */
-
 @NodeEntity
 public class Investment implements Serializable
 {    
@@ -264,5 +264,20 @@ public class Investment implements Serializable
     public void setValue(float value)
     {
         this.value = value;
+    }
+
+    public void disassociateGroup(InvestmentGroup group)
+    {
+        groups.remove(group);
+    }
+
+    public void disassociateRisk(Risk risk)
+    {
+        risks.remove(risk);
+    }
+
+    public void disassociateRegion(AssetRegion region)
+    {
+        regions.remove(region);
     }
 }

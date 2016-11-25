@@ -13,16 +13,25 @@
         </div>
         <div class="col-md-10">            
             <h2>Add New Risk</h2> 
+            <p>The possibility for the unexpected/impreciseness or inability to forcast with certainty.</p>
                 <form  th:object="${risk}" th:action="${flowExecutionUrl}" th:method="post">
+                    <fieldset class="form-group">
+                        <label for="description">Risk type</label>
+                        
+                        <select class="form-control" th:field="*{type}" id="type">
+                            <option th:each="type : ${T(investments.db.del.RiskType).values()}"
+                                   th:value="${type}" 
+                                   th:text="${type}">
+                            </option>
+                         </select>
+                        <small class="text-muted">Market Risk is specific to market (systemic risk), while Company is strategic to company</small>
+                    </fieldset>
+                    
                     <div class="error" th:if="${#fields.hasErrors('*')}">
                         <span th:each="err : ${#fields.errors('*')}">
                           <span th:text="${err}">Input is incorrect</span><br />
                         </span>
-                    </div>
-                    <fieldset class="form-group">
-                        <label for="title">Investment</label>
-                        <p class="form-control-static" th:text="${investment.name}">investment</p>                                                
-                    </fieldset>    
+                    </div>                     
                     
                     <fieldset class="form-group">
                         <label for="name">Name</label>
@@ -34,11 +43,10 @@
                         <label for="description">Description</label>
                         <input type="text" class="form-control" name="description" th:field="*{description}" th:value="*{description}" id="description"/>                            
                         <small class="text-muted">What is the risk</small>
-                    </fieldset>  
-                    
-                    
+                    </fieldset>
                     <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
-                </form>            
+                </form>    
+            <div th:replace="common :: generic_webflow_diag"></div>
         </div>
         
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    

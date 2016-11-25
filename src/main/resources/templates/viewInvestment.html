@@ -36,53 +36,77 @@
                     <dd th:text="${investment.value}">Value</dd>
                 </dl>
                 </div>
-                <div id="factors" class="tab-pane fade">                 
-                    <ul>
-                        <li th:each="factor : ${investment.influenceFactors}">                            
-                           <a th:text="${factor.name}" th:href="|/factors/${factor.id}|"></a>
-                        </li>  
-                    </ul>
+                <div id="factors" class="tab-pane fade"> 
+                    <table class="table table-hover" >
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>   
+                                    <th>Disassociate</th>
+                                </tr>
+                            </thead>
+
+                            <tr th:each="factor : ${investment.influenceFactors}">
+                                <td><a th:text="${factor.name}" th:href="|/factors/${factor.id}|"></a></td>
+                                <td th:text="${factor.description}"></td>
+                                <td><a href="#" th:href="|@{/factors/disassociate}/${investment.id}/${factor.id}|">Yes</a></td>
+                            </tr>                    
+                        </table>
+                    <a class="btn btn-primary" href="#" th:href="|@{/factors/new}?id=${investment.id}|" role="button">Add a factor</a>            
                 </div>
                 <div id="groups" class="tab-pane fade">
-                  <ul>
-                        <li th:each="group : ${investment.groups}">                            
-                           <a th:text="${group.name}" th:href="|/group/${group.id}|"></a>
-                        </li>  
-                    </ul>
+                  <table class="table table-hover" >
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>   
+                                <th>Disassociate</th>
+                            </tr>
+                        </thead>
+
+                        <tr th:each="group : ${investment.groups}">
+                            <td><a th:text="${group.name}" th:href="|/group/${group.id}|"></a></td>
+                            <td th:text="${group.description}"></td>
+                            <td><a href="#" th:href="|@{/group/disassociate}/${investment.id}/${group.id}|">Yes</a></td>
+                        </tr>                    
+                    </table>
+                    <a class="btn btn-primary" href="#" th:href="|@{/group/new}?id=${investment.id}|" role="button">Add to group</a>            
                 </div>
                 <div id="risks" class="tab-pane fade">
-                  <ul>
-                        <li th:each="risk : ${investment.risks}">                            
-                           <a th:text="${risk.name}" th:href="|/risk/${risk.id}|"></a>
-                        </li>  
-                    </ul>
+                    <table class="table table-hover" >
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>   
+                                <th>Disassociate</th>
+                            </tr>
+                        </thead>
+
+                        <tr th:each="risk : ${investment.risks}">
+                            <td><a th:text="${risk.name}" th:href="|/risk/${risk.id}|"></a></td>
+                            <td th:text="${risk.description}"></td>
+                            <td><a href="#" th:href="|@{/risk/disassociate}/${investment.id}/${risk.id}|">Yes</a></td>
+                        </tr>                    
+                    </table>
+                    <a class="btn btn-primary" href="#" th:href="|@{/risk/new}?investmentId=${investment.id}|" role="button">Add a risk</a>            
                 </div>
                 <div id="regions" class="tab-pane fade">
-                  <ul>
-                        <li th:each="region : ${investment.regions}">                            
-                           <a th:text="${region.name}" th:href="|/region/${region.id}|"></a>
-                        </li>  
-                    </ul>
+                 <table class="table table-hover" >
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Disassociate</th>
+                                </tr>
+                            </thead>
+
+                            <tr th:each="region : ${investment.regions}">
+                                <td><a th:text="${region.name}" th:href="|/region/${region.id}|"></a></td>                                
+                                <td><a href="#" th:href="|@{/region/disassociate}/${investment.id}/${region.id}|">Yes</a></td>
+                            </tr>                    
+                        </table>
+                    <a class="btn btn-primary" href="#" th:href="|@{/region/new}?id=${investment.id}|" role="button">Add a region</a>               
                 </div>
-            </div>
-            <h3>Factors</h3>
-            <table class="table table-hover" >
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>   
-                            <th>Disassociate</th>
-                        </tr>
-                    </thead>
-                    
-                    <tr th:each="factor : ${investment.influenceFactors}">
-                        <td th:text="${factor.name}"></td>
-                        <td th:text="${factor.description}"></td>
-                        <td><a href="#" th:href="|@{/factors/disassociate}/${investment.id}/${factor.id}|">Yes</a></td>
-                    </tr>                    
-                </table> 
-                <a class="btn btn-primary" href="#" th:href="|@{/factors/new}?id=${investment.id}|" role="button">Add a factor</a>            
-                                
+            </div>            
         </div>
         
        

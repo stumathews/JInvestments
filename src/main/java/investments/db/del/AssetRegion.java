@@ -2,6 +2,7 @@ package investments.db.del;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import org.springframework.data.neo4j.annotation.Fetch;
 import org.springframework.data.neo4j.annotation.GraphId;
@@ -9,7 +10,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 
 @NodeEntity
 public class AssetRegion implements Serializable
-{
+{   
     @GraphId
     Long id;
     String name;
@@ -70,5 +71,32 @@ public class AssetRegion implements Serializable
     public void addInvestment(Investment localInvestment)
     {
         investments.add(localInvestment);
-    }    
+    }  
+     @Override
+    public int hashCode()
+    {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AssetRegion other = (AssetRegion) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
 }
