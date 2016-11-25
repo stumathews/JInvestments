@@ -13,8 +13,32 @@
         </div>
         <div class="col-md-10">            
             <h2>Add New Risk</h2> 
-                
-                              
+                <form  th:object="${risk}" th:action="${flowExecutionUrl}" th:method="post">
+                    <div class="error" th:if="${#fields.hasErrors('*')}">
+                        <span th:each="err : ${#fields.errors('*')}">
+                          <span th:text="${err}">Input is incorrect</span><br />
+                        </span>
+                    </div>
+                    <fieldset class="form-group">
+                        <label for="title">Investment</label>
+                        <p class="form-control-static" th:text="${investment.name}">investment</p>                                                
+                    </fieldset>    
+                    
+                    <fieldset class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
+                        <small class="text-muted">Title for the risk</small>
+                    </fieldset> 
+                    
+                    <fieldset class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" name="description" th:field="*{description}" th:value="*{description}" id="description"/>                            
+                        <small class="text-muted">What is the risk</small>
+                    </fieldset>  
+                    
+                    
+                    <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
+                </form>            
         </div>
         
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    

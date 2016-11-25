@@ -88,18 +88,16 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
                 model="investment">
         <transition on="commit" to="commit" />
     </view-state>
-    
-    <view-state id="cancel" view="NewInvestmentFlowViews/cancel">
-    </view-state>
+ 
     
     <action-state id="commit">
-        <evaluate expression="flowScope.groups = dataAccess.getAllGroups()"/>
+        <evaluate expression="flowScope.groups = investmentService.saveInvestmentFlow(investment)"/>
         <transition to="end"/>
     </action-state>
     <end-state id="end"/>
-    <end-state id="canceled"/>
+    <end-state id="canceled" view="NewInvestmentFlowViews/cancel"/>
     
     <global-transitions>
-        <transition on="cancel" to="cancel"/>
+        <transition on="cancel" to="canceled"/>
     </global-transitions>
 </flow>

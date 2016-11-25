@@ -10,7 +10,7 @@
            <transition on="finished" to="saveRegion"/>
        </view-state>
        <action-state id="saveRegion">           
-           <evaluate expression="dataAccess.addRegion(region)"/>
+           <evaluate expression="dataAccess.saveRegion(region)"/>
            <transition to="finished"/>
        </action-state>          
        <end-state id="finished">           
