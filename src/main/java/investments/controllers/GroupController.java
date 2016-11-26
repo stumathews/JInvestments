@@ -5,6 +5,7 @@
  */
 package investments.controllers;
 
+import investments.BOLO.GroupAndInvestmentForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import investments.db.DataAccess;
 import investments.db.del.Investment;
 import investments.db.del.InvestmentGroup;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -41,13 +44,30 @@ public class GroupController extends BaseController
         return "viewGroup";
     } 
     
-    @RequestMapping(method=RequestMethod.POST)
-    public String newGroup(InvestmentGroup group, Map<String, Object> model)
+    @RequestMapping(value="/saveGroupWithInvestment",method=RequestMethod.POST)
+    public String newGroup(GroupAndInvestmentForm groupAndInvestment, Map<String, Object> model)
     {
-        model.put("group", group);
-        model.put("investment", new Investment());
-        return "NewInvestmentNewGroupFlow/new_group";
+        Investment investment = dataAccess.getInvestmentById(groupAndInvestment.getInvestmentId());
+        InvestmentGroup newGroup = new InvestmentGroup(groupAndInvestment.getName(), groupAndInvestment.getDescription());
+        Set<Investment> linkedInvestments = new HashSet<>();
+        linkedInvestments.add(investment);
+        newGroup.setInvestments(linkedInvestments);
+        InvestmentGroup savedGroup = dataAccess.addGroup(newGroup);
+        investment.addGroup(savedGroup);
+        dataAccess.updateInvestment(investment);
+        
+        return "redirect:/investments/"+investment.getId()+"/view";
+        
     }
+        
+    @RequestMapping(value="/newToInvestment", method=RequestMethod.GET)
+    public String showAddGroupToInvestmentView(Map<String, Object> model, Long investmentId )
+    {
+        Investment investment = dataAccess.getInvestmentById(investmentId);
+        model.put("investment", investment);
+        model.put("groupForm", new GroupAndInvestmentForm());
+        return "addGroup";
+    }  
         
     @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
     public String deleteGroup(@PathVariable int groupId, Map<String, Object> model)

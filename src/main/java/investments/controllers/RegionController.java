@@ -5,6 +5,7 @@
  */
 package investments.controllers;
 
+import investments.BOLO.RegionAndInvestmentForm;
 import static investments.controllers.BaseController.logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,9 +16,11 @@ import investments.db.DataAccess;
 import investments.db.del.AssetRegion;
 import investments.db.del.InfluenceFactor;
 import investments.db.del.Investment;
+import java.util.HashSet;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -36,13 +39,30 @@ public class RegionController extends BaseController
         return "regions";
     }
     
-    @RequestMapping(method=RequestMethod.POST)
-    public String newRegion(AssetRegion region, Map<String, Object> model)
+    @RequestMapping(value="/saveRegionWithInvestment",method=RequestMethod.POST)
+    public String newGroup(RegionAndInvestmentForm RegionAndInvestment, Map<String, Object> model)
     {
-        AssetRegion result = dataAccess.saveRegion(region);
-        return getRegions(model);
+        Investment investment = dataAccess.getInvestmentById(RegionAndInvestment.getInvestmentId());
+        AssetRegion newRegion = new AssetRegion(RegionAndInvestment.getName());
+        Set<Investment> linkedInvestments = new HashSet<>();
+        linkedInvestments.add(investment);
+        newRegion.setInvestments(linkedInvestments);
+        AssetRegion savedRegion = dataAccess.saveRegion(newRegion);
+        investment.addRegion(savedRegion);
+        dataAccess.updateInvestment(investment);
+        return "redirect:/investments/"+investment.getId()+"/view";
+        
     }
         
+    @RequestMapping(value="/newToInvestment", method=RequestMethod.GET)
+    public String showAddRegionToInvestmentView(Map<String, Object> model, Long investmentId )
+    {
+        Investment investment = dataAccess.getInvestmentById(investmentId);
+        model.put("investment", investment);
+        model.put("regionForm", new RegionAndInvestmentForm());
+        return "addRegion";
+    }
+                
     @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
     public String deleteRegion(@PathVariable int id, Map<String, Object> model)
     {

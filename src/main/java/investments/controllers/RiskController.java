@@ -5,6 +5,7 @@
  */
 package investments.controllers;
 
+import investments.BOLO.RiskAndInvestmentForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +16,10 @@ import investments.db.del.Investment;
 import investments.db.del.InvestmentGroup;
 import investments.db.del.Risk;
 import investments.db.del.RiskType;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -36,13 +39,34 @@ public class RiskController extends BaseController
         return "risks";
     }
     
-    @RequestMapping(value="/new", method=RequestMethod.GET)
-    public String addRiskWithInvestment(HttpServletRequest request, Map<String, Object> model, Long investmentId )
+    @RequestMapping(value="/saveRiskWithInvestment",method=RequestMethod.POST)
+    public String newRisk(RiskAndInvestmentForm riskAndInvestment, Map<String, Object> model)
     {
-        return getRisks(model);
-    }  
-    
+        Investment investment = dataAccess.getInvestmentById(riskAndInvestment.getInvestmentId());
+        Risk newRisk = new Risk();
+        newRisk.setDescription(riskAndInvestment.getDescription());
         
+        newRisk.setName(riskAndInvestment.getName());
+        newRisk.setType(riskAndInvestment.getType());
+        Set<Investment> linkedInvestments = new HashSet<>();
+        linkedInvestments.add(investment);
+        newRisk.setInvestments(linkedInvestments);
+        Risk savedRisk = dataAccess.addRisk(newRisk);
+        investment.addRisk(savedRisk);
+        dataAccess.updateInvestment(investment);
+        return "redirect:/investments/"+investment.getId()+"/view";
+        
+    }
+        
+    @RequestMapping(value="/newToInvestment", method=RequestMethod.GET)
+    public String showAddRiskToInvestmentView(Map<String, Object> model, Long investmentId )
+    {
+        Investment investment = dataAccess.getInvestmentById(investmentId);
+        model.put("investment", investment);
+        model.put("riskForm", new RiskAndInvestmentForm());
+        return "addRisk";
+    }
+            
     @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
     public String deleteRisk(@PathVariable int riskId, Map<String, Object> model)
     {

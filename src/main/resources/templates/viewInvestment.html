@@ -70,7 +70,7 @@
                             <td><a href="#" th:href="|@{/group/disassociate}/${investment.id}/${group.id}|">Yes</a></td>
                         </tr>                    
                     </table>
-                    <a class="btn btn-primary" href="#" th:href="|@{/group/new}?id=${investment.id}|" role="button">Add to group</a>            
+                    <a class="btn btn-primary" href="#" th:href="|/group/newToInvestment?investmentId=${investment.id}|" role="button">Add to group</a>            
                 </div>
                 <div id="risks" class="tab-pane fade">
                     <table class="table table-hover" >
@@ -88,7 +88,7 @@
                             <td><a href="#" th:href="|@{/risk/disassociate}/${investment.id}/${risk.id}|">Yes</a></td>
                         </tr>                    
                     </table>
-                    <a class="btn btn-primary" href="#" th:href="|@{/risk/new}?investmentId=${investment.id}|" role="button">Add a risk</a>            
+                    <a class="btn btn-primary" href="#" th:href="|/risk/newToInvestment?investmentId=${investment.id}|" role="button">Add to risk</a>                        
                 </div>
                 <div id="regions" class="tab-pane fade">
                  <table class="table table-hover" >
@@ -101,10 +101,10 @@
 
                             <tr th:each="region : ${investment.regions}">
                                 <td><a th:text="${region.name}" th:href="|/region/${region.id}|"></a></td>                                
-                                <td><a href="#" th:href="|@{/region/disassociate}/${investment.id}/${region.id}|">Yes</a></td>
+                                
                             </tr>                    
                         </table>
-                    <a class="btn btn-primary" href="#" th:href="|@{/region/new}?id=${investment.id}|" role="button">Add a region</a>               
+                    <a class="btn btn-primary" href="#" th:href="|/region/newToInvestment?investmentId=${investment.id}|" role="button">Add to region</a>            
                 </div>
             </div>            
         </div>

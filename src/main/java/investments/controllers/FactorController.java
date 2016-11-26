@@ -21,8 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/factors")
 public class FactorController extends BaseController
-{
-    
+{    
     @Autowired
     DataAccess dataAccess;
     
@@ -37,8 +36,7 @@ public class FactorController extends BaseController
    
     @RequestMapping(method=RequestMethod.POST)
     public String addFactor(FactorForm factorForm)
-    {
-        
+    {        
         Investment investment = dataAccess.getInvestmentById(factorForm.getInvestmentId());
         InfluenceFactor factor = new InfluenceFactor(factorForm.getName(), factorForm.getDescription());
         factor.addInvestment(investment);        

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Investment Tracking</title>
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <link rel="stylesheet" href="C:\Users\Stuart\Documents\bootstrap\3.3.5\css\bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" media="screen" />        
+    </head>
+    <body>        
+        <div class="col-md-2">
+            <div id="wrapper">               
+                <div th:replace="common :: leftnav"></div>          
+            </div>
+        </div>
+        <div class="col-md-10">            
+            <h2>Add New group</h2> 
+                <form  th:object="${groupForm}" th:action="|/group/saveGroupWithInvestment|" th:method="post">
+                    <input type="hidden" name="investmentId" th:value="${investment.id}" id="investmentId" />
+                    <fieldset class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
+                        <small class="text-muted">Title for the group</small>
+                    </fieldset> 
+                    
+                    <fieldset class="form-group">
+                        <label for="name">Description</label>
+                        <input type="text" class="form-control" name="description" th:field="*{description}" th:value="*{description}" id="description"/>                            
+                        <small class="text-muted">description of the group</small>
+                    </fieldset>
+                    
+                    <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
+                </form>            
+        </div>
+        
+    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    
+    <script th:src="@{/common.js}"/>
+    <script th:src="@{/webjars//bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+        $(document).ready(function(){
+                console.log("JQuery Ready.");
+            });
+    /*]]>*/
+    </script>
+    </body>
+</html>
