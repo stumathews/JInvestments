@@ -79,15 +79,5 @@ public class Application extends SpringBootServletInitializer
         return result;
     }
 
-    /*
-    @Bean(name="conversionService")
-    public ConversionService getConversionService() {
-        //ConversionServiceFactoryBean factory = new ConversionServiceFactoryBean();
-        GenericConversionService cs = new DefaultConversionService();
-        cs.addConverter(new StringToInfluenceFactorConverter());
-        cs.addConverter(new MyGenericConverter());
-
-        return cs;
-    }*/
     
 }

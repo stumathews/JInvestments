@@ -2,13 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Investment Tracking</title>
+        <meta charset="utf-8"/>
         <link rel="stylesheet" th:href="@{/style.css}" />
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
          <style type="text/css">
-    .node { stroke: #222; stroke-width: 1.5px; }
-    .node.actor { fill: #888; }
-    .node.movie { fill: #BBB; }
-    .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }  
+            .node { stroke: #222; stroke-width: 1.5px; fill:rgba(255,0,0,50) }
+            .node.investment { fill: #888; }
+            .node.movie { fill: #BBB; }
+            .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; } 
+            #graph { margin-bottom:10px; }
+            svg.text { margin-left:120px; }
     </style>
     </head>
     <body>        
@@ -29,7 +32,7 @@
                 <dt>Risks</dt>
                 <dd><a th:href="@{/risk}" th:text="${risks.size()}">a</a></dd>
             </dl>
-            <h3>Dependencies Graph</h3>
+            <h3>Regional Dependencies Graph</h3>
                 <div id="graph">
                 </div> 
         </div>       
@@ -40,17 +43,17 @@
     <script th:src="@{/common.js}"/>
     <script th:inline="javascript">
     /*<![CDATA[*/
-           $(document).ready(function(){
-                console.log("JQuery Ready.");
-                  $('[data-toggle="tooltip"]').tooltip();
+    $(document).ready(function(){
+        console.log("JQuery Ready.");              
               
-    var width = 200, height = 200;
+    var width = 500, height = 200;
 
     var force = d3.layout.force()
-            .charge(-100).linkDistance(50).size([width, height]);
+            .charge(-350).linkDistance(50).size([width, height]);
 
-    var svg = d3.select("#graph").append("svg")
-            .attr("width", "100%").attr("height", "100%")
+    var svg = d3.select("#graph")
+            .append("svg")
+            .attr("viewBox", "0 0 700 300")            
             .attr("pointer-events", "all");
 
     d3.json("http://localhost:8080/graph", function(error, graph) {
@@ -63,17 +66,24 @@
                 .append("line").attr("class", "link");
 
         var node = svg.selectAll(".node")
-                .data(graph.nodes).enter()
+                .data(graph.nodes)
+                .enter()
                 .append("circle")
-                .attr("class", function (d) { return "node "+d.label })
-                .attr("r", 10)                
-                .call(force.drag);
-       
-    
-        // html title attribute
-        node.append("name")
-                .text(function (d) { return d.name; })
+                .attr("class", function (d) { return "node "+d.label; })
+                .attr("r", 5)                
+                .call(force.drag);       
 
+        var text = svg 
+                .selectAll("text")
+                .data(graph.nodes)
+                .enter()
+                .append("a")
+                .attr("href","www.example.com")
+                .append("text")                
+                .text(function (d) { return d.name; })
+                .attr("font-family", "sans-serif")
+		.attr("font-size", "11px")
+		.attr("fill", "green");
 
 
         // force feed algo ticks
@@ -84,14 +94,12 @@
                     .attr("y2", function(d) { return d.target.y; });
 
             node.attr("cx", function(d) { return d.x; })
-                    .attr("cy", function(d) { return d.y; });
+                .attr("cy", function(d) { return d.y; });
+            text.attr("x", function(d){ return d.x+10; });
+            text.attr("y", function(d){ return d.y+10; });
         });
         
     });
-
-    
-    
-                    
 });  
     /*]]>*/
     </script>

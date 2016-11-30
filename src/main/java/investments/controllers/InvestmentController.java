@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,7 +64,7 @@ public class InvestmentController extends BaseController
                 Investment localInvestment = new Investment();
                 localInvestment.setDesirabilityStatement("Desirability statment");
                 localInvestment.setInitialInvestment(r.nextFloat());
-                localInvestment.setName("Investment Name");
+                localInvestment.setName("Investment Name"+i);
                 localInvestment.setDescription("Description of investment");
                 localInvestment.setSymbol("Symbol");
                 localInvestment.setValue(r.nextFloat());
