@@ -15,18 +15,7 @@
             <h2>Add New group</h2> 
                 <form  th:object="${groupForm}" th:action="|/group/saveGroupWithInvestment|" th:method="post">
                     <input type="hidden" name="investmentId" th:value="${investment.id}" id="investmentId" />
-                    <fieldset class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
-                        <small class="text-muted">Title for the group</small>
-                    </fieldset> 
-                    
-                    <fieldset class="form-group">
-                        <label for="name">Description</label>
-                        <input type="text" class="form-control" name="description" th:field="*{description}" th:value="*{description}" id="description"/>                            
-                        <small class="text-muted">description of the group</small>
-                    </fieldset>
-                    
+                    <div th:replace="forms :: addGroupFormContent"/>                    
                     <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
                 </form>            
         </div>

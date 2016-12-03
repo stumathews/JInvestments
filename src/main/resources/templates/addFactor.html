@@ -13,26 +13,16 @@
         </div>
         <div class="col-md-10">
             <h2>Add New Factor</h2> 
-                <form action="#" th:action="@{/factors}" method="post">  
+                <form action="#" th:object="${factorForm}" th:action="@{/factors}" method="post">  
+                        
                     <fieldset class="form-group">
                         <label for="title">Investment</label>
                         <p class="form-control-static" th:text="${investment.name}">investment</p>
-                        <input type="hidden" name="investmentId" id="investmentId" th:value="${investment.id}"/>
+                        <input type="hidden" name="investmentId" th:value="${investment.id}" id="investmentId" />
                         <small class="text-muted">What is the name of this investment?</small>
-                    </fieldset>    
-                    
-                    <fieldset class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" id="name"/>                            
-                        <small class="text-muted">Title for the factor</small>
                     </fieldset> 
-                    
-                    <fieldset class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" class="form-control" name="description" id="description"/>                            
-                        <small class="text-muted">What is the factor</small>
-                    </fieldset>  
-                    
+    
+                   <div th:replace="forms :: addFactorFormContent"/>                     
                     <button type="submit" class="btn btn-primary">Submit</button>                
                 </form>            
         </div>

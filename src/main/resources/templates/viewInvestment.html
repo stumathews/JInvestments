@@ -14,28 +14,26 @@
         <div class="col-md-10">
             <h1 th:text="${investment.name}">Investment</h1>
             <p th:text="${investment.description}"></p>
+            
+            <dl id="definitions" class="dl-horizontal">                    
+            <dt>Value proposition</dt>
+            <dd th:text="${investment.valueProposition}">value proposition</dd>
+            <dt>Desirability proposition</dt>
+            <dd th:text="${investment.desirabilityStatement}">desirabilityStatement</dd>                    
+            <dt>Initial investment(£)</dt>
+            <dd th:text="${investment.initialInvestment}">Initial investment</dd>
+            <dt>Value(£)</dt>
+            <dd th:text="${investment.value}">Value</dd>
+            </dl>
+                
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#factors">Home</a></li>
-                <li><a data-toggle="tab" href="#factors">Factors</a></li>
+                <li class="active"><a data-toggle="tab" href="#factors">Factors</a></li>
                 <li><a data-toggle="tab" href="#groups">Groups</a></li>
                 <li><a data-toggle="tab" href="#risks">Risks</a></li>
                 <li><a data-toggle="tab" href="#regions">Regions</a></li>
-            </ul>  
-                
+            </ul>                  
             
-            <div class="tab-content">
-                <div id="home" class="tab-pane fade in active">
-                    <dl id="definitions" class="dl-horizontal">                    
-                    <dt>Value proposition</dt>
-                    <dd th:text="${investment.valueProposition}">value proposition</dd>
-                    <dt>Desirability proposition</dt>
-                    <dd th:text="${investment.desirabilityStatement}">desirabilityStatement</dd>                    
-                    <dt>Initial investment(£)</dt>
-                    <dd th:text="${investment.initialInvestment}">Initial investment</dd>
-                    <dt>Value(£)</dt>
-                    <dd th:text="${investment.value}">Value</dd>
-                </dl>
-                </div>
+            <div class="tab-content">                
                 <div id="factors" class="tab-pane fade"> 
                     <table class="table table-hover" >
                             <thead>
@@ -101,7 +99,7 @@
 
                             <tr th:each="region : ${investment.regions}">
                                 <td><a th:text="${region.name}" th:href="|/region/${region.id}|"></a></td>                                
-                                
+                                <td><a href="#" th:href="|@{/region/disassociate}/${investment.id}/${region.id}|">Yes</a></td>
                             </tr>                    
                         </table>
                     <a class="btn btn-primary" href="#" th:href="|/region/newToInvestment?investmentId=${investment.id}|" role="button">Add to region</a>            

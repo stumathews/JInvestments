@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h2>Investment Tracking Home/Dashboard</h2> 
+            <h2>Summary</h2> 
             <dl class="dl-horizontal">
                 <dt>Investments</dt>
                 <dd><a th:href="@{/investments/}" th:text="${investments.size()}">a</a></dd>
@@ -32,9 +32,29 @@
                 <dt>Risks</dt>
                 <dd><a th:href="@{/risk}" th:text="${risks.size()}">a</a></dd>
             </dl>
-            <h3>Regional Dependencies Graph</h3>
-                <div id="graph">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#regions">Linked regions</a></li>
+                <li><a data-toggle="tab" href="#factors">Linked factors</a></li>                
+                <li><a data-toggle="tab" href="#groups">Linked groups</a></li>                
+                <li><a data-toggle="tab" href="#risks">Linked risks</a></li>  
+            </ul>   
+             <div class="tab-content">                
+                <div id="regions" class="tab-pane fade"> 
+                     <div id="graph"/>
                 </div> 
+                
+                <div id="factors" class="tab-pane fade"> 
+                todo
+                </div>
+                    
+                <div id="groups" class="tab-pane fade"> 
+                todo
+                </div>
+
+                <div id="risks" class="tab-pane fade"> 
+                todo
+                </div>                
+             </div>              
         </div>       
         
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>

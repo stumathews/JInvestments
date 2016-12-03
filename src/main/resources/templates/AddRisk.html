@@ -16,32 +16,8 @@
             <p>The possibility for the unexpected/impreciseness or inability to forcast with certainty.</p>
                 <form  th:object="${riskForm}" th:action="|/risk/saveRiskWithInvestment|" th:method="post">
                 <input type="hidden" name="investmentId" th:value="${investment.id}" id="investmentId" />
-                   
-                    <fieldset class="form-group">
-                        <label for="description">Risk type</label>
-                        
-                        <select class="form-control" th:field="*{type}" id="type">
-                            <option th:each="type : ${T(investments.db.del.RiskType).values()}"
-                                   th:value="${type}" 
-                                   th:text="${type}">
-                            </option>
-                         </select>
-                        
-                        <small class="text-muted">Market Risk is specific to market (systemic risk), while Company is strategic to company</small>
-                    </fieldset>
-                    
-                    <fieldset class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
-                        <small class="text-muted">Title for the risk</small>
-                    </fieldset> 
-                    
-                    <fieldset class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" class="form-control" name="description" th:field="*{description}" th:value="*{description}" id="description"/>                            
-                        <small class="text-muted">What is the risk</small>
-                    </fieldset>
-                    <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
+                <div th:replace="forms :: newRiskFormContent"/>
+                <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
                 </form>    
             
         </div>

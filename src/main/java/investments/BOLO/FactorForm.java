@@ -6,11 +6,11 @@ package investments.BOLO;
  */
 public class FactorForm
 {
-    Long id;
-    Long investmentId;    
-    String name;
-    String description;
-    
+    private Long id;
+    private Long investmentId;    
+    private String name;
+    private String description;
+
     public Long getInvestmentId()
     {
         return investmentId;
@@ -20,6 +20,8 @@ public class FactorForm
     {
         this.investmentId = investmentId;
     }
+    
+   
 
     public Long getId()
     {

@@ -14,15 +14,9 @@
         <div class="col-md-10">            
             <h2>Add New region</h2> 
                 <form  th:object="${regionForm}" th:action="|/region/saveRegionWithInvestment|" th:method="post">
-                <input type="hidden" name="investmentId" th:value="${investment.id}" id="investmentId" />
-                    
-                    <fieldset class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
-                        <small class="text-muted">Title for the risk</small>
-                    </fieldset> 
-                    
-                    <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
+                <input type="hidden" name="investmentId" th:value="${investment.id}" id="investmentId" />                    
+                <div th:replace="forms :: addRegionFormContent"/>                    
+                <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
                 </form>            
         </div>
         

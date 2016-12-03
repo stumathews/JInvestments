@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +36,7 @@ public class FactorController extends BaseController
     }
    
     @RequestMapping(method=RequestMethod.POST)
-    public String addFactor(FactorForm factorForm)
+    public String addFactor(FactorForm factorForm, Map<String, Object> model)
     {        
         Investment investment = dataAccess.getInvestmentById(factorForm.getInvestmentId());
         InfluenceFactor factor = new InfluenceFactor(factorForm.getName(), factorForm.getDescription());
@@ -80,6 +81,7 @@ public class FactorController extends BaseController
     public String showAddFactorView(Map<String, Object> model, Long id )
     {
         Investment investment = dataAccess.getInvestmentById(id);
+        model.put("factorForm", new FactorForm());
         model.put("investment", investment);
         return "addFactor";
     }  

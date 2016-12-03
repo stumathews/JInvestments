@@ -12,27 +12,16 @@
             </div>
         </div>
         <div class="col-md-10">            
-            <h2>Add New group</h2> 
-                <form  th:object="${group}" th:action="${flowExecutionUrl}" th:method="post">
-                    <div class="error" th:if="${#fields.hasErrors('*')}">
-                        <span th:each="err : ${#fields.errors('*')}">
-                          <span th:text="${err}">Input is incorrect</span><br />
-                        </span>
-                    </div>                    
-                    <fieldset class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
-                        <small class="text-muted">Title for the group</small>
-                    </fieldset> 
-                    
-                    <fieldset class="form-group">
-                        <label for="name">Description</label>
-                        <input type="text" class="form-control" name="description" th:field="*{description}" th:value="*{description}" id="description"/>                            
-                        <small class="text-muted">description of the group</small>
-                    </fieldset> 
-                    
-                    <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
-                </form>            
+        <h2>Add New group</h2> 
+        <form  th:object="${group}" th:action="${flowExecutionUrl}" th:method="post">
+            <div class="error" th:if="${#fields.hasErrors('*')}">
+                <span th:each="err : ${#fields.errors('*')}">
+                  <span th:text="${err}">Input is incorrect</span><br />
+                </span>
+            </div>                    
+            <div th:replace="forms :: addGroupFormContent"/>                    
+            <button type="submit" class="btn btn-primary" name="_eventId_finished">Submit</button>                
+        </form>            
         </div>
         
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    
