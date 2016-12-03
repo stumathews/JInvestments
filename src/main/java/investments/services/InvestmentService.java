@@ -16,14 +16,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.webflow.context.ExternalContext;
 
 @Service
 public class InvestmentService
 {
     private final DataAccess dataAccess;
     public static Logger logger;
-    
+            
     @Autowired
     public InvestmentService(DataAccess dataAccess)
     {
@@ -101,4 +100,6 @@ public class InvestmentService
         
         logger.info("Saving investment form from flow...done");
     }
+    
+
 }

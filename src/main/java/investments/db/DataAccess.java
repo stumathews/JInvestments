@@ -8,6 +8,7 @@ import investments.db.del.InvestmentGroup;
 import investments.db.del.Risk;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.neo4j.graphdb.NotFoundException;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -200,6 +201,11 @@ public class DataAccess
     public Risk getriskById(Long fid)
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<Map<String,Object>> graph(int limit)
+    {
+        return investmentRepository.graph(limit);
     }
     
 }

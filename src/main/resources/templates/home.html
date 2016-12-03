@@ -76,7 +76,7 @@
             .attr("viewBox", "0 0 700 300")            
             .attr("pointer-events", "all");
 
-    d3.json("http://localhost:8080/graph", function(error, graph) {
+    d3.json("http://localhost:8080/api/InvestmentRegions", function(error, graph) {
         if (error) return;
 
         force.nodes(graph.nodes).links(graph.links).start();

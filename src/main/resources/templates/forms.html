@@ -1,0 +1,64 @@
+<div id="addGroupFormContent" th:fragment="addGroupFormContent">
+    <fieldset class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
+    <small class="text-muted">Title for the group</small>
+</fieldset> 
+
+<fieldset class="form-group">
+    <label for="name">Description</label>
+    <input type="text" class="form-control" name="description" th:field="*{description}" th:value="*{description}" id="description"/>                            
+    <small class="text-muted">description of the group</small>
+</fieldset>
+</div>
+<div id="addFactorFormContent" th:fragment="addFactorFormContent">
+    <fieldset class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" th:field="*{name}" name="name" th:value="*{name}" id="name"/>                            
+        <small class="text-muted">Title for the factor</small>
+    </fieldset> 
+
+    <fieldset class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="description" th:value="*{description}" th:field="*{description}" id="description"/>                            
+        <small class="text-muted">What is the factor</small>
+    </fieldset> 
+</div>
+<div id="addRegionFormContent" th:fragment="addRegionFormContent">
+    <fieldset class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
+        <small class="text-muted">Title for the risk</small>
+    </fieldset> 
+</div>
+<div id="newRiskFormContent" th:fragment="newRiskFormContent">    
+    <fieldset class="form-group">
+                        <label for="description">Risk type</label>
+                        
+                        <select class="form-control" th:field="*{type}" id="type">
+                            <option th:each="type : ${T(investments.db.del.RiskType).values()}"
+                                   th:value="${type}" 
+                                   th:text="${type}">
+                            </option>
+                         </select>
+                        <small class="text-muted">Market Risk is specific to market (systemic risk), while Company is strategic to company</small>
+                    </fieldset>
+                    
+                    <div class="error" th:if="${#fields.hasErrors('*')}">
+                        <span th:each="err : ${#fields.errors('*')}">
+                          <span th:text="${err}">Input is incorrect</span><br />
+                        </span>
+                    </div>                     
+                    
+                    <fieldset class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
+                        <small class="text-muted">Title for the risk</small>
+                    </fieldset> 
+                    
+                    <fieldset class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" name="description" th:field="*{description}" th:value="*{description}" id="description"/>                            
+                        <small class="text-muted">What is the risk</small>
+                    </fieldset>  
+</div>

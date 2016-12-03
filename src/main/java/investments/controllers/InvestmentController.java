@@ -36,7 +36,7 @@ public class InvestmentController extends BaseController
         model.put("investment", investment);        
         return "/viewInvestment";
     }
-    
+
     @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
     public String deleteInvestment(@PathVariable Long id)
     {

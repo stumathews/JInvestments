@@ -23,20 +23,24 @@ public class Investment implements Serializable
     @GraphId
     protected Long id;
     
-    @RelatedTo(type = "IS_IN_REGIONS", direction = Direction.OUTGOING)
+    @RelatedTo(type = "REGIONS", direction = Direction.OUTGOING)
     @Fetch private Set<AssetRegion> regions = new HashSet<>();  
     
+    @RelatedTo(type = "RISKS", direction = Direction.OUTGOING)
     @Fetch private Set<Risk> risks = new HashSet<>();
     
-    @Fetch private Set<InvestmentGroup> groups = new HashSet<>();
+    @RelatedTo(type = "GROUPS", direction = Direction.OUTGOING)
+    @Fetch private Set<InvestmentGroup> groups = new HashSet<>();    
+    
+    @RelatedTo(type = "FACTORS", direction = Direction.OUTGOING)
+    @Fetch protected Set<InfluenceFactor> influenceFactors = new HashSet<>(0);
+    
     private String description;
     private String symbol;
     public String valueProposition;
     public String desirabilityStatement;
     public float initialInvestment;
     public String name;
-    @RelatedTo(type = "FACTORS", direction = Direction.OUTGOING)
-    @Fetch protected Set<InfluenceFactor> influenceFactors = new HashSet<InfluenceFactor>(0);
     public float value;
 
     @Override
