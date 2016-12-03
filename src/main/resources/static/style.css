@@ -1,1 +1,7 @@
 #id {margin-bottom: 50px;}
+.node { stroke: #222; stroke-width: 1.5px;  }
+.node.investment { fill:rgba(255,0,0,50); }            
+.link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; } 
+#InvestmentRegions, #InvestmentRisks,#InvestmentFactors,#InvestmentGroups { margin-bottom:10px; }
+svg.text { margin-left:120px; }
+text.investment { fill:red; }

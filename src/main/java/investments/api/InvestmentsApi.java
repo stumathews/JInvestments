@@ -77,27 +77,27 @@ public class InvestmentsApi
     
     private Map<String, Object> graphDataToD3Format(Iterator<Map<String, Object>> result, String by) {
         List<Map<String,Object>> nodes = new ArrayList<>();
-        List<Map<String,Object>> rels= new ArrayList<>();
+        List<Map<String,Object>> links= new ArrayList<>();
         int i=0;
         while (result.hasNext()) {
             Map<String, Object> row = result.next();
-            nodes.add(map("name",row.get("investment"),"label","investment"));
+            nodes.add(toMap("name",row.get("investment"),"label","investment"));
             int target=i;
             i++;
             for (Object name : (Collection) row.get(by)) {
-                Map<String, Object> actor = map("name", name,"label",by);
+                Map<String, Object> actor = toMap("name", name,"label",by);
                 int source = nodes.indexOf(actor);
                 if (source == -1) {
                     nodes.add(actor);
                     source = i++;
                 }
-                rels.add(map("source",source,"target",target));
+                links.add(toMap("source",source,"target",target));
             }
         }
-        return map("nodes", nodes, "links", rels);
+        return toMap("nodes", nodes, "links", links);
     }
 
-    private Map<String, Object> map(String key1, Object value1, String key2, Object value2) {
+    private Map<String, Object> toMap(String key1, Object value1, String key2, Object value2) {
         Map<String, Object> result = new HashMap<>(2);
         result.put(key1,value1);
         result.put(key2,value2);

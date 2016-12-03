@@ -4,13 +4,7 @@
         <title>Investment Groups</title>
         <link rel="stylesheet" th:href="@{/style.css}" />
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
-    <style type="text/css">
-    .node { stroke: #222; stroke-width: 1.5px; }
-    .node.actor { fill: #888; }
-    .node.movie { fill: #BBB; }
-    .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }
-    #graph {margin-left: 30%;}    
-    </style>
+    
     </head>
     <body>        
         <div class="col-md-2">
@@ -20,8 +14,7 @@
         </div>
         <div class="col-md-10">
             <h1>Investment Groups</h1>
-            <form method="POST" >                
-                <p th:text="${groups.isEmpty()} == false ? 'These are all the groups that are loaded in the database' : 'No groups in the database.'">These are all the factors that are loaded in the database</p>
+                <p th:text="${groups.isEmpty()} == false ? 'These are all the groups that are loaded in the database' : 'No groups in the database.'">These are all the factors that are loaded in the database</p>                
                 <table class="table table-hover" >
                     <thead>
                         <tr>
@@ -42,8 +35,9 @@
                  </tr>
                 </table>
                 <a class="btn btn-primary" th:href="|/NewGroup|">New Group</a>
-            </form>
-        </div>       
+                <div id="InvestmentGroups"/>                        
+        </div>     
+        
        
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
     <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
@@ -51,21 +45,51 @@
     <script th:src="@{/common.js}"/>
     <script th:inline="javascript">
     /*<![CDATA[*/
-     $(document).ready(function(){
-                console.log("JQuery Ready.");
-                  $('[data-toggle="tooltip"]').tooltip();
-              
-    var width = 200, height = 200;
+$(document).ready(function(){
+    console.log("JQuery Ready.");
+    var i;
+    var svg = "";
+    var graphs = ["#InvestmentRegions","#InvestmentRisks","#InvestmentFactors","#InvestmentGroups"];
+    for(i = 0; i < graphs.length ;i++){        
+        var url = "http://localhost:8080/api/" + graphs[i].replace("#","");
+        d3.json(url, handleGraphData);
+    }
+    function handleGraphData(error, graph)
+    {
+        if (error || graph.nodes.length == 0) return;
+        
+        var width = 500, height = 200;
 
-    var force = d3.layout.force()
-            .charge(-100).linkDistance(50).size([width, height]);
+        var force = d3.layout.force()
+            .charge(-1*graph.nodes.length*10).linkDistance(graph.nodes.length+100).size([width, height]);
+        
+        var divName;
+        var i;
+        for(i = 0; i < graph.nodes.length;i++)
+        {
+            if( graph.nodes[i].label == "region"){
+                divName = "#InvestmentRegions";
+                break;
+            }
+            if( graph.nodes[i].label == "factor"){
+                divName = "#InvestmentFactors";
+                break;
+            }
+            if( graph.nodes[i].label == "risk"){
+                divName = "#InvestmentRisks";
+                break;
+            }
+            if( graph.nodes[i].label == "group"){
+                divName = "#InvestmentGroups";
+                break;
+            }
+        }
+        
+        svg = d3.select(divName)
+                .append("svg")
+                .attr("viewBox", "70 -50 700 300")            
+                .attr("pointer-events", "all");
 
-    var svg = d3.select("#graph").append("svg")
-            .attr("width", "100%").attr("height", "100%")
-            .attr("pointer-events", "all");
-
-    d3.json("http://localhost:8080/graph", function(error, graph) {
-        if (error) return;
 
         force.nodes(graph.nodes).links(graph.links).start();
 
@@ -74,18 +98,25 @@
                 .append("line").attr("class", "link");
 
         var node = svg.selectAll(".node")
-                .data(graph.nodes).enter()
+                .data(graph.nodes)
+                .enter()
                 .append("circle")
-                .attr("class", function (d) { return "node "+d.label })
-                .attr("r", 10)                
-                .call(force.drag);
-       
-    
-        // html title attribute
-        node.append("name")
-                .text(function (d) { return d.name; })
+                .attr("class", function (d) { return "node "+d.label; })
+                .attr("r", 5)                
+                .call(force.drag); 
+        
 
-    
+        var text = svg 
+                .selectAll("text")
+                .data(graph.nodes)
+                .enter()
+                .append("text")                
+                .text(function (d) { return d.name })                
+                .attr("font-family", "sans-serif")
+		.attr("font-size", "11px")
+		.attr("fill", "black")
+                .attr("class",function(d){ return d.label;})
+
 
         // force feed algo ticks
         force.on("tick", function() {
@@ -95,10 +126,16 @@
                     .attr("y2", function(d) { return d.target.y; });
 
             node.attr("cx", function(d) { return d.x; })
-                    .attr("cy", function(d) { return d.y; });
+                .attr("cy", function(d) { return d.y; });
+            text.attr("x", function(d){ return d.x+10; });
+            text.attr("y", function(d){ return d.y+10; });
         });
         
-    });
+    
+    }
+    
+
+ 
 });  
     /*]]>*/
     </script>

@@ -78,6 +78,8 @@ public class InvestmentController extends BaseController
                     risks.add(new Risk("Competition", "Competition from other companies", RiskType.Market));        
                     risks.add(new Risk("Fashion", "Fashion of the comodity", RiskType.Market));        
                     risks.add(new Risk("Earnings report", "Investor perception based on earnings", RiskType.Company));   
+                    
+                    risks.add(new Risk("", "", RiskType.Company));   
                 }               
                 
                 // Create dummy groups
@@ -86,6 +88,13 @@ public class InvestmentController extends BaseController
                     groups.add(new InvestmentGroup("Growth Investments","Low p/e with potential to grow"));
                     groups.add(new InvestmentGroup("Momentum Investments","Fashionalble trends"));
                     groups.add(new InvestmentGroup("Hybrid Investments","Bit of everything"));                        
+                    
+                    groups.add(new InvestmentGroup("Tactical",""));        
+                    groups.add(new InvestmentGroup("Strategic",""));        
+                    groups.add(new InvestmentGroup("Shares",""));        
+                    groups.add(new InvestmentGroup("Gold",""));        
+                    groups.add(new InvestmentGroup("Emerging markets",""));        
+                    
                 }
                 
                 // Create dummy factors
@@ -95,16 +104,25 @@ public class InvestmentController extends BaseController
                     
                     InfluenceFactor factor2 = new InfluenceFactor("Competiion","The competition dictates te supply and demand");
                     factor2.setInfluence("The more cometition the less buiness you get if the competition or on par to you");
-                                   
-                    InfluenceFactor factor3 = new InfluenceFactor("Supply","Supply");
-                    factor3.setInfluence("Supply");
+                       
+                    String[] samples = new String[] { "Transport", 
+                        "Travel/Tourism", 
+                        "Utilities",
+                        "Telecommunications",
+                        "Professional Services/Consulting",
+                        "Pharmaceutical/Medical Product",
+                        "Oil/Gas",
+                        "Mining/Metals",
+                        "Manufacturing",
+                        "IT (Hardware/Software/Services)",
+                        "Investment Banking","Food and Beverage","Consumer Goods","Agriculture"};
                     
-                    InfluenceFactor factor4 = new InfluenceFactor("test","test");
-                    factor4.setInfluence("Blah bah blah");
-                    factors.add(factor1);
-                    factors.add(factor2);
-                    factors.add(factor3);
-                    factors.add(factor4);
+                    for( String each : samples)          
+                    {
+                        InfluenceFactor f = new InfluenceFactor(each,"");
+                        f.setInfluence("influenced by " + each);                        
+                        factors.add(f);
+                    }                   
                 }
                 
                 Investment savedInvestment = dataAccess.saveInvestment(localInvestment);
