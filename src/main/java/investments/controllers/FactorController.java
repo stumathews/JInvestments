@@ -32,7 +32,7 @@ public class FactorController extends BaseController
         List<InfluenceFactor> factors = dataAccess.getAllFactors();
         
         model.put("factors", factors);
-        return "showAllFactors";
+        return "factors";
     }
    
     @RequestMapping(method=RequestMethod.POST)

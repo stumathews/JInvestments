@@ -170,8 +170,9 @@ public class InvestmentController extends BaseController
         for(Investment investment : investments){
             dataAccess.updateInvestment(investment);
         }
+        
         model.put("investments", investments);         
-        return "showAllInvestments";
+        return "investments";
     }
 
     @RequestMapping(method = RequestMethod.POST)
