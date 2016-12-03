@@ -203,9 +203,9 @@ public class DataAccess
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<Map<String,Object>> graph(int limit)
+    public List<Map<String,Object>> GetInvestmentRegionsGraph(int limit)
     {
-        return investmentRepository.graph(limit);
+        return investmentRepository.GetInvestmentRegionsGraph(limit);
     }
     
 }

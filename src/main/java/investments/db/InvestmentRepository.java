@@ -17,5 +17,5 @@ public interface InvestmentRepository extends GraphRepository<Investment>
 {    
     Investment findByName(@Param("name") String name);
     @Query("MATCH (m:Investment)-[:REGIONS]->(a:AssetRegion) RETURN m.name as investment, collect(a.name) as region LIMIT {limit}")    
-    List<Map<String,Object>> graph(@Param("limit") int limit);
+    List<Map<String,Object>> GetInvestmentRegionsGraph(@Param("limit") int limit);
 }

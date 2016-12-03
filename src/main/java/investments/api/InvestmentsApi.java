@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package investments.api;
 
 import investments.db.DataAccess;
-import static investments.services.InvestmentService.logger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,15 +14,20 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+/***
+ * REST interface for the application to provide access to javascript
+ * @author Stuart
+ */
 @ComponentScan
 @RestController
-public class Investments
+public class InvestmentsApi
 {
     private final DataAccess dataAccess;
     public static Logger logger;
        
     @Autowired
-    public Investments(DataAccess dataAccess)
+    public InvestmentsApi(DataAccess dataAccess)
     {
         this.dataAccess = dataAccess;
         logger = LoggerFactory.getLogger(this.getClass());
@@ -39,13 +38,13 @@ public class Investments
         return makeGraph(limit == null ? 100 : limit);
     }
     private Map<String, Object> makeGraph(int limit) {
-        Iterator<Map<String, Object>> result = dataAccess.graph(limit).iterator();
+        Iterator<Map<String, Object>> result = dataAccess.GetInvestmentRegionsGraph(limit).iterator();
         return toD3Format(result);
     }
     
     private Map<String, Object> toD3Format(Iterator<Map<String, Object>> result) {
-        List<Map<String,Object>> nodes = new ArrayList<Map<String,Object>>();
-        List<Map<String,Object>> rels= new ArrayList<Map<String,Object>>();
+        List<Map<String,Object>> nodes = new ArrayList<>();
+        List<Map<String,Object>> rels= new ArrayList<>();
         int i=0;
         while (result.hasNext()) {
             Map<String, Object> row = result.next();
@@ -66,7 +65,7 @@ public class Investments
     }
 
     private Map<String, Object> map(String key1, Object value1, String key2, Object value2) {
-        Map<String, Object> result = new HashMap<String,Object>(2);
+        Map<String, Object> result = new HashMap<>(2);
         result.put(key1,value1);
         result.put(key2,value2);
         return result;
