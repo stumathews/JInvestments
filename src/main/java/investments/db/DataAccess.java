@@ -207,5 +207,20 @@ public class DataAccess
     {
         return investmentRepository.GetInvestmentRegionsGraph(limit);
     }
+
+    public List<Map<String,Object>> GetInvestmentFactorsGraph(int limit)
+    {
+        return investmentRepository.GetInvestmentFactorsGraph(limit);
+    }
+     
+    public List<Map<String,Object>> GetInvestmentRisksGraph(int limit)
+    {
+        return investmentRepository.GetInvestmentRisksGraph(limit);
+    }
+      
+    public List<Map<String,Object>> GetInvestmentGroupsGraph(int limit)
+    {
+        return investmentRepository.GetInvestmentGroupsGraph(limit);
+    }
     
 }

@@ -33,7 +33,7 @@ public class Investment implements Serializable
     @Fetch private Set<InvestmentGroup> groups = new HashSet<>();    
     
     @RelatedTo(type = "FACTORS", direction = Direction.OUTGOING)
-    @Fetch protected Set<InfluenceFactor> influenceFactors = new HashSet<>(0);
+    @Fetch private Set<InfluenceFactor> influenceFactors = new HashSet<>();
     
     private String description;
     private String symbol;
