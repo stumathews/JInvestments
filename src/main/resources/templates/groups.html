@@ -14,7 +14,9 @@
         </div>
         <div class="col-md-10">
             <h1>Investment Groups</h1>
-                <p th:text="${groups.isEmpty()} == false ? 'These are all the groups that are loaded in the database' : 'No groups in the database.'">These are all the factors that are loaded in the database</p>                
+            <p>Investments can be grouped into the same containers to add a relationship between them.
+            Grouped investments share a commonality.</p>
+                <p th:text="${groups.isEmpty()} == false ? '' : 'No groups in the database.'">These are all the factors that are loaded in the database</p>                
                 <table class="table table-hover" >
                     <thead>
                         <tr>
@@ -35,6 +37,8 @@
                  </tr>
                 </table>
                 <a class="btn btn-primary" th:href="|/NewGroup|">New Group</a>
+                <h3>Shared investment groups</h3>
+                <p>This graph shows which investments are contained within the same shared group</p>
                 <div id="InvestmentGroups"/>                        
         </div>     
         

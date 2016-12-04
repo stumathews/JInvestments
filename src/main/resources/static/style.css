@@ -5,3 +5,5 @@
 #InvestmentRegions, #InvestmentRisks,#InvestmentFactors,#InvestmentGroups { margin-bottom:10px; }
 svg.text { margin-left:120px; }
 text.investment { fill:red; }
+
+#investment_actions { margin-top:20px; margin-bottom:20px;}

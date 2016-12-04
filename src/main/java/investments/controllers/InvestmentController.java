@@ -45,8 +45,8 @@ public class InvestmentController extends BaseController
         return "redirect:/";
     }
     
-    @RequestMapping(value="/", method=RequestMethod.GET)
-    public String home(Map<String, Object> model)
+    @RequestMapping(value="/populateDummyData", method = RequestMethod.GET)
+    public String populateDummyData(Map<String, Object> model)
     {
         List<Investment> investments = dataAccess.getAllInvestments();
         List<AssetRegion> regions = dataAccess.getAllRegions();
@@ -157,19 +157,33 @@ public class InvestmentController extends BaseController
                     Risk risk = risks.get(rsk);
                     risk.addInvestment(savedInvestment);                
                     savedInvestment.addRisk(risk);         
-                }   
+                } 
                 
-                AssetRegion region = regions.get(r.nextInt(regions.size()));
-                region.addInvestment(localInvestment);
-                savedInvestment.addRegion(region);
-                dataAccess.saveRegion(region);
+                int regionMax = 0;
+                while(regionMax == 0){ regionMax = r.nextInt(regions.size());}
+                for( int reg = 0; reg < regionMax;reg++){
+                    AssetRegion region = regions.get(reg);
+                    region.addInvestment(localInvestment);
+                    savedInvestment.addRegion(region);
+                     dataAccess.saveRegion(region);
+                }   
             }
         }
 
         //update investments with add groups, factors, risks etc.
-        for(Investment investment : investments){
+        investments.stream().forEach((investment) -> {
             dataAccess.updateInvestment(investment);
-        }
+        });
+        
+        model.put("investments", investments);         
+        return "investments";
+    }
+    
+    @RequestMapping(value="/", method=RequestMethod.GET)
+    public String home(Map<String, Object> model)
+    {
+        List<Investment> investments = dataAccess.getAllInvestments();
+        
         
         model.put("investments", investments);         
         return "investments";
