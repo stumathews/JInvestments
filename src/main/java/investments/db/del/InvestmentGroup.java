@@ -24,6 +24,21 @@ public class InvestmentGroup implements Serializable
     private Long id;
     private String name;
     private String description;
+    /***
+     * A way to distinguish one group from another
+     */
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    private InvestmentGroup parent;
+    private Set<InvestmentGroup> children = new HashSet<>();
+
     @Fetch
     private Set<Investment> investments = new HashSet<>();
 
@@ -45,6 +60,22 @@ public class InvestmentGroup implements Serializable
     {
         this.name = name;
         this.description = description;
+    }
+    
+    public InvestmentGroup getParent() {
+        return parent;
+    }
+
+    public void setParent(InvestmentGroup parent) {
+        this.parent = parent;
+    }
+    
+    public Set<InvestmentGroup> getChildren() {
+        return children;
+    }
+
+    public void setChildren(Set<InvestmentGroup> children) {
+        this.children = children;
     }
     
     public Long getId()

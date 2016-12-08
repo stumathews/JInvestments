@@ -22,6 +22,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Description</th>  
+                            <th>Type</th>
                             <th>Linked investments</th>
                             <th></th> <!--Delete -->                                                       
                         </tr>
@@ -32,6 +33,7 @@
                     </td>
                     
                     <td th:text="${group.description}"></td>
+                    <td th:text="${group.type}"></td>
                     <td> <a th:href="|/group/${group.id}|"  th:text="${group.investments.size()}"></a></td>
                     <td><a href="#" th:href="|/group/${group.id}/delete|">Delete</a></td>
                  </tr>

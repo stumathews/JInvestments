@@ -2,7 +2,7 @@
     <fieldset class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" name="name" th:field="*{name}" th:value="*{name}" id="name"/>                            
-    <small class="text-muted">Title for the group</small>
+    <small class="text-muted">Title for the group</small>    
 </fieldset> 
 
 <fieldset class="form-group">
@@ -10,6 +10,13 @@
     <input type="text" class="form-control" name="description" th:field="*{description}" th:value="*{description}" id="description"/>                            
     <small class="text-muted">description of the group</small>
 </fieldset>
+    
+<fieldset class="form-group">
+    <label for="type">Type</label>
+    <input type="text" class="form-control" name="type" th:field="*{type}" th:value="*{type}" id="type"/>                            
+    <small class="text-muted">This can be a special kind of a group, identifiable by this value</small>
+</fieldset>
+    
 </div>
 <div id="addFactorFormContent" th:fragment="addFactorFormContent">
     <fieldset class="form-group">
