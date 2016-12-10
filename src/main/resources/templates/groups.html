@@ -24,6 +24,8 @@
                             <th>Description</th>  
                             <th>Type</th>
                             <th>Linked investments</th>
+                            <th>#Children</th>
+                            <th>Parent</th>
                             <th></th> <!--Delete -->                                                       
                         </tr>
                     </thead>
@@ -35,6 +37,8 @@
                     <td th:text="${group.description}"></td>
                     <td th:text="${group.type}"></td>
                     <td> <a th:href="|/group/${group.id}|"  th:text="${group.investments.size()}"></a></td>
+                    <td th:text="${group.children.size()}"> </td>
+                    <td  th:text="${group.parent} == null ? 'none':${group.parent.name}"></td>
                     <td><a href="#" th:href="|/group/${group.id}/delete|">Delete</a></td>
                  </tr>
                 </table>

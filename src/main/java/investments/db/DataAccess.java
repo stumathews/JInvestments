@@ -222,5 +222,20 @@ public class DataAccess
     {
         return investmentRepository.GetInvestmentGroupsGraph(limit);
     }
+
+    @Transactional
+    public void AddChildToGroup(InvestmentGroup child, InvestmentGroup parent)
+    {
+        child.setParent(parent);
+        parent.addChild(child);  
+        groupRepository.save(child);
+        groupRepository.save(parent);
+    }
+
+    @Transactional
+    public void deleteGroup(InvestmentGroup group)
+    {
+        groupRepository.delete(group);
+    }
     
 }

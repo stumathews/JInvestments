@@ -6,6 +6,7 @@
 package investments.controllers;
 
 import investments.BOLO.GroupAndInvestmentForm;
+import investments.BOLO.NewChildGroupForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -70,8 +71,10 @@ public class GroupController extends BaseController
     }  
         
     @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
-    public String deleteGroup(@PathVariable int groupId, Map<String, Object> model)
+    public String deleteGroup(@PathVariable Long groupId, Map<String, Object> model)
     {
+        InvestmentGroup group = dataAccess.getGroupById(groupId);
+        dataAccess.deleteGroup(group);
         return getGroups(model);
     }   
     
@@ -87,6 +90,32 @@ public class GroupController extends BaseController
         String referer = request.getHeader("Referer");
         return "redirect:"+ referer;
         
+    }
+    
+    @RequestMapping(value="/newChildGroup/parent/{pid}", method = RequestMethod.GET)
+    public String showNewChildForm(@PathVariable Long pid, Map<String, Object> model)
+    {
+        InvestmentGroup parent = dataAccess.getGroupById(pid);
+        model.put("NewChildGroupForm", new NewChildGroupForm());
+        model.put("parent", parent);
+        return "newChildGroup";
+    }
+    @RequestMapping(value="/newChildGroup", method = RequestMethod.POST)
+    public String submitNewChildGroupForm(NewChildGroupForm form, HttpServletRequest request, Map<String, Object> model)
+    {
+        InvestmentGroup parent = dataAccess.getGroupById(form.getParentId());
+        InvestmentGroup child = new InvestmentGroup(form.getName(), form.getDescription());
+        child.setType(form.getType());
+        
+        child.setName(form.getName());  
+        child.setDescription(form.getDescription());
+        child.setType(form.getType()); 
+        InvestmentGroup savedChild = dataAccess.addGroup(child); 
+                
+        dataAccess.AddChildToGroup(savedChild, parent);        
+                        
+        model.put("group", parent);
+        return "viewGroup";
     }
 }
 

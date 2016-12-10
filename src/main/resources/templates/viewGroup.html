@@ -36,11 +36,11 @@
                 </thead>
                 <tr th:each="child : ${group.children}">
                     <td>
-                        <a th:href="#" th:text="${child.name}">Child group</a>
+                        <a href="#" th:href="|/group/${child.id}|" th:text="${child.name}">Child group</a>
                     </td>
                 </tr>
             </table>
-            <a class="btn btn-primary" href="#">Add new child group</a>
+            <a class="btn btn-primary" th:href="|/group/newChildGroup/parent/${group.id}|" href="#">Add new child group</a>
         </div>
         
        

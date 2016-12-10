@@ -23,10 +23,7 @@ public class InvestmentGroup implements Serializable
     @GraphId
     private Long id;
     private String name;
-    private String description;
-    /***
-     * A way to distinguish one group from another
-     */
+    private String description;    
     private String type;
 
     public String getType() {
@@ -36,7 +33,9 @@ public class InvestmentGroup implements Serializable
     public void setType(String type) {
         this.type = type;
     }
+    @Fetch
     private InvestmentGroup parent;
+    @Fetch
     private Set<InvestmentGroup> children = new HashSet<>();
 
     @Fetch
@@ -143,6 +142,11 @@ public class InvestmentGroup implements Serializable
             return false;
         }
         return true;
+    }
+
+    public void addChild(InvestmentGroup child)
+    {
+        children.add(child);
     }
     
     
