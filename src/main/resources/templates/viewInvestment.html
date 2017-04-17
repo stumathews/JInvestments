@@ -28,10 +28,13 @@
         </div>
         <div class="col-md-5" id="investment_actions">
             <h3>Actions</h3>
-            <a class="btn btn-primary " href="#" th:href="|@{/factors/new}?id=${investment.id}|" role="button">Add new factor</a>            
-            <a class="btn btn-primary" href="#" th:href="|/group/newToInvestment?investmentId=${investment.id}|" role="button">Add to group</a>            
-            <a class="btn btn-primary" href="#" th:href="|/region/newToInvestment?investmentId=${investment.id}|" role="button">Add to region</a>            
-         <a class="btn btn-primary" href="#" th:href="|/risk/newToInvestment?investmentId=${investment.id}|" role="button">Add to risk</a>                        
+            <lu>
+                <li><a class="btn " href="#" th:href="|@{/factors/new}?id=${investment.id}|" role="button">Add new factor</a></li>
+                <li><a class="btn" href="#" th:href="|/group/newToInvestment?investmentId=${investment.id}|" role="button">Add to group</a></li>            
+                <li><a class="btn" href="#" th:href="|/region/newToInvestment?investmentId=${investment.id}|" role="button">Add to region</a></li>            
+                <li><a class="btn" href="#" th:href="|/risk/newToInvestment?investmentId=${investment.id}|" role="button">Add to risk</a></li>                        
+                <li><a class="btn" href="#" th:href="|/investments/EditInvestment/${investment.id}|" role="button">Edit this investment</a></li> 
+            </lu>
         </div>
         <div class="col-md-10">            
             <h2>Influence Factors</h2>

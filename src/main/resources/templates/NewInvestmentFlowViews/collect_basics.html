@@ -29,24 +29,24 @@
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="description">Description</label>                                  
-                    <textarea class="form-control" rows="5" id="description" name="description" placeholder="What describes this investment?"></textarea>
+                    <textarea class="form-control" rows="5" id="description" th:value="*{description}" th:field="*{description}" name="description" placeholder="What describes this investment?"></textarea>
                     <small class="text-muted">Describe this investment?</small>
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="valueProposition">Value proposition</label>                                  
-                    <textarea class="form-control" rows="5" id="valueProposition" name="valueProposition" placeholder="Why is this investment valuable to people?"></textarea>
+                    <textarea class="form-control" rows="5" id="valueProposition" name="valueProposition" th:value="*{valueProposition}" th:field="*{valueProposition}" placeholder="Why is this investment valuable to people?"></textarea>
                     <small class="text-muted">Why is this valuable to people?</small>
                 </fieldset>                
                 <fieldset class="form-group">
                     <label for="desirabilityStatement">Desirability Statement</label>                                  
-                    <textarea class="form-control" rows="5" id="desirabilityStatement" name="desirabilityStatement" placeholder="Why is desirable to people"></textarea>
+                    <textarea class="form-control" rows="5" id="desirabilityStatement" name="desirabilityStatement"  th:value="*{desirabilityStatement}" th:field="*{desirabilityStatement}" placeholder="Why is desirable to people"></textarea>
                     <small class="text-muted">Why is this desirable to people?</small>
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="initialInvestment">Initial Investment</label>                                  
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                            <input type="text" class="form-control" rows="5" id="initialInvestment" name="initialInvestment" placeholder="Initial investmemt"></input>
+                            <input type="text" class="form-control" rows="5" id="initialInvestment" name="initialInvestment"  th:value="*{initialInvestment}" th:field="*{initialInvestment}" placeholder="Initial investmemt"></input>
                         <div class="input-group-addon">.00</div>
                     </div>
                     <small class="text-muted">How much did you invest initially</small>
@@ -55,7 +55,7 @@
                     <label for="value">Current Value</label>                                  
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                            <input type="text" class="form-control" rows="5" id="value" name="value" placeholder="Current investment value"></input>
+                            <input type="text" class="form-control" rows="5" id="value" name="value" th:value="*{value}" th:field="*{value}" placeholder="Current investment value"></input>
                         <div class="input-group-addon">.00</div>
                     </div>
                     <small class="text-muted">What is the current value of the investment</small>

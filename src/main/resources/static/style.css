@@ -7,3 +7,4 @@ svg.text { margin-left:120px; }
 text.investment { fill:red; }
 
 #investment_actions { margin-top:20px; margin-bottom:20px;}
+#investment_actions.col-md-5.lu {list-style:"none";}

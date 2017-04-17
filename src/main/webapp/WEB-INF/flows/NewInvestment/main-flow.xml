@@ -4,18 +4,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
 http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"> 
     
-    <var name="investment" class="investments.BOLO.InvestmentForm"/>    
+    <on-start>        
+        <evaluate expression="investmentService.GetInvestmentFormFromFlowRequestContext(flowRequestContext)" result="flowScope.investment"/> 
+    </on-start>
+    <!--<var name="investment" class="investments.BOLO.InvestmentForm"/>-->
+    <!--<input name="investment" value="flowScope.investment" />-->
     <view-state id="collect_basics" 
                 model="investment" 
-                view="NewInvestmentFlowViews/collect_basics">                    
-                <transition on="next" to="collect_factors"/>    
+                view="NewInvestmentFlowViews/collect_basics">                
+                <transition on="next" to="collect_factors"/>                  
     </view-state>    
     
     <view-state id="collect_factors" 
                 view="NewInvestmentFlowViews/collect_factors" 
                 model="investment">
         <on-entry>                        
-            <evaluate expression="flowScope.influenceFactors = dataAccess.getAllFactors()"/>              
+            <evaluate result="flowScope.influenceFactors" expression="dataAccess.getAllFactors()"/>              
         </on-entry>
         <on-render>
             <evaluate expression="investment.influenceFactorsList.clear()"/>
