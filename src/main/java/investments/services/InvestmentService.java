@@ -12,10 +12,12 @@ import investments.db.del.InfluenceFactor;
 import investments.db.del.Investment;
 import investments.db.del.InvestmentGroup;
 import investments.db.del.Risk;
+import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.webflow.execution.RequestContext;
 
 @Service
 public class InvestmentService
@@ -99,6 +101,15 @@ public class InvestmentService
         dataAccess.updateInvestment(savedInvestment);
         
         logger.info("Saving investment form from flow...done");
+    }
+    
+    public InvestmentForm GetInvestmentFormFromFlowRequestContext(RequestContext requestContext)
+    {
+        HttpServletRequest httpRequest = (HttpServletRequest) requestContext.getExternalContext().getNativeRequest();
+        InvestmentForm form = (InvestmentForm)httpRequest.getAttribute("investment");
+        if(form == null)
+            return new InvestmentForm();
+        return form;
     }
     
 

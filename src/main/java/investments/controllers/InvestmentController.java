@@ -12,11 +12,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.webflow.execution.RequestContext;
+
 
 @Controller
 @RequestMapping("/investments")
@@ -44,6 +47,7 @@ public class InvestmentController extends BaseController
         dataAccess.deleteInvestmentbyId(id);
         return "redirect:/";
     }
+   
     
     @RequestMapping(value="/populateDummyData", method = RequestMethod.GET)
     public String populateDummyData(Map<String, Object> model)
@@ -218,11 +222,17 @@ public class InvestmentController extends BaseController
         model.put("investment", new Investment());
         model.put("regions", dataAccess.getAllRegions());
         return "addinvestment";
-    }    
-    
-    @RequestMapping(value="/showEditInvestmentPage", method= RequestMethod.GET)
-    public String editInvestment(Map<String, Object> model)
+    }
+        
+    @RequestMapping(value = "/EditInvestment/{id}",method = RequestMethod.GET)
+    public String addInvestmentPage(@PathVariable Long id, HttpServletRequest request, Map<String, Object> model)
     {        
-        return "editinvestment";
+        
+        Investment investment = dataAccess.getInvestmentById(id);
+        InvestmentForm form = new InvestmentForm(investment);
+                
+        request.setAttribute("investment", form);
+        
+        return "forward:/NewInvestment";
     }
 }

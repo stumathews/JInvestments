@@ -22,6 +22,22 @@ public class InvestmentForm extends Investment implements Serializable
     private List<AssetRegion> regionsList = new AutoPopulatingList<>(AssetRegion.class);
     private List<InvestmentGroup> groupsList = new AutoPopulatingList<>(InvestmentGroup.class);
 
+    public InvestmentForm(Investment investment)
+    {        
+        super.setId(investment.getId());
+        super.setName(investment.getName());        
+        super.setValue(investment.getValue());
+        super.setInitialInvestment(investment.getInitialInvestment());
+        super.setValueProposition(investment.getValueProposition());
+        super.setDesirabilityStatement(investment.getDesirabilityStatement()); 
+        super.setDescription(investment.getDescription()); 
+        super.setGroups(investment.getGroups());
+        super.setInfluenceFactors(investment.getInfluenceFactors());
+        super.setRegions(investment.getRegions());
+        super.setRisks(investment.getRisks());
+        
+    }
+    
     public List<AssetRegion> getRegionsList()
     {
         return regionsList;
