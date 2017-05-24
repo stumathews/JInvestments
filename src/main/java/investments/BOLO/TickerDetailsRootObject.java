@@ -8,13 +8,13 @@ package investments.BOLO;
 
 public class TickerDetailsRootObject   
 {
-    private TickerDetailsQuery __query;
+    private TickerDetailsQuery query;
     public TickerDetailsQuery getquery() {
-        return __query;
+        return query;
     }
 
     public void setquery(TickerDetailsQuery value) {
-        __query = value;
+        query = value;
     }
 
 }

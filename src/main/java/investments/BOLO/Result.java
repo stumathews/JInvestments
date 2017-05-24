@@ -3,58 +3,58 @@ package investments.BOLO;
 
 public class Result   
 {
-    private String __symbol;
+    private String symbol;
     public String getsymbol() {
-        return __symbol;
+        return symbol;
     }
 
     public void setsymbol(String value) {
-        __symbol = value;
+        symbol = value;
     }
 
-    private String __name;
+    private String name;
     public String getname() {
-        return __name;
+        return name;
     }
 
     public void setname(String value) {
-        __name = value;
+        name = value;
     }
 
-    private String __exch;
+    private String exch;
     public String getexch() {
-        return __exch;
+        return exch;
     }
 
     public void setexch(String value) {
-        __exch = value;
+        exch = value;
     }
 
-    private String __type;
+    private String type;
     public String gettype() {
-        return __type;
+        return type;
     }
 
     public void settype(String value) {
-        __type = value;
+        type = value;
     }
 
-    private String __exchDisp;
+    private String exchDisp;
     public String getexchDisp() {
-        return __exchDisp;
+        return exchDisp;
     }
 
     public void setexchDisp(String value) {
-        __exchDisp = value;
+        exchDisp = value;
     }
 
-    private String __typeDisp;
+    private String typeDisp;
     public String gettypeDisp() {
-        return __typeDisp;
+        return typeDisp;
     }
 
     public void settypeDisp(String value) {
-        __typeDisp = value;
+        typeDisp = value;
     }
 
 }

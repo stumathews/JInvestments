@@ -6,40 +6,40 @@ package investments.BOLO;
 
 public class TickerDetailsQuery   
 {
-    private int __count;
+    private int count;
     public int getcount() {
-        return __count;
+        return count;
     }
 
     public void setcount(int value) {
-        __count = value;
+        count = value;
     }
 
-    private String __created;
+    private String created;
     public String getcreated() {
-        return __created;
+        return created;
     }
 
     public void setcreated(String value) {
-        __created = value;
+        created = value;
     }
 
-    private String __lang;
+    private String lang;
     public String getlang() {
-        return __lang;
+        return lang;
     }
 
     public void setlang(String value) {
-        __lang = value;
+        lang = value;
     }
 
-    private TickerDetailsResults __results;
+    private TickerDetailsResults results;
     public TickerDetailsResults getresults() {
-        return __results;
+        return results;
     }
 
     public void setresults(TickerDetailsResults value) {
-        __results = value;
+        results = value;
     }
 
 }

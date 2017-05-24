@@ -9,760 +9,760 @@ import java.util.stream.Stream;
 
 public class TickerDetailsQuote   
 {
-    private String __FullName;
+    private String FullName;
     public String getFullName() {
-        return __FullName;
+        return FullName;
     }
 
     public void setFullName(String value) {
-        __FullName = value;
+        FullName = value;
     }
 
-    private String __symbol;
+    private String symbol;
     public String getsymbol() {
-        return __symbol;
+        return symbol;
     }
 
     public void setsymbol(String value) {
-        __symbol = value;
+        symbol = value;
     }
 
-    private String __Ask;
+    private String Ask;
     public String getAsk() {
-        return __Ask;
+        return Ask;
     }
 
     public void setAsk(String value) {
-        __Ask = value;
+        Ask = value;
     }
 
-    private String __AverageDailyVolume;
+    private String AverageDailyVolume;
     public String getAverageDailyVolume() {
-        return __AverageDailyVolume;
+        return AverageDailyVolume;
     }
 
     public void setAverageDailyVolume(String value) {
-        __AverageDailyVolume = value;
+        AverageDailyVolume = value;
     }
 
-    private String __Bid;
+    private String Bid;
     public String getBid() {
-        return __Bid;
+        return Bid;
     }
 
     public void setBid(String value) {
-        __Bid = value;
+        Bid = value;
     }
 
-    private Object __AskRealtime;
+    private Object AskRealtime;
     public Object getAskRealtime() {
-        return __AskRealtime;
+        return AskRealtime;
     }
 
     public void setAskRealtime(Object value) {
-        __AskRealtime = value;
+        AskRealtime = value;
     }
 
-    private Object __BidRealtime;
+    private Object BidRealtime;
     public Object getBidRealtime() {
-        return __BidRealtime;
+        return BidRealtime;
     }
 
     public void setBidRealtime(Object value) {
-        __BidRealtime = value;
+        BidRealtime = value;
     }
 
-    private String __BookValue;
+    private String BookValue;
     public String getBookValue() {
-        return __BookValue;
+        return BookValue;
     }
 
     public void setBookValue(String value) {
-        __BookValue = value;
+        BookValue = value;
     }
 
-    private String __Change_PercentChange;
+    private String Change_PercentChange;
     public String getChange_PercentChange() {
-        return __Change_PercentChange;
+        return Change_PercentChange;
     }
 
     public void setChange_PercentChange(String value) {
-        __Change_PercentChange = value;
+        Change_PercentChange = value;
     }
 
-    private String __Change;
+    private String Change;
     public String getChange() {
-        return __Change;
+        return Change;
     }
 
     public void setChange(String value) {
-        __Change = value;
+        Change = value;
     }
 
-    private Object __Commission;
+    private Object Commission;
     public Object getCommission() {
-        return __Commission;
+        return Commission;
     }
 
     public void setCommission(Object value) {
-        __Commission = value;
+        Commission = value;
     }
 
-    private String __Currency;
+    private String Currency;
     public String getCurrency() {
-        return __Currency;
+        return Currency;
     }
 
     public void setCurrency(String value) {
-        __Currency = value;
+        Currency = value;
     }
 
-    private Object __ChangeRealtime;
+    private Object ChangeRealtime;
     public Object getChangeRealtime() {
-        return __ChangeRealtime;
+        return ChangeRealtime;
     }
 
     public void setChangeRealtime(Object value) {
-        __ChangeRealtime = value;
+        ChangeRealtime = value;
     }
 
-    private Object __AfterHoursChangeRealtime;
+    private Object AfterHoursChangeRealtime;
     public Object getAfterHoursChangeRealtime() {
-        return __AfterHoursChangeRealtime;
+        return AfterHoursChangeRealtime;
     }
 
     public void setAfterHoursChangeRealtime(Object value) {
-        __AfterHoursChangeRealtime = value;
+        AfterHoursChangeRealtime = value;
     }
 
-    private String __DividendShare;
+    private String DividendShare;
     public String getDividendShare() {
-        return __DividendShare;
+        return DividendShare;
     }
 
     public void setDividendShare(String value) {
-        __DividendShare = value;
+        DividendShare = value;
     }
 
-    private String __LastTradeDate;
+    private String LastTradeDate;
     public String getLastTradeDate() {
-        return __LastTradeDate;
+        return LastTradeDate;
     }
 
     public void setLastTradeDate(String value) {
-        __LastTradeDate = value;
+        LastTradeDate = value;
     }
 
-    private Object __TradeDate;
+    private Object TradeDate;
     public Object getTradeDate() {
-        return __TradeDate;
+        return TradeDate;
     }
 
     public void setTradeDate(Object value) {
-        __TradeDate = value;
+        TradeDate = value;
     }
 
-    private String __EarningsShare;
+    private String EarningsShare;
     public String getEarningsShare() {
-        return __EarningsShare;
+        return EarningsShare;
     }
 
     public void setEarningsShare(String value) {
-        __EarningsShare = value;
+        EarningsShare = value;
     }
 
-    private Object __ErrorIndicationreturnedforsymbolchangedinvalid;
+    private Object ErrorIndicationreturnedforsymbolchangedinvalid;
     public Object getErrorIndicationreturnedforsymbolchangedinvalid() {
-        return __ErrorIndicationreturnedforsymbolchangedinvalid;
+        return ErrorIndicationreturnedforsymbolchangedinvalid;
     }
 
     public void setErrorIndicationreturnedforsymbolchangedinvalid(Object value) {
-        __ErrorIndicationreturnedforsymbolchangedinvalid = value;
+        ErrorIndicationreturnedforsymbolchangedinvalid = value;
     }
 
-    private String __EPSEstimateCurrentYear;
+    private String EPSEstimateCurrentYear;
     public String getEPSEstimateCurrentYear() {
-        return __EPSEstimateCurrentYear;
+        return EPSEstimateCurrentYear;
     }
 
     public void setEPSEstimateCurrentYear(String value) {
-        __EPSEstimateCurrentYear = value;
+        EPSEstimateCurrentYear = value;
     }
 
-    private String __EPSEstimateNextYear;
+    private String EPSEstimateNextYear;
     public String getEPSEstimateNextYear() {
-        return __EPSEstimateNextYear;
+        return EPSEstimateNextYear;
     }
 
     public void setEPSEstimateNextYear(String value) {
-        __EPSEstimateNextYear = value;
+        EPSEstimateNextYear = value;
     }
 
-    private String __EPSEstimateNextQuarter;
+    private String EPSEstimateNextQuarter;
     public String getEPSEstimateNextQuarter() {
-        return __EPSEstimateNextQuarter;
+        return EPSEstimateNextQuarter;
     }
 
     public void setEPSEstimateNextQuarter(String value) {
-        __EPSEstimateNextQuarter = value;
+        EPSEstimateNextQuarter = value;
     }
 
-    private String __DaysLow;
+    private String DaysLow;
     public String getDaysLow() {
-        return __DaysLow;
+        return DaysLow;
     }
 
     public void setDaysLow(String value) {
-        __DaysLow = value;
+        DaysLow = value;
     }
 
-    private String __DaysHigh;
+    private String DaysHigh;
     public String getDaysHigh() {
-        return __DaysHigh;
+        return DaysHigh;
     }
 
     public void setDaysHigh(String value) {
-        __DaysHigh = value;
+        DaysHigh = value;
     }
 
-    private String __YearLow;
+    private String YearLow;
     public String getYearLow() {
-        return __YearLow;
+        return YearLow;
     }
 
     public void setYearLow(String value) {
-        __YearLow = value;
+        YearLow = value;
     }
 
-    private String __YearHigh;
+    private String YearHigh;
     public String getYearHigh() {
-        return __YearHigh;
+        return YearHigh;
     }
 
     public void setYearHigh(String value) {
-        __YearHigh = value;
+        YearHigh = value;
     }
 
-    private Object __HoldingsGainPercent;
+    private Object HoldingsGainPercent;
     public Object getHoldingsGainPercent() {
-        return __HoldingsGainPercent;
+        return HoldingsGainPercent;
     }
 
     public void setHoldingsGainPercent(Object value) {
-        __HoldingsGainPercent = value;
+        HoldingsGainPercent = value;
     }
 
-    private Object __AnnualizedGain;
+    private Object AnnualizedGain;
     public Object getAnnualizedGain() {
-        return __AnnualizedGain;
+        return AnnualizedGain;
     }
 
     public void setAnnualizedGain(Object value) {
-        __AnnualizedGain = value;
+        AnnualizedGain = value;
     }
 
-    private Object __HoldingsGain;
+    private Object HoldingsGain;
     public Object getHoldingsGain() {
-        return __HoldingsGain;
+        return HoldingsGain;
     }
 
     public void setHoldingsGain(Object value) {
-        __HoldingsGain = value;
+        HoldingsGain = value;
     }
 
-    private Object __HoldingsGainPercentRealtime;
+    private Object HoldingsGainPercentRealtime;
     public Object getHoldingsGainPercentRealtime() {
-        return __HoldingsGainPercentRealtime;
+        return HoldingsGainPercentRealtime;
     }
 
     public void setHoldingsGainPercentRealtime(Object value) {
-        __HoldingsGainPercentRealtime = value;
+        HoldingsGainPercentRealtime = value;
     }
 
-    private Object __HoldingsGainRealtime;
+    private Object HoldingsGainRealtime;
     public Object getHoldingsGainRealtime() {
-        return __HoldingsGainRealtime;
+        return HoldingsGainRealtime;
     }
 
     public void setHoldingsGainRealtime(Object value) {
-        __HoldingsGainRealtime = value;
+        HoldingsGainRealtime = value;
     }
 
-    private Object __MoreInfo;
+    private Object MoreInfo;
     public Object getMoreInfo() {
-        return __MoreInfo;
+        return MoreInfo;
     }
 
     public void setMoreInfo(Object value) {
-        __MoreInfo = value;
+        MoreInfo = value;
     }
 
-    private Object __OrderBookRealtime;
+    private Object OrderBookRealtime;
     public Object getOrderBookRealtime() {
-        return __OrderBookRealtime;
+        return OrderBookRealtime;
     }
 
     public void setOrderBookRealtime(Object value) {
-        __OrderBookRealtime = value;
+        OrderBookRealtime = value;
     }
 
-    private String __MarketCapitalization;
+    private String MarketCapitalization;
     public String getMarketCapitalization() {
-        return __MarketCapitalization;
+        return MarketCapitalization;
     }
 
     public void setMarketCapitalization(String value) {
-        __MarketCapitalization = value;
+        MarketCapitalization = value;
     }
 
-    private Object __MarketCapRealtime;
+    private Object MarketCapRealtime;
     public Object getMarketCapRealtime() {
-        return __MarketCapRealtime;
+        return MarketCapRealtime;
     }
 
     public void setMarketCapRealtime(Object value) {
-        __MarketCapRealtime = value;
+        MarketCapRealtime = value;
     }
 
-    private String __EBITDA;
+    private String EBITDA;
     public String getEBITDA() {
-        return __EBITDA;
+        return EBITDA;
     }
 
     public void setEBITDA(String value) {
-        __EBITDA = value;
+        EBITDA = value;
     }
 
-    private String __ChangeFromYearLow;
+    private String ChangeFromYearLow;
     public String getChangeFromYearLow() {
-        return __ChangeFromYearLow;
+        return ChangeFromYearLow;
     }
 
     public void setChangeFromYearLow(String value) {
-        __ChangeFromYearLow = value;
+        ChangeFromYearLow = value;
     }
 
-    private String __PercentChangeFromYearLow;
+    private String PercentChangeFromYearLow;
     public String getPercentChangeFromYearLow() {
-        return __PercentChangeFromYearLow;
+        return PercentChangeFromYearLow;
     }
 
     public void setPercentChangeFromYearLow(String value) {
-        __PercentChangeFromYearLow = value;
+        PercentChangeFromYearLow = value;
     }
 
-    private Object __LastTradeRealtimeWithTime;
+    private Object LastTradeRealtimeWithTime;
     public Object getLastTradeRealtimeWithTime() {
-        return __LastTradeRealtimeWithTime;
+        return LastTradeRealtimeWithTime;
     }
 
     public void setLastTradeRealtimeWithTime(Object value) {
-        __LastTradeRealtimeWithTime = value;
+        LastTradeRealtimeWithTime = value;
     }
 
-    private Object __ChangePercentRealtime;
+    private Object ChangePercentRealtime;
     public Object getChangePercentRealtime() {
-        return __ChangePercentRealtime;
+        return ChangePercentRealtime;
     }
 
     public void setChangePercentRealtime(Object value) {
-        __ChangePercentRealtime = value;
+        ChangePercentRealtime = value;
     }
 
-    private String __ChangeFromYearHigh;
+    private String ChangeFromYearHigh;
     public String getChangeFromYearHigh() {
-        return __ChangeFromYearHigh;
+        return ChangeFromYearHigh;
     }
 
     public void setChangeFromYearHigh(String value) {
-        __ChangeFromYearHigh = value;
+        ChangeFromYearHigh = value;
     }
 
-    private String __PercebtChangeFromYearHigh;
+    private String PercebtChangeFromYearHigh;
     public String getPercebtChangeFromYearHigh() {
-        return __PercebtChangeFromYearHigh;
+        return PercebtChangeFromYearHigh;
     }
 
     public void setPercebtChangeFromYearHigh(String value) {
-        __PercebtChangeFromYearHigh = value;
+        PercebtChangeFromYearHigh = value;
     }
 
-    private String __LastTradeWithTime;
+    private String LastTradeWithTime;
     public String getLastTradeWithTime() {
-        return __LastTradeWithTime;
+        return LastTradeWithTime;
     }
 
     public void setLastTradeWithTime(String value) {
-        __LastTradeWithTime = value;
+        LastTradeWithTime = value;
     }
 
-    private String __LastTradePriceOnly;
+    private String LastTradePriceOnly;
     public String getLastTradePriceOnly() {
-        return __LastTradePriceOnly;
+        return LastTradePriceOnly;
     }
 
     public void setLastTradePriceOnly(String value) {
-        __LastTradePriceOnly = value;
+        LastTradePriceOnly = value;
     }
 
-    private Object __HighLimit;
+    private Object HighLimit;
     public Object getHighLimit() {
-        return __HighLimit;
+        return HighLimit;
     }
 
     public void setHighLimit(Object value) {
-        __HighLimit = value;
+        HighLimit = value;
     }
 
-    private Object __LowLimit;
+    private Object LowLimit;
     public Object getLowLimit() {
-        return __LowLimit;
+        return LowLimit;
     }
 
     public void setLowLimit(Object value) {
-        __LowLimit = value;
+        LowLimit = value;
     }
 
-    private String __DaysRange;
+    private String DaysRange;
     public String getDaysRange() {
-        return __DaysRange;
+        return DaysRange;
     }
 
     public void setDaysRange(String value) {
-        __DaysRange = value;
+        DaysRange = value;
     }
 
-    private Object __DaysRangeRealtime;
+    private Object DaysRangeRealtime;
     public Object getDaysRangeRealtime() {
-        return __DaysRangeRealtime;
+        return DaysRangeRealtime;
     }
 
     public void setDaysRangeRealtime(Object value) {
-        __DaysRangeRealtime = value;
+        DaysRangeRealtime = value;
     }
 
-    private String __FiftydayMovingAverage;
+    private String FiftydayMovingAverage;
     public String getFiftydayMovingAverage() {
-        return __FiftydayMovingAverage;
+        return FiftydayMovingAverage;
     }
 
     public void setFiftydayMovingAverage(String value) {
-        __FiftydayMovingAverage = value;
+        FiftydayMovingAverage = value;
     }
 
-    private String __TwoHundreddayMovingAverage;
+    private String TwoHundreddayMovingAverage;
     public String getTwoHundreddayMovingAverage() {
-        return __TwoHundreddayMovingAverage;
+        return TwoHundreddayMovingAverage;
     }
 
     public void setTwoHundreddayMovingAverage(String value) {
-        __TwoHundreddayMovingAverage = value;
+        TwoHundreddayMovingAverage = value;
     }
 
-    private String __ChangeFromTwoHundreddayMovingAverage;
+    private String ChangeFromTwoHundreddayMovingAverage;
     public String getChangeFromTwoHundreddayMovingAverage() {
-        return __ChangeFromTwoHundreddayMovingAverage;
+        return ChangeFromTwoHundreddayMovingAverage;
     }
 
     public void setChangeFromTwoHundreddayMovingAverage(String value) {
-        __ChangeFromTwoHundreddayMovingAverage = value;
+        ChangeFromTwoHundreddayMovingAverage = value;
     }
 
-    private String __PercentChangeFromTwoHundreddayMovingAverage;
+    private String PercentChangeFromTwoHundreddayMovingAverage;
     public String getPercentChangeFromTwoHundreddayMovingAverage() {
-        return __PercentChangeFromTwoHundreddayMovingAverage;
+        return PercentChangeFromTwoHundreddayMovingAverage;
     }
 
     public void setPercentChangeFromTwoHundreddayMovingAverage(String value) {
-        __PercentChangeFromTwoHundreddayMovingAverage = value;
+        PercentChangeFromTwoHundreddayMovingAverage = value;
     }
 
-    private String __ChangeFromFiftydayMovingAverage;
+    private String ChangeFromFiftydayMovingAverage;
     public String getChangeFromFiftydayMovingAverage() {
-        return __ChangeFromFiftydayMovingAverage;
+        return ChangeFromFiftydayMovingAverage;
     }
 
     public void setChangeFromFiftydayMovingAverage(String value) {
-        __ChangeFromFiftydayMovingAverage = value;
+        ChangeFromFiftydayMovingAverage = value;
     }
 
-    private String __PercentChangeFromFiftydayMovingAverage;
+    private String PercentChangeFromFiftydayMovingAverage;
     public String getPercentChangeFromFiftydayMovingAverage() {
-        return __PercentChangeFromFiftydayMovingAverage;
+        return PercentChangeFromFiftydayMovingAverage;
     }
 
     public void setPercentChangeFromFiftydayMovingAverage(String value) {
-        __PercentChangeFromFiftydayMovingAverage = value;
+        PercentChangeFromFiftydayMovingAverage = value;
     }
 
-    private String __Name;
+    private String Name;
     public String getName() {
-        return __Name;
+        return Name;
     }
 
     public void setName(String value) {
-        __Name = value;
+        Name = value;
     }
 
-    private Object __Notes;
+    private Object Notes;
     public Object getNotes() {
-        return __Notes;
+        return Notes;
     }
 
     public void setNotes(Object value) {
-        __Notes = value;
+        Notes = value;
     }
 
-    private String __Open;
+    private String Open;
     public String getOpen() {
-        return __Open;
+        return Open;
     }
 
     public void setOpen(String value) {
-        __Open = value;
+        Open = value;
     }
 
-    private String __PreviousClose;
+    private String PreviousClose;
     public String getPreviousClose() {
-        return __PreviousClose;
+        return PreviousClose;
     }
 
     public void setPreviousClose(String value) {
-        __PreviousClose = value;
+        PreviousClose = value;
     }
 
-    private Object __PricePaid;
+    private Object PricePaid;
     public Object getPricePaid() {
-        return __PricePaid;
+        return PricePaid;
     }
 
     public void setPricePaid(Object value) {
-        __PricePaid = value;
+        PricePaid = value;
     }
 
-    private String __ChangeinPercent;
+    private String ChangeinPercent;
     public String getChangeinPercent() {
-        return __ChangeinPercent;
+        return ChangeinPercent;
     }
 
     public void setChangeinPercent(String value) {
-        __ChangeinPercent = value;
+        ChangeinPercent = value;
     }
 
-    private String __PriceSales;
+    private String PriceSales;
     public String getPriceSales() {
-        return __PriceSales;
+        return PriceSales;
     }
 
     public void setPriceSales(String value) {
-        __PriceSales = value;
+        PriceSales = value;
     }
 
-    private String __PriceBook;
+    private String PriceBook;
     public String getPriceBook() {
-        return __PriceBook;
+        return PriceBook;
     }
 
     public void setPriceBook(String value) {
-        __PriceBook = value;
+        PriceBook = value;
     }
 
-    private String __ExDividendDate;
+    private String ExDividendDate;
     public String getExDividendDate() {
-        return __ExDividendDate;
+        return ExDividendDate;
     }
 
     public void setExDividendDate(String value) {
-        __ExDividendDate = value;
+        ExDividendDate = value;
     }
 
-    private String __PERatio;
+    private String PERatio;
     public String getPERatio() {
-        return __PERatio;
+        return PERatio;
     }
 
     public void setPERatio(String value) {
-        __PERatio = value;
+        PERatio = value;
     }
 
-    private String __DividendPayDate;
+    private String DividendPayDate;
     public String getDividendPayDate() {
-        return __DividendPayDate;
+        return DividendPayDate;
     }
 
     public void setDividendPayDate(String value) {
-        __DividendPayDate = value;
+        DividendPayDate = value;
     }
 
-    private Object __PERatioRealtime;
+    private Object PERatioRealtime;
     public Object getPERatioRealtime() {
-        return __PERatioRealtime;
+        return PERatioRealtime;
     }
 
     public void setPERatioRealtime(Object value) {
-        __PERatioRealtime = value;
+        PERatioRealtime = value;
     }
 
-    private String __PEGRatio;
+    private String PEGRatio;
     public String getPEGRatio() {
-        return __PEGRatio;
+        return PEGRatio;
     }
 
     public void setPEGRatio(String value) {
-        __PEGRatio = value;
+        PEGRatio = value;
     }
 
-    private String __PriceEPSEstimateCurrentYear;
+    private String PriceEPSEstimateCurrentYear;
     public String getPriceEPSEstimateCurrentYear() {
-        return __PriceEPSEstimateCurrentYear;
+        return PriceEPSEstimateCurrentYear;
     }
 
     public void setPriceEPSEstimateCurrentYear(String value) {
-        __PriceEPSEstimateCurrentYear = value;
+        PriceEPSEstimateCurrentYear = value;
     }
 
-    private String __PriceEPSEstimateNextYear;
+    private String PriceEPSEstimateNextYear;
     public String getPriceEPSEstimateNextYear() {
-        return __PriceEPSEstimateNextYear;
+        return PriceEPSEstimateNextYear;
     }
 
     public void setPriceEPSEstimateNextYear(String value) {
-        __PriceEPSEstimateNextYear = value;
+        PriceEPSEstimateNextYear = value;
     }
 
-    private String __Symbol;
+    private String Symbol;
     public String getSymbol() {
-        return __Symbol;
+        return Symbol;
     }
 
     public void setSymbol(String value) {
-        __Symbol = value;
+        Symbol = value;
     }
 
-    private Object __SharesOwned;
+    private Object SharesOwned;
     public Object getSharesOwned() {
-        return __SharesOwned;
+        return SharesOwned;
     }
 
     public void setSharesOwned(Object value) {
-        __SharesOwned = value;
+        SharesOwned = value;
     }
 
-    private String __ShortRatio;
+    private String ShortRatio;
     public String getShortRatio() {
-        return __ShortRatio;
+        return ShortRatio;
     }
 
     public void setShortRatio(String value) {
-        __ShortRatio = value;
+        ShortRatio = value;
     }
 
-    private String __LastTradeTime;
+    private String LastTradeTime;
     public String getLastTradeTime() {
-        return __LastTradeTime;
+        return LastTradeTime;
     }
 
     public void setLastTradeTime(String value) {
-        __LastTradeTime = value;
+        LastTradeTime = value;
     }
 
-    private Object __TickerTrend;
+    private Object TickerTrend;
     public Object getTickerTrend() {
-        return __TickerTrend;
+        return TickerTrend;
     }
 
     public void setTickerTrend(Object value) {
-        __TickerTrend = value;
+        TickerTrend = value;
     }
 
-    private String __OneyrTargetPrice;
+    private String OneyrTargetPrice;
     public String getOneyrTargetPrice() {
-        return __OneyrTargetPrice;
+        return OneyrTargetPrice;
     }
 
     public void setOneyrTargetPrice(String value) {
-        __OneyrTargetPrice = value;
+        OneyrTargetPrice = value;
     }
 
-    private String __Volume;
+    private String Volume;
     public String getVolume() {
-        return __Volume;
+        return Volume;
     }
 
     public void setVolume(String value) {
-        __Volume = value;
+        Volume = value;
     }
 
-    private Object __HoldingsValue;
+    private Object HoldingsValue;
     public Object getHoldingsValue() {
-        return __HoldingsValue;
+        return HoldingsValue;
     }
 
     public void setHoldingsValue(Object value) {
-        __HoldingsValue = value;
+        HoldingsValue = value;
     }
 
-    private Object __HoldingsValueRealtime;
+    private Object HoldingsValueRealtime;
     public Object getHoldingsValueRealtime() {
-        return __HoldingsValueRealtime;
+        return HoldingsValueRealtime;
     }
 
     public void setHoldingsValueRealtime(Object value) {
-        __HoldingsValueRealtime = value;
+        HoldingsValueRealtime = value;
     }
 
-    private String __YearRange;
+    private String YearRange;
     public String getYearRange() {
-        return __YearRange;
+        return YearRange;
     }
 
     public void setYearRange(String value) {
-        __YearRange = value;
+        YearRange = value;
     }
 
-    private Object __DaysValueChange;
+    private Object DaysValueChange;
     public Object getDaysValueChange() {
-        return __DaysValueChange;
+        return DaysValueChange;
     }
 
     public void setDaysValueChange(Object value) {
-        __DaysValueChange = value;
+        DaysValueChange = value;
     }
 
-    private Object __DaysValueChangeRealtime;
+    private Object DaysValueChangeRealtime;
     public Object getDaysValueChangeRealtime() {
-        return __DaysValueChangeRealtime;
+        return DaysValueChangeRealtime;
     }
 
     public void setDaysValueChangeRealtime(Object value) {
-        __DaysValueChangeRealtime = value;
+        DaysValueChangeRealtime = value;
     }
 
-    private String __StockExchange;
+    private String StockExchange;
     public String getStockExchange() {
-        return __StockExchange;
+        return StockExchange;
     }
 
     public void setStockExchange(String value) {
-        __StockExchange = value;
+        StockExchange = value;
     }
 
-    private String __DividendYield;
+    private String DividendYield;
     public String getDividendYield() {
-        return __DividendYield;
+        return DividendYield;
     }
 
     public void setDividendYield(String value) {
-        __DividendYield = value;
+        DividendYield = value;
     }
 
-    private String __PercentChange;
+    private String PercentChange;
     public String getPercentChange() {
-        return __PercentChange;
+        return PercentChange;
     }
 
     public void setPercentChange(String value) {
-        __PercentChange = value;
+        PercentChange = value;
     }
  
 

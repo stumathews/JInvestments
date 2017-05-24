@@ -4,22 +4,22 @@ import java.util.List;
 
 public class ResultSet   
 {
-    private String __Query;
+    private String Query;
     public String getQuery() {
-        return __Query;
+        return Query;
     }
 
     public void setQuery(String value) {
-        __Query = value;
+        Query = value;
     }
 
-    private List<Result> __Result;
+    private List<Result> Result;
     public List<Result> getResult() {
-        return __Result;
+        return Result;
     }
 
     public void setResult(List<Result> value) {
-        __Result = value;
+        Result = value;
     }
 
 }

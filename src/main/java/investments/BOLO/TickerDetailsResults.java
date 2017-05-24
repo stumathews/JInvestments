@@ -6,13 +6,13 @@ package investments.BOLO;
 
 public class TickerDetailsResults   
 {
-    private TickerDetailsQuote __quote;
+    private TickerDetailsQuote quote;
     public TickerDetailsQuote getquote() {
-        return __quote;
+        return quote;
     }
 
     public void setquote(TickerDetailsQuote value) {
-        __quote = value;
+        quote = value;
     }
 
 }
