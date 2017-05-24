@@ -3,13 +3,13 @@ package investments.BOLO;
 
 public class NameLookupResult   
 {
-    private ResultSet __ResultSet;
+    private ResultSet ResultSet;
     public ResultSet getResultSet() {
-        return __ResultSet;
+        return ResultSet;
     }
 
     public void setResultSet(ResultSet value) {
-        __ResultSet = value;
+        ResultSet = value;
     }
 
 }

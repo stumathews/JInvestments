@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import investments.BOLO.NameLookupResult;
 import investments.BOLO.TickerDetailsQuote;
 import investments.BOLO.TickerDetailsRootObject;
+import investments.db.DataAccess;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,15 +12,26 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 /**
  * Deals with getting end of day information
  * @author Stuart
  */
+@Service
 public class EndOfDayService
 {
-    static void EndOfDay(String csv, boolean symbolcsv, String region, String lang) throws Exception 
+    public static Logger logger;
+    public EndOfDayService()
+    {
+        logger = LoggerFactory.getLogger(this.getClass());
+    }
+    
+    public static String GenerateEndOfDayCSV(String csv, boolean symbolcsv, String region, String lang) throws Exception 
     {
         HashMap<String,TickerDetailsQuote> Quotes = new HashMap<>();
         
@@ -36,7 +48,7 @@ public class EndOfDayService
             String company = values[0];
             if (!company.isEmpty())
             {
-                String  name = URLEncoder.encode(company," UTF-8");    
+                String  name = URLEncoder.encode(company,"UTF-8").replace("+", "%20");    
                 
                 // Try resolve the company name to a ticker symbol
                 String request = String.format("http://d.yimg.com/aq/autoc?query=%s&region=%s&lang=%s",name,region,lang);
@@ -51,7 +63,7 @@ public class EndOfDayService
                         method.releaseConnection();
 
                         NameLookupResult nameResult = new Gson().fromJson(nameResolveRequest, NameLookupResult.class);
-                        if (nameResult.getResultSet().getResult().isEmpty())
+                        if (nameResult.getResultSet() == null)
                             continue;
 
                         if (nameResult.getResultSet().getResult() == null)
@@ -100,13 +112,7 @@ public class EndOfDayService
         
         //; dont know if this works or not
         investments.services.ObjectListToCSV objectListToCSV = new ObjectListToCSV();
-        String t = objectListToCSV.convertListToCSV(new ArrayList<TickerDetailsQuote>(Quotes.values()));
-        
-        /*
-        String  csv = ToCsv(",", Quotes.values());
-        File.WriteAllText(String.format(StringSupport.CSFmtStrToJFmtStr("EndOfDayStickPrices-{0}.csv"),DateTimeSupport.ToString(Calendar.getInstance().getTime(), "yyyy-MM-dd", LocaleSupport.INVARIANT)), csv);
-        System.out.println("Done");
-        Console.Read(); */
+        return objectListToCSV.convertListToCSV(new ArrayList<TickerDetailsQuote>(Quotes.values()));
     }
 
     

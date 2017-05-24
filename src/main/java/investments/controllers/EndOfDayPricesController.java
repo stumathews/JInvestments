@@ -5,9 +5,16 @@
  */
 package investments.controllers;
 
+import investments.services.EndOfDayService;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
 import javax.servlet.http.Part;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestPart;
 @RequestMapping("/endofday")
 public class EndOfDayPricesController 
 {
+    @Autowired
+    EndOfDayService endOfDayService;
+    
     @RequestMapping(method = RequestMethod.GET)
     public String home(Map<String, Object> model) 
     {
@@ -27,10 +37,13 @@ public class EndOfDayPricesController
        @RequestMapping(value="/upload", method=RequestMethod.POST)
   public String upload( @RequestPart("csv") Part csv, Model model) throws IOException, Exception
   {
-      model.addAttribute("filename", csv.getName());
-      model.addAttribute("size", csv.getSize());      
-      //model.addAttribute("meals", mealService.importMealsCSV(csv.getInputStream()));
-      return "endOfDayStockPrices";
+      
+      
+      java.util.Scanner s = new Scanner(csv.getInputStream(), "UTF-8").useDelimiter("\\A");
+      String content = s.hasNext() ? s.next() : "";
+      String result = endOfDayService.GenerateEndOfDayCSV(content, false, "UK", "en-gb");
+      model.addAttribute("content", result);
+      return "endOfDayStockPricesWorker";
   }
     
     
