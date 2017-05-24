@@ -12,11 +12,16 @@
             </div>
         </div>
         <div class="col-md-10">
-            <form id="myform">
-                <p>
-                  <input id="myfile" name="files[]" multiple="" type="file" />
-                  <textarea id="text" rows="20" cols="40">nothing loaded</textarea>
-                </p>
+            <form class="form-inlne" method="post" enctype="multipart/form-data" th:action="@{/endofday/upload}">
+                <div class="form-group">
+                  <label for="csv">Upload companies</label>
+                  <input type="file" id="csv" class="form-control" name="csv" accept="text/csv" />
+                </div>
+                <div style="margin-top: 5px">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="icon-upload icon-white"></i> Upload
+                  </button>   
+                </div>
             </form>
             <div>
                 <table>
@@ -37,7 +42,7 @@
     $(document).ready(function(){
         //http://localhost:8080/endofday/info?t=1494787821199
         
-        var url = '/endofday';
+        var url = '/endofdaysocket';
         var sock = new SockJS(url);
         sock.onopen = function() {
             console.log('Opening');             

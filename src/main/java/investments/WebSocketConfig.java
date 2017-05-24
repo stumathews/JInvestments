@@ -16,7 +16,7 @@ public class WebSocketConfig implements WebSocketConfigurer
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry)
     {
-        registry.addHandler(endOfDayHandler(), "/endofday").withSockJS();
+        registry.addHandler(endOfDayHandler(), "/endofdaysocket").withSockJS();
     }
     
     @Bean

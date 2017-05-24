@@ -23,4 +23,5 @@ public class EndOfDayHandler extends AbstractWebSocketHandler
         session.sendMessage(new TextMessage("Yo"));
     }
     
+    
 }

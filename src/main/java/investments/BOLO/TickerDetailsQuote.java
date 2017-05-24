@@ -4,6 +4,8 @@
 
 package investments.BOLO;
 
+import java.util.stream.Stream;
+
 
 public class TickerDetailsQuote   
 {
@@ -762,6 +764,7 @@ public class TickerDetailsQuote
     public void setPercentChange(String value) {
         __PercentChange = value;
     }
+ 
 
 }
 

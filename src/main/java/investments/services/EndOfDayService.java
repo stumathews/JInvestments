@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import investments.BOLO.NameLookupResult;
 import investments.BOLO.TickerDetailsQuote;
 import investments.BOLO.TickerDetailsRootObject;
-import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -51,7 +51,7 @@ public class EndOfDayService
                         method.releaseConnection();
 
                         NameLookupResult nameResult = new Gson().fromJson(nameResolveRequest, NameLookupResult.class);
-                        if (nameResult.getResultSet().getResult().size() == 0)
+                        if (nameResult.getResultSet().getResult().isEmpty())
                             continue;
 
                         if (nameResult.getResultSet().getResult() == null)
@@ -92,15 +92,15 @@ public class EndOfDayService
                 {
                     System.out.println("Error:" + e.getMessage());
                 }
-                catch( IOException e)
-                {
-                    System.out.println("Error:" + e.getMessage());
-                }
 
             } 
             
             
         }
+        
+        //; dont know if this works or not
+        investments.services.ObjectListToCSV objectListToCSV = new ObjectListToCSV();
+        String t = objectListToCSV.convertListToCSV(new ArrayList<TickerDetailsQuote>(Quotes.values()));
         
         /*
         String  csv = ToCsv(",", Quotes.values());
