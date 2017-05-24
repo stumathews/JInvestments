@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Factor details</title>
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
+    </head>
+    <body>        
+        <div class="col-md-2">
+            <div id="wrapper">               
+                <div th:replace="common :: leftnav"></div>          
+            </div>
+        </div>
+        <div class="col-md-10">
+            <form id="myform">
+                <p>
+                  <input id="myfile" name="files[]" multiple="" type="file" />
+                  <textarea id="text" rows="20" cols="40">nothing loaded</textarea>
+                </p>
+            </form>
+            <div>
+                <table>
+                    <tr>
+                        <td id="test"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+       
+    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
+    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:src="@{/webjars/sockjs-client/1.1.1/sockjs.min.js}"/>
+    <script th:src="@{/common.js}"/>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function(){
+        //http://localhost:8080/endofday/info?t=1494787821199
+        
+        var url = '/endofday';
+        var sock = new SockJS(url);
+        sock.onopen = function() {
+            console.log('Opening');             
+        }
+        sock.onmessage = function(e){
+            console.log('Received message: ' + e.data);  
+            $("#test").append(e.data);
+        }
+        sock.onclose = function(){
+            console.log('Closing');
+            sock.close();
+        }
+        
+        $("#myfile").on("change", function (changeEvent) {
+            for (var i = 0; i < changeEvent.target.files.length; ++i) {
+              (function (file) {               // Wrap current file in a closure.
+                var loader = new FileReader();
+                loader.onload = function (loadEvent) {
+                  if (loadEvent.target.readyState != 2)
+                    return;
+                  if (loadEvent.target.error) {
+                    alert("Error while reading file " + file.name + ": " + loadEvent.target.error);
+                    return;
+                  }
+                  // Send the CSV to the server and wait for callbacks dor us to add data to the web page                  
+                  sock.send('loadEvent.target.result');
+                  sock.send(loadEvent.target.result);
+                  //console.log(loadEvent.target.result.length); // Your text is in loadEvent.target.result
+                };
+                loader.readAsText(file);
+              })(changeEvent.target.files[i]);
+            }            
+          });
+        
+        
+         
+        
+        
+    })
+    /*]]>*/
+    </script>
+    </body>
+</html>
