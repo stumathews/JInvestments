@@ -6,8 +6,6 @@
         <link rel="stylesheet" th:href="@{/style.css}" />
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
          <style type="text/css">
-            
-            
     </style>
     </head>
     <body>        
@@ -16,8 +14,9 @@
                 <div th:replace="common :: leftnav"></div>          
             </div>
         </div>
+        <h1>Investment relationship tracker</h1>
+        <h3>Totals</h3>
         <div class="col-md-10">
-            <h2>Summary</h2> 
             <dl class="dl-horizontal">
                 <dt>Investments</dt>
                 <dd><a th:href="@{/investments/}" th:text="${investments.size()}">a</a></dd>
@@ -28,132 +27,26 @@
                 <dt>Risks</dt>
                 <dd><a th:href="@{/risk}" th:text="${risks.size()}">a</a></dd>
             </dl>
-            <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#regions">Linked regions</a></li>
-                <li><a data-toggle="tab" href="#factors">Linked factors</a></li>                
-                <li><a data-toggle="tab" href="#groups">Linked groups</a></li>                
-                <li><a data-toggle="tab" href="#risks">Linked risks</a></li>  
-            </ul>   
-             <div class="tab-content">                
-                <div id="regions" class="tab-pane fade"> 
-                     <div id="InvestmentRegions"/>
-                </div> 
-                
-                <div id="factors" class="tab-pane fade"> 
-                <div id="InvestmentFactors"/>
-                </div>
-                    
-                <div id="groups" class="tab-pane fade"> 
-                <div id="InvestmentGroups"/>
-                </div>
+        </div>
+        <h3>About</h3>
+        <p>Investment tracker is a platform that allows you to track aspects that affect your investments.
+        Investments that share the same risks, factors, regions and groups can be visually distinguished through the generated relationships graphs for each aspect.
+        Currently you can add <a href="#" th:href="@{/investments/}">investments</a>, <a href="#" th:href="@{/factors}">factors</a>, <a href="#" th:href="@{/risk}">risks</a>, <a href="#" th:href="@{/region}">regions</a> and <a href="#" th:href="@{/group}">group</a> them.</p>
+        <p>Written in Java using Spring 4, using Neo4J NoSQL graph database for data persistance and D3 visualization javascript API.<br/> Bootstrap and jQuery used in the front end.</p>
+        <p>This app is primarily meant to be used to log your investments, define them and understand the affects that factors have on your investments.</p>
+        <p>The particularly interesting aspect of this project was incorporating Neo4J and visualizingthe inherent relationships its defined to hold in interactive graphs in the web app.</p>
 
-                <div id="risks" class="tab-pane fade"> 
-                <div id="InvestmentRisks"/>
-                </div>                
-             </div>              
-        </div>       
-        
-    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
+
+
+        <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
     <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
     <script th:src="@{/webjars/d3js/3.5.17/d3.min.js}"/>
     <script th:src="@{/common.js}"/>
     <script th:inline="javascript">
     /*<![CDATA[*/
-    
-    $(document).ready(function(){
+$(document).ready(function(){
         console.log("JQuery Ready.");              
-              
-    
-    
-    var i;
-    var svg = "";
-    var graphs = ["#InvestmentRegions","#InvestmentRisks","#InvestmentFactors","#InvestmentGroups"];
-    for(i = 0; i < graphs.length ;i++){        
-        var url = "http://localhost:8080/api/" + graphs[i].replace("#","");
-        d3.json(url, handleGraphData);
-    }
-    function handleGraphData(error, graph)
-    {
-        if (error || graph.nodes.length == 0) return;
-        
-        var width = 500, height = 200;
 
-        var force = d3.layout.force()
-            .charge(-1*graph.nodes.length*10).linkDistance(graph.nodes.length+100).size([width, height]);
-        
-        var divName;
-        var i;
-        for(i = 0; i < graph.nodes.length;i++)
-        {
-            if( graph.nodes[i].label == "region"){
-                divName = "#InvestmentRegions";
-                break;
-            }
-            if( graph.nodes[i].label == "factor"){
-                divName = "#InvestmentFactors";
-                break;
-            }
-            if( graph.nodes[i].label == "risk"){
-                divName = "#InvestmentRisks";
-                break;
-            }
-            if( graph.nodes[i].label == "group"){
-                divName = "#InvestmentGroups";
-                break;
-            }
-        }
-        
-        svg = d3.select(divName)
-                .append("svg")
-                .attr("viewBox", "70 -50 700 300")            
-                .attr("pointer-events", "all");
-
-
-        force.nodes(graph.nodes).links(graph.links).start();
-
-        var link = svg.selectAll(".link")
-                .data(graph.links).enter()
-                .append("line").attr("class", "link");
-
-        var node = svg.selectAll(".node")
-                .data(graph.nodes)
-                .enter()
-                .append("circle")
-                .attr("class", function (d) { return "node "+d.label; })
-                .attr("r", 5)                
-                .call(force.drag); 
-        
-
-        var text = svg 
-                .selectAll("text")
-                .data(graph.nodes)
-                .enter()
-                .append("text")                
-                .text(function (d) { return d.name })                
-                .attr("font-family", "sans-serif")
-		.attr("font-size", "11px")
-		.attr("fill", "black")
-                .attr("class",function(d){ return d.label;})
-
-
-        // force feed algo ticks
-        force.on("tick", function() {
-            link.attr("x1", function(d) { return d.source.x; })
-                    .attr("y1", function(d) { return d.source.y; })
-                    .attr("x2", function(d) { return d.target.x; })
-                    .attr("y2", function(d) { return d.target.y; });
-
-            node.attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });
-            text.attr("x", function(d){ return d.x+10; });
-            text.attr("y", function(d){ return d.y+10; });
-        });
-        
-    
-    }
-    
-
-    
 });  
     /*]]>*/
     </script>

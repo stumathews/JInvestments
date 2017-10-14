@@ -12,7 +12,8 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h1 th:text="|Investments (${investments.size()})|">Investments</h1>            
+            <h1 th:text="Investments">Investments</h1>
+            <p>Investments represent the assets that are valuable to you. </p>
             <form method="POST" >                
                 <p th:text="${investments.isEmpty()} == false ? '' : 'No investments in the database.'">These are all the investments that are loaded in the database</p>
                 <table class="table table-hover" >
@@ -23,6 +24,7 @@
                             <th>Risks</th>
                             <th>Factors</th>
                             <th>Groups</th>
+                            <th>Value</th>
                             <th></th> <!--Delete -->                                                       
                         </tr>
                     </thead>
@@ -50,13 +52,18 @@
                             <a th:text="${group.name}" th:href="|/group/${group.id}|"></a><br/>
                         </span>   
                     </td>
+                    <td>
+                        <span th:text="${investment.value}"></span><br/>
+                    </td>
                     <td><a href="#" th:href="|${investment.id}/delete|">Delete</a></td>
                  </tr>
-                </table>                               
+                </table>
+                <p th:text="|Total investments: ${investments.size()}|"></p>
             </form>
             <div id="wrapper">               
                 <div th:replace="common :: investment_actions"></div>          
             </div>
+            <div th:replace="common :: spring_diag"></div>
         </div>       
        
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>

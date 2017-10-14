@@ -37,7 +37,8 @@
                     <td><a href="#" th:href="|/factors/${factor.id}/delete|">Delete</a></td>
                  </tr>
                 </table>
-                <h3>Shared investment factors</h3>
+                <p th:text="|Total factors: ${factors.size()}|"></p>
+                <h3>Factors that are shared by other investments</h3>
                 <p>This graph shows investments that influenced by the same factor.</p>                    
                 <div id="InvestmentFactors"/>
             </form>

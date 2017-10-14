@@ -41,9 +41,10 @@
                     <td><a href="#" th:href="|/risk/${risk.id}/delete|">Delete</a></td>
                  </tr>
                 </table>
+                <p th:text="|Total risks: ${risks.size()}|"></p>
             </form>
             <a class="btn btn-primary" th:href="|/NewRisk|">New Risk</a>
-            <h3>Shared investment risks</h3>
+            <h3>Risks that are shared by other investments</h3>
             <p>This graph shows how many current investments share the same risks</p>
                 
             <div id="InvestmentRisks"/>

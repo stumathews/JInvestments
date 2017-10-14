@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
@@ -59,13 +60,13 @@ public class InvestmentController extends BaseController
             int investmentCount=10;
             for(int i = 0; i < investmentCount ;i++){
                 Investment localInvestment = new Investment();
-                localInvestment.setDesirabilityStatement("Desirability statment");
+                localInvestment.setDesirabilityStatement("My desirability statement goes in here");
                 localInvestment.setInitialInvestment(r.nextFloat());
-                localInvestment.setName("Investment Name"+i);
-                localInvestment.setDescription("Description of investment");
-                localInvestment.setSymbol("Symbol");
+                localInvestment.setName("My investment's name#"+i);
+                localInvestment.setDescription("the description of investment goes in here");
+                localInvestment.setSymbol("CTX");
                 localInvestment.setValue(r.nextFloat());
-                localInvestment.setValueProposition("Value Proposition statment");                
+                localInvestment.setValueProposition("The value proposition statement goes in here");
                 
                                 
                 // Create dummy risks
@@ -86,11 +87,11 @@ public class InvestmentController extends BaseController
                     groups.add(new InvestmentGroup("Momentum Investments","Fashionalble trends"));
                     groups.add(new InvestmentGroup("Hybrid Investments","Bit of everything"));                        
                     
-                    groups.add(new InvestmentGroup("Tactical",""));        
-                    groups.add(new InvestmentGroup("Strategic",""));        
-                    groups.add(new InvestmentGroup("Shares",""));        
-                    groups.add(new InvestmentGroup("Gold",""));        
-                    groups.add(new InvestmentGroup("Emerging markets",""));        
+                    groups.add(new InvestmentGroup("Tactical","carefully considered group"));
+                    groups.add(new InvestmentGroup("Strategic","Assets with a strategic goal associated with them"));
+                    groups.add(new InvestmentGroup("Shares"," Equity in company shares - fractional part owner"));
+                    groups.add(new InvestmentGroup("Gold","Commodity which is valuable"));
+                    groups.add(new InvestmentGroup("Emerging markets"," places like Japan, Turkey, Brazil, Taiwan etc."));
                     
                 }
                 
@@ -116,7 +117,7 @@ public class InvestmentController extends BaseController
                     
                     for( String each : samples)          
                     {
-                        InfluenceFactor f = new InfluenceFactor(each,"");
+                        InfluenceFactor f = new InfluenceFactor(each,"description about "+each);
                         f.setInfluence("influenced by " + each);                        
                         factors.add(f);
                     }                   
@@ -180,8 +181,6 @@ public class InvestmentController extends BaseController
     public String home(Map<String, Object> model)
     {
         List<Investment> investments = dataAccess.getAllInvestments();
-        
-        
         model.put("investments", investments);         
         return "investments";
     }
@@ -218,13 +217,4 @@ public class InvestmentController extends BaseController
         model.put("regions", dataAccess.getAllRegions());
         return "addinvestment";
     }
-
-    @RequestMapping(value = "/EditInvestment/{id}",method = RequestMethod.GET)
-    public String addInvestmentPage(@PathVariable Long id, HttpServletRequest request, Map<String, Object> model)
-    {
-        Investment investment = dataAccess.getInvestmentById(id);
-        request.setAttribute("investmentForm", investment);
-        return "forward:/NewInvestment";
-    }
-
 }

@@ -1,13 +1,27 @@
 <div th:fragment="leftnav">   
     <img class="img-responsive" src="logo" th:src="@{/logo.jpg}"/>
+
     <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><a href="#" th:href="@{/}">Home - Summary</a></li>
+        <li role="presentation"><a href="#" th:href="@{/}">Home</a></li>
         <li role="presentation"><a href="#" th:href="@{/investments/}">Investments</a></li>        
         <li role="presentation"><a href="#" th:href="@{/factors}">Factors</a></li>        
         <li role="presentation"><a href="#" th:href="@{/group}">Groups</a></li>        
         <li role="presentation"><a href="#" th:href="@{/risk}">Risks</a></li>        
         <li role="presentation"><a href="#" th:href="@{/region}">Regions</a></li>           
-    </ul>   
+    </ul>
+
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation"><a href="#" th:href="@{/api/InvestmentRegions}">Region API</a></li>
+        <li role="presentation"><a href="#" th:href="@{/api/InvestmentFactors}">Factors API</a></li>
+        <li role="presentation"><a href="#" th:href="@{/api/InvestmentGroups}">Groups API</a></li>
+        <li role="presentation"><a href="#" th:href="@{/api/InvestmentRisks}">Risks API</a></li>
+    </ul>
+
+    <h4>TODO</h4>
+    <ol>
+        <li>Add dynamic ajax-type editing.</li>
+
+    </ol>
     
 </div>
 
@@ -34,10 +48,12 @@
         <strong>Warning!</strong> Indicates a warning that might need attention.
     </div>
 </div>
+
 <div id="webflow_diag" th:fragment="webflow_diag">  
+    <!--
     <br/>
     <div class="alert alert-warning">
-        <h5>Webflow diagnostics:</h5>        
+        <h5>Webflow diagnostics:</h5>
         <table class="table table-hover" >
             <head>
             <th>key</th>
@@ -49,9 +65,9 @@
             </tr>
         </table>
         <strong>Warning!</strong> Indicates a warning that might need attention.
-    
-    
-        
+
+
+
         size:<span th:text="${investmentForm.selectedRisks.size()}"></span>
         <table>
             <thead>
@@ -61,8 +77,8 @@
                 <td th:text="${id}"></td>
             </tr>
         </table>
-        
-        
+
+
         size:<span th:text="${investmentForm.selectedFactors.size()}"></span>
         <table>
             <thead>
@@ -92,4 +108,49 @@
             </tr>
         </table>
     </div>
+    -->
+</div>
+
+<div id="spring_diag" th:fragment="spring_diag">
+    <!--
+    <br/>
+    <div class="alert alert-warning">
+        <h1>Spring page diagnostics:</h1>
+        <h2>Context variables:</h2>
+        <table class="table table-hover" >
+            <head>
+                <th>key</th>
+                <th>value</th>
+            </head>
+
+            <tr th:each="instance : ${#vars}">
+                <td><span th:text="${instance.key}">keyvalue</span></td>
+                <td><span th:text="${instance.value}">num</span></td>
+            </tr>
+
+        </table>
+
+        <table class="table table-hover" >
+            <head>
+                <th>key</th>
+                <th>value</th>
+            </head>
+
+            <tr th:each="instance : ${#vars.param}">
+                <td><span th:text="${instance.key}">keyvalue</span></td>
+                <td><span th:text="${instance.value}">num</span></td>
+            </tr>
+
+        </table>
+<h2>Other objects</h2>
+
+        The context object: <span th:text="${#ctx}"/><br/>
+        The HttpServletRequest: <span th:text="${#request}"/><br/>
+        The HttpServletResponse: <span th:text="${#response}"/><br/>
+        The session: <span th:text="${#session}"/><br/>
+        The servlet context: <span th:text="${#servletContext}"/><br/>
+
+
+    </div>
+    -->
 </div>

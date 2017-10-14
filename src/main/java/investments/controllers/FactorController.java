@@ -76,11 +76,11 @@ public class FactorController extends BaseController
         model.put("factor", factor);
         return "viewfactor";
     }
-    
-    @RequestMapping(value="/new", method=RequestMethod.GET)
-    public String showAddFactorView(Map<String, Object> model, Long id )
+
+    @RequestMapping(value="/newToInvestment", method=RequestMethod.GET)
+    public String showAddFactorView(Map<String, Object> model, Long investmentId )
     {
-        Investment investment = dataAccess.getInvestmentById(id);
+        Investment investment = dataAccess.getInvestmentById(investmentId);
         model.put("factorForm", new FactorForm());
         model.put("investment", investment);
         return "addFactor";

@@ -12,7 +12,8 @@
             </div>
         </div>
         <div class="md-col-12">
-                <h2>Add New Investment</h2> 
+            <h1>Add New Investment</h1>
+            <p>Specify the basic details that describe your investment</p>
         </div>        
 
         <form th:object="${investmentForm}" th:action="${flowExecutionUrl}" th:method="post">
@@ -64,8 +65,9 @@
                 <a class="btn btn-primary" th:href="|${flowExecutionUrl}&amp;_eventId=cancel|">Cancel</a>
             </div>              
         </form>
-        
-        
+
+        <div th:replace="common :: webflow_diag"></div>
+
         <a th:href="|${flowExecutionUrl}&amp;_eventId=next|">Add new Factor</a>
         
         <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>    

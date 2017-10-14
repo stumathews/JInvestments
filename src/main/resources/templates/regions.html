@@ -31,9 +31,10 @@
                     <td><a href="#">Edit(todo)</a></td>
                  </tr>
                 </table>
+                <p th:text="|Total regions: ${regions.size()}|"></p>
             </form>
             <a class="btn btn-primary" th:href="|/NewRegion|">New Region</a>
-            <h3>Shared investment regions</h3>
+            <h3>Regions that are shared by other investments</h3>
             <p>This graph shows which investments are in the same region.</p>
             <div id="InvestmentRegions"/>
         </div>       

@@ -1,3 +1,6 @@
+<!--
+ Summary of the investment about to be created.
+ -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
@@ -20,34 +23,34 @@
         </div>
         <div class="col-md-10">            
             <h1>Summary</h1>
-            <p>Summary of new investment:<span th:text="${investmentForm.name}"></span></p>
-            <p>Factors</p>
+            <p>Nearly there, if you are happy to create the investment, go ahead and finish the process by clicking save</p>
+            <p>If you'd like to go back, you may and change some things before saving. Just press the back button</p>
+            <p>These are the main <strong>Factors</strong> that you've described that would influence this investment:</p>
             <ul>
                 <li th:each="factor : ${investmentForm.selectedFactors}">
                     
-                    <a th:if="${factor.name} != ''" href="#" th:text="${factor.name}"/>
+                    <span th:text="${factor.name}"/>
                 </li>
             </ul>
-            <p>Risks</p>
+            <p>These are the main <strong>Risks</strong> that could affect your investments value:</p>
             <ul>
                 <li th:each="risk : ${investmentForm.selectedRisks}">
-                    <a href="#" th:text="${risk.name}"/>
+                    <span th:text="${risk.name}"/>
                 </li>
             </ul>
-            <p>Regions</p>
+            <p>These are the <strong>Regions</strong> that your investment is influenced by:</p>
             <ul>
                 <li th:each="region : ${investmentForm.selectedRegions}" th:if="${region.id} != null">
-                    <a  href="#" th:text="${region.name}"/>
-                     
+                    <span  th:text="${region.name}"/>
                 </li>
             </ul>
-            <p>Groups</p>
+            <p>These are the <strong>Groups</strong> you've added this investment to:</p>
             <ul>
                 <li th:each="group : ${investmentForm.selectedGroups}">
-                    <a href="#" th:text="${group.name}"/>
+                    <span th:text="${group.name}"/>
                 </li>
             </ul>
-            <a class="btn btn-primary" th:href="|${flowExecutionUrl}&amp;_eventId=commit|">Save</a>
+            <a class="btn btn-primary" th:href="|${flowExecutionUrl}&amp;_eventId=commit|">Finish</a>
             <a class="btn btn-primary" th:href="|${flowExecutionUrl}&amp;_eventId=cancel|">Cancel</a>
             <div th:replace="common :: webflow_diag"></div>
         </div>       

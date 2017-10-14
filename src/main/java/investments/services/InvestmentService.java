@@ -160,7 +160,6 @@ public class InvestmentService
     public InvestmentForm GetInvestmentFormFromFlowRequestContext(RequestContext requestContext)
     {
         HttpServletRequest httpRequest = (HttpServletRequest) requestContext.getExternalContext().getNativeRequest();
-        InvestmentForm investmentForm = (InvestmentForm)httpRequest.getAttribute("investment");
         return new InvestmentForm();
     }
     
