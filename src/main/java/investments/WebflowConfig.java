@@ -65,7 +65,7 @@ public class WebflowConfig extends AbstractFlowConfiguration
     public MvcViewFactoryCreator mvcViewFactoryCreator()
     {
         MvcViewFactoryCreator factoryCreator = new MvcViewFactoryCreator();
-        factoryCreator.setViewResolvers(Arrays.<ViewResolver>asList(thymeleafConfiguration.thymeleafViewResolver()));
+        factoryCreator.setViewResolvers(Arrays.asList(thymeleafConfiguration.thymeleafViewResolver()));
         factoryCreator.setUseSpringBeanBinding(true);
         return factoryCreator;
     }

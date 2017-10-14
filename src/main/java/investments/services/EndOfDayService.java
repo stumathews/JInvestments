@@ -17,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static investments.services.ObjectListToCSV.*;
+
 
 /**
  * Deals with getting end of day information
@@ -52,7 +54,7 @@ public class EndOfDayService
                 
                 // Try resolve the company name to a ticker symbol
                 String request = String.format("http://d.yimg.com/aq/autoc?query=%s&region=%s&lang=%s",name,region,lang);
-                String ticker = "";
+                String ticker;
                 try
                 {
                     if (!symbolcsv)
@@ -102,11 +104,7 @@ public class EndOfDayService
                     lineCount++;
                     System.out.println(lineCount + "-Company=" + company + " Ticker=" + ticker + " Ask=" + LastTradePriceOnly);
                 }
-                catch (HttpException  e)
-                {
-                    System.out.println("Error:" + e.getMessage());
-                }
-                catch(java.lang.IllegalStateException e)
+                catch (HttpException | IllegalStateException e)
                 {
                     System.out.println("Error:" + e.getMessage());
                 }
@@ -118,7 +116,7 @@ public class EndOfDayService
         
         //; dont know if this works or not
         investments.services.ObjectListToCSV objectListToCSV = new ObjectListToCSV();
-        return objectListToCSV.convertListToCSV(new ArrayList<TickerDetailsQuote>(Quotes.values()));
+        return convertListToCSV(new ArrayList<>(Quotes.values()));
     }
 
     

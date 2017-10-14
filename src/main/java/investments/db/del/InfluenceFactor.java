@@ -49,7 +49,7 @@ public class InfluenceFactor implements Serializable
 
     /**
      * The investments that are influenced by this factor
-     * @return 
+     * @return set of investments
      */
     public Set<Investment> getInvestments()
     {
@@ -68,7 +68,7 @@ public class InfluenceFactor implements Serializable
 
     /**
      * Name of this influence
-     * @return 
+     * @return name of factor
      */
     public String getName()
     {
@@ -82,7 +82,7 @@ public class InfluenceFactor implements Serializable
 
     /**
      * Description of this influence
-     * @return 
+     * @return description of factor
      */
     public String getDescription()
     {
@@ -120,15 +120,13 @@ public class InfluenceFactor implements Serializable
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        return true;
+        if (Objects.equals(this.description, other.description)) return true;
+        else return false;
     }
 
     /**
      * How this influences
-     * @return 
+     * @return the influence
      */
     public String getInfluence()
     {

@@ -130,10 +130,7 @@ public class Risk implements Serializable
         if (this.type != other.type) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.name, other.name);
     }
     
    

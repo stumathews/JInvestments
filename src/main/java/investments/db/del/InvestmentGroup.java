@@ -139,16 +139,12 @@ public class InvestmentGroup implements Serializable
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        return true;
+        if (Objects.equals(this.description, other.description)) return true;
+        else return false;
     }
 
     public void addChild(InvestmentGroup child)
     {
         children.add(child);
     }
-    
-    
 }

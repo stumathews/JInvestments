@@ -35,13 +35,13 @@ public class EndOfDayPricesController
     }
     
        @RequestMapping(value="/upload", method=RequestMethod.POST)
-  public String upload( @RequestPart("csv") Part csv, Model model) throws IOException, Exception
+  public String upload( @RequestPart("csv") Part csv, Model model) throws Exception
   {
       
       
       java.util.Scanner s = new Scanner(csv.getInputStream(), "UTF-8").useDelimiter("\\A");
       String content = s.hasNext() ? s.next() : "";
-      String result = endOfDayService.GenerateEndOfDayCSV(content, false, "UK", "en-gb");
+      String result = EndOfDayService.GenerateEndOfDayCSV(content, false, "UK", "en-gb");
       model.addAttribute("content", result);
       return "endOfDayStockPricesWorker";
   }

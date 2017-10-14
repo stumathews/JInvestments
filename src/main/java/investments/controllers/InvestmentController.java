@@ -20,7 +20,7 @@ import java.util.Random;
 public class InvestmentController extends BaseController
 {
     @Autowired
-    DataAccess dataAccess;
+    private DataAccess dataAccess;
 
     public InvestmentController()
     {}    
@@ -169,9 +169,7 @@ public class InvestmentController extends BaseController
         }
 
         //update investments with add groups, factors, risks etc.
-        investments.stream().forEach((investment) -> {
-            dataAccess.updateInvestment(investment);
-        });
+        investments.forEach((investment) -> dataAccess.updateInvestment(investment));
         
         model.put("investments", investments);         
         return "investments";
@@ -187,8 +185,8 @@ public class InvestmentController extends BaseController
 
     /***
      * This is take an investmentForm which is the result of the NewInvestment workflow and create the investment.
-     * @param investmentForm
-     * @return
+     * @param investmentForm the backing object the represents the new investment and its associated factors which will be created
+     * @return the addInvestment page which commits it
      */
     @RequestMapping(method = RequestMethod.POST)
     public String submit(InvestmentForm investmentForm)
