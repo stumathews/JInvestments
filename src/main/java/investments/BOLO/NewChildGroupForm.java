@@ -24,6 +24,7 @@ public class NewChildGroupForm extends InvestmentGroup implements Serializable
     public void setParentId(Long parentId)
     {
         this.parentId = parentId;
+        
     }
     
 }

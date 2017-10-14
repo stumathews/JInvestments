@@ -19,6 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.webflow.execution.RequestContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class InvestmentService
 {
@@ -32,32 +35,31 @@ public class InvestmentService
         logger = LoggerFactory.getLogger(this.getClass());
     }
     
-    
-    public void saveInvestmentFlow(InvestmentForm investmentForm)
+    public void saveInvestmentFormFlow(InvestmentForm investmentForm)
     {        
         logger.info("Saving investment form from flow...");
         Investment investment = new Investment();
-        
-        investmentForm.getInfluenceFactorsList().stream().filter((factor) -> ( factor.getId() != null)).forEach((factor) -> {
-            InfluenceFactor fromDb = dataAccess.getFactorById(factor.getId());            
+
+        investmentForm.getSelectedFactors().stream().filter((factor) -> ( factor != null)).forEach((factor) -> {
+            InfluenceFactor fromDb = dataAccess.getFactorById(factor.getId());
             investment.addFactor(fromDb);
         }); 
         
-        investmentForm.getRegionsList().stream().filter((region) -> (region.getId() != null)).forEach((region) -> {
-            AssetRegion fromDb = dataAccess.getRegionById(region.getId());            
+        investmentForm.getSelectedRegions().stream().filter((region) -> (region != null)).forEach((region) -> {
+            AssetRegion fromDb = dataAccess.getRegionById(region.getId());
             investment.addRegion(fromDb);
         });
         
-        investmentForm.getGroupsList().stream().filter((group) -> (group.getId() != null)).forEach((group) -> {
-            InvestmentGroup fromDb = dataAccess.getGroupById(group.getId());            
+        investmentForm.getSelectedGroups().stream().filter((group) -> (group != null)).forEach((group) -> {
+            InvestmentGroup fromDb = dataAccess.getGroupById(group.getId());
             investment.addGroup(fromDb);
         });
         
-        investmentForm.getRisksList().stream().filter((risk) -> (risk.getId() != null)).forEach((risk) -> {
+        investmentForm.getSelectedRisks().stream().filter((risk) -> (risk != null)).forEach((risk) -> {
             Risk fromDb = dataAccess.getRiskById(risk.getId());
             investment.addRisk(fromDb);
         });
-        
+
         investment.setDescription(investmentForm.getDescription());
         investment.setDesirabilityStatement(investmentForm.getDesirabilityStatement());
         investment.setInitialInvestment(investmentForm.getInitialInvestment());
@@ -69,29 +71,29 @@ public class InvestmentService
         Investment savedInvestment = dataAccess.saveInvestment(investment);
         
         // update
-        
-        investmentForm.getInfluenceFactorsList().stream().filter((factor) -> ( factor.getId() != null)).forEach((factor) -> {
+
+        investmentForm.getSelectedFactors().stream().filter((factor) -> ( factor != null)).forEach((factor) -> {
             InfluenceFactor db = dataAccess.getFactorById(factor.getId());
-            savedInvestment.addFactor(factor);
+            savedInvestment.addFactor(db);
             db.addInvestment(savedInvestment);
             dataAccess.addFactor(db);
         }); 
         
-        investmentForm.getRegionsList().stream().filter((region) -> (region.getId() != null)).forEach((region) -> {
-            AssetRegion db = dataAccess.getRegionById(region.getId());                        
+        investmentForm.getSelectedRegions().stream().filter((region) -> (region != null)).forEach((region) -> {
+            AssetRegion db = dataAccess.getRegionById(region.getId());
             db.addInvestment(savedInvestment);
             savedInvestment.addRegion(db);
             dataAccess.saveRegion(db);
         });
         
-        investmentForm.getGroupsList().stream().filter((group) -> (group.getId() != null)).forEach((group) -> {
-            InvestmentGroup db = dataAccess.getGroupById(group.getId());            
+        investmentForm.getSelectedGroups().stream().filter((group) -> (group != null)).forEach((group) -> {
+            InvestmentGroup db = dataAccess.getGroupById(group.getId());
             db.addInvestment(savedInvestment);
             savedInvestment.addGroup(db);
             dataAccess.addGroup(db);
         });
         
-        investmentForm.getRisksList().stream().filter((risk) -> (risk.getId() != null)).forEach((risk) -> {
+        investmentForm.getSelectedRisks().stream().filter((risk) -> (risk != null)).forEach((risk) -> {
             Risk db = dataAccess.getRiskById(risk.getId());
             db.addInvestment(savedInvestment);
             savedInvestment.addRisk(db);
@@ -99,17 +101,67 @@ public class InvestmentService
         });
         
         dataAccess.updateInvestment(savedInvestment);
-        
+
         logger.info("Saving investment form from flow...done");
     }
-    
+
+    public InvestmentGroup GetGroupById(long id)
+    {
+       return dataAccess.getGroupById(id);
+    }
+
+    public InvestmentForm FinalizeInvestmentForm(investments.BOLO.InvestmentForm investmentForm)
+    {
+        List<InfluenceFactor> realFactors = new ArrayList<>();
+        List<Risk> realRisks = new ArrayList<>();
+        List<InvestmentGroup> realGroups = new ArrayList<>();
+        List<AssetRegion> realRegions = new ArrayList<>();
+        // Cull out the missing data
+        for( InfluenceFactor factor : investmentForm.getSelectedFactors())
+        {
+            Long id = factor.getId();
+            if(id != null) {
+                factor = dataAccess.getFactorById(id);
+                realFactors.add(factor);
+            }
+        }
+        for( Risk risk : investmentForm.getSelectedRisks())
+        {
+            Long id = risk.getId();
+            if(id != null) {
+                risk = dataAccess.getRiskById(id);
+                realRisks.add(risk);
+            }
+        }
+        for( AssetRegion region : investmentForm.getSelectedRegions())
+        {
+            Long id = region.getId();
+            if(id != null) {
+                region = dataAccess.getRegionById(id);
+                realRegions.add(region);
+            }
+        }
+        for( InvestmentGroup group : investmentForm.getSelectedGroups())
+        {
+            Long id = group.getId();
+            if(id != null) {
+                group = dataAccess.getGroupById(id);
+                realGroups.add(group);
+            }
+        }
+        investmentForm.setSelectedFactors(realFactors);
+        investmentForm.setSelectedRisks(realRisks);
+        investmentForm.setSelectedRegions(realRegions);
+        investmentForm.setSelectedGroups(realGroups);
+
+        return investmentForm;
+    }
+        
     public InvestmentForm GetInvestmentFormFromFlowRequestContext(RequestContext requestContext)
     {
         HttpServletRequest httpRequest = (HttpServletRequest) requestContext.getExternalContext().getNativeRequest();
-        InvestmentForm form = (InvestmentForm)httpRequest.getAttribute("investment");
-        if(form == null)
-            return new InvestmentForm();
-        return form;
+        InvestmentForm investmentForm = (InvestmentForm)httpRequest.getAttribute("investment");
+        return new InvestmentForm();
     }
     
 

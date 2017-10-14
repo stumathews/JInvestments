@@ -5,97 +5,98 @@
 http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"> 
     
     <on-start>        
-        <evaluate expression="investmentService.GetInvestmentFormFromFlowRequestContext(flowRequestContext)" result="flowScope.investment"/> 
+        <evaluate expression="investmentService.GetInvestmentFormFromFlowRequestContext(flowRequestContext)" result="flowScope.investmentForm"/>
     </on-start>
-    <!--<var name="investment" class="investments.BOLO.InvestmentForm"/>-->
-    <!--<input name="investment" value="flowScope.investment" />-->
     <view-state id="collect_basics" 
-                model="investment" 
+                model="investmentForm"
                 view="NewInvestmentFlowViews/collect_basics">                
                 <transition on="next" to="collect_factors"/>                  
     </view-state>    
     
     <view-state id="collect_factors" 
                 view="NewInvestmentFlowViews/collect_factors" 
-                model="investment">
+                model="investmentForm">
         <on-entry>                        
             <evaluate result="flowScope.influenceFactors" expression="dataAccess.getAllFactors()"/>              
         </on-entry>
         <on-render>
-            <evaluate expression="investment.influenceFactorsList.clear()"/>
-        </on-render>
+            <evaluate expression="investmentForm.selectedFactors.clear()"/>
+        </on-render>        
         <transition on="next" to="collect_risks"/>
         <transition on="add_factor" to="add_factor"/>
     </view-state>
     
     <subflow-state id="add_factor" subflow="NewFactor">  
-        <input name="investment"/>      
+        <input name="investmentForm"/>
         <transition on="finished" to="collect_factors"/>
     </subflow-state>
     
     <view-state id="collect_risks" 
                 view="NewInvestmentFlowViews/collect_risks" 
-                model="investment">        
+                model="investmentForm">
         <on-entry>                        
             <evaluate expression="flowScope.risks = dataAccess.getAllRisks()"/>              
         </on-entry>
         <on-render>
-            <evaluate expression="investment.risksList.clear()"/>
+            <evaluate expression="investmentForm.selectedRisks.clear()"/>
         </on-render>
         <transition on="next" to="collect_regions"/>        
         <transition on="add_risk" to="add_risk"/>  
     </view-state>
     
     <subflow-state id="add_risk" subflow="NewRisk">  
-        <input name="investment"/>      
+        <input name="investmentForm"/>
         <transition on="finished" to="collect_risks"/>
     </subflow-state>
     
     <view-state id="collect_regions" 
                 view="NewInvestmentFlowViews/collect_regions"
-                model="investment">
+                model="investmentForm">
         <on-entry>                        
             <evaluate expression="flowScope.regions = dataAccess.getAllRegions()"/>              
         </on-entry>
         <on-render>
-            <evaluate expression="investment.regionsList.clear()"/>
+            <evaluate expression="investmentForm.selectedRegions.clear()"/>
         </on-render>
         <transition on="next" to="collect_groups"/>
         <transition on="add_region" to="add_region"/>  
     </view-state>
     
     <subflow-state id="add_region" subflow="NewRegion">  
-        <input name="investment"/>      
+        <input name="investmentForm"/>
         <transition on="finished" to="collect_regions"/>
     </subflow-state>
     
     <view-state id="collect_groups" 
                 view="NewInvestmentFlowViews/collect_groups" 
-                model="investment">
+                model="investmentForm">
         <on-entry>                        
             <evaluate expression="flowScope.groups = dataAccess.getAllGroups()"/>              
         </on-entry>
         <on-render>
-            <evaluate expression="investment.groupsList.clear()"/>
+            <evaluate expression="investmentForm.selectedGroups.clear()"/>
         </on-render>
         <transition on="next" to="summary"/>
         <transition on="add_group" to="add_group"/>  
     </view-state>
     
     <subflow-state id="add_group" subflow="NewGroup">  
-        <input name="investment"/>      
+        <input name="investmentForm"/>
         <transition on="finished" to="collect_groups"/>
     </subflow-state>
     
     <view-state id="summary"
                 view="NewInvestmentFlowViews/summary"
-                model="investment">
+                model="investmentForm">
+        <on-entry>
+            <evaluate expression="investmentService.FinalizeInvestmentForm(flowScope.investmentForm)"  result="flowScope.investmentForm"/>
+        </on-entry>
         <transition on="commit" to="commit" />
     </view-state>
  
     
     <action-state id="commit">
-        <evaluate expression="flowScope.groups = investmentService.saveInvestmentFlow(investment)"/>
+        <evaluate expression="flowScope.groups = investmentService.saveInvestmentFormFlow(investmentForm)"/>
         <transition to="end"/>
     </action-state>
     <end-state id="end" view="externalRedirect:/investments/"/>

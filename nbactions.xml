@@ -43,9 +43,6 @@
             <goals>
                 <goal>spring-boot:run</goal>
             </goals>
-            <properties>
-                <netbeans.deploy>true</netbeans.deploy>
-            </properties>
         </action>
         <action>
             <actionName>debug</actionName>

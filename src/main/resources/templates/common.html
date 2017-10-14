@@ -52,43 +52,43 @@
     
     
         
-        size:<span th:text="${investment.risksList.size()}"></span>
+        size:<span th:text="${investmentForm.selectedRisks.size()}"></span>
         <table>
             <thead>
             <th>Risk</th>
             </thead>
-            <tr th:each="risk, stat : ${investment.risksList}">
-                <td th:text="${risk.id}"></td>
+            <tr th:each="id, stat : ${investmentForm.selectedRisks}">
+                <td th:text="${id}"></td>
             </tr>
         </table>
         
         
-        size:<span th:text="${investment.influenceFactorsList.size()}"></span>
+        size:<span th:text="${investmentForm.selectedFactors.size()}"></span>
         <table>
             <thead>
             <th>Factor</th>
             </thead>
-            <tr th:each="factor, stat : ${investment.influenceFactorsList}">
-                <td th:text="${factor.id}"></td>
+            <tr th:each="id, stat : ${investmentForm.selectedFactors}">
+                <td th:text="${id}"></td>
             </tr>
         </table>
 
-        size:<span th:text="${investment.groupsList.size()}"></span>
+        size:<span th:text="${investmentForm.selectedGroups.size()}"></span>
         <table>
             <thead>
             <th>Groups</th>
             </thead>
-            <tr th:each="factor, stat : ${investment.groupsList}">
-                <td th:text="${factor.id}"></td>
+            <tr th:each="id, stat : ${investmentForm.selectedGroups}">
+                <td th:text="${id}"></td>
             </tr>
         </table>
-        size:<span th:text="${investment.risksList.size()}"></span>
+        size:<span th:text="${investmentForm.selectedRisks.size()}"></span>
         <table>
             <thead>
             <th>Regions</th>
             </thead>
-            <tr th:each="region, stat : ${investment.regionsList}">
-                <td th:text="${region.id}"></td>
+            <tr th:each="id, stat : ${investmentForm.selectedRegions}">
+                <td th:text="${id}"></td>
             </tr>
         </table>
     </div>

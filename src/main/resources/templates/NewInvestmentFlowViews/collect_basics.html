@@ -14,8 +14,8 @@
         <div class="md-col-12">
                 <h2>Add New Investment</h2> 
         </div>        
-                   
-        <form  th:object="${investment}" th:action="${flowExecutionUrl}" th:method="post">
+
+        <form th:object="${investmentForm}" th:action="${flowExecutionUrl}" th:method="post">
             <div class="col-md-10"> 
                 <div class="error" th:if="${#fields.hasErrors('*')}">
                     <span th:each="err : ${#fields.errors('*')}">

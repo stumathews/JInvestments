@@ -66,6 +66,7 @@ public class InvestmentGroup implements Serializable
     }
 
     public void setParent(InvestmentGroup parent) {
+
         this.parent = parent;
     }
     

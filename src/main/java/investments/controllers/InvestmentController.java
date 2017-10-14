@@ -1,29 +1,18 @@
 package investments.controllers;
 import investments.BOLO.InvestmentForm;
-import static investments.controllers.BaseController.logger;
-import investments.db.del.AssetRegion;
 import investments.db.DataAccess;
-import investments.db.del.InfluenceFactor;
-import investments.db.del.Investment;
-import investments.db.del.InvestmentGroup;
-import investments.db.del.Risk;
-import investments.db.del.RiskType;
-import java.io.IOException;
+import investments.db.del.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.webflow.execution.RequestContext;
-
 
 @Controller
 @RequestMapping("/investments")
@@ -197,26 +186,28 @@ public class InvestmentController extends BaseController
         return "investments";
     }
 
+    /***
+     * This is take an investmentForm which is the result of the NewInvestment workflow and create the investment.
+     * @param investmentForm
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     public String submit(InvestmentForm investmentForm)
-    {  
-        Investment del = new Investment();
-        HashSet<AssetRegion> regions = new HashSet<>();
-        AssetRegion region = dataAccess.getRegionById(investmentForm.getRegionId());
-            
-        regions.add(region);
+    {
+        // Set up an investment object and populate it with details extracted from the new Investment(from the InvestmentForm)
+        Investment investment = new Investment();
+
+        // Extract the new investment from the investmentForm...
+        investment.setName(investmentForm.getName());
+        investment.setRegions(investmentForm.getRegions());
+        investment.setInitialInvestment(investmentForm.getInitialInvestment());
+        investment.setValueProposition(investmentForm.getValueProposition());
+        investment.setDesirabilityStatement(investmentForm.getDesirabilityStatement());
+        investment.setSymbol(investmentForm.getSymbol());
         
-        del.setName(investmentForm.getName());
-        del.setRegions(regions);        
-        del.setInitialInvestment(investmentForm.getInitialInvestment());
-        del.setValueProposition(investmentForm.getValueProposition());        
-        del.setDesirabilityStatement(investmentForm.getDesirabilityStatement());
-        del.setSymbol(investmentForm.getSymbol());
-        
-        dataAccess.saveInvestment(del);    
+        dataAccess.saveInvestment(investment);
         
         logger.info("Creating investment: " + investmentForm.getName());
-        logger.info("Selected region was " + region.getName());
         return "redirect:/investments/";
     }   
     
@@ -227,17 +218,13 @@ public class InvestmentController extends BaseController
         model.put("regions", dataAccess.getAllRegions());
         return "addinvestment";
     }
-        
+
     @RequestMapping(value = "/EditInvestment/{id}",method = RequestMethod.GET)
     public String addInvestmentPage(@PathVariable Long id, HttpServletRequest request, Map<String, Object> model)
-    {        
-        
+    {
         Investment investment = dataAccess.getInvestmentById(id);
-        InvestmentForm form = new InvestmentForm(investment);
-                
-        request.setAttribute("investment", form);
-        
+        request.setAttribute("investmentForm", investment);
         return "forward:/NewInvestment";
-    } 
-  
+    }
+
 }

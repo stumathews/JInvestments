@@ -20,8 +20,8 @@
         </div>
         <div class="col-md-10">
             <h1>Factors</h1>
-            <p>Select the influence factors for investment '<span th:text="${investment.name}"></span>'</p>
-            <form th:object="${investment}" th:action="${flowExecutionUrl}" th:method="post">                
+            <p>Select the influence factors for investment '<span th:text="${investmentForm.name}"></span>'</p>
+            <form th:object="${investmentForm}" th:action="${flowExecutionUrl}" th:method="post">
                 <p th:text="${influenceFactors.isEmpty()} == false ? '' : 'No factors in the database.'">These are all the factors that are loaded in the database</p>
                 <table class="table table-hover" >
                     <thead>
@@ -35,7 +35,12 @@
                     </thead>
                     <tr th:each="factor, stat : ${influenceFactors}">
                         <td>                                                  
-                            <input type="checkbox" th:field="*{influenceFactorsList[__${stat.index}__].id}" th:value="${factor.id}"  th:name="influenceFactorsList[__${stat.index}__].id" />
+                            <input type="checkbox" th:field="*{selectedFactors[__${stat.index}__].id}" th:value="${factor.id}"  th:name="selectedFactors[__${stat.index}__].id" />
+                            <div class="error" th:if="${#fields.hasErrors('*')}">
+                    <span th:each="err : ${#fields.errors('*')}">
+                      <span th:text="${err}">Input is incorrect</span><br />
+                    </span>
+                </div>
                         </td>
                     <td>
                         <a th:href="|/factors/${factor.id}|" th:text="${factor.name}" />

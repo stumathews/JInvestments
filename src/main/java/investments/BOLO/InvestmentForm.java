@@ -14,83 +14,50 @@ import org.springframework.util.AutoPopulatingList;
  * @author Stuart
  */
 public class InvestmentForm extends Investment implements Serializable
-{    
-    public Long regionId;        
-    
-    private List<InfluenceFactor> influenceFactorsList =  new AutoPopulatingList<>(InfluenceFactor.class);
-    private List<Risk> risksList = new AutoPopulatingList<>(Risk.class);
-    private List<AssetRegion> regionsList = new AutoPopulatingList<>(AssetRegion.class);
-    private List<InvestmentGroup> groupsList = new AutoPopulatingList<>(InvestmentGroup.class);
+{
+    /*
+    * The following will be populated on-the-fly when the user selects factors, risks,regions and groups associated
+    * with this investment
+    * */
+    private List<InfluenceFactor> selectedFactors =  new AutoPopulatingList<>(InfluenceFactor.class);
+    private List<Risk> selectedRisks = new AutoPopulatingList<>(Risk.class);
+    private List<AssetRegion> selectedRegions = new AutoPopulatingList<>(AssetRegion.class);
+    private List<InvestmentGroup> selectedGroupIDs = new AutoPopulatingList<>(InvestmentGroup.class);
 
-    public InvestmentForm(Investment investment)
-    {        
-        super.setId(investment.getId());
-        super.setName(investment.getName());        
-        super.setValue(investment.getValue());
-        super.setInitialInvestment(investment.getInitialInvestment());
-        super.setValueProposition(investment.getValueProposition());
-        super.setDesirabilityStatement(investment.getDesirabilityStatement()); 
-        super.setDescription(investment.getDescription()); 
-        super.setGroups(investment.getGroups());
-        super.setInfluenceFactors(investment.getInfluenceFactors());
-        super.setRegions(investment.getRegions());
-        super.setRisks(investment.getRisks());
-        
-    }
-    
-    public List<AssetRegion> getRegionsList()
-    {
-        return regionsList;
+    public List<InfluenceFactor> getSelectedFactors() {
+        return selectedFactors;
     }
 
-    public void setRegionsList(List<AssetRegion> regionsList)
-    {
-        this.regionsList = regionsList;
+    public void setSelectedFactors(List<InfluenceFactor> selectedFactors) {
+        this.selectedFactors = selectedFactors;
     }
 
-    public List<InvestmentGroup> getGroupsList()
-    {
-        return groupsList;
+    public List<Risk> getSelectedRisks() {
+        return selectedRisks;
     }
 
-    public void setGroupsList(List<InvestmentGroup> groupsList)
-    {
-        this.groupsList = groupsList;
+    public void setSelectedRisks(List<Risk> selectedRisks) {
+        this.selectedRisks = selectedRisks;
     }
 
-    public List<Risk> getRisksList()
-    {
-        return risksList;
+    public List<AssetRegion> getSelectedRegions() {
+        return selectedRegions;
     }
 
-    public void setRisksList(List<Risk> risksList)
-    {
-        this.risksList = risksList;
-    }
-    
-    public List<InfluenceFactor> getInfluenceFactorsList()
-    {
-        return influenceFactorsList;
+    public void setSelectedRegions(List<AssetRegion> selectedRegions) {
+        this.selectedRegions = selectedRegions;
     }
 
-    public void setInfluenceFactorsList(List<InfluenceFactor> influenceFactorsList)
-    {
-        this.influenceFactorsList = influenceFactorsList;
+    public List<InvestmentGroup> getSelectedGroups() {
+        return selectedGroupIDs;
     }
-    
+
+    public void setSelectedGroups(List<InvestmentGroup> selectedGroups) {
+        this.selectedGroupIDs = selectedGroups;
+    }
+
     public InvestmentForm()
-    {       
-        
-    }
-
-    public Long getRegionId()
     {
-        return regionId;
-    }
 
-    public void setRegionId(Long regionId)
-    {
-        this.regionId = regionId;
     }
-   
  }

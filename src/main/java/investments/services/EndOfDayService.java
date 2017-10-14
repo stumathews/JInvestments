@@ -68,6 +68,8 @@ public class EndOfDayService
 
                         if (nameResult.getResultSet().getResult() == null)
                             continue;
+                        if(nameResult.getResultSet().getResult().size() == 0)
+                           continue;
 
                         ticker = nameResult.getResultSet().getResult().get(0).getsymbol();
                     }
@@ -101,6 +103,10 @@ public class EndOfDayService
                     System.out.println(lineCount + "-Company=" + company + " Ticker=" + ticker + " Ask=" + LastTradePriceOnly);
                 }
                 catch (HttpException  e)
+                {
+                    System.out.println("Error:" + e.getMessage());
+                }
+                catch(java.lang.IllegalStateException e)
                 {
                     System.out.println("Error:" + e.getMessage());
                 }

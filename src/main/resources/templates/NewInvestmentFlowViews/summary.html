@@ -20,29 +20,31 @@
         </div>
         <div class="col-md-10">            
             <h1>Summary</h1>
-            <p>Summary of new investment:<span th:text="${investment.name}"></span></p>
+            <p>Summary of new investment:<span th:text="${investmentForm.name}"></span></p>
             <p>Factors</p>
             <ul>
-                <li th:each="factor : ${investment.influenceFactorsList}">
-                    <a href="#" th:text="${factor.id}"/>
+                <li th:each="factor : ${investmentForm.selectedFactors}">
+                    
+                    <a th:if="${factor.name} != ''" href="#" th:text="${factor.name}"/>
                 </li>
             </ul>
             <p>Risks</p>
             <ul>
-                <li th:each="risk : ${investment.risksList}">
-                    <a href="#" th:text="${risk.id}"/>
+                <li th:each="risk : ${investmentForm.selectedRisks}">
+                    <a href="#" th:text="${risk.name}"/>
                 </li>
             </ul>
             <p>Regions</p>
             <ul>
-                <li th:each="region : ${investment.regionsList}">
-                    <a href="#" th:text="${region.id}"/>
+                <li th:each="region : ${investmentForm.selectedRegions}" th:if="${region.id} != null">
+                    <a  href="#" th:text="${region.name}"/>
+                     
                 </li>
             </ul>
             <p>Groups</p>
             <ul>
-                <li th:each="group : ${investment.groupsList}">
-                    <a href="#" th:text="${group.id}"/>
+                <li th:each="group : ${investmentForm.selectedGroups}">
+                    <a href="#" th:text="${group.name}"/>
                 </li>
             </ul>
             <a class="btn btn-primary" th:href="|${flowExecutionUrl}&amp;_eventId=commit|">Save</a>
