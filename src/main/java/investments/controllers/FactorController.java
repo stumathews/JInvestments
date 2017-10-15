@@ -14,10 +14,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/factors")
@@ -84,6 +81,22 @@ public class FactorController extends BaseController
         model.put("factorForm", new FactorForm());
         model.put("investment", investment);
         return "addFactor";
-    }  
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public @ResponseBody
+    String update(@RequestParam(value = "name") String name, @RequestParam(value = "value") String value, @RequestParam(value = "pk") String pk,  HttpServletRequest request) {
+        InfluenceFactor f = dataAccess.getFactorById(Long.parseLong(pk));
+        switch(name){
+            case "name":
+                f.setName(value);
+                break;
+            case "description":
+                f.setDescription(value);
+                break;
+        }
+        dataAccess.updateInfluencefactor(f);
+        return "";
+    }
     
 }

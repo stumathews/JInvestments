@@ -17,6 +17,12 @@ public class AssetRegion implements Serializable
     @Fetch
     private Set<Investment> investments = new HashSet<>();
 
+    public String getDescription() {
+        return description;
+    }
+
+    private String description;
+
     public Set<Investment> getInvestments()
     {
         return investments;
@@ -95,5 +101,9 @@ public class AssetRegion implements Serializable
             return false;
         }
         return Objects.equals(this.name, other.name);
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

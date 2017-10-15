@@ -124,6 +124,13 @@ public class DataAccess
     }
 
     @Transactional
+    public InfluenceFactor updateInfluencefactor(InfluenceFactor factor)
+    {
+        return factorRepository.save(factor);
+    }
+
+
+    @Transactional
     public InfluenceFactor getFactorById(Long fid)
     {
         return factorRepository.findOne(fid);
@@ -237,5 +244,20 @@ public class DataAccess
     {
         groupRepository.delete(group);
     }
-    
+
+    @Transactional
+    public InvestmentGroup updateGroup(InvestmentGroup g)
+    {
+        return groupRepository.save(g);
+    }
+
+    @Transactional
+    public AssetRegion updateRegion(AssetRegion r) {
+        return assetRegionRepository.save(r);
+    }
+
+    @Transactional
+    public Risk updateRisk(Risk r) {
+        return riskRepository.save(r);
+    }
 }

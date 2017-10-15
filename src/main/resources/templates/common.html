@@ -34,6 +34,20 @@
     <a class="btn btn-primary" th:href="|/investments/populateDummyData|">Populate dummy data</a>
 </div>
 
+<div id="css" th:fragment="css">
+    <!-- inserted via template -->
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />
+    <link rel="stylesheet" th:href="@{/webjars/x-editable-bootstrap3/1.5.1/css/bootstrap-editable.css}" href="bootstrap-editable/css/bootstrap-editable.css"/>
+</div>
+
+<div id="css" th:fragment="javascript">
+    <!-- Inserted via template -->
+    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
+    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:src="@{/webjars/x-editable-bootstrap3/1.5.1/js/bootstrap-editable.js}" src="bootstrap-editable/js/bootstrap-editable.js"></script>
+    <script th:src="@{/common.js}"/>
+</div>
 
 <div id="generic_webflow_diag" th:fragment="generic_webflow_diag">
     <div class="alert alert-warning">

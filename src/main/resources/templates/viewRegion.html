@@ -2,8 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Region details</title>
-        <link rel="stylesheet" th:href="@{/style.css}" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
+        <div th:replace="common :: css"></div>
     </head>
     <body>        
         <div class="col-md-2">
@@ -12,7 +11,9 @@
             </div>
         </div>
         <div class="col-md-10">
-            <h1 th:text="${region.name}">Region details</h1>
+            <h1><a id="name" data-type="text" data-pk="1" th:attr="data-pk=${region.id},data-title='Enter your data',data-url=@{/region/update}"  data-url="/region/update" data-title="Enter data" th:text="${region.name}">Name</a></h1>
+            Description
+            <p><a id="description" data-type="text" data-pk="1" th:attr="data-pk=${region.id},data-title='Enter your data',data-url=@{/region/update}"  data-url="/region/update" data-title="Enter data" th:text="${region.description}">Description</a></p>
             <table class="table table-hover" >
                     <thead>
                         <th>Investment Name</th>
@@ -32,15 +33,15 @@
                 </table>             
                 
         </div>
-        
-       
-    <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
-    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
-    <script th:src="@{/common.js}"/>
+
+    <div th:replace="common :: javascript"></div>
     <script th:inline="javascript">
     /*<![CDATA[*/
     $(document).ready(function(){
-    }
+        $.fn.editable.defaults.mode = 'inline';
+        $('#name').editable();
+        $('#description').editable();
+    });
     /*]]>*/
     </script>
     </body>

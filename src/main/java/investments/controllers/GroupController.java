@@ -7,14 +7,14 @@ package investments.controllers;
 
 import investments.BOLO.GroupAndInvestmentForm;
 import investments.BOLO.NewChildGroupForm;
+import investments.db.del.InfluenceFactor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import investments.db.DataAccess;
 import investments.db.del.Investment;
 import investments.db.del.InvestmentGroup;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -116,6 +116,22 @@ public class GroupController extends BaseController
                         
         model.put("group", parent);
         return "viewGroup";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public @ResponseBody
+    String update(@RequestParam(value = "name") String name, @RequestParam(value = "value") String value, @RequestParam(value = "pk") String pk, HttpServletRequest request) {
+        InvestmentGroup g = dataAccess.getGroupById(Long.parseLong(pk));
+        switch(name){
+            case "name":
+                g.setName(value);
+                break;
+            case "description":
+                g.setDescription(value);
+                break;
+        }
+        dataAccess.updateGroup(g);
+        return "";
     }
 }
 

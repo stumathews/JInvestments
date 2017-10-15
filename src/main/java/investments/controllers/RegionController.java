@@ -9,13 +9,12 @@ import investments.BOLO.RegionAndInvestmentForm;
 import static investments.controllers.BaseController.logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import investments.db.DataAccess;
 import investments.db.del.AssetRegion;
 import investments.db.del.InfluenceFactor;
 import investments.db.del.Investment;
+
 import java.util.HashSet;
 
 import java.util.List;
@@ -89,6 +88,21 @@ public class RegionController extends BaseController
         String referer = request.getHeader("Referer");
         return "redirect:"+ referer;
         
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public @ResponseBody
+    String update(@RequestParam(value = "name") String name, @RequestParam(value = "value") String value, @RequestParam(value = "pk") String pk, HttpServletRequest request) {
+        AssetRegion r = dataAccess.getRegionById(Long.parseLong(pk));
+        switch(name){
+            case "name":
+                r.setName(value);
+                break;
+            case "description":
+                r.setDescription(value);
+        }
+        dataAccess.updateRegion(r);
+        return "";
     }
 }
 

@@ -216,7 +216,7 @@ public class InvestmentController extends BaseController
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
-    String updateDisplayName(@RequestParam(value = "name") String name, @RequestParam(value = "value") String value, @RequestParam(value = "pk") String pk,  HttpServletRequest request) {
+    String update(@RequestParam(value = "name") String name, @RequestParam(value = "value") String value, @RequestParam(value = "pk") String pk,  HttpServletRequest request) {
         Investment i = dataAccess.getInvestmentById(Long.parseLong(pk));
         switch(name){
             case "name":
@@ -228,7 +228,9 @@ public class InvestmentController extends BaseController
             case "valueProposition":
                 i.setValueProposition(value);
                 break;
-
+            case "desirabilityStatement":
+                i.setDesirabilityStatement(value);
+                break;
         }
         dataAccess.updateInvestment(i);
         return "";

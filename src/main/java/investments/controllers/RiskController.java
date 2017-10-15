@@ -8,9 +8,7 @@ package investments.controllers;
 import investments.BOLO.RiskAndInvestmentForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import investments.db.DataAccess;
 import investments.db.del.Investment;
 import investments.db.del.InvestmentGroup;
@@ -21,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
@@ -93,6 +92,22 @@ public class RiskController extends BaseController
         String referer = request.getHeader("Referer");
         return "redirect:"+ referer;
         
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public @ResponseBody
+    String update(@RequestParam(value = "name") String name, @RequestParam(value = "value") String value, @RequestParam(value = "pk") String pk, HttpServletRequest request) {
+        Risk r = dataAccess.getRiskById(Long.parseLong(pk));
+        switch(name){
+            case "name":
+                r.setName(value);
+                break;
+            case "description":
+                r.setDescription(value);
+                break;
+        }
+        dataAccess.updateRisk(r);
+        return "";
     }
 }
 
