@@ -4,9 +4,7 @@ import investments.db.DataAccess;
 import investments.db.del.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -214,5 +212,25 @@ public class InvestmentController extends BaseController
         model.put("investment", new Investment());
         model.put("regions", dataAccess.getAllRegions());
         return "addinvestment";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public @ResponseBody
+    String updateDisplayName(@RequestParam(value = "name") String name, @RequestParam(value = "value") String value, @RequestParam(value = "pk") String pk,  HttpServletRequest request) {
+        Investment i = dataAccess.getInvestmentById(Long.parseLong(pk));
+        switch(name){
+            case "name":
+                i.setName(value);
+                break;
+            case "description":
+                i.setDescription(value);
+                break;
+            case "valueProposition":
+                i.setValueProposition(value);
+                break;
+
+        }
+        dataAccess.updateInvestment(i);
+        return "";
     }
 }

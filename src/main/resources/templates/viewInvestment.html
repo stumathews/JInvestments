@@ -3,7 +3,8 @@
     <head>
         <title>Investment Tracking</title>
         <link rel="stylesheet" th:href="@{/style.css}" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />        
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" href="bootstrap.min.css"  media="screen" />
+        <link rel="stylesheet" th:href="@{/webjars/x-editable-bootstrap3/1.5.1/css/bootstrap-editable.css}" href="bootstrap-editable/css/bootstrap-editable.css"/>
     </head>
     <body>        
         <div class="col-md-2">
@@ -12,12 +13,16 @@
             </div>
         </div>
         <div class="col-md-5">
-        <h1 th:text="${investment.name}">Investment</h1>
-            <p th:text="${investment.description}"></p>
-            
-            <dl id="definitions" class="dl-horizontal">                    
+        <h1><a id="name" data-type="text" data-pk="1" th:attr="data-pk=${investment.id},data-title='Enter your new investment name',data-url=@{/investments/update}"  data-url="/investments/update" data-title="Enter username" th:text="${investment.name}">Investment</a></h1>
+            <p><a id="description" data-type="text" data-pk="1" th:attr="data-pk=${investment.id},data-title='Enter your new data',data-url=@{/investments/update}"  data-url="/investments/update" data-title="Enter data" th:text="${investment.description}">Description</a></p>
+            <dl id="definitions" class="dl-horizontal">
             <dt>Value proposition</dt>
-            <dd th:text="${investment.valueProposition}">value proposition</dd>
+            <dd><a id="valueProposition" data-type="text"
+                                         data-pk="1"
+                                         th:attr="data-pk=${investment.id},data-title='Enter your new value proposition',data-url=@{/investments/update}"
+                                         data-url="/investments/update"
+                                         data-title="Enter data"
+                                         th:text="${investment.valueProposition}">value proposition</a></dd>
             <dt>Desirability proposition</dt>
             <dd th:text="${investment.desirabilityStatement}">desirabilityStatement</dd>                    
             <dt>Initial investment(£)</dt>
@@ -116,11 +121,17 @@
        
     <script src="@{/themes/jquery.js}" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"/>
     <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"/>
+    <script th:src="@{/webjars/x-editable-bootstrap3/1.5.1/js/bootstrap-editable.js}" src="bootstrap-editable/js/bootstrap-editable.js"></script>
     <script th:src="@{/common.js}"/>
     <script th:inline="javascript">
     /*<![CDATA[*/
     $(document).ready(function(){
-        
+
+        $.fn.editable.defaults.mode = 'inline';
+        $('#name').editable();
+        $('#valueProposition').editable();
+        $('#description').editable();
+
         /* This url might help look up funds by name
          * http://autoc.finance.yahoo.com/autoc?query=LifeStrategy%2080&region=US&lang=en&callback=YAHOO.Finance.SymbolSuggest.ssCallback
          * results:
