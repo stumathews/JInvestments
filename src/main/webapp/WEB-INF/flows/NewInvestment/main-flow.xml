@@ -2,11 +2,8 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
-http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"> 
-    
-    <on-start>        
-        <evaluate expression="investmentService.GetInvestmentFormFromFlowRequestContext(flowRequestContext)" result="flowScope.investmentForm"/>
-    </on-start>
+http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+    <var name="investmentForm" class="investments.BOLO.InvestmentForm"/>
     <view-state id="collect_basics" 
                 model="investmentForm"
                 view="NewInvestmentFlowViews/collect_basics">                
@@ -19,9 +16,6 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
         <on-entry>                        
             <evaluate result="flowScope.influenceFactors" expression="dataAccess.getAllFactors()"/>              
         </on-entry>
-        <!--<on-render>
-            <evaluate expression="investmentForm.selectedFactors.clear()" />
-        </on-render>        -->
         <transition on="next" to="collect_risks"/>
         <transition on="add_factor" to="add_factor"/>
     </view-state>
@@ -37,9 +31,6 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
         <on-entry>
             <evaluate expression="flowScope.risks = dataAccess.getAllRisks()"/>
         </on-entry>
-        <!--<on-render>
-            <evaluate expression="investmentForm.selectedRisks.clear()"/>
-        </on-render>-->
         <transition on="next" to="collect_regions"/>        
         <transition on="add_risk" to="add_risk"/>  
     </view-state>
@@ -55,9 +46,6 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
         <on-entry>
             <evaluate expression="flowScope.regions = dataAccess.getAllRegions()"/>
         </on-entry>
-        <!--<on-render>
-            <evaluate expression="investmentForm.selectedRegions.clear()"/>
-        </on-render>-->
         <transition on="next" to="collect_groups"/>
         <transition on="add_region" to="add_region"/>  
     </view-state>
@@ -73,11 +61,6 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
         <on-entry>                        
             <evaluate expression="flowScope.groups = dataAccess.getAllGroups()"/>              
         </on-entry>
-        <!--
-        <on-render>
-            <evaluate expression="investmentForm.selectedGroups.clear()"/>
-        </on-render>
-        -->
         <transition on="next" to="summary"/>
         <transition on="add_group" to="add_group"/>  
     </view-state>
@@ -95,7 +78,6 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
         </on-entry>
         <transition on="commit" to="commit" />
     </view-state>
- 
     
     <action-state id="commit">
         <evaluate expression="flowScope.groups = investmentService.saveInvestmentFormFlow(investmentForm)"/>
