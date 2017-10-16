@@ -75,7 +75,8 @@ public class InvestmentsApi
         return graphDataToD3Format(result.iterator(),by);
     }
     
-    private Map<String, Object> graphDataToD3Format(Iterator<Map<String, Object>> result, String by) {
+    private Map<String, Object> graphDataToD3Format(Iterator<Map<String, Object>> result, String by)
+    {
         List<Map<String,Object>> nodes = new ArrayList<>();
         List<Map<String,Object>> links= new ArrayList<>();
         int i=0;
@@ -97,7 +98,8 @@ public class InvestmentsApi
         return toMap("nodes", nodes, "links", links);
     }
 
-    private Map<String, Object> toMap(String key1, Object value1, String key2, Object value2) {
+    private Map<String, Object> toMap(String key1, Object value1, String key2, Object value2)
+    {
         Map<String, Object> result = new HashMap<>(2);
         result.put(key1,value1);
         result.put(key2,value2);

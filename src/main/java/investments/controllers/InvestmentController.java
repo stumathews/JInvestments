@@ -5,10 +5,8 @@ import investments.db.del.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -65,8 +63,7 @@ public class InvestmentController extends BaseController
                 localInvestment.setSymbol("CTX");
                 localInvestment.setValue(r.nextFloat());
                 localInvestment.setValueProposition("The value proposition statement goes in here");
-                
-                                
+
                 // Create dummy risks
                 if(risks.isEmpty())
                 {
@@ -205,14 +202,6 @@ public class InvestmentController extends BaseController
         logger.info("Creating investment: " + investmentForm.getName());
         return "redirect:/investments/";
     }   
-    
-    @RequestMapping(value = "/ShowAddInvestmentPage",method = RequestMethod.GET)
-    public String addInvestmentPage(Map<String, Object> model)
-    {        
-        model.put("investment", new Investment());
-        model.put("regions", dataAccess.getAllRegions());
-        return "addinvestment";
-    }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody

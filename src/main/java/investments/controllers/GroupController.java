@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package investments.controllers;
 
 import investments.BOLO.GroupAndInvestmentForm;
 import investments.BOLO.NewChildGroupForm;
-import investments.db.del.InfluenceFactor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import investments.db.DataAccess;
 import investments.db.del.Investment;
 import investments.db.del.InvestmentGroup;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +51,6 @@ public class GroupController extends BaseController
         dataAccess.updateInvestment(investment);
         
         return "redirect:/investments/"+investment.getId()+"/view";
-        
     }
         
     @RequestMapping(value="/newToInvestment", method=RequestMethod.GET)

@@ -9,7 +9,6 @@ import org.springframework.data.neo4j.config.Neo4jConfiguration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
 @EnableTransactionManagement 
@@ -32,12 +31,4 @@ class ApplicationConfig extends Neo4jConfiguration
     {
         return LoggerFactory.getLogger(this.getClass());
     }
-    
-    /*@Bean
-    public CommonsMultipartResolver multipartResolver() {
-    logger().info("Loading the multipart resolver");
-    CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-    return multipartResolver;
-}*/
-   
 }
