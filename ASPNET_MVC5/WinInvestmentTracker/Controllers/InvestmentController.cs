@@ -21,7 +21,7 @@ namespace WinInvestmentTracker.Controllers
         }
         public ActionResult Api()
         {
-            return Content("No API yet");
+            return Json(db.Investments.ToList(), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()
@@ -50,6 +50,30 @@ namespace WinInvestmentTracker.Controllers
         {            
             return View(db.Investments.SingleOrDefault(investment => investment.ID == id));
         }
-        
+
+        public ActionResult InvestmentByRisk(int id)
+        {
+            var risk = db.Risks.SingleOrDefault(r => r.ID == id);
+            var risks = risk.Investments;
+            ViewBag.ExtraTitle = string.Format("By Investment Risk: {0}", risk.Name);
+            return View("Index", risks);
+        }
+
+        public ActionResult InvestmentByFactor(int id)
+        {
+            return View("Index", db.Factors.SingleOrDefault(x => x.ID == id).Investments);
+        }
+
+        public ActionResult InvestmentByGroup(int id)
+        {
+            return View("Index", db.Groups.SingleOrDefault(x => x.ID == id).Investments);
+        }
+
+        public ActionResult InvestmentByRegion(int id)
+        {
+            return View("Index", db.Regions.SingleOrDefault(x => x.ID == id).Investments);
+        }
+
+
     }
 }

@@ -109,13 +109,13 @@ namespace WinInvestmentTracker.Models.DAL
             {
                 var investment = new Investment
                 {
-                    Description = "Description",
-                    Symbol = "symbol",
-                    DesirabilityStatement = "default desirabliity statement#" + i,
-                    InitialInvestment = i,
-                    Name = "investment#" + i,
-                    Value = i,
-                    ValueProposition = "value proposition#" + i
+                    Description = "Description of investment",
+                    Symbol = "Symbol associationed with investment",
+                    DesirabilityStatement = "Default desirabliity statement#" + i,
+                    InitialInvestment = new Random(i+1).Next(100),
+                    Name = "Investment Name#" + i,
+                    Value = new Random(i).Next(100),
+                    ValueProposition = "Investmetn value proposition#" + i
                 };
 
                 investment.Factors = new List<InvestmentInfluenceFactor>();
@@ -128,7 +128,7 @@ namespace WinInvestmentTracker.Models.DAL
                 int gmax = gmax = new Random(DateTime.Now.Millisecond).Next(1, groups.Count);
                 for (int g = 0; g < gmax; g++)
                 {
-                    var index = new Random(g).Next(1, groups.Count);
+                    var index = new Random(DateTime.Now.Millisecond).Next(1, groups.Count);
                     var group = groups[index];
                     group.Investments.Add(investment);
                     investment.Groups.Add(group);

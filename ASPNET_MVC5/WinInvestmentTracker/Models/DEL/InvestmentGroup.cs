@@ -14,7 +14,7 @@ namespace WinInvestmentTracker.Models
         public String Description { get; set; }
         public String Type { get; set; }
         public ICollection<InvestmentGroup> Groups { get; set; }
-        public ICollection<Investment> Investments { get; set; }
+        public virtual ICollection<Investment> Investments { get; set; }
         // Parent public virtual InvestmentGroup InvestmentGroup { get; set; }
         
     }

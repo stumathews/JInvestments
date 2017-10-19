@@ -42,5 +42,10 @@ namespace WinInvestmentTracker.Controllers
         {
             return View(db.Risks.SingleOrDefault(risk => risk.ID == id));
         }
+
+        public ActionResult Api()
+        {
+            return Json(db.Risks.ToList(), JsonRequestBehavior.AllowGet);
+        }
     }
 }

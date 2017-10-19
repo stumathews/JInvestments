@@ -52,11 +52,9 @@ namespace WinInvestmentTracker.Controllers
             return View(db.Factors.Single(factor => factor.ID == id));
         }
 
-        public ActionResult TryJson()
+        public ActionResult Api()
         {
-            // No layout stuff is applied.
             return Json(db.Factors.ToList(), JsonRequestBehavior.AllowGet);
-            //TODO: Look at the ActionResult types on the MSDN docs
         }
     }
 }

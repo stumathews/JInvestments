@@ -7,13 +7,10 @@
 <h2>Investment Groupings</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<p>
     Investments can be grouped into the same containers to add a relationship between them.
     Grouped investments share a commonality.
 </p>
-<p>@Html.ActionLink("Create New", "Create", "Group", new { @class = "btn btn-primary" })</p>
+<p>@Html.ActionLink("Create New", "Create", "Group", null, new { @class = "btn btn-primary" })</p>
 <p th:text="${groups.isEmpty()} == false ? '' : 'No groups in the database.'">These are all the factors that are loaded in the database</p>
 <table class="table table-hover">
     <thead>
@@ -31,12 +28,12 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(group.Name, "View", "Group", new { id = group.ID }, null)
+                @Html.ActionLink(group.Name, "Details", "Group", new { id = group.ID }, null)
             </td>
 
             <td>@group.Description</td>
             <td>@group.Type</td>
-            <td>n/a</td>
+            <td>@Html.ActionLink((group.Investments == null ? "0" : group.Investments.Count.ToString()), "InvestmentByGroup", "Investment", new { ID = group.ID }, null)</td>
             <td>n/a</td>
             <td>n/a</td>
             <td>@Html.ActionLink("delete", "delete", "Group", new { id = 3 }, null)</td>

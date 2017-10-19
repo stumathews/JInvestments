@@ -32,13 +32,13 @@
     {
         <tr>
             <td>                
-                @Html.ActionLink(risk.Name, "view", "Risk",new { id = "3" })
+                @Html.ActionLink(risk.Name, "details", "Risk", new { id = "3" }, null)
             </td>
 
             <td>@risk.Description</td>
             <td>@risk.Type.ToString()</td>
-            <td>@risk.Investments.Count</td>
-            <td>@Html.ActionLink("delete", "delete", "Risk", new { id = "3" })</td>
+            <td>@Html.ActionLink(risk.Investments.Count.ToString(), "InvestmentByRisk", "Investment", new { Id=risk.ID }, null)</td>
+            <td>@Html.ActionLink("delete", "delete", "Risk", new { id = "3" }, null)</td>
         </tr>            
     }
 </table>

@@ -28,7 +28,7 @@
             </td>
 
             <td>@factor.Description</td>
-            <td>@factor.Investments.Count</td>
+            <td>@Html.ActionLink(factor.Investments.Count.ToString(), "InvestmentByFactor", "Investment", new { ID = factor.ID }, null)</td>
             <td>@Html.ActionLink("delete", "delete", "Factor", new { id=factor.ID }, null)</td>
         </tr>
     }

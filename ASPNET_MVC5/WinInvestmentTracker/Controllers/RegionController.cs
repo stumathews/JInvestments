@@ -45,5 +45,10 @@ namespace WinInvestmentTracker.Controllers
         {
             return View(db.Regions.SingleOrDefault( region => region.ID == id));
         }
+
+        public ActionResult Api()
+        {
+            return Json(db.Regions.ToList(), JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -41,5 +41,10 @@ namespace WinInvestmentTracker.Controllers
         {
             return View(db.Groups.SingleOrDefault(group => group.ID == id));
         }
+
+        public ActionResult Api()
+        {
+            return Json(db.Groups.ToList(), JsonRequestBehavior.AllowGet);
+        }
     }
 }
