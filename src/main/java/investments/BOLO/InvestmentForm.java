@@ -24,40 +24,30 @@ public class InvestmentForm extends Investment implements Serializable
     private List<AssetRegion> selectedRegions = new AutoPopulatingList<>(AssetRegion.class);
     private List<InvestmentGroup> selectedGroupIDs = new AutoPopulatingList<>(InvestmentGroup.class);
 
+    public InvestmentForm() { }
+
     public List<InfluenceFactor> getSelectedFactors() {
         return selectedFactors;
     }
-
     public void setSelectedFactors(List<InfluenceFactor> selectedFactors) {
         this.selectedFactors = selectedFactors;
     }
-
     public List<Risk> getSelectedRisks() {
         return selectedRisks;
     }
-
     public void setSelectedRisks(List<Risk> selectedRisks) {
         this.selectedRisks = selectedRisks;
     }
-
     public List<AssetRegion> getSelectedRegions() {
         return selectedRegions;
     }
-
     public void setSelectedRegions(List<AssetRegion> selectedRegions) {
         this.selectedRegions = selectedRegions;
     }
-
     public List<InvestmentGroup> getSelectedGroups() {
         return selectedGroupIDs;
     }
-
     public void setSelectedGroups(List<InvestmentGroup> selectedGroups) {
         this.selectedGroupIDs = selectedGroups;
-    }
-
-    public InvestmentForm()
-    {
-
     }
  }

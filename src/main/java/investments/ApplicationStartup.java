@@ -54,7 +54,6 @@ implements ApplicationListener<ApplicationReadyEvent> {
             try (Transaction tx = graphDatabase.beginTx()) {
                 log.info("Saving region: " + region.getName());
                 neo4jdb.save(region);
-                                
                 tx.success();
             }
         } 

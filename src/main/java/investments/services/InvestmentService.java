@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package investments.services;
 
 import investments.BOLO.InvestmentForm;
@@ -18,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.webflow.execution.RequestContext;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +61,6 @@ public class InvestmentService
         investment.setSymbol(investmentForm.getSymbol());
         investment.setValue(investmentForm.getValue());
         investment.setValueProposition(investmentForm.getValueProposition());
-        
         Investment savedInvestment = dataAccess.saveInvestment(investment);
         
         // update

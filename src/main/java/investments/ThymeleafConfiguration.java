@@ -28,22 +28,17 @@ public class ThymeleafConfiguration {
   }  
   
   @Bean   
-    public SpringTemplateEngine getTemplateEngine() {
+  public SpringTemplateEngine getTemplateEngine() {
     	SpringTemplateEngine templateEngine = new SpringTemplateEngine();
     	templateEngine.setTemplateResolver(defaultTemplateResolver());
-	return templateEngine;
-    }
-  
-    @Bean
-    public ThymeleafViewResolver thymeleafViewResolver(){
-        //  compatibility with AJAX-based events (redirects) in Spring WebFlow
-    	ThymeleafViewResolver viewResolver = new ThymeleafViewResolver(); 
-        viewResolver.setViewClass(ThymeleafView.class);
-    	viewResolver.setTemplateEngine(getTemplateEngine());
+    	return templateEngine;
+  }
+
+  @Bean public ThymeleafViewResolver thymeleafViewResolver(){
+    //  compatibility with AJAX-based events (redirects) in Spring WebFlow
+    ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+    viewResolver.setViewClass(ThymeleafView.class);
+    viewResolver.setTemplateEngine(getTemplateEngine());
 	return viewResolver;
-    }
-    
-        
-    
-    
+  }
 }
