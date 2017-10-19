@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Investment Groupings</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,6 +13,7 @@
     Investments can be grouped into the same containers to add a relationship between them.
     Grouped investments share a commonality.
 </p>
+<p>@Html.ActionLink("Create New", "Create", "Group", new { @class = "btn btn-primary" })</p>
 <p th:text="${groups.isEmpty()} == false ? '' : 'No groups in the database.'">These are all the factors that are loaded in the database</p>
 <table class="table table-hover">
     <thead>
@@ -30,17 +31,17 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(group.Name, "View",new { id = 3 })
+                @Html.ActionLink(group.Name, "View", "Group", new { id = group.ID }, null)
             </td>
 
             <td>@group.Description</td>
             <td>@group.Type</td>
-            <td>3</td>
-            <td>3</td>
-            <td>none</td>
-            <td>@Html.ActionLink("delete", "delete", new { id = 3 })</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>@Html.ActionLink("delete", "delete", "Group", new { id = 3 }, null)</td>
         </tr>
     }
 
 </table>
-<a class="btn btn-primary" th:href="|/NewRegion|">New Group</a>
+

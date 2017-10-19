@@ -16,5 +16,30 @@ namespace WinInvestmentTracker.Controllers
         {         
             return View(db.Groups.ToList());
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(InvestmentGroup group)
+        {
+            try
+            {
+                db.Groups.Add(group);
+                db.SaveChanges();
+                return RedirectToAction("Details", group);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            return View(db.Groups.SingleOrDefault(group => group.ID == id));
+        }
     }
 }

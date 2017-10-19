@@ -27,13 +27,13 @@
     {
         <tr>
             <td>                
-                @Html.ActionLink(investment.Name, "details", "Investment", new { id = 3 })
+                @Html.ActionLink(investment.Name, "details", "Investment", new { id = investment.ID }, null)
             </td>
             <td>
                 @foreach (var region in investment.Regions)
                 {
                 <span>
-                    @Html.ActionLink(region.Name, "view", new { id = region.ID }) <br />
+                    @Html.ActionLink(region.Name, "details", "Region", new { id = region.ID }, null) <br />
                 </span>
                 }
             </td>
@@ -41,7 +41,7 @@
                 @foreach (var risk in investment.Risks)
                 {
                     <span>
-                        @Html.ActionLink(risk.Name, "view", new { id = risk.ID }) <br />
+                        @Html.ActionLink(risk.Name, "details", "Risk", new { id = risk.ID }, null) <br />
                     </span>
                 }
             </td>
@@ -49,7 +49,7 @@
                 @foreach (var factor in investment.Factors)
                 {
                     <span>
-                        @Html.ActionLink(factor.Name, "view", new { id = factor.ID }) <br/>
+                        @Html.ActionLink(factor.Name, "details", "Factor", new { id = factor.ID }, null) <br/>
                     </span>
                 }
             </td>
@@ -57,17 +57,16 @@
                 @foreach (var group in investment.Groups)
                 {
                     <span>
-                        @Html.ActionLink(group.Name, "view", new { id = group.ID }) <br/>
+                        @Html.ActionLink(group.Name, "details", "Group", new { id = group.ID }, null) <br/>
                     </span>
                 }
             </td>
             <td>
                 <span>@investment.Value</span><br />
             </td>
-            <td><a href="@Url.Action("delete", "Investment")">Delete</a></td>            
+            <td>@Html.ActionLink("delete", "delete", "Investment", new { id = investment.ID })</td>            
         </tr>
     }
 
 </table>
 @Html.ActionLink("New investment", "create", "Investment", new { @class= "btn btn-primary" })
-@Html.ActionLink("Populate dummy data", "PopulateDummyData", "Investment", new { @class= "btn btn-primary" })

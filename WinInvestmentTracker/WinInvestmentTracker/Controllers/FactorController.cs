@@ -33,10 +33,23 @@ namespace WinInvestmentTracker.Controllers
 
         // Create a new Investment
         [HttpPost]
-        public ActionResult Create(Models.Investment investment)
+        public ActionResult Create(InvestmentInfluenceFactor factor)
         {
-            // Persist the investment to the database
-            return View();
+            try
+            {
+                db.Factors.Add(factor);
+                db.SaveChanges();
+                return RedirectToAction("Details", factor); 
+            }
+            catch
+            {                
+                return View(factor);
+            }            
+        }
+
+        public ActionResult Details(int id)
+        {
+            return View(db.Factors.Single(factor => factor.ID == id));
         }
 
         public ActionResult TryJson()

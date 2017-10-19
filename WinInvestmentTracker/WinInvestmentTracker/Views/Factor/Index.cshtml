@@ -4,15 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h1>Factors</h1>
+<h1>Investment Influence Factors</h1>
 <p>
     Factors are anything what influences the companies balance sheet(assets and liabilities) or income(profit/loss) statement.
     These factors usually affect the underlying value of the investment either positively and negatively.
 </p>
 <p>Try to keep factors are specific as possible to the companies products and services such as 'Cost of Steel' when considering a steel manufacturing company.</p>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@Html.ActionLink("Create New", "Create", "Factor", new { @class = "btn btn-primary" })
 <table class="table table-hover">
     <thead>
         <tr>
@@ -25,13 +23,13 @@
     @foreach (var factor in Model)
     {
         <tr>
-            <td>
-                @Html.ActionLink(factor.Name,"view","Factor")
+            <td>                
+                @Html.ActionLink(factor.Name, "details", "Factor", new { ID = factor.ID }, null)
             </td>
 
-            <td>factor.name</td>
-            <td>3</td>
-            <td>@Html.ActionLink("delete", "view", "Factor", new { id=3})</td>
+            <td>@factor.Description</td>
+            <td>@factor.Investments.Count</td>
+            <td>@Html.ActionLink("delete", "delete", "Factor", new { id=factor.ID }, null)</td>
         </tr>
     }
 

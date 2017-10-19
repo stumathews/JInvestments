@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL;
 
 namespace WinInvestmentTracker.Controllers
@@ -20,6 +21,26 @@ namespace WinInvestmentTracker.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(InvestmentRisk risk)
+        {
+            try
+            {
+                db.Risks.Add(risk);
+                db.SaveChanges();
+                return RedirectToAction("Details", risk);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            return View(db.Risks.SingleOrDefault(risk => risk.ID == id));
         }
     }
 }

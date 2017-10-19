@@ -16,7 +16,7 @@
 </p>
 
 <p>
-    @Html.ActionLink("Create new risk", "create", "Risk")
+    @Html.ActionLink("New Risk", "Create", "Risk", new { @class = "btn btn-primary" })
 </p>
 <table class="table table-hover">
     <thead>
@@ -37,9 +37,9 @@
 
             <td>@risk.Description</td>
             <td>@risk.Type.ToString()</td>
-            <td>3</td>
+            <td>@risk.Investments.Count</td>
             <td>@Html.ActionLink("delete", "delete", "Risk", new { id = "3" })</td>
         </tr>            
     }
 </table>
-<a class="btn btn-primary" th:href="|/NewRegion|">New Risk</a>
+

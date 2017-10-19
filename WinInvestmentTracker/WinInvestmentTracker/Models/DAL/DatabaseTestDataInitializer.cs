@@ -57,15 +57,15 @@ namespace WinInvestmentTracker.Models.DAL
             db.SaveChanges();
 
             var groups = new List<InvestmentGroup> {
-                new InvestmentGroup{ Name = "Value Investments", Description = "high current p/e with potential to maintain.", Type = "" },
-                new InvestmentGroup{ Name = "Growth Investments", Description = "Low p/e with potential to grow", Type = "" },
-                new InvestmentGroup{ Name = "Momentum Investments", Description = "Fashionalble trends", Type = "" },
-                new InvestmentGroup{ Name = "Hybrid Investments", Description = "Bit of everything", Type = "" },
-                new InvestmentGroup{ Name = "Tactical", Description = "carefully considered group", Type = "" },
-                new InvestmentGroup{ Name = "Strategic", Description = "Assets with a strategic goal associated with them", Type = "" },
-                new InvestmentGroup{ Name = "Shares", Description = "Equity in company shares - fractional part owner", Type = "" },
-                new InvestmentGroup{ Name = "Gold", Description = "ommodity which is valuable when markets are volatile", Type = "" },
-                new InvestmentGroup{ Name = "Emerging markets", Description = "places like Japan, Turkey, Brazil, Taiwan etc.", Type = "" },
+                new InvestmentGroup{ Name = "Value Investments", Description = "high current p/e with potential to maintain.", Type = "Container" },
+                new InvestmentGroup{ Name = "Growth Investments", Description = "Low p/e with potential to grow", Type = "Container" },
+                new InvestmentGroup{ Name = "Momentum Investments", Description = "Fashionalble trends", Type = "Container" },
+                new InvestmentGroup{ Name = "Hybrid Investments", Description = "Bit of everything", Type = "Container" },
+                new InvestmentGroup{ Name = "Tactical", Description = "carefully considered group", Type = "Container" },
+                new InvestmentGroup{ Name = "Strategic", Description = "Assets with a strategic goal associated with them", Type = "Container" },
+                new InvestmentGroup{ Name = "Shares", Description = "Equity in company shares - fractional part owner", Type = "Container" },
+                new InvestmentGroup{ Name = "Gold", Description = "ommodity which is valuable when markets are volatile", Type = "Container" },
+                new InvestmentGroup{ Name = "Emerging markets", Description = "places like Japan, Turkey, Brazil, Taiwan etc.", Type = "Container" },
             };
 
             groups.ForEach(g => g.Investments = new List<Investment>());
@@ -123,31 +123,31 @@ namespace WinInvestmentTracker.Models.DAL
                 investment.Regions = new List<Region>();
                 investment.Risks = new List<InvestmentRisk>();
 
-                // now randonly assign some of the risks/factos/groups/regions to this investment
-
+                // now randomly assign some of the risks/factors/groups/regions to this investment
+                // Get a randome number/sequence of items and then of those sequnece, choose a randome item each value in the sequence
                 int gmax = gmax = new Random(DateTime.Now.Millisecond).Next(1, groups.Count);
-
                 for (int g = 0; g < gmax; g++)
                 {
-                    InvestmentGroup group = groups[g];
+                    var index = new Random(g).Next(1, groups.Count);
+                    var group = groups[index];
                     group.Investments.Add(investment);
                     investment.Groups.Add(group);
                 }
 
                 int fmax = new Random(DateTime.Now.Millisecond).Next(1, factors.Count);
-
                 for (int f = 0; f < fmax; f++)
                 {
-                    InvestmentInfluenceFactor factor = factors[f];
+                    var index = new Random(f).Next(1, factors.Count);
+                    var factor = factors[index];
                     factor.Investments.Add(investment);
                     investment.Factors.Add(factor);
                 }
 
                 int rmax = new Random(DateTime.Now.Millisecond).Next(1, risks.Count);
-
                 for (int r = 0; r < rmax; r++)
                 {
-                    InvestmentRisk risk = risks[r];
+                    int index = new Random(r).Next(1, risks.Count);
+                    var risk = risks[index];
                     risk.Investments.Add(investment);
                     investment.Risks.Add(risk);
                 }
@@ -155,7 +155,8 @@ namespace WinInvestmentTracker.Models.DAL
                 int regionmax = new Random(DateTime.Now.Millisecond).Next(1, regions.Count);
                 for (int r = 0; r < rmax; r++)
                 {
-                    Region region = regions[r];
+                    int index = new Random(r).Next(1, regions.Count);
+                    var region = regions[index];
                     region.Investments.Add(investment);
                     investment.Regions.Add(region);
                 }

@@ -25,18 +25,25 @@ namespace WinInvestmentTracker.Controllers
         {
             return View();
         }
+        [HttpPost]
         public ActionResult Create(Models.Region region)
         {
             try
             {
-                // TODO: Add insert logic here
-                return RedirectToAction("Index");
+                db.Regions.Add(region);
+                db.SaveChanges();
+                return RedirectToAction("Details", region);
             }
             catch
             {
                 // was a problem, go back to yourself!
                 return View();
             }
+        }
+
+        public ActionResult Details(int id)
+        {
+            return View(db.Regions.SingleOrDefault( region => region.ID == id));
         }
     }
 }

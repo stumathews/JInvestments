@@ -152,7 +152,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\RiskType.cs" />
     <Compile Include="Common\RunThisAfterActionCompleteAttribute.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FactorController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -227,9 +226,16 @@
     <Content Include="Views\Region\Index.cshtml" />
     <Content Include="Views\Risk\Index.cshtml" />
     <Content Include="Views\Shared\_SideNav.cshtml" />
-    <Content Include="Views\Investment\Details.cshtml" />
     <Content Include="Views\Region\Create.cshtml" />
     <Content Include="Views\Investment\Create.cshtml" />
+    <Content Include="Views\Factor\Create.cshtml" />
+    <Content Include="Views\Factor\Details.cshtml" />
+    <Content Include="Views\Group\Create.cshtml" />
+    <Content Include="Views\Group\Details.cshtml" />
+    <Content Include="Views\Region\Details.cshtml" />
+    <Content Include="Views\Risk\Create.cshtml" />
+    <Content Include="Views\Risk\Details.cshtml" />
+    <Content Include="Views\Investment\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
