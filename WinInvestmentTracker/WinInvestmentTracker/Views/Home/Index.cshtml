@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Welcome home</h1>
+<h3>About</h3>
+<p>
+    Investment tracker is a platform that allows you to track aspects that affect your investments.
+    Investments that share the same risks, factors, regions and groups can be visually distinguished through the generated relationships graphs for each aspect.
+    Currently you can add <a href="#" th:href="{/investments/}">investments</a>, <a href="#" th:href="{/factors}">factors</a>, <a href="#" th:href="{/risk}">risks</a>, <a href="#" th:href="{/region}">regions</a> and <a href="#" th:href="{/group}">group</a> them.
+</p>
+<p>Written in Java using Spring 4, using Neo4J NoSQL graph database for data persistance and D3 visualization javascript API.<br /> Bootstrap and jQuery used in the front end.</p>
+<p>This app is primarily meant to be used to log your investments, define them and understand the affects that factors have on your investments.</p>
+<p>The particularly interesting aspect of this project was incorporating Neo4J and visualizingthe inherent relationships its defined to hold in interactive graphs in the web app.</p>
+<h3>Requirements</h3>
+<ol>
+    <li>Place to keep track of all my investments</li>
+    <li>See relationship between investments</li>
+    <li>Predict the value of investments based on the relationships to known outcomes</li>
+    <li>Track the history of an investment</li>
+</ol>
+You are using @Request.Browser.Browser  and that's OK!
+
+@{
+    sayHello("Stuart");
+}
+
+@helper sayHello(string user)
+{
+    <p>Hello @user.ToString() from @ViewBag.Title</p>
+}

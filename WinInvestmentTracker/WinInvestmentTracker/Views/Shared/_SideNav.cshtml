@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<div id="wrapper">    
+    <img class="img-responsive" src="~/Content/Images/logo.jpg" />
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation">@Html.ActionLink("Home", "Index", "Home")</li>
+        <li role="presentation">@Html.ActionLink("Investments", "Index", "Investment")</li>
+        <li role="presentation">@Html.ActionLink("Factors", "Index", "Factor")</li>
+        <li role="presentation">@Html.ActionLink("Groups", "Index", "Group")</li>
+        <li role="presentation">@Html.ActionLink("Risks", "Index", "Risk")</li>
+        <li role="presentation">@Html.ActionLink("Regions", "Index", "Region")</li>
+    </ul>
+
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation"><a href="#">Region API</a></li>
+        <li role="presentation"><a href="#">Factors API</a></li>
+        <li role="presentation"><a href="#">Groups API</a></li>
+        <li role="presentation"><a href="#">Risks API</a></li>
+    </ul>
+
+    <h4>TODO</h4>
+    <ol>
+        <li>Add dynamic in-place ajax-type editing.</li>
+        <li>Rationalize thymleaf model strategy vs Ajax.</li>
+        <li>Activity audit trail</li>
+        <li>Add comments/notes to investments, factors, risks, </li>
+        <li>move database online and make persistant</li>
+    </ol>
+</div>

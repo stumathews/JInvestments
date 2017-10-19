@@ -1,0 +1,73 @@
+﻿@model IEnumerable < WinInvestmentTracker.Models.Investment>
+
+@{ // make csharp available!
+    // Any C-Sharp can be here
+    ViewBag.Title = "View";
+}
+
+<h1>Investments</h1>
+<p>Investments represent the assets that are valuable to you. </p>
+
+<p>
+    @Html.ActionLink("Create New Investment", "Create")
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Regions</th>
+            <th>Risks</th>
+            <th>Factors</th>
+            <th>Groups</th>
+            <th>Value</th>
+            <th></th> <!--Delete -->
+        </tr>
+    </thead>
+    @foreach (var investment in Model)
+    {
+        <tr>
+            <td>                
+                @Html.ActionLink(investment.Name, "details", "Investment", new { id = 3 })
+            </td>
+            <td>
+                @foreach (var region in investment.Regions)
+                {
+                <span>
+                    @Html.ActionLink(region.Name, "view", new { id = region.ID }) <br />
+                </span>
+                }
+            </td>
+            <td>
+                @foreach (var risk in investment.Risks)
+                {
+                    <span>
+                        @Html.ActionLink(risk.Name, "view", new { id = risk.ID }) <br />
+                    </span>
+                }
+            </td>
+            <td>
+                @foreach (var factor in investment.Factors)
+                {
+                    <span>
+                        @Html.ActionLink(factor.Name, "view", new { id = factor.ID }) <br/>
+                    </span>
+                }
+            </td>
+            <td>
+                @foreach (var group in investment.Groups)
+                {
+                    <span>
+                        @Html.ActionLink(group.Name, "view", new { id = group.ID }) <br/>
+                    </span>
+                }
+            </td>
+            <td>
+                <span>@investment.Value</span><br />
+            </td>
+            <td><a href="@Url.Action("delete", "Investment")">Delete</a></td>            
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("New investment", "create", "Investment", new { @class= "btn btn-primary" })
+@Html.ActionLink("Populate dummy data", "PopulateDummyData", "Investment", new { @class= "btn btn-primary" })

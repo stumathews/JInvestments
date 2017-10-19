@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WinInvestmentTracker.Models.Region>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Investment Regions</h1>
+<p>Investments can be within different geographic locations that have specific influences on them. Defining regions that investments share can show how these investments are affected by those influences.</p>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Count</th>
+        </tr>
+    </thead>
+    @foreach (var region in Model)
+    {
+        <tr>
+        <td>
+            @Html.ActionLink(region.Name, "View", "Create")
+        </td>
+        <td>3</td>
+        <td><a href="#">Edit(todo)</a></td>
+        </tr>
+    }
+
+</table>
+<a class="btn btn-primary" th:href="|/NewRegion|">New Region</a>
