@@ -152,6 +152,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\RiskType.cs" />
     <Compile Include="Common\RunThisAfterActionCompleteAttribute.cs" />
+    <Compile Include="Common\Utilities.cs" />
     <Compile Include="Controllers\FactorController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

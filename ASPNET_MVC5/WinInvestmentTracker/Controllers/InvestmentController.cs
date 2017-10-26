@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using WinInvestmentTracker.Common;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL;
+using WinInvestmentTracker.Common;
 
 namespace WinInvestmentTracker.Controllers
 {
@@ -91,19 +92,17 @@ namespace WinInvestmentTracker.Controllers
             return View("Index", db.Regions.SingleOrDefault(x => x.ID == id).Investments);
         }
 
+        [HttpPost]
         public ActionResult Update(string name, string value, int pk)
-        {
+        {            
             var candidate = db.Investments.Find(pk);
-            var prop = candidate.GetType().GetProperty(name, BindingFlags.Public | BindingFlags.Instance);
-            if (null != prop && prop.CanWrite)
-            {
-                prop.SetValue(candidate, value, null);
-            }
+            ReflectionUtilities.SetPropertyValue(candidate, name, value);
+            db.SaveChanges();   
 
-            db.SaveChanges();
-
-            return Json("");
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
+
+        
 
     }
 }

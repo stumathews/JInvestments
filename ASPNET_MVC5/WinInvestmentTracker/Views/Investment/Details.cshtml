@@ -7,16 +7,16 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Investment</h4>    
+    <h4><a id="@Html.NameFor(model => model.Name)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.Name</a></h4>    
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            <a>@Html.DisplayNameFor(model => model.Description)</a>
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
             <!-- @Html.DisplayFor(model => model.Description) -->
-            <a id="Description" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">Name</a>
+            <a id="Description" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.Description</a>
         </dd>
 
         <dt>
@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Symbol)
+            <a id="@Html.NameFor(model => model.Symbol)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.Symbol</a>
         </dd>
 
         <dt>
@@ -32,7 +32,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ValueProposition)
+            <a id="@Html.NameFor(model => model.ValueProposition)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.ValueProposition</a>            
         </dd>
 
         <dt>
@@ -40,7 +40,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DesirabilityStatement)
+            <a id="@Html.NameFor(model => model.DesirabilityStatement)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.DesirabilityStatement</a>            
         </dd>
 
         <dt>
@@ -48,23 +48,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.InitialInvestment)
+            <a id="@Html.NameFor(model => model.InitialInvestment)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.InitialInvestment</a>            
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
+                
         <dt>
             @Html.DisplayNameFor(model => model.Value)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Value)
+            <a id="@Html.NameFor(model => model.Value)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.Value</a>            
         </dd>
 
     </dl>
@@ -77,8 +69,13 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $.fn.editable.defaults.mode = 'inline';
-            $('#Name').editable();
-            $('#Description').editable();
+            $('#@Html.NameFor(model => model.Name)').editable();
+            $('#@Html.NameFor(model => model.Description)').editable();
+            $('#@Html.NameFor(model => model.ValueProposition)').editable();
+            $('#@Html.NameFor(model => model.Symbol)').editable();
+            $('#@Html.NameFor(model => model.DesirabilityStatement)').editable();
+            $('#@Html.NameFor(model => model.Value)').editable();
+            $('#@Html.NameFor(model => model.InitialInvestment)').editable();
         });
     </script>
 }

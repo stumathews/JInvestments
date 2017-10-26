@@ -14,8 +14,7 @@ namespace WinInvestmentTracker
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap3-editable").Include(
-                "~/Scripts/bootstrap3-editable/js/*.js"));
+            
 
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -26,6 +25,9 @@ namespace WinInvestmentTracker
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap3-editable").Include(
+                "~/Scripts/bootstrap3-editable/js/*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
