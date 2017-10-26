@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -90,6 +91,19 @@ namespace WinInvestmentTracker.Controllers
             return View("Index", db.Regions.SingleOrDefault(x => x.ID == id).Investments);
         }
 
+        public ActionResult Update(string name, string value, int pk)
+        {
+            var candidate = db.Investments.Find(pk);
+            var prop = candidate.GetType().GetProperty(name, BindingFlags.Public | BindingFlags.Instance);
+            if (null != prop && prop.CanWrite)
+            {
+                prop.SetValue(candidate, value, null);
+            }
+
+            db.SaveChanges();
+
+            return Json("");
+        }
 
     }
 }

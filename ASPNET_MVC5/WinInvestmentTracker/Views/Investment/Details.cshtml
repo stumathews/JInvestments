@@ -11,11 +11,12 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            <a>@Html.DisplayNameFor(model => model.Description)</a>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            <!-- @Html.DisplayFor(model => model.Description) -->
+            <a id="Description" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">Name</a>
         </dd>
 
         <dt>
@@ -69,5 +70,15 @@
     </dl>
 </div>
 <p>
-@Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.fn.editable.defaults.mode = 'inline';
+            $('#Name').editable();
+            $('#Description').editable();
+        });
+    </script>
+}
