@@ -36,7 +36,7 @@
             <td>@Html.ActionLink((group.Investments == null ? "0" : group.Investments.Count.ToString()), "InvestmentByGroup", "Investment", new { ID = group.ID }, null)</td>
             <td>n/a</td>
             <td>n/a</td>
-            <td>@Html.ActionLink("delete", "delete", "Group", new { id = 3 }, null)</td>
+            <td>@Html.ActionLink("delete", "delete", "Group", new { id = group.ID }, null)</td>
         </tr>
     }
 

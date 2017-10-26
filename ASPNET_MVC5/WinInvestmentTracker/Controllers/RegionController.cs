@@ -50,5 +50,20 @@ namespace WinInvestmentTracker.Controllers
         {
             return Json(db.Regions.ToList(), JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Delete(int ID)
+        {
+            var candidate = db.Regions.Find(ID);
+            return View(candidate);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Models.Region region)
+        {
+            var candidate = db.Regions.Find(region.ID);
+            db.Regions.Remove(candidate);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

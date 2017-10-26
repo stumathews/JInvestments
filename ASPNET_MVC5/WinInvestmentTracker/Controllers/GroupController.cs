@@ -46,5 +46,21 @@ namespace WinInvestmentTracker.Controllers
         {
             return Json(db.Groups.ToList(), JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Delete(int ID)
+        {
+            var candidate = db.Groups.Find(ID);
+            return View(candidate);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(InvestmentGroup group)
+        {
+            var candidate = db.Groups.Find(group.ID);
+            db.Groups.Remove(candidate);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

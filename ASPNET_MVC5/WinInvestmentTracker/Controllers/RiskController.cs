@@ -47,5 +47,20 @@ namespace WinInvestmentTracker.Controllers
         {
             return Json(db.Risks.ToList(), JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Delete(int ID)
+        {
+            var risk = db.Risks.Find(ID);
+            return View(risk);
+        }
+        [HttpPost]
+        public ActionResult Delete(InvestmentRisk risk)
+        {
+            var candidate = db.Risks.Find(risk.ID);
+            db.Risks.Remove(candidate);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

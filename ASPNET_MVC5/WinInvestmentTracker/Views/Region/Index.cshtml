@@ -25,7 +25,7 @@
             @Html.ActionLink(region.Name, "details", "Region", new { Id = region.ID }, htmlAttributes: null)
         </td>
         <td>@Html.ActionLink(region.Investments.Count.ToString(), "InvestmentByRegion", "Investment", new { ID = region.ID }, null)</td>
-        <td>@Html.ActionLink("Delete","Delete", "Region")</td>
+        <td>@Html.ActionLink("Delete","Delete", "Region", new { Id = region.ID },null)</td>
         </tr>
     }
 

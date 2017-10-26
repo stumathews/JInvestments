@@ -171,11 +171,45 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-editable\css\bootstrap-editable.css" />
+    <Content Include="Content\bootstrap-editable\img\clear.png" />
+    <Content Include="Content\bootstrap-editable\img\loading.gif" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap3-editable\css\bootstrap-editable.css" />
+    <Content Include="Content\bootstrap3-editable\img\clear.png" />
+    <Content Include="Content\bootstrap3-editable\img\loading.gif" />
     <Content Include="Content\Images\logo.jpg" />
+    <Content Include="Content\inputs-ext\address\address.css" />
+    <Content Include="Content\inputs-ext\typeaheadjs\lib\typeahead.js-bootstrap.css" />
+    <Content Include="Content\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.css" />
+    <Content Include="Content\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysiwyg-color.css" />
+    <Content Include="Content\jquery-editable\css\jquery-editable.css" />
+    <Content Include="Content\jquery-editable\img\clear.png" />
+    <Content Include="Content\jquery-editable\img\loading.gif" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\animated-overlay.gif" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Content\jquery-editable\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="Content\jqueryui-editable\css\jqueryui-editable.css" />
+    <Content Include="Content\jqueryui-editable\img\clear.png" />
+    <Content Include="Content\jqueryui-editable\img\loading.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -192,23 +226,43 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-editable\js\bootstrap-editable.js" />
+    <Content Include="Scripts\bootstrap-editable\js\bootstrap-editable.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap3-editable\js\bootstrap-editable.js" />
+    <Content Include="Scripts\bootstrap3-editable\js\bootstrap-editable.min.js" />
+    <Content Include="Scripts\inputs-ext\address\address.js" />
+    <Content Include="Scripts\inputs-ext\typeaheadjs\lib\typeahead.js" />
+    <Content Include="Scripts\inputs-ext\typeaheadjs\typeaheadjs.js" />
+    <Content Include="Scripts\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.js" />
+    <Content Include="Scripts\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.min.js" />
+    <Content Include="Scripts\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.js" />
+    <Content Include="Scripts\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.min.js" />
+    <Content Include="Scripts\inputs-ext\wysihtml5\wysihtml5.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-editable\jquery-ui-datepicker\js\jquery-ui-1.10.3.custom.js" />
+    <Content Include="Scripts\jquery-editable\jquery-ui-datepicker\js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\jquery-editable\js\jquery-editable-poshytip.js" />
+    <Content Include="Scripts\jquery-editable\js\jquery-editable-poshytip.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jqueryui-editable\js\jqueryui-editable.js" />
+    <Content Include="Scripts\jqueryui-editable\js\jqueryui-editable.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -236,13 +290,20 @@
     <Content Include="Views\Risk\Create.cshtml" />
     <Content Include="Views\Risk\Details.cshtml" />
     <Content Include="Views\Investment\Details.cshtml" />
+    <Content Include="Views\Investment\Delete.cshtml" />
+    <Content Include="Views\Factor\Delete.cshtml" />
+    <Content Include="Views\Group\Delete.cshtml" />
+    <Content Include="Views\Risk\Delete.cshtml" />
+    <Content Include="Views\Region\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
   </ItemGroup>

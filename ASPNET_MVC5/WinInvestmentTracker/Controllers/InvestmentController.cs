@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WinInvestmentTracker.Common;
@@ -27,6 +28,21 @@ namespace WinInvestmentTracker.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        public ActionResult Delete(int ID)
+        {
+            var candidate = db.Investments.Single(o => o.ID == ID);
+            return View(candidate);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Investment investment)
+        {
+            var candidate = db.Investments.Single(o => o.ID == investment.ID);
+            db.Investments.Remove(candidate);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

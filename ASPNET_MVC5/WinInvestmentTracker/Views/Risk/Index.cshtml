@@ -38,7 +38,7 @@
             <td>@risk.Description</td>
             <td>@risk.Type.ToString()</td>
             <td>@Html.ActionLink(risk.Investments.Count.ToString(), "InvestmentByRisk", "Investment", new { Id=risk.ID }, null)</td>
-            <td>@Html.ActionLink("delete", "delete", "Risk", new { id = "3" }, null)</td>
+            <td>@Html.ActionLink("delete", "delete", "Risk", new { id = risk.ID }, null)</td>
         </tr>            
     }
 </table>
