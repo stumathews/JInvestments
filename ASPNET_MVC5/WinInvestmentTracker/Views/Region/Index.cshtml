@@ -15,16 +15,16 @@
         <tr>
             <th>Name</th>
             <th>Investments</th>
+            <th>Description</th>
             <th><!--Delete--></th>
         </tr>
     </thead>
     @foreach (var region in Model)
     {
         <tr>
-        <td>
-            @Html.ActionLink(region.Name, "details", "Region", new { Id = region.ID }, htmlAttributes: null)
-        </td>
+        <td>@Html.ActionLink(region.Name, "details", "Region", new { Id = region.ID }, htmlAttributes: null)</td>
         <td>@Html.ActionLink(region.Investments.Count.ToString(), "InvestmentByRegion", "Investment", new { ID = region.ID }, null)</td>
+        <td>@Html.DisplayFor(model => model.Single(o=>o.ID == region.ID).Description)</td>
         <td>@Html.ActionLink("Delete","Delete", "Region", new { Id = region.ID },null)</td>
         </tr>
     }
