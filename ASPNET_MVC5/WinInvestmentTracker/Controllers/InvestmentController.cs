@@ -19,7 +19,7 @@ namespace WinInvestmentTracker.Controllers
             
             var risk = EntityRepository.GetEntityByType<InvestmentRisk>().SingleOrDefault(r => r.ID == id);
             var risks = risk.Investments;
-            ViewBag.ExtraTitle = string.Format("By Investment Risk: {0}", risk.Name);
+            ViewBag.ExtraTitle = $"By Investment Risk: {risk.Name}";
             return View("Index", risks);
         }
 
