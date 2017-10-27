@@ -170,10 +170,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Common\EntityManagedController.cs" />
-    <Compile Include="Common\Interfaces\TestInterface.cs" />
     <Compile Include="Common\RiskType.cs" />
     <Compile Include="Common\RunThisAfterActionCompleteAttribute.cs" />
-    <Compile Include="Common\Services\TestService.cs" />
     <Compile Include="Common\Utilities.cs" />
     <Compile Include="Controllers\FactorController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -187,7 +185,7 @@
     <Compile Include="Models\DAL\ApplicationDbContext.cs" />
     <Compile Include="Models\DAL\DatabaseTestDataInitializer.cs" />
     <Compile Include="Models\DAL\EntityApplicationDbContext.cs" />
-    <Compile Include="Models\DAL\IApplicationDBContext.cs" />
+    <Compile Include="Models\DAL\Interfaces\IApplicationDBContext.cs" />
     <Compile Include="Models\DEL\Investment.cs" />
     <Compile Include="Models\DEL\InvestmentGroup.cs" />
     <Compile Include="Models\DEL\InvestmentInfluenceFactor.cs" />

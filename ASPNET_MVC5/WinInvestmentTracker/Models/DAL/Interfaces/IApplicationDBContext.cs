@@ -1,7 +1,6 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
-namespace WinInvestmentTracker.Models.DAL
+namespace WinInvestmentTracker.Models.DAL.Interfaces
 {
     public interface IApplicationDbContext<T> where T : class
     {

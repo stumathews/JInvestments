@@ -8,9 +8,15 @@ using Microsoft.Practices.Unity;
 using Unity;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL;
+using WinInvestmentTracker.Models.DAL.Interfaces;
 
 namespace WinInvestmentTracker.Common
 {
+    /// <summary>
+    /// A controller that has access the the strongly typed entity type specified through the EntityRepository memeber.
+    /// Also contains the common Update() Action
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class EntityManagedController<T> : Controller where T : class
     {
         [Dependency]

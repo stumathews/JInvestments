@@ -2,6 +2,7 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc5;
 using WinInvestmentTracker.Models.DAL;
+using WinInvestmentTracker.Models.DAL.Interfaces;
 
 namespace WinInvestmentTracker
 {
