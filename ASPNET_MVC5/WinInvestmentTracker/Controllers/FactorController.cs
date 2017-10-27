@@ -71,5 +71,15 @@ namespace WinInvestmentTracker.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult Update(string name, string value, int pk)
+        {
+            var candidate = db.Factors.Find(pk);
+            WinInvestmentTracker.Common.ReflectionUtilities.SetPropertyValue(candidate, name, value);
+            db.SaveChanges();
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+        }
     }
 }

@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using WinInvestmentTracker.Common;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL;
-using WinInvestmentTracker.Common;
 
 namespace WinInvestmentTracker.Controllers
 {
@@ -96,7 +95,7 @@ namespace WinInvestmentTracker.Controllers
         public ActionResult Update(string name, string value, int pk)
         {            
             var candidate = db.Investments.Find(pk);
-            ReflectionUtilities.SetPropertyValue(candidate, name, value);
+            WinInvestmentTracker.Common.ReflectionUtilities.SetPropertyValue(candidate, name, value);
             db.SaveChanges();   
 
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);

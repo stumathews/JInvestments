@@ -10,12 +10,21 @@
     <h4>Investment Risk</h4>
     <hr />
     <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            <a id="@Html.NameFor(model => model.Name)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Risk", new { ID = @Model.ID})">@Html.DisplayFor(model => model.Name)</a>
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            <a id="@Html.NameFor(model => model.Description)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update", "Risk", new {ID = @Model.ID})">@Html.DisplayFor(model => model.Description)</a>
         </dd>
 
         <dt>
@@ -23,19 +32,26 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Type)
+            <a id="@Html.NameFor(model => model.Type)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update", "Risk", new {ID = @Model.ID})">@Html.DisplayFor(model => model.Type)</a>
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.fn.editable.defaults.mode = 'inline';
+            $('#@Html.NameFor(model => model.Name)').editable();
+            $('#@Html.NameFor(model => model.Description)').editable();
+            $('#@Html.NameFor(model => model.Type)').editable();
+        });
+    </script>
+}
+
+
