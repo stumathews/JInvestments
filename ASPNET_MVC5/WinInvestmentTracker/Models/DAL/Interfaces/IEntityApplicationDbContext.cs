@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using WinInvestmentTracker.Models.DEL.Interfaces;
 
 namespace WinInvestmentTracker.Models.DAL.Interfaces
 {
@@ -6,7 +7,7 @@ namespace WinInvestmentTracker.Models.DAL.Interfaces
     /// A interface for a class that exposes entities by specified type
     /// </summary>
     /// <typeparam name="T">The type of the underlying entity that this class will manage</typeparam>
-    public interface IEntityApplicationDbContext<T> where T : class, IInvestmentEntity
+    public interface IEntityApplicationDbContext<T> where T : class, IDbInvestmentEntity
     {
         /// <summary>
         /// The underlying entities that this class will expose

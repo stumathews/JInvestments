@@ -4,13 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using WinInvestmentTracker.Models.DEL.Interfaces;
 
 namespace WinInvestmentTracker.Models
 {
     /// <summary>
     /// Represents an investment
     /// </summary>
-    public class Investment : IInvestmentEntity
+    public class Investment : IDbInvestmentEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

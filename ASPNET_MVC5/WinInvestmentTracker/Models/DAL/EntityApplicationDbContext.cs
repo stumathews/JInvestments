@@ -5,6 +5,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using WinInvestmentTracker.Models.DAL.Interfaces;
+using WinInvestmentTracker.Models.DEL.Interfaces;
 
 namespace WinInvestmentTracker.Models.DAL
 {
@@ -13,7 +14,7 @@ namespace WinInvestmentTracker.Models.DAL
     /// on the dbcontext.
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class EntityApplicationDbContext<TEntity> : IEntityApplicationDbContext<TEntity> where TEntity : class, IInvestmentEntity
+    public class EntityApplicationDbContext<TEntity> : IEntityApplicationDbContext<TEntity> where TEntity : class, IDbInvestmentEntity
     {
         readonly ApplicationDbContext _db = new ApplicationDbContext();
         public DbSet<TEntity> Entities => _db.Set<TEntity>();

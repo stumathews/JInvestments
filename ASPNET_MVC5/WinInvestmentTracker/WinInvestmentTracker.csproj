@@ -186,7 +186,7 @@
     <Compile Include="Models\DAL\DatabaseTestDataInitializer.cs" />
     <Compile Include="Models\DAL\EntityApplicationDbContext.cs" />
     <Compile Include="Models\DAL\Interfaces\IEntityApplicationDbContext.cs" />
-    <Compile Include="Models\DEL\IInvestmentEntity.cs" />
+    <Compile Include="Models\DEL\Interfaces\IDBInvestmentEntity.cs" />
     <Compile Include="Models\DEL\Investment.cs" />
     <Compile Include="Models\DEL\InvestmentGroup.cs" />
     <Compile Include="Models\DEL\InvestmentInfluenceFactor.cs" />

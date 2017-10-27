@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using WinInvestmentTracker.Models.DEL.Interfaces;
 
 namespace WinInvestmentTracker.Models
 {
-    public class InvestmentInfluenceFactor : IInvestmentEntity
+    public class InvestmentInfluenceFactor : IDbInvestmentEntity
     {
         [Key]
         public int ID { get; set; }

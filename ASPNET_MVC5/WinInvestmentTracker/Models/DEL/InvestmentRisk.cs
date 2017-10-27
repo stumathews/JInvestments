@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using WinInvestmentTracker.Common;
+using WinInvestmentTracker.Models.DEL.Interfaces;
 
 namespace WinInvestmentTracker.Models
 {
-    public class InvestmentRisk : IInvestmentEntity
+    public class InvestmentRisk : IDbInvestmentEntity
     {
         [Key]
         public int ID { get; set; }
