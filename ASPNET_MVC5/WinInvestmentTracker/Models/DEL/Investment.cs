@@ -40,22 +40,5 @@ namespace WinInvestmentTracker.Models
         public virtual ICollection<InvestmentRisk> Risks { get; set; }
         public virtual ICollection<InvestmentGroup> Groups { get; set; }
         public virtual ICollection<InvestmentInfluenceFactor> Factors { get; set; }
-        /*
-     @GraphId
-protected Long id;
-
-@RelatedTo(type = "REGIONS", direction = Direction.OUTGOING)
-@Fetch private Set<AssetRegion> regions = new HashSet<>();  
-
-@RelatedTo(type = "RISKS", direction = Direction.OUTGOING)
-@Fetch private Set<Risk> risks = new HashSet<>();
-
-@RelatedTo(type = "GROUPS", direction = Direction.OUTGOING)
-@Fetch private Set<InvestmentGroup> groups = new HashSet<>();    
-
-@RelatedTo(type = "FACTORS", direction = Direction.OUTGOING)
-@Fetch private Set<InfluenceFactor> influenceFactors = new HashSet<>();
-     */
-
     }
 }
