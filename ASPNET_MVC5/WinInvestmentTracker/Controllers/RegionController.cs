@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WinInvestmentTracker.Common;
 using WinInvestmentTracker.Models.DAL;
 
 namespace WinInvestmentTracker.Controllers
@@ -12,13 +13,12 @@ namespace WinInvestmentTracker.Controllers
     /// <summary>
     /// This automaticall maps /controller/method such as /region/xvz
     /// </summary>
-    public class RegionController : Controller
+    public class RegionController : EntityManagedController<Models.Region>
     {
-        ApplicationDbContext db = new ApplicationDbContext();
         // GET: Region
         public ActionResult Index()
         {            
-            return View(db.Regions.ToList());
+            return View(EntityRepository.Entities.ToList());
         }
 
         public ActionResult Create()
@@ -30,8 +30,8 @@ namespace WinInvestmentTracker.Controllers
         {
             try
             {
-                db.Regions.Add(region);
-                db.SaveChanges();
+                EntityRepository.Entities.Add(region);
+                EntityRepository.SaveChanges();
                 return RedirectToAction("Details", region);
             }
             catch
@@ -43,37 +43,27 @@ namespace WinInvestmentTracker.Controllers
 
         public ActionResult Details(int id)
         {
-            return View(db.Regions.SingleOrDefault( region => region.ID == id));
+            return View(EntityRepository.Entities.SingleOrDefault( region => region.ID == id));
         }
 
         public ActionResult Api()
         {
-            return Json(db.Regions.ToList(), JsonRequestBehavior.AllowGet);
+            return Json(EntityRepository.Entities.ToList(), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(int ID)
         {
-            var candidate = db.Regions.Find(ID);
+            var candidate = EntityRepository.Entities.Find(ID);
             return View(candidate);
         }
 
         [HttpPost]
         public ActionResult Delete(Models.Region region)
         {
-            var candidate = db.Regions.Find(region.ID);
-            db.Regions.Remove(candidate);
-            db.SaveChanges();
+            var candidate = EntityRepository.Entities.Find(region.ID);
+            EntityRepository.Entities.Remove(candidate);
+            EntityRepository.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Update(string name, string value, int pk)
-        {
-            var candidate = db.Regions.Find(pk);
-            WinInvestmentTracker.Common.ReflectionUtilities.SetPropertyValue(candidate, name, value);
-            db.SaveChanges();
-
-            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
     }
 }

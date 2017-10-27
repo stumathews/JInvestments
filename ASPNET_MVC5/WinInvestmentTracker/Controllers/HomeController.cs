@@ -9,7 +9,6 @@ namespace WinInvestmentTracker.Controllers
 {
     public class HomeController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
         // GET: /home/index
         public ActionResult Index()
         {

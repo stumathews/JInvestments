@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WinInvestmentTracker.Common;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL;
 
 namespace WinInvestmentTracker.Controllers
 {
-    public class RiskController : Controller
+    public class RiskController : EntityManagedController<Models.InvestmentRisk>
     {
-        ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {            
-            return View(db.Risks.ToList());
+            return View(EntityRepository.Entities.ToList());
         }
 
         // MVC 5 allows this as well as routesconfig class
@@ -28,8 +28,8 @@ namespace WinInvestmentTracker.Controllers
         {
             try
             {
-                db.Risks.Add(risk);
-                db.SaveChanges();
+                EntityRepository.Entities.Add(risk);
+                EntityRepository.SaveChanges();
                 return RedirectToAction("Details", risk);
             }
             catch
@@ -40,34 +40,34 @@ namespace WinInvestmentTracker.Controllers
 
         public ActionResult Details(int id)
         {
-            return View(db.Risks.SingleOrDefault(risk => risk.ID == id));
+            return View(EntityRepository.Entities.SingleOrDefault(risk => risk.ID == id));
         }
 
         public ActionResult Api()
         {
-            return Json(db.Risks.ToList(), JsonRequestBehavior.AllowGet);
+            return Json(EntityRepository.Entities.ToList(), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(int ID)
         {
-            var risk = db.Risks.Find(ID);
+            var risk = EntityRepository.Entities.Find(ID);
             return View(risk);
         }
         [HttpPost]
         public ActionResult Delete(InvestmentRisk risk)
         {
-            var candidate = db.Risks.Find(risk.ID);
-            db.Risks.Remove(candidate);
-            db.SaveChanges();
+            var candidate = EntityRepository.Entities.Find(risk.ID);
+            EntityRepository.Entities.Remove(candidate);
+            EntityRepository.SaveChanges();
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public ActionResult Update(string name, string value, int pk)
         {
-            var candidate = db.Risks.Find(pk);
+            var candidate = EntityRepository.Entities.Find(pk);
             WinInvestmentTracker.Common.ReflectionUtilities.SetPropertyValue(candidate, name, value);
-            db.SaveChanges();
+            EntityRepository.SaveChanges();
 
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }

@@ -11,19 +11,16 @@ using WinInvestmentTracker.Models.DAL;
 
 namespace WinInvestmentTracker.Controllers
 {
-    public class InvestmentController : Controller
+    public class InvestmentController : EntityManagedController<Investment>
     {
-        // Access to our database
-        ApplicationDbContext db = new ApplicationDbContext();
-        
         public ActionResult Index()
         {
-            var investments = db.Investments.ToList();
+            var investments = EntityRepository.Entities.ToList();
             return View(investments);
         }
         public ActionResult Api()
         {
-            return Json(db.Investments.ToList(), JsonRequestBehavior.AllowGet);
+            return Json(EntityRepository.Entities.ToList(), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()
@@ -33,16 +30,16 @@ namespace WinInvestmentTracker.Controllers
 
         public ActionResult Delete(int ID)
         {
-            var candidate = db.Investments.Single(o => o.ID == ID);
+            var candidate = EntityRepository.Entities.Single(o => o.ID == ID);
             return View(candidate);
         }
 
         [HttpPost]
         public ActionResult Delete(Investment investment)
         {
-            var candidate = db.Investments.Single(o => o.ID == investment.ID);
-            db.Investments.Remove(candidate);
-            db.SaveChanges();
+            var candidate = EntityRepository.Entities.Single(o => o.ID == investment.ID);
+            EntityRepository.Entities.Remove(candidate);
+            EntityRepository.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -51,9 +48,8 @@ namespace WinInvestmentTracker.Controllers
         {
             try
             {
-                //TODO: persit to database!
-                db.Investments.Add(investment);
-                db.SaveChanges();
+                EntityRepository.Entities.Add(investment);
+                EntityRepository.SaveChanges();
                 return View("Details", investment);
             }
             catch
@@ -65,12 +61,13 @@ namespace WinInvestmentTracker.Controllers
         [RunThisAfterActionComplete]        
         public ActionResult Details(int id)
         {            
-            return View(db.Investments.SingleOrDefault(investment => investment.ID == id));
+            return View(EntityRepository.Entities.SingleOrDefault(investment => investment.ID == id));
         }
 
         public ActionResult InvestmentByRisk(int id)
         {
-            var risk = db.Risks.SingleOrDefault(r => r.ID == id);
+            
+            var risk = EntityRepository.GetEntityByType<InvestmentRisk>().SingleOrDefault(r => r.ID == id);
             var risks = risk.Investments;
             ViewBag.ExtraTitle = string.Format("By Investment Risk: {0}", risk.Name);
             return View("Index", risks);
@@ -78,30 +75,17 @@ namespace WinInvestmentTracker.Controllers
 
         public ActionResult InvestmentByFactor(int id)
         {
-            return View("Index", db.Factors.SingleOrDefault(x => x.ID == id).Investments);
+            return View("Index", EntityRepository.GetEntityByType<InvestmentInfluenceFactor>().SingleOrDefault(x => x.ID == id).Investments);
         }
 
         public ActionResult InvestmentByGroup(int id)
         {
-            return View("Index", db.Groups.SingleOrDefault(x => x.ID == id).Investments);
+            return View("Index", EntityRepository.GetEntityByType<InvestmentGroup>().SingleOrDefault(x => x.ID == id).Investments);
         }
 
         public ActionResult InvestmentByRegion(int id)
         {
-            return View("Index", db.Regions.SingleOrDefault(x => x.ID == id).Investments);
+            return View("Index", EntityRepository.GetEntityByType<Region>().SingleOrDefault(x => x.ID == id).Investments);
         }
-
-        [HttpPost]
-        public ActionResult Update(string name, string value, int pk)
-        {            
-            var candidate = db.Investments.Find(pk);
-            WinInvestmentTracker.Common.ReflectionUtilities.SetPropertyValue(candidate, name, value);
-            db.SaveChanges();   
-
-            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
-        }
-
-        
-
     }
 }

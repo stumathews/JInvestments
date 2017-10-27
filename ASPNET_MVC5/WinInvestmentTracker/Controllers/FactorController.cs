@@ -4,25 +4,24 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using WinInvestmentTracker.Common;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL;
 
 namespace WinInvestmentTracker.Controllers
 {
-    public class FactorController : Controller
+    public class FactorController : EntityManagedController<InvestmentInfluenceFactor>
     {
-        ApplicationDbContext db = new ApplicationDbContext();
-        
         public ActionResult Index()
         {            
-            return View(db.Factors.ToList());
+            return View(EntityRepository.Entities.ToList());
         }
 
         public ActionResult IndexViewRaw()
         {
             // No layout stuff is wth view - maybe to embedded into another view
             // no head footer and css and javascript
-            return PartialView("Index", db.Factors.ToList());            
+            return PartialView("Index", EntityRepository.Entities.ToList());            
         }
 
         // GET(default): Request a create action to present them a form
@@ -37,8 +36,8 @@ namespace WinInvestmentTracker.Controllers
         {
             try
             {
-                db.Factors.Add(factor);
-                db.SaveChanges();
+                EntityRepository.Entities.Add(factor);
+                EntityRepository.SaveChanges();
                 return RedirectToAction("Details", factor); 
             }
             catch
@@ -49,37 +48,27 @@ namespace WinInvestmentTracker.Controllers
 
         public ActionResult Details(int id)
         {
-            return View(db.Factors.Single(factor => factor.ID == id));
+            return View(EntityRepository.Entities.Single(factor => factor.ID == id));
         }
 
         public ActionResult Api()
         {
-            return Json(db.Factors.ToList(), JsonRequestBehavior.AllowGet);
+            return Json(EntityRepository.Entities.ToList(), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(int ID)
         {
-            var candidate = db.Factors.Find(ID);
+            var candidate = EntityRepository.Entities.Find(ID);
             return View(candidate);
         }
 
         [HttpPost]
         public ActionResult Delete(Investment investment)
         {
-            var candidate = db.Factors.Find(investment.ID);
-            db.Factors.Remove(candidate);
-            db.SaveChanges();
+            var candidate = EntityRepository.Entities.Find(investment.ID);
+            EntityRepository.Entities.Remove(candidate);
+            EntityRepository.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Update(string name, string value, int pk)
-        {
-            var candidate = db.Factors.Find(pk);
-            WinInvestmentTracker.Common.ReflectionUtilities.SetPropertyValue(candidate, name, value);
-            db.SaveChanges();
-
-            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
     }
 }
