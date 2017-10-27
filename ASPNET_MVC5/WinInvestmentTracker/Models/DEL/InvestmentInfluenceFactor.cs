@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WinInvestmentTracker.Models
 {
-    public class InvestmentInfluenceFactor
+    public class InvestmentInfluenceFactor : IInvestmentEntity
     {
         [Key]
         public int ID { get; set; }

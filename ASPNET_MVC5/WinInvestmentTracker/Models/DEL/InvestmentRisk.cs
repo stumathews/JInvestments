@@ -7,7 +7,7 @@ using WinInvestmentTracker.Common;
 
 namespace WinInvestmentTracker.Models
 {
-    public class InvestmentRisk
+    public class InvestmentRisk : IInvestmentEntity
     {
         [Key]
         public int ID { get; set; }

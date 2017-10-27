@@ -10,9 +10,8 @@ namespace WinInvestmentTracker.Models
     /// <summary>
     /// Represents an investment
     /// </summary>
-    public class Investment
+    public class Investment : IInvestmentEntity
     {
-
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int ID { get; set; }

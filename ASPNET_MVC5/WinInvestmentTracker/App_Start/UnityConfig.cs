@@ -16,7 +16,7 @@ namespace WinInvestmentTracker
             // it is NOT necessary to register your controllers
             
             // e.g. container.RegisterType<ITestService, TestService>();
-            container.RegisterType(typeof(IApplicationDbContext<>), typeof(EntityApplicationDbContext<>));
+            container.RegisterType(typeof(IEntityApplicationDbContext<>), typeof(EntityApplicationDbContext<>));
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

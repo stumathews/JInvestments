@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WinInvestmentTracker.Models
 {    
-    public class Region
+    public class Region : IInvestmentEntity
     {
         [Key]
         public int ID { get; set; }        

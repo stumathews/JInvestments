@@ -13,56 +13,6 @@ namespace WinInvestmentTracker.Controllers
 {
     public class InvestmentController : EntityManagedController<Investment>
     {
-        public ActionResult Index()
-        {
-            var investments = EntityRepository.Entities.ToList();
-            return View(investments);
-        }
-        public ActionResult Api()
-        {
-            return Json(EntityRepository.Entities.ToList(), JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        public ActionResult Delete(int ID)
-        {
-            var candidate = EntityRepository.Entities.Single(o => o.ID == ID);
-            return View(candidate);
-        }
-
-        [HttpPost]
-        public ActionResult Delete(Investment investment)
-        {
-            var candidate = EntityRepository.Entities.Single(o => o.ID == investment.ID);
-            EntityRepository.Entities.Remove(candidate);
-            EntityRepository.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Create(Investment investment)
-        {
-            try
-            {
-                EntityRepository.Entities.Add(investment);
-                EntityRepository.SaveChanges();
-                return View("Details", investment);
-            }
-            catch
-            {
-                return View();
-            }            
-        }
-
-        [RunThisAfterActionComplete]        
-        public ActionResult Details(int id)
-        {            
-            return View(EntityRepository.Entities.SingleOrDefault(investment => investment.ID == id));
-        }
 
         public ActionResult InvestmentByRisk(int id)
         {

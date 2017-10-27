@@ -9,23 +9,17 @@ using WinInvestmentTracker.Models.DAL.Interfaces;
 namespace WinInvestmentTracker.Models.DAL
 {
     /// <summary>
-    /// Class that will expose the underlying entity framework entities without having to name the entity collection memeber
+    /// Class implementation that will expose the underlying entity framework entities without having to name the entity collection memeber
     /// on the dbcontext.
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class EntityApplicationDbContext<TEntity> : IApplicationDbContext<TEntity> where TEntity : class
+    public class EntityApplicationDbContext<TEntity> : IEntityApplicationDbContext<TEntity> where TEntity : class, IInvestmentEntity
     {
         readonly ApplicationDbContext _db = new ApplicationDbContext();
         public DbSet<TEntity> Entities => _db.Set<TEntity>();
 
-        public DbSet<T1> GetEntityByType<T1>() where T1 : class
-        {
-            return _db.Set<T1>();
-        }
+        public DbSet<T1> GetEntityByType<T1>() where T1 : class => _db.Set<T1>();
 
-        public void SaveChanges()
-        {
-            _db.SaveChanges();
-        }
+        public void SaveChanges() => _db.SaveChanges();
     }
 }
