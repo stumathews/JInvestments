@@ -182,6 +182,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CheckModel.cs" />
     <Compile Include="Models\DAL\ApplicationDbContext.cs" />
     <Compile Include="Models\DAL\DatabaseTestDataInitializer.cs" />
     <Compile Include="Models\DAL\EntityApplicationDbContext.cs" />
@@ -319,6 +320,8 @@
     <Content Include="Views\Group\Delete.cshtml" />
     <Content Include="Views\Risk\Delete.cshtml" />
     <Content Include="Views\Region\Delete.cshtml" />
+    <Content Include="Views\Investment\SelectItems.cshtml" />
+    <Content Include="Views\Investment\Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

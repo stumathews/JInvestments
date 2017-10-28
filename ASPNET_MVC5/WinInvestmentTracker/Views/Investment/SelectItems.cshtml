@@ -1,0 +1,43 @@
+﻿@model List<WinInvestmentTracker.Models.CheckModel>
+
+@{
+    //ViewBag.Title = "SelectFactors";
+}
+
+<h2> @ViewBag.Title</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Select @ViewBag.Title</h4>
+        <hr />
+        
+        <table>
+            
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.HiddenFor(x => x[i].ID)
+                        @Html.DisplayFor(x => x[i].Name)  
+                        @Html.HiddenFor(x => x[i].Name)
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(x => x[i].Checked)                        
+                    </td>
+                </tr>
+
+            }
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id ="Next" type="submit" value="Next" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
