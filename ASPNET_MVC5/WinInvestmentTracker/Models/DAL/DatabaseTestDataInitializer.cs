@@ -74,19 +74,19 @@ namespace WinInvestmentTracker.Models.DAL
             db.SaveChanges();
 
             var regions = new List<Region> {
-                new Region { Name = "UK ALL COMPANIES (Fund Sector)" },
-                new Region { Name = "UK SMALLER COMPANIES (Fund Sector)"},
-                new Region { Name = "JAPAN (Fund Sector)"},
-                new Region { Name = "JAPANESE SMALLER COMPANIES (Fund Sector)"},
-                new Region { Name = "ASIA PACIFIC EXCLUDING JAPAN (Fund Sector)"},
-                new Region { Name = "CHINA / GREATER CHINA SECTOR (Fund Sector)"},
-                new Region { Name = "NORTH AMERICA (Fund Sector)"},
-                new Region { Name = "NORTH AMERICAN SMALLER COMPANIES (Fund Sector)"},
-                new Region { Name = "EUROPE INCLUDING UK (Fund Sector)"},
-                new Region { Name = "EUROPE EXCLUDING UK (Fund Sector)"},
-                new Region { Name = "EUROPEAN SMALLER COMPANIES (Fund Sector)"},
-                new Region { Name = "GLOBAL (Fund Sector)"},
-                new Region { Name = "GLOBAL EMERGING MARKETS (Fund Sector)" }
+                new Region { Name = "UK ALL COMPANIES", Description = "(Fund Sector)" },
+                new Region { Name = "UK SMALLER COMPANIES", Description = "(Fund Sector)"},
+                new Region { Name = "JAPAN", Description = "(Fund Sector)"},
+                new Region { Name = "JAPANESE SMALLER COMPANIES", Description = "(Fund Sector)"},
+                new Region { Name = "ASIA PACIFIC EXCLUDING JAPAN", Description = "(Fund Sector)"},
+                new Region { Name = "CHINA / GREATER CHINA SECTOR", Description = "(Fund Sector)"},
+                new Region { Name = "NORTH AMERICA", Description = "(Fund Sector)"},
+                new Region { Name = "NORTH AMERICAN SMALLER COMPANIES", Description = "(Fund Sector)"},
+                new Region { Name = "EUROPE INCLUDING UK", Description = "(Fund Sector)"},
+                new Region { Name = "EUROPE EXCLUDING UK", Description = "(Fund Sector)"},
+                new Region { Name = "EUROPEAN SMALLER COMPANIES", Description = "(Fund Sector)"},
+                new Region { Name = "GLOBAL", Description = "(Fund Sector)"},
+                new Region { Name = "GLOBAL EMERGING MARKETS", Description = "(Fund Sector)" }
             };
 
             regions.ForEach(r => r.Investments = new List<Investment>());

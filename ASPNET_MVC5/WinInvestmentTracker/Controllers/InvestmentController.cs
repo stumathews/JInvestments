@@ -12,8 +12,7 @@ using WinInvestmentTracker.Models.DAL;
 namespace WinInvestmentTracker.Controllers
 {
     public class InvestmentController : EntityManagedController<Investment>
-    {
-
+    {        
         public ActionResult SelectFactors()
         {
             var checkModels = EntityRepository.
@@ -25,11 +24,47 @@ namespace WinInvestmentTracker.Controllers
                     Checked = false
                 }
             ).ToList();
-            ViewBag.Title = "Factors";
-            return View("SelectItems",checkModels);
+            
+            AddCustomCreateAndCustomCreateRedirect(checkItemsViewTitle: "Factors", createActionControllerName:"Factor", createActionName: "Create", redirectToControllerName:"Investment", redirectToAction:"SelectFactors");
+            return View("SelectItems", checkModels);
+        }
+
+        /// <summary>
+        /// Provides a new action URL in Viewbag.ActionUrl that SelectItems view pulls out and exposes
+        /// This is used so that we can use the same generic SelectItems view and CheckmModels but
+        /// customize it depending on the underlying type of items the select items view is showing.
+        /// We usually want a 'Create' button at the bottom, going to the Create action of the underlying type that we are
+        /// selecting so that we can create a new one and when we are done we want to be redirected back to where we started after the
+        /// 'Create' action is done for that item but by default the create action redirects to 'Details'. Here we can ovveride that.
+        /// </summary>
+        /// <param name="checkItemsViewTitle"></param>
+        /// <param name="createActionControllerName"></param>
+        /// <param name="createActionName"></param>
+        /// <param name="redirectToControllerName"></param>
+        /// <param name="redirectToAction"></param>
+        private void AddCustomCreateAndCustomCreateRedirect(string checkItemsViewTitle, string createActionControllerName, string createActionName, string redirectToControllerName, string redirectToAction)
+        {
+            ViewBag.Title = checkItemsViewTitle;
+            ViewBag.CustomActionUrl = Url.Action(createActionName, createActionControllerName, null, null);
+            ViewBag.CustomActionName = "Create new " + createActionControllerName.ToLower();
+
+            // This will force any Create actions to go to the following controller/action instead.
+            OverrideCreateActionRedirect(redirectToControllerName, redirectToAction);
+        }
+
+        /// <summary>
+        /// "Create" actions usually redirect to the "Details" page unless we say otherwise here
+        /// </summary>
+        /// <param name="returnControllerName">controller to redirect to</param>
+        /// <param name="returnAction">action in controller to redirect to</param>
+        private void OverrideCreateActionRedirect(string returnControllerName, string returnAction)
+        {
+            TempData["ReturnAction"] = returnAction;
+            TempData["ReturnController"] = returnControllerName;
         }
 
         [HttpPost]
+        [ClearCustomRedirects]
         public ActionResult SelectFactors(List<CheckModel> checkModels)
         {
             TempData["factorIDs"] = checkModels.Where(o=>o.Checked).Select(o=>o.ID).ToArray();
@@ -48,11 +83,13 @@ namespace WinInvestmentTracker.Controllers
                    Checked = false
                }
            ).ToList();
-            ViewBag.Title = "Risks";
+            
+            AddCustomCreateAndCustomCreateRedirect( checkItemsViewTitle: "Risks",  createActionControllerName: "Risk", createActionName: "Create", redirectToControllerName: "Investment", redirectToAction: "SelectRisks");
             return View("SelectItems",checkModels);
         }
 
         [HttpPost]
+        [ClearCustomRedirects]
         public ActionResult SelectRisks(List<CheckModel> checkModels)
         {
             TempData["riskIDs"] = checkModels.Where(o => o.Checked).Select(o => o.ID).ToArray();
@@ -70,11 +107,12 @@ namespace WinInvestmentTracker.Controllers
                   Checked = false
               }
           ).ToList();
-            ViewBag.Title = "Regions";
+            AddCustomCreateAndCustomCreateRedirect(checkItemsViewTitle: "Regions", createActionControllerName: "Region", createActionName: "Create", redirectToControllerName: "Investment", redirectToAction: "SelectRegions");            
             return View("SelectItems", checkModels);
         }
 
         [HttpPost]
+        [ClearCustomRedirects]
         public ActionResult SelectRegions(List<CheckModel> checkModels)
         {
             TempData["regionIDs"] = checkModels.Where(o => o.Checked).Select(o => o.ID).ToArray();
@@ -92,11 +130,12 @@ namespace WinInvestmentTracker.Controllers
                   Checked = false
               }
           ).ToList();
-            ViewBag.Title = "Groups";
+            AddCustomCreateAndCustomCreateRedirect(checkItemsViewTitle: "Groups", createActionControllerName: "Group", createActionName: "Create", redirectToControllerName: "Investment", redirectToAction: "SelectGroups");
             return View("SelectItems", checkModels);
         }
 
         [HttpPost]
+        [ClearCustomRedirects]
         public ActionResult SelectGroups(List<CheckModel> checkModels)
         {
             TempData["groupIDs"] = checkModels.Where(o => o.Checked).Select(o => o.ID).ToArray();

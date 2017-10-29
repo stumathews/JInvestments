@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace WinInvestmentTracker.Common
 {
-    public class RunThisAfterActionCompleteAttribute : ActionFilterAttribute
+    public class ClearCustomRedirectsAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            // do something
+            filterContext.Controller.TempData.Remove("ReturnAction");
+            filterContext.Controller.TempData.Remove("ReturnController");
             base.OnActionExecuted(filterContext);
         }
     }

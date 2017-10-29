@@ -84,6 +84,14 @@ namespace WinInvestmentTracker.Common
             {
                 EntityRepository.Entities.Add(entity);
                 EntityRepository.SaveChanges();
+                
+                // We'll support a custom redirect if we've got one
+                var returnAction = (string)TempData["ReturnAction"];
+                var returnController = (string)TempData["ReturnController"];
+                if (returnAction != null && returnController != null)
+                {
+                    return RedirectToAction(returnAction, returnController, null);
+                }
                 return RedirectToAction("Details", entity);
             }
             catch

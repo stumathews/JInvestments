@@ -20,24 +20,24 @@
             {
                 <tr>
                     <td>
+                        @Html.CheckBoxFor(x => x[i].Checked)                        
                         @Html.HiddenFor(x => x[i].ID)
                         @Html.DisplayFor(x => x[i].Name)  
                         @Html.HiddenFor(x => x[i].Name)
-                    </td>
-                    <td>
-                        @Html.CheckBoxFor(x => x[i].Checked)                        
-                    </td>
+                    </td>                    
                 </tr>
 
             }
-        </table>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input id ="Next" type="submit" value="Next" class="btn btn-default" />
-            </div>
-        </div>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input id="Next" type="submit" value="Next" class="btn btn-default" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>        
     </div>
 }
-
-
-
+<a href="@ViewBag.CustomActionUrl">@ViewBag.CustomActionName</a>
