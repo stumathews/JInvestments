@@ -10,6 +10,7 @@ using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL;
 using WinInvestmentTracker.Models.DAL.Interfaces;
 using WinInvestmentTracker.Models.DEL.Interfaces;
+using System.Threading.Tasks;
 
 namespace WinInvestmentTracker.Common
 {
@@ -88,9 +89,10 @@ namespace WinInvestmentTracker.Common
                 // We'll support a custom redirect if we've got one
                 var returnAction = (string)TempData["ReturnAction"];
                 var returnController = (string)TempData["ReturnController"];
+                var returnRouteValues = (object)TempData["ReturnRouteValues"];
                 if (returnAction != null && returnController != null)
                 {
-                    return RedirectToAction(returnAction, returnController, null);
+                    return RedirectToAction(returnAction, returnController, returnRouteValues);
                 }
                 return RedirectToAction("Details", entity);
             }
@@ -132,7 +134,7 @@ namespace WinInvestmentTracker.Common
         /// <param name="entity">The entity to be deleted</param>
         /// <returns>View showing a list of all the entities</returns>
         [HttpPost]
-        public virtual ActionResult Delete(T entity)
+        public ActionResult Delete(T entity)
         {
             var candidate = EntityRepository.Entities.Find(entity.ID);
             EntityRepository.Entities.Remove(candidate);
