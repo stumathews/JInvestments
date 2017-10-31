@@ -214,5 +214,16 @@ namespace WinInvestmentTracker.Controllers
         {
             return View("Index", EntityRepository.GetEntityByType<Region>().SingleOrDefault(x => x.ID == id).Investments);
         }
+
+        public ActionResult DissassociateRisk(int riskID, int investmentID)
+        {
+            var risk = EntityRepository.GetEntityByType<InvestmentRisk>().Find(riskID);
+            var investment = EntityRepository.Entities.Find(investmentID);
+            investment.Risks.Remove(risk);
+            risk.Investments.Remove(investment);
+            EntityRepository.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

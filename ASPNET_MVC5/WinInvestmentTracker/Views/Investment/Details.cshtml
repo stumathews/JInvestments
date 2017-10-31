@@ -1,4 +1,6 @@
-﻿@model WinInvestmentTracker.Models.Investment
+﻿@using WinInvestmentTracker.Models
+@using WinInvestmentTracker.Models.BOLO
+@model WinInvestmentTracker.Models.Investment
 
 @{
     ViewBag.Title = "Details";
@@ -60,120 +62,22 @@
 
     </dl>
 </div>
-<div>
-    <hr/>   
-    <h3>Risks</h3>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Linked investments</th>
-                    <th></th> <!--Delete -->
-                </tr>
-            </thead>
-            @foreach (var risk in Model.Risks)
-            {                
-                <tr>                    
-                    <td>
-                        @Html.ActionLink(risk.Name, "details", "Risk", new { id = risk.ID }, null)
-                    </td>
 
-                    <td>@risk.Description</td>
-                    <td>@risk.Type.ToString()</td>
-                    <td>@Html.ActionLink(risk.Investments.Count.ToString(), "InvestmentByRisk", "Investment", new { Id = risk.ID }, null)</td>
-                    <td>Dissociate</td>
-                </tr>
-            }
-        </table>
-
-    
-</div>
-<div>
-    <hr />
-    <h3>Factors</h3>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Linked investments</th>
-                <th></th> <!--Delete -->
-            </tr>
-        </thead>
-        @foreach (var factor in Model.Factors)
+@{ Html.RenderPartial("_ListRisks", new ParentChildEntityWithHtmlActions<InvestmentRisk, Investment> {
+        Children = Model.Risks,
+        Parent = Model,
+        HtmlActions = new List<HtmlAction>()
         {
-            <tr>
-                <td>
-                    @Html.ActionLink(factor.Name, "details", "Factor", new { ID = factor.ID }, null)
-                </td>
-
-                <td>@factor.Description</td>
-                <td>@Html.ActionLink(factor.Investments.Count.ToString(), "InvestmentByFactor", "Investment", new { ID = factor.ID }, null)</td>
-                <td>Dissociate</td>
-            </tr>
+            new HtmlAction("A","Dissassociate","DissassociateRisk","Investment"),
+            new HtmlAction("Dissociate","Dissociate","Dissociate","Investment"),
+            new HtmlAction("C","Dissociate","Dissociate","Investment"),
         }
+    } ); 
+}
+@{ Html.RenderPartial("_ListFactors", Model.Factors); }
+@{ Html.RenderPartial("_ListGroups", Model.Groups); }
+@{ Html.RenderPartial("_ListRegions", Model.Regions); }
 
-    </table>
-</div>
-<div>
-    <hr/>
-    <h3>Groups</h3>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Type</th>
-                <th>Linked investments</th>
-                <th>#Children</th>
-                <th>Parent</th>
-                <th></th> <!--Delete -->
-            </tr>
-        </thead>
-        @foreach (var group in Model.Groups)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(group.Name, "Details", "Group", new { id = group.ID }, null)
-                </td>
-
-                <td>@group.Description</td>
-                <td>@group.Type</td>
-                <td>@Html.ActionLink((group.Investments == null ? "0" : group.Investments.Count.ToString()), "InvestmentByGroup", "Investment", new { ID = group.ID }, null)</td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>Dissociate</td>
-            </tr>
-        }
-
-    </table>
-</div>
-<div>
-    <hr />
-    <h3>Regions</h3>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Investments</th>
-                <th>Description</th>
-                <th><!--Delete--></th>
-            </tr>
-        </thead>
-        @foreach (var region in Model.Regions)
-        {
-            <tr>
-                <td>@Html.ActionLink(region.Name, "details", "Region", new { Id = region.ID }, htmlAttributes: null)</td>
-                <td>@Html.ActionLink(region.Investments.Count.ToString(), "InvestmentByRegion", "Investment", new { ID = region.ID }, null)</td>
-                <td>@Html.DisplayFor(o=>o.Description)</td>
-                <td>Dissociate</td>
-            </tr>
-        }
-
-    </table>
-</div>
 
 
 @section Scripts {
@@ -190,3 +94,4 @@
         });
     </script>
 }
+

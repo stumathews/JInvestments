@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WinInvestmentTracker.Models.InvestmentGroup>
+@{
+    Layout = null;
+}
+
+<div>
+    <hr/>
+    <h3>Groups</h3>
+    <p>
+        Investments can be grouped into the same containers to add a relationship between them.
+        Grouped investments share a commonality.
+    </p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Linked investments</th>
+            <th>#Children</th>
+            <th>Parent</th>
+            <th></th> <!--Delete -->
+        </tr>
+        </thead>
+        @foreach (var group in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(group.Name, "Details", "Group", new { id = group.ID }, null)
+                </td>
+
+                <td>@group.Description</td>
+                <td>@group.Type</td>
+                <td>@Html.ActionLink((group.Investments == null ? "0" : group.Investments.Count.ToString()), "InvestmentByGroup", "Investment", new { ID = group.ID }, null)</td>
+                <td>n/a</td>
+                <td>n/a</td>
+                <td>Dissociate</td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WinInvestmentTracker.Models.InvestmentInfluenceFactor>
+@{
+    Layout = null;
+}
+
+<div>
+    <hr />
+    <h3>Factors</h3>
+    <p>
+        Factors are anything what influences the companies balance sheet(assets and liabilities) or income(profit/loss) statement.
+        These factors usually affect the underlying value of the investment either positively and negatively.
+    </p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Linked investments</th>
+            <th></th> <!--Delete -->
+           
+        </tr>
+        </thead>
+        @foreach (var factor in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(factor.Name, "details", "Factor", new { ID = factor.ID }, null)
+                </td>
+
+                <td>@factor.Description</td>
+                <td>@Html.ActionLink(factor.Investments.Count.ToString(), "InvestmentByFactor", "Investment", new { ID = factor.ID }, null)</td>
+                <td>Dissociate</td>
+            </tr>
+        }
+
+    </table>
+</div>
