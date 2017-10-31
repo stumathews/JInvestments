@@ -223,7 +223,40 @@ namespace WinInvestmentTracker.Controllers
             risk.Investments.Remove(investment);
             EntityRepository.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", investment);
+        }
+
+        public ActionResult DissassociateFactor(int factorID, int investmentID)
+        {
+            var factor = EntityRepository.GetEntityByType<InvestmentInfluenceFactor>().Find(factorID);
+            var investment = EntityRepository.Entities.Find(investmentID);
+            investment.Factors.Remove(factor);
+            factor.Investments.Remove(investment);
+            EntityRepository.SaveChanges();
+
+            return RedirectToAction("Details", investment);
+        }
+
+        public ActionResult DissassociateGroup(int groupID, int investmentID)
+        {
+            var group = EntityRepository.GetEntityByType<InvestmentGroup>().Find(groupID);
+            var investment = EntityRepository.Entities.Find(investmentID);
+            investment.Groups.Remove(group);
+            group.Investments.Remove(investment);
+            EntityRepository.SaveChanges();
+
+            return RedirectToAction("Details", investment);
+        }
+
+        public ActionResult DissassociateRegion(int regionID, int investmentID)
+        {
+            var region = EntityRepository.GetEntityByType<Models.Region>().Find(regionID);
+            var investment = EntityRepository.Entities.Find(investmentID);
+            investment.Regions.Remove(region);
+            region.Investments.Remove(investment);
+            EntityRepository.SaveChanges();
+
+            return RedirectToAction("Details", investment);
         }
     }
 }

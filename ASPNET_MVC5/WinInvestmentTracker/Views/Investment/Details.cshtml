@@ -68,14 +68,43 @@
         Parent = Model,
         HtmlActions = new List<HtmlAction>()
         {
-            new HtmlAction("Dissassociate","X","DissassociateRisk","Investment"),
+            new HtmlAction("","Dissassociate","DissassociateRisk","Investment"),
             
         }
     } ); 
 }
-@{ Html.RenderPartial("_ListFactors", Model.Factors); }
-@{ Html.RenderPartial("_ListGroups", Model.Groups); }
-@{ Html.RenderPartial("_ListRegions", Model.Regions); }
+@{ Html.RenderPartial("_ListFactors", new ParentChildEntityWithHtmlActions<InvestmentInfluenceFactor, Investment> {
+       Children = Model.Factors,
+       Parent = Model,
+       HtmlActions = new List<HtmlAction>()
+       {
+           new HtmlAction("","Dissassociate","DissassociateFactor","Investment"),
+            
+       }
+   } ); 
+}
+@{ Html.RenderPartial("_ListGroups", new ParentChildEntityWithHtmlActions<InvestmentGroup, Investment>
+    {
+        Children = Model.Groups,
+        Parent = Model,
+        HtmlActions = new List<HtmlAction>()
+       {
+           new HtmlAction("","Dissassociate","DissassociateGroup","Investment"),
+
+       }
+    });
+}
+@{ Html.RenderPartial("_ListRegions", new ParentChildEntityWithHtmlActions<Region, Investment>
+   {
+       Children = Model.Regions,
+       Parent = Model,
+       HtmlActions = new List<HtmlAction>()
+       {
+           new HtmlAction("","Dissassociate","DissassociateRegion","Investment"),
+
+       }
+   });
+}
 
 
 

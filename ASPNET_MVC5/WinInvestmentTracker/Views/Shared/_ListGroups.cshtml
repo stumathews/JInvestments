@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WinInvestmentTracker.Models.InvestmentGroup>
+﻿@model WinInvestmentTracker.Models.BOLO.ParentChildEntityWithHtmlActions<WinInvestmentTracker.Models.InvestmentGroup, WinInvestmentTracker.Models.Investment>
 @{
     Layout = null;
 }
@@ -19,10 +19,13 @@
             <th>Linked investments</th>
             <th>#Children</th>
             <th>Parent</th>
-            <th></th> <!--Delete -->
+            @foreach (var action in Model.HtmlActions)
+            {
+                <th>@action.DisplayName</th>
+            }
         </tr>
         </thead>
-        @foreach (var group in Model)
+        @foreach (var group in Model.Children)
         {
             <tr>
                 <td>
@@ -34,7 +37,10 @@
                 <td>@Html.ActionLink((group.Investments == null ? "0" : group.Investments.Count.ToString()), "InvestmentByGroup", "Investment", new { ID = group.ID }, null)</td>
                 <td>n/a</td>
                 <td>n/a</td>
-                <td>Dissociate</td>
+                @foreach (var action in Model.HtmlActions)
+                {
+                    <td> @Html.ActionLink(action.LinkTitle, action.ActionName, action.ControllerName, new { groupID = group.ID, InvestmentID = Model.Parent.ID }, null)</td>
+                }
             </tr>
         }
 

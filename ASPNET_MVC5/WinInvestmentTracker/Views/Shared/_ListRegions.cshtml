@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WinInvestmentTracker.Models.Region>
+﻿@model WinInvestmentTracker.Models.BOLO.ParentChildEntityWithHtmlActions<WinInvestmentTracker.Models.Region, WinInvestmentTracker.Models.Investment>
 @{
     Layout = null;
 }
@@ -14,16 +14,22 @@
             <th>Name</th>
             <th>Investments</th>
             <th>Description</th>
-            <th><!--Delete--></th>
+            @foreach (var action in Model.HtmlActions)
+            {
+                <th>@action.DisplayName</th>
+            }
         </tr>
         </thead>
-        @foreach (var region in Model)
+        @foreach (var region in Model.Children)
         {
             <tr>
                 <td>@Html.ActionLink(region.Name, "details", "Region", new { Id = region.ID }, htmlAttributes: null)</td>
                 <td>@Html.ActionLink(region.Investments.Count.ToString(), "InvestmentByRegion", "Investment", new { ID = region.ID }, null)</td>
                 <td>@Html.DisplayFor(model => region.Description)</td>
-                <td>Dissociate</td>
+                @foreach (var action in Model.HtmlActions)
+                {
+                    <td> @Html.ActionLink(action.LinkTitle, action.ActionName, action.ControllerName, new { regionID = region.ID, InvestmentID = Model.Parent.ID }, null)</td>
+                }
             </tr>
         }
 

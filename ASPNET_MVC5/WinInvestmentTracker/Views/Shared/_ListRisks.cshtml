@@ -40,7 +40,7 @@
                 <td>@Html.ActionLink(risk.Investments.Count.ToString(), "InvestmentByRisk", "Investment", new { Id = risk.ID }, null)</td>
                 @foreach (var action in Model.HtmlActions)
                 {
-                    <td> @Html.ActionLink(action.LinkTitle, action.ActionName, action.ControllerName, new { RiskID = risk.ID, InvestmentID = Model.Parent.ID}, null)</td>
+                    <td> @Html.ActionLink(action.LinkTitle, action.ActionName, action.ControllerName, new { riskID = risk.ID, InvestmentID = Model.Parent.ID}, null)</td>
                 }
             </tr>
         }
