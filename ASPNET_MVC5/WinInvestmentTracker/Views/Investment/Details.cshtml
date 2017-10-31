@@ -64,7 +64,7 @@
 </div>
 
 @{ Html.RenderPartial("_ListRisks", new ParentChildEntityWithHtmlActions<InvestmentRisk, Investment> {
-        Children = Model.Risks,
+        Children = Model.Risks.ToList(),
         Parent = Model,
         HtmlActions = new List<HtmlAction>()
         {
@@ -78,7 +78,7 @@
 </p>
 @{ Html.RenderPartial("_ListFactors", new ParentChildEntityWithHtmlActions<InvestmentInfluenceFactor, Investment>
    {
-       Children = Model.Factors,
+       Children = Model.Factors.ToList(),
        Parent = Model,
        HtmlActions = new List<HtmlAction>()
        {
@@ -93,7 +93,7 @@
 
 @{ Html.RenderPartial("_ListGroups", new ParentChildEntityWithHtmlActions<InvestmentGroup, Investment>
     {
-        Children = Model.Groups,
+        Children = Model.Groups.ToList(),
         Parent = Model,
         HtmlActions = new List<HtmlAction>()
        {
@@ -107,7 +107,7 @@
 </p>
 @{ Html.RenderPartial("_ListRegions", new ParentChildEntityWithHtmlActions<Region, Investment>
    {
-       Children = Model.Regions,
+       Children = Model.Regions.ToList(),
        Parent = Model,
        HtmlActions = new List<HtmlAction>()
        {

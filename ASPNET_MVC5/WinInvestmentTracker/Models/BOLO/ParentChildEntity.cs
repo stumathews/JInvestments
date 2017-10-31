@@ -7,7 +7,7 @@ namespace WinInvestmentTracker.Models.BOLO
         where TEntity1 : class, IDbInvestmentEntity
         where TEntity2 : class, IDbInvestmentEntity
     {
-        public IEnumerable<TEntity1> Children { get; set; }
+        public List<TEntity1> Children { get; set; }
         public TEntity2 Parent { get; set; }
     }
 }

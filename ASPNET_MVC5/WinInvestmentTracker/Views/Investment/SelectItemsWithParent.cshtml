@@ -1,12 +1,6 @@
 ﻿@model WinInvestmentTracker.Models.BOLO.ParentChildEntity<WinInvestmentTracker.Models.CheckModel, WinInvestmentTracker.Models.Investment>
 
-@{
-    //ViewBag.Title = "SelectFactors";
-}
-
 <h2> @ViewBag.Title</h2>
-
-
 
 @using (Html.BeginForm())
 {
@@ -20,10 +14,13 @@
             {
                 <tr>
                     <td>
-                        @Html.CheckBoxFor(x => x.Children.ElementAt(i).Checked)                        
-                        @Html.HiddenFor(x => x.Children.ElementAt(i).ID)
-                        @Html.DisplayFor(x => x.Children.ElementAt(i).Name)  
-                        @Html.HiddenFor(x => x.Children.ElementAt(i).Name)
+                        @Html.HiddenFor(x => x.Children[i].ID)
+                        @Html.HiddenFor(x => x.Children[i].Name)
+                        <!-- @Html.HiddenFor(x => x.Children[i].Checked) -->
+                        @Html.HiddenFor(x => x.Children[i].Description)
+
+                         @Html.CheckBoxFor(x => x.Children[i].Checked)
+                        @Html.DisplayFor(x => x.Children[i].Name)  
                     </td>                    
                 </tr>
 

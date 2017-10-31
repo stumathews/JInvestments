@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using WinInvestmentTracker.Common;
 using WinInvestmentTracker.Models;
+using WinInvestmentTracker.Models.BOLO;
 using WinInvestmentTracker.Models.DAL;
 
 namespace WinInvestmentTracker.Controllers
@@ -42,14 +43,15 @@ namespace WinInvestmentTracker.Controllers
         /// <param name="createActionName"></param>
         /// <param name="redirectToControllerName"></param>
         /// <param name="redirectToAction"></param>
-        private void AddCustomCreateAndCustomCreateRedirect(string checkItemsViewTitle, string createActionControllerName, string createActionName, string redirectToControllerName, string redirectToAction)
+        private void AddCustomCreateAndCustomCreateRedirect(string checkItemsViewTitle, string createActionControllerName, string createActionName, string redirectToControllerName, string redirectToAction, object routeValues = null)
         {
             ViewBag.Title = checkItemsViewTitle;
             ViewBag.CustomActionUrl = Url.Action(createActionName, createActionControllerName, null, null);
             ViewBag.CustomActionName = "Create new " + createActionControllerName.ToLower();
 
+
             // This will force any Create actions to go to the following controller/action instead.
-            OverrideCreateActionRedirect(redirectToControllerName, redirectToAction);
+            OverrideCreateActionRedirect(redirectToControllerName, redirectToAction, routeValues);
         }
 
         /// <summary>
@@ -57,10 +59,11 @@ namespace WinInvestmentTracker.Controllers
         /// </summary>
         /// <param name="returnControllerName">controller to redirect to</param>
         /// <param name="returnAction">action in controller to redirect to</param>
-        private void OverrideCreateActionRedirect(string returnControllerName, string returnAction)
+        private void OverrideCreateActionRedirect(string returnControllerName, string returnAction, object routeValues = null)
         {
             TempData["ReturnAction"] = returnAction;
             TempData["ReturnController"] = returnControllerName;
+            TempData["ReturnRouteValues"] = routeValues;
         }
 
         [HttpPost]
@@ -255,6 +258,43 @@ namespace WinInvestmentTracker.Controllers
             investment.Regions.Remove(region);
             region.Investments.Remove(investment);
             EntityRepository.SaveChanges();
+
+            return RedirectToAction("Details", investment);
+        }
+
+        public ActionResult AssociateRisk(int id)
+        {
+            var investment = EntityRepository.Entities.Find(id);
+            var model = new ParentChildEntity<CheckModel, Investment>
+            {
+                Parent = investment,
+                Children = EntityRepository.GetEntityByType<InvestmentRisk>().Select(risk => new CheckModel
+                {
+                    ID = risk.ID, Name = risk.Name, Description = risk.Description, Checked = false
+                }).ToList()
+            };
+            AddCustomCreateAndCustomCreateRedirect(checkItemsViewTitle: "Risks", createActionControllerName: "Risk", createActionName: "Create", redirectToControllerName: "Investment", redirectToAction: "AssociateRisk", routeValues: new { Id = id});
+            return View("SelectItemsWithParent", model);
+        }
+
+        [HttpPost]
+        [ClearCustomRedirects]
+        public ActionResult AssociateRisk(int id, List<CheckModel> Children)
+        {
+            var investment = EntityRepository.Entities.Find(id);
+            var riskIDs = Children.Where(o => o.Checked).Select(o => o.ID);
+            foreach(var ID in riskIDs)
+            {
+                var risk = EntityRepository.GetEntityByType<InvestmentRisk>().Find(ID);
+                if (!risk.Investments.Contains(investment)) {
+                    risk.Investments.Add(investment);
+                }
+                if (!investment.Risks.Contains(risk)) {
+                    investment.Risks.Add(risk);
+                }
+            }
+            EntityRepository.SaveChanges();
+
 
             return RedirectToAction("Details", investment);
         }
