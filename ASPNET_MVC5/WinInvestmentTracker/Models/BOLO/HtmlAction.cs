@@ -2,15 +2,17 @@
 {
     public class HtmlAction
     {
-        public HtmlAction(string name, string title, string actionName, string controllerName, object routeValues = null )
+        public HtmlAction(string displayName, string linkTitle, string actionName, string controllerName, object routeValues = null )
         {
-            Title = title;
+            DisplayName = displayName;
+            LinkTitle = linkTitle;
             ActionName = actionName;
             ControllerName = controllerName;
             RouteValues = routeValues;
         }
-        
-        public string Title { get; set; }
+
+        public string DisplayName{ get; set; }
+        public string LinkTitle { get; set; }
         public string ActionName { get; set; }
         public string ControllerName { get; set; }
         public object RouteValues { get; set; }
