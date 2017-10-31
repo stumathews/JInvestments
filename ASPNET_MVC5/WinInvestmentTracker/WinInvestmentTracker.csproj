@@ -184,6 +184,7 @@
     </Compile>
     <Compile Include="Models\BOLO\EntityWithHtmlActions.cs" />
     <Compile Include="Models\BOLO\HtmlAction.cs" />
+    <Compile Include="Models\BOLO\ParentChildEntity.cs" />
     <Compile Include="Models\BOLO\ParentChildEntityWithHtmlActions.cs" />
     <Compile Include="Models\CheckModel.cs" />
     <Compile Include="Models\DAL\ApplicationDbContext.cs" />
@@ -329,6 +330,7 @@
     <Content Include="Views\Shared\_ListFactors.cshtml" />
     <Content Include="Views\Shared\_ListRegions.cshtml" />
     <Content Include="Views\Shared\_ListGroups.cshtml" />
+    <Content Include="Views\Investment\SelectItemsWithParent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,43 @@
+﻿@model WinInvestmentTracker.Models.BOLO.ParentChildEntity<WinInvestmentTracker.Models.CheckModel, WinInvestmentTracker.Models.Investment>
+
+@{
+    //ViewBag.Title = "SelectFactors";
+}
+
+<h2> @ViewBag.Title</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Select @ViewBag.Title</h4>
+        <hr />
+        
+        <table>
+            
+            @for (var i = 0; i < Model.Children.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        @Html.CheckBoxFor(x => x.Children.ElementAt(i).Checked)                        
+                        @Html.HiddenFor(x => x.Children.ElementAt(i).ID)
+                        @Html.DisplayFor(x => x.Children.ElementAt(i).Name)  
+                        @Html.HiddenFor(x => x.Children.ElementAt(i).Name)
+                    </td>                    
+                </tr>
+
+            }
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input id="Next" type="submit" value="Next" class="btn btn-default" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>        
+    </div>
+}
+<a href="@ViewBag.CustomActionUrl">@ViewBag.CustomActionName</a>
