@@ -10,4 +10,6 @@ namespace WinInvestmentTracker.Models.BOLO
         public List<TEntity1> Children { get; set; }
         public TEntity2 Parent { get; set; }
     }
+
+    
 }

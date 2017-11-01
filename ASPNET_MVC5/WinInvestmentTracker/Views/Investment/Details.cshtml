@@ -74,7 +74,7 @@
     } ); 
 }
 <p>
-    @Html.ActionLink("Add Risk to Investment", "AssociateRisk", "Investment", new { ID = Model.ID}, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add a risk to this investment", "AssociateRisk", "Investment", new { ID = Model.ID}, new { @class = "btn btn-primary" })
 </p>
 @{ Html.RenderPartial("_ListFactors", new ParentChildEntityWithHtmlActions<InvestmentInfluenceFactor, Investment>
    {
@@ -88,7 +88,7 @@
    }); 
 }
 <p>
-    @Html.ActionLink("Add Risk to Investment", "AssociateFactor", "Investment", new { ID = Model.ID}, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add a factor to this investment", "AssociateFactor", "Investment", new { ID = Model.ID}, new { @class = "btn btn-primary" })
 </p>
 
 @{ Html.RenderPartial("_ListGroups", new ParentChildEntityWithHtmlActions<InvestmentGroup, Investment>
@@ -103,7 +103,7 @@
     });
 }
 <p>
-    @Html.ActionLink("Add Risk to Investment", "AssociateGroup", "Investment", new { ID = Model.ID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add this investment to a group", "AssociateGroup", "Investment", new { ID = Model.ID }, new { @class = "btn btn-primary" })
 </p>
 @{ Html.RenderPartial("_ListRegions", new ParentChildEntityWithHtmlActions<Region, Investment>
    {
@@ -117,7 +117,7 @@
    });
 }
 <p>
-    @Html.ActionLink("Add Risk to Investment", "AssociateRegion", "Investment", new { ID = Model.ID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add this investment to a region", "AssociateRegion", "Investment", new { ID = Model.ID }, new { @class = "btn btn-primary" })
 </p>
 
 

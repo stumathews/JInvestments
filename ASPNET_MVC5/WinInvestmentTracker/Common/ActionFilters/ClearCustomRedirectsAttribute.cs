@@ -12,6 +12,7 @@ namespace WinInvestmentTracker.Common
         {
             filterContext.Controller.TempData.Remove("ReturnAction");
             filterContext.Controller.TempData.Remove("ReturnController");
+            filterContext.Controller.TempData.Remove("ReturnRouteValues");
             base.OnActionExecuted(filterContext);
         }
     }

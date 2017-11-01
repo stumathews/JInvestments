@@ -32,7 +32,7 @@
     {
         <tr>
             <td>                
-                @Html.ActionLink(risk.Name, "details", "Risk", new { id = "3" }, null)
+                @Html.ActionLink(risk.Name, "details", "Risk", new { id = risk.ID}, null)
             </td>
 
             <td>@risk.Description</td>
@@ -42,4 +42,5 @@
         </tr>            
     }
 </table>
+<p><strong>Total: @Model.Count()</strong></p>
 

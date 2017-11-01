@@ -8,19 +8,25 @@
         <h4>Select @ViewBag.Title</h4>
         <hr />
         
-        <table>
-            
+        <table  class="table table-hover">
+            <thead>
+                <td></td>
+                <td>Name</td>
+                <td>Description</td>
+            </thead>
             @for (var i = 0; i < Model.Children.Count(); i++)
             {
                 <tr>
+                    <td>@Html.CheckBoxFor(x => x.Children[i].Checked)</td>
                     <td>
-                        @Html.HiddenFor(x => x.Children[i].ID)
-                        @Html.HiddenFor(x => x.Children[i].Name)
-                        <!-- @Html.HiddenFor(x => x.Children[i].Checked) -->
-                        @Html.HiddenFor(x => x.Children[i].Description)
-
-                         @Html.CheckBoxFor(x => x.Children[i].Checked)
-                        @Html.DisplayFor(x => x.Children[i].Name)  
+                        @Html.DisplayFor(x => x.Children[i].Name)
+                        @Html.HiddenFor(x => x.Children[i].Name)                        
+                    </td>
+                    <td>
+                        @Html.HiddenFor(x => x.Children[i].ID)                                               
+                        @Html.HiddenFor(x => x.Children[i].Description)   
+                        @Html.DisplayFor(x => x.Children[i].Description)
+                        
                     </td>                    
                 </tr>
 

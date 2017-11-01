@@ -1,4 +1,6 @@
-﻿@model WinInvestmentTracker.Models.InvestmentRisk
+﻿@using WinInvestmentTracker.Models
+@using WinInvestmentTracker.Models.BOLO
+@model WinInvestmentTracker.Models.InvestmentRisk
 
 @{
     ViewBag.Title = "Details";
@@ -30,7 +32,18 @@
 
     </dl>
 </div>
+<div>
+    @{ Html.RenderPartial("_ListInvestments", new EntityWithHtmlActions<Investment>
+        {
+            Entities = Model.Investments.ToList(),
+            HtmlActions = new List<HtmlAction>()
+            {
+                //new HtmlAction("","Dissassociate","DissassociateRisk","Investment"),
 
+            }
+        });
+    }
+</div>
 
 @section Scripts {
     <script type="text/javascript">
