@@ -112,11 +112,6 @@ namespace WinInvestmentTracker.Common
             return View(EntityRepository.Entities.Single(entity => entity.ID == id));
         }
 
-        public virtual ActionResult Api()
-        {
-            return Json(EntityRepository.Entities.ToList(), JsonRequestBehavior.AllowGet);
-        }
-
         /// <summary>
         /// Shows the delete view for this entity
         /// </summary>
