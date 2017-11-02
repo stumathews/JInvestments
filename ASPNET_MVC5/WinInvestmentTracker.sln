@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinInvestmentTracker", "WinInvestmentTracker\WinInvestmentTracker.csproj", "{B605D709-6F8E-4CB9-A993-4D9277C8CB05}"
 EndProject
