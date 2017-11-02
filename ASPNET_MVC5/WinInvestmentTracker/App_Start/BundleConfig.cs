@@ -29,12 +29,15 @@ namespace WinInvestmentTracker
             bundles.Add(new ScriptBundle("~/bundles/bootstrap3-editable").Include(
                 "~/Scripts/bootstrap3-editable/js/*.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/d3").Include(
+                "~/Scripts/d3/*.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap3-editable/css/bootstrap-editable.css",
                       "~/Content/site.css"));
 
-            BundleTable.EnableOptimizations = false; // disable minificatio nand combining of bundle files
+            BundleTable.EnableOptimizations = false; // disable minification and combining of bundle files
             bundles.UseCdn = false;
         }
     }
