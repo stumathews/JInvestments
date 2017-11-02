@@ -12,13 +12,6 @@ namespace WinInvestmentTracker
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
-            // This is going to generate our API json for use in D3
-            routes.MapRoute(
-                name: "Api",
-                url: "{controller}/api",
-                defaults: new { controller = "Investment", action = "api" }
-            );
 
             routes.MapRoute(
                 name: "Default",
