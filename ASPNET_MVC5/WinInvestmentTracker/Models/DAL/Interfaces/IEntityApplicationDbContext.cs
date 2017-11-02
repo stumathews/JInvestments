@@ -20,6 +20,10 @@ namespace WinInvestmentTracker.Models.DAL.Interfaces
         /// </summary>
         void SaveChanges();
 
+        Task SaveChangesAsync();
+
+        void Dispose();
+
         DbSet<T1> GetEntityByType<T1>() where T1 : class;
     }
 }
