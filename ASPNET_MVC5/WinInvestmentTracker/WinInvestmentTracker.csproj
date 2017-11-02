@@ -388,6 +388,7 @@
     <Content Include="Views\Shared\_ListGroups.cshtml" />
     <Content Include="Views\Investment\SelectItemsWithParent.cshtml" />
     <Content Include="Views\Shared\_ListInvestments.cshtml" />
+    <Content Include="Views\Investment\ShowGraph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

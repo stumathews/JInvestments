@@ -424,6 +424,11 @@ namespace WinInvestmentTracker.Controllers
 
 
             return RedirectToAction("Details", investment);
-        }       
+        }
+
+        public ActionResult ShowGraph()
+        {
+            return View();
+        }
     }
 }
