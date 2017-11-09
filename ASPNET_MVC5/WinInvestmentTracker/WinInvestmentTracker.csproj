@@ -211,7 +211,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
-    <Compile Include="App_Start\UnityUtilities.cs" />
+    <Compile Include="Common\UnityUtilities.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\EntityManagedController.cs" />
     <Compile Include="Common\EntityManagedODataController.cs" />

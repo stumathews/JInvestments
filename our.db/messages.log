@@ -1,0 +1,474 @@
+2017-10-17 19:49:42.721+0000 INFO  [o.n.k.InternalAbstractGraphDatabase]: No locking implementation specified, defaulting to 'community'
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- INITIALIZED diagnostics START ---
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: Neo4j Kernel properties:
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: store_dir=our.db
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: ephemeral=false
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: Diagnostics providers:
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: org.neo4j.kernel.configuration.Config
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: org.neo4j.kernel.info.DiagnosticsManager
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: SYSTEM_MEMORY
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: JAVA_MEMORY
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: OPERATING_SYSTEM
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: JAVA_VIRTUAL_MACHINE
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: CLASSPATH
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: LIBRARY_PATH
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: SYSTEM_PROPERTIES
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: NETWORK
+2017-10-17 19:49:42.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: System memory information:
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Total Physical memory: 7.89 GB
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Free Physical memory: 3.64 GB
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Committed virtual memory: 510.13 MB
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Total swap space: 9.14 GB
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Free swap space: 4.37 GB
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: JVM memory information:
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Free  memory: 177.50 MB
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Total memory: 286.00 MB
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Max   memory: 1.75 GB
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Garbage Collector: PS Scavenge: [PS Eden Space, PS Survivor Space]
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Garbage Collector: PS MarkSweep: [PS Eden Space, PS Survivor Space, PS Old Gen]
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Memory Pool: Code Cache (Non-heap memory): committed=13.25 MB, used=13.15 MB, max=240.00 MB, threshold=0.00 B
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Memory Pool: Metaspace (Non-heap memory): committed=33.30 MB, used=32.54 MB, max=-1.00 B, threshold=0.00 B
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Memory Pool: Compressed Class Space (Non-heap memory): committed=4.30 MB, used=4.11 MB, max=1.00 GB, threshold=0.00 B
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Memory Pool: PS Eden Space (Heap memory): committed=211.50 MB, used=83.68 MB, max=649.00 MB, threshold=?
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Memory Pool: PS Survivor Space (Heap memory): committed=11.50 MB, used=11.45 MB, max=11.50 MB, threshold=?
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Memory Pool: PS Old Gen (Heap memory): committed=63.00 MB, used=13.37 MB, max=1.32 GB, threshold=0.00 B
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Operating system information:
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Operating System: Windows 10; version: 10.0; arch: amd64; cpus: 4
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Process id: 4600@DESKTOP-ND3KENC
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Byte order: LITTLE_ENDIAN
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Local timezone: Europe/London
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: JVM information:
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: VM Name: Java HotSpot(TM) 64-Bit Server VM
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: VM Vendor: Oracle Corporation
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: VM Version: 25.60-b23
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: JIT compiler: HotSpot 64-Bit Tiered Compilers
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: VM Arguments: [-Xdebug, -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005]
+2017-10-17 19:49:42.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Java classpath:
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-aspects/4.2.5.RELEASE/spring-aspects-4.2.5.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-cypher-dsl/2.0.1/neo4j-cypher-dsl-2.0.1.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/data/spring-data-neo4j/3.4.4.RELEASE/spring-data-neo4j-3.4.4.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/thymeleaf/thymeleaf-spring4/2.1.4.RELEASE/thymeleaf-spring4-2.1.4.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-starter-validation/1.3.3.RELEASE/spring-boot-starter-validation-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/fasterxml/classmate/1.1.0/classmate-1.1.0.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/ognl/ognl/3.0.8/ognl-3.0.8.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot/1.3.3.RELEASE/spring-boot-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/git/InvestmentTracker/target/classes/
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/webjars/angularjs/1.4.7/angularjs-1.4.7.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [bootstrap] C:\Program Files\Java\jdk1.8.0_60\jre\classes
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/webjars/jquery/2.1.4/jquery-2.1.4.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-expression/4.2.5.RELEASE/spring-expression-4.2.5.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-jmx/2.2.5/neo4j-jmx-2.2.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/zipfs.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/sunpkcs11.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/jaccess.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/webjars/bootstrap/3.3.5/bootstrap-3.3.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/sunec.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/apache-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-unsafe/2.2.5/neo4j-unsafe-2.2.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/hateoas/spring-hateoas/0.19.0.RELEASE/spring-hateoas-0.19.0.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/8.0.32/tomcat-embed-core-8.0.32.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.16/jcl-over-slf4j-1.7.16.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/1.3.3.RELEASE/spring-boot-autoconfigure-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.6.5/jackson-core-2.6.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [bootstrap] C:\Program Files\Java\jdk1.8.0_60\jre\lib\resources.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-actuator/1.3.3.RELEASE/spring-boot-actuator-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/dnsns.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/scala-lang/scala-reflect/2.10.5/scala-reflect-2.10.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-lucene-index/2.2.5/neo4j-lucene-index-2.2.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-tx/4.2.5.RELEASE/spring-tx-4.2.5.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-starter-data-rest/1.3.3.RELEASE/spring-boot-starter-data-rest-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/yaml/snakeyaml/1.16/snakeyaml-1.16.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/github/fge/json-patch/1.7/json-patch-1.7.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-core/4.2.5.RELEASE/spring-core-4.2.5.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/webflow/spring-binding/2.4.4.RELEASE/spring-binding-2.4.4.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [bootstrap] C:\Program Files\Java\jdk1.8.0_60\jre\lib\jce.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/apache/commons/com.springsource.org.apache.commons.fileupload/1.2.1/com.springsource.org.apache.commons.fileupload-1.2.1.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-starter/1.3.3.RELEASE/spring-boot-starter-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/slf4j/log4j-over-slf4j/1.7.16/log4j-over-slf4j-1.7.16.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/aspectj/aspectjweaver/1.8.8/aspectjweaver-1.8.8.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/scala-lang/scala-library/2.10.5/scala-library-2.10.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/slf4j/jul-to-slf4j/1.7.16/jul-to-slf4j-1.7.16.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/atteo/evo-inflector/1.2.1/evo-inflector-1.2.1.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/apache-fileupload/commons-fileupload/1.0/commons-fileupload-1.0.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/webflow/spring-js/2.4.4.RELEASE/spring-js-2.4.4.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/sunjce_provider.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-udc/2.2.5/neo4j-udc-2.2.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.6.5/jackson-databind-2.6.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/data/spring-data-commons/1.11.4.RELEASE/spring-data-commons-1.11.4.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/webjars/x-editable-bootstrap3/1.5.1-1/x-editable-bootstrap3-1.5.1-1.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-starter-logging/1.3.3.RELEASE/spring-boot-starter-logging-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-starter-thymeleaf/1.3.3.RELEASE/spring-boot-starter-thymeleaf-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/8.0.32/tomcat-embed-websocket-8.0.32.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/1.3.3.RELEASE/spring-boot-starter-tomcat-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-cypher-compiler-1.9/2.0.4/neo4j-cypher-compiler-1.9-2.0.4.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [bootstrap] C:\Program Files\Java\jdk1.8.0_60\jre\lib\jfr.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/github/fge/msg-simple/1.1/msg-simple-1.1.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/webflow/spring-webflow/2.4.4.RELEASE/spring-webflow-2.4.4.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/jfxrt.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-graph-matching/2.2.5/neo4j-graph-matching-2.2.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j/2.2.5/neo4j-2.2.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/nz/net/ultraq/thymeleaf/thymeleaf-layout-dialect/1.3.3/thymeleaf-layout-dialect-1.3.3.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/apache/tomcat/embed/tomcat-embed-logging-juli/8.0.32/tomcat-embed-logging-juli-8.0.32.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/slf4j/slf4j-api/1.7.16/slf4j-api-1.7.16.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-kernel/2.2.5/neo4j-kernel-2.2.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/sunmscapi.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/nashorn.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [bootstrap] C:\Program Files\Java\jdk1.8.0_60\jre\lib\sunrsasign.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/localedata.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/github/fge/btf/1.2/btf-1.2.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/codehaus/groovy/groovy/2.4.6/groovy-2.4.6.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/github/fge/jackson-coreutils/1.6/jackson-coreutils-1.6.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-cypher-compiler-2.2/2.2.5/neo4j-cypher-compiler-2.2-2.2.5.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/webjars/d3js/3.5.17/d3js-3.5.17.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/unbescape/unbescape/1.1.0.RELEASE/unbescape-1.1.0.RELEASE.jar
+2017-10-17 19:49:42.939+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [bootstrap] C:\Program Files\Java\jdk1.8.0_60\jre\lib\charsets.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/ch/qos/logback/logback-classic/1.1.5/logback-classic-1.1.5.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/google/guava/guava/16.0.1/guava-16.0.1.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [bootstrap] C:\Program Files\Java\jdk1.8.0_60\jre\lib\jsse.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-io/2.2.5/neo4j-io-2.2.5.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-cypher/2.2.5/neo4j-cypher-2.2.5.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/thymeleaf/thymeleaf/2.1.4.RELEASE/thymeleaf-2.1.4.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-context/4.2.5.RELEASE/spring-context-4.2.5.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/commons-codec/commons-codec/1.2/commons-codec-1.2.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/googlecode/concurrentlinkedhashmap/concurrentlinkedhashmap-lru/1.4/concurrentlinkedhashmap-lru-1.4.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [bootstrap] C:\Program Files\Java\jdk1.8.0_60\jre\lib\rt.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-web/4.2.5.RELEASE/spring-web-4.2.5.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-devtools/1.3.3.RELEASE/spring-boot-devtools-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-websocket/4.2.2.RELEASE/spring-websocket-4.2.2.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/opensymphony/ognl/2.6.11/ognl-2.6.11.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/webflow/spring-js-resources/2.4.4.RELEASE/spring-js-resources-2.4.4.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-primitive-collections/2.2.5/neo4j-primitive-collections-2.2.5.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-cypher-compiler-2.1/2.1.8/neo4j-cypher-compiler-2.1-2.1.8.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/data/spring-data-rest-webmvc/2.4.4.RELEASE/spring-data-rest-webmvc-2.4.4.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/aspectj/aspectjrt/1.8.8/aspectjrt-1.8.8.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-cypher-compiler-2.0/2.0.4/neo4j-cypher-compiler-2.0-2.0.4.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/spring-aop/4.2.5.RELEASE/spring-aop-4.2.5.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/apache/lucene/lucene-core/3.6.2/lucene-core-3.6.2.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/8.0.32/tomcat-embed-el-8.0.32.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/parboiled/parboiled-scala_2.10/1.1.7/parboiled-scala_2.10-1.1.7.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/cldrdata.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/ch/qos/logback/logback-core/1.1.5/logback-core-1.1.5.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/boot/spring-boot-starter-web/1.3.3.RELEASE/spring-boot-starter-web-1.3.3.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-consistency-check/2.2.5/neo4j-consistency-check-2.2.5.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-csv/2.2.5/neo4j-csv-2.2.5.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/springframework/data/spring-data-rest-core/2.4.4.RELEASE/spring-data-rest-core-2.4.4.RELEASE.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/neo4j/neo4j-graph-algo/2.2.5/neo4j-graph-algo-2.2.5.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [loader.1] file:/C:/Program%20Files/Java/jdk1.8.0_60/jre/lib/ext/access-bridge-64.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.6.5/jackson-annotations-2.6.5.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]:  [classpath + loader.0] file:/C:/Users/Stuart/.m2/repository/org/parboiled/parboiled-core/1.1.7/parboiled-core-1.1.7.jar
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: Library path:
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files\Java\jdk1.8.0_60\jre\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Windows\Sun\Java\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Windows\System32
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Windows
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\ProgramData\Oracle\Java\javapath
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Windows\System32
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Windows
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Windows\System32\wbem
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Windows\System32\WindowsPowerShell\v1.0
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files\doxygen\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files (x86)\Lenovo\Access Connections
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files\Git\cmd
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files (x86)\Calibre2
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Windows\System32\config\systemprofile\.dnx\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files\Microsoft DNX\Dnvm
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files\nodejs
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files\Microsoft SQL Server\110\Tools\Binn
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Strawberry\c\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Strawberry\perl\site\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Strawberry\perl\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\HashiCorp\Vagrant\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Users\Stuart\.dnx\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Ruby193\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\MinGW\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\MinGW\msys\1.0\local\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\MinGW\msys\1.0\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files (x86)\Console2
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Users\Stuart\AppData\Local\Microsoft\WindowsApps
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\gtk+\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\MinGW\SDL2-2.0.5\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Users\Stuart\AppData\Roaming\npm
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Users\Stuart\git\InvestmentTracker
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Program Files\Docker Toolbox
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: C:\Users\Stuart\git\InvestmentTracker
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: System.properties:
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.boot.library.path = C:\Program Files\Java\jdk1.8.0_60\jre\bin
+2017-10-17 19:49:42.955+0000 INFO  [o.n.k.i.DiagnosticsManager]: path.separator = ;
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: file.encoding.pkg = sun.io
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: user.country = GB
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: user.script = 
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.java.launcher = SUN_STANDARD
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.os.patch.level = 
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: PID = 4600
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: user.dir = C:\Users\Stuart\git\InvestmentTracker
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: org.jboss.logging.provider = slf4j
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: user.variant = 
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.jnu.encoding = Cp1252
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: spring.beaninfo.ignore = true
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: user.home = C:\Users\Stuart
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: catalina.useNaming = false
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: user.timezone = Europe/London
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: file.encoding = Cp1252
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: catalina.home = C:\Users\Stuart\AppData\Local\Temp\tomcat.3651444248561042152.8080
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: user.name = Stuart
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.java.command = investments.Application
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.arch.data.model = 64
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: user.language = en
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: awt.toolkit = sun.awt.windows.WToolkit
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: catalina.base = C:\Users\Stuart\AppData\Local\Temp\tomcat.3651444248561042152.8080
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: file.separator = \
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.io.unicode.encoding = UnicodeLittle
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.cpu.endian = little
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.desktop = windows
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: sun.cpu.isalist = amd64
+2017-10-17 19:49:42.971+0000 INFO  [o.n.k.i.DiagnosticsManager]: Network information:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Software Loopback Interface 1:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: 127.0.0.1
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: 0:0:0:0:0:0:0:1
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (L2TP):
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (IPv6):
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface VirtualBox Host-Only Ethernet Adapter:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Kernel Debug Network Adapter:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) Centrino(R) Wireless-N 1000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: 172.20.10.2
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: fe80:0:0:0:a845:bac7:c89e:8f76%wlan0
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Hyper-V Virtual Ethernet Adapter:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) 82579LM Gigabit Network Connection:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: fe80:0:0:0:c58d:fcb9:7513:c597%eth4
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Hosted Network Virtual Adapter #2:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (SSTP):
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (Network Monitor):
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Wi-Fi Direct Virtual Adapter:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (IKEv2):
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Teredo Tunneling Adapter:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: 2001:0:4137:9e76:2cef:1b65:53eb:f5fd
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: fe80:0:0:0:2cef:1b65:53eb:f5fd%net3
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (PPTP):
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (PPPOE):
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface 802.11n USB Wireless LAN Card:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Qualcomm Gobi 2000 HS-USB Mobile Broadband Device 9205:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Hosted Network Virtual Adapter:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: fe80:0:0:0:d858:8101:896:1859%wlan4
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (IP):
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface VirtualBox Host-Only Ethernet Adapter #2:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: 192.168.99.1
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]:     address: fe80:0:0:0:adc7:f157:9bce:dfcb%eth7
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface VirtualBox Host-Only Ethernet Adapter #2-WFP Native MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface VirtualBox Host-Only Ethernet Adapter #2-QoS Packet Scheduler-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface VirtualBox Host-Only Ethernet Adapter #2-WFP 802.3 MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) 82579LM Gigabit Network Connection-WFP Native MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) 82579LM Gigabit Network Connection-VirtualBox NDIS Light-Weight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) 82579LM Gigabit Network Connection-QoS Packet Scheduler-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) 82579LM Gigabit Network Connection-WFP 802.3 MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) Centrino(R) Wireless-N 1000-WFP Native MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) Centrino(R) Wireless-N 1000-Virtual WiFi Filter Driver-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) Centrino(R) Wireless-N 1000-Native WiFi Filter Driver-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) Centrino(R) Wireless-N 1000-VirtualBox NDIS Light-Weight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) Centrino(R) Wireless-N 1000-QoS Packet Scheduler-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Intel(R) Centrino(R) Wireless-N 1000-WFP 802.3 MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Hosted Network Virtual Adapter-WFP Native MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Hosted Network Virtual Adapter-Native WiFi Filter Driver-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Hosted Network Virtual Adapter-VirtualBox NDIS Light-Weight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Hosted Network Virtual Adapter-QoS Packet Scheduler-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface Microsoft Hosted Network Virtual Adapter-WFP 802.3 MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (IP)-WFP Native MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (IP)-QoS Packet Scheduler-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (IPv6)-WFP Native MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (IPv6)-QoS Packet Scheduler-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (Network Monitor)-WFP Native MAC Layer LightWeight Filter-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: Interface WAN Miniport (Network Monitor)-QoS Packet Scheduler-0000:
+2017-10-17 19:49:43.080+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- INITIALIZED diagnostics END ---
+2017-10-17 19:49:43.236+0000 INFO  [o.n.k.i.s.StoreFactory]: Creating new db @ our.db\neostore
+2017-10-17 19:49:46.768+0000 INFO  [o.n.k.a.i.i.LuceneLabelScanStore]: No lucene scan store index found, this might just be first use. Preparing to rebuild.
+2017-10-17 19:49:46.846+0000 INFO  [o.n.k.a.i.i.LuceneLabelScanStore]: No lucene scan store index found, this might just be first use. Preparing to rebuild.
+2017-10-17 19:49:47.096+0000 INFO  [o.n.k.NeoStoreDataSource]: Opened logical log [our.db\neostore.transaction.db.0] version=0, lastTxId=1 (clean)
+2017-10-17 19:49:47.111+0000 WARN  [o.n.k.i.s.StoreFactory]: Missing counts store, rebuilding it.
+2017-10-17 19:49:47.330+0000 INFO  [o.n.k.a.i.i.LuceneLabelScanStore]: Rebuilding lucene scan store, this may take a while
+2017-10-17 19:49:47.330+0000 INFO  [o.n.k.a.i.i.LuceneLabelScanStore]: Lucene scan store rebuilt (roughly -1 nodes)
+2017-10-17 19:49:47.361+0000 INFO  [o.n.k.KernelHealth]: Kernel health set to OK
+2017-10-17 19:49:48.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- STARTED diagnostics for KernelDiagnostics:Versions START ---
+2017-10-17 19:49:48.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: Graph Database: org.neo4j.kernel.EmbeddedGraphDatabase StoreId{creationTime=1508269783236, randomId=-1913933692746776039, storeVersion=14969031248344582, upgradeTime=1508269783236, upgradeId=1}
+2017-10-17 19:49:48.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: Kernel version: Neo4j - Graph Database Kernel (neo4j-kernel), version: 2.2.5
+2017-10-17 19:49:48.861+0000 INFO  [o.n.k.i.DiagnosticsManager]: Neo4j component versions:
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Cypher Compiler 1.9 (neo4j-cypher-compiler-1.9), version: 2.0.4; revision: 2.0.4:2.0-maint:130/4a7d10bc274a5d26a180bbe9df25100e8a694748
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Consistency Checker (neo4j-consistency-check), version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Cypher Compiler 2.2 (neo4j-cypher-compiler-2.2), version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Graph Database Kernel (neo4j-kernel), version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Cypher Compiler 2.1 (neo4j-cypher-compiler-2.1), version: 2.1.8; revision: 2.1.8:2.1-maint:687/5c83ce3a5ddf33259593f719153ce71a6fe89fc7
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Community (neo4j), version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neo4j-udc, version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Lucene Index (neo4j-lucene-index), version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Cypher Compiler 2.0 (neo4j-cypher-compiler-2.0), version: 2.0.4; revision: 2.0.4:2.0-maint:130/4a7d10bc274a5d26a180bbe9df25100e8a694748
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Graph Matching (neo4j-graph-matching), version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - JMX support (neo4j-jmx), version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Cypher (neo4j-cypher), version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   Neo4j - Graph Algorithms (neo4j-graph-algo), version: 2.2.5; revision: 2.2.5:2.2:151/cf9c7fe724d193d2d54c55eb0c82cc9036fc05d6-dirty
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- STARTED diagnostics for KernelDiagnostics:Versions END ---
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- STARTED diagnostics for NEO_STORE_VERSIONS START ---
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Store versions:
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Store versions:
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   NeoStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   SchemaStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   NodeStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   RelationshipStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   RelationshipTypeStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   LabelTokenStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   PropertyStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   PropertyIndexStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   StringPropertyStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   ArrayPropertyStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   RelationshipGroupStore v0.A.5
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- STARTED diagnostics for NEO_STORE_VERSIONS END ---
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- STARTED diagnostics for NEO_STORE_ID_USAGE START ---
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Id usage:
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: Id usage:
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   SchemaStore: used=1 high=0
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   NodeStore: used=0 high=-1
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   RelationshipStore: used=0 high=-1
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   RelationshipTypeStore: used=0 high=-1
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   LabelTokenStore: used=0 high=-1
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   PropertyStore: used=0 high=-1
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   PropertyIndexStore: used=0 high=-1
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   StringPropertyStore: used=1 high=0
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   ArrayPropertyStore: used=1 high=0
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]:   RelationshipGroupStore: used=1 high=0
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- STARTED diagnostics for NEO_STORE_ID_USAGE END ---
+2017-10-17 19:49:48.877+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles START ---
+2017-10-17 19:49:48.893+0000 INFO  [o.n.k.i.DiagnosticsManager]: Disk space on partition (Total / Free / Free %): 185866383360 / 41615880192 / 22
+Storage files: (filename : modification date - size)
+2017-10-17 19:49:48.893+0000 INFO  [o.n.k.i.DiagnosticsManager]:   index:
+2017-10-17 19:49:48.893+0000 INFO  [o.n.k.i.DiagnosticsManager]:   - Total: 2017-10-17T20:49:46+0100 - 0.00 B
+2017-10-17 19:49:48.893+0000 INFO  [o.n.k.i.DiagnosticsManager]:   lock: 2017-10-17T20:49:43+0100 - 0.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   messages.log: 2017-10-17T20:49:42+0100 - 49.05 kB
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore: 2017-10-17T20:49:44+0100 - 99.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.counts.db.a: 2017-10-17T20:49:47+0100 - 114.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.labeltokenstore.db: 2017-10-17T20:49:44+0100 - 0.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.labeltokenstore.db.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.labeltokenstore.db.names: 2017-10-17T20:49:44+0100 - 38.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.labeltokenstore.db.names.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.nodestore.db: 2017-10-17T20:49:44+0100 - 0.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.nodestore.db.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.nodestore.db.labels: 2017-10-17T20:49:44+0100 - 68.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.nodestore.db.labels.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db: 2017-10-17T20:49:44+0100 - 0.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db.arrays: 2017-10-17T20:49:44+0100 - 128.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db.arrays.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db.index: 2017-10-17T20:49:44+0100 - 0.00 B
+2017-10-17 19:49:48.908+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db.index.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db.index.keys: 2017-10-17T20:49:44+0100 - 38.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db.index.keys.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db.strings: 2017-10-17T20:49:44+0100 - 128.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.propertystore.db.strings.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.relationshipgroupstore.db: 2017-10-17T20:49:44+0100 - 25.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.relationshipgroupstore.db.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.relationshipstore.db: 2017-10-17T20:49:44+0100 - 0.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.relationshipstore.db.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.relationshiptypestore.db: 2017-10-17T20:49:44+0100 - 0.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.relationshiptypestore.db.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.relationshiptypestore.db.names: 2017-10-17T20:49:44+0100 - 38.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.relationshiptypestore.db.names.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.schemastore.db: 2017-10-17T20:49:44+0100 - 64.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.schemastore.db.id: 2017-10-17T20:49:44+0100 - 9.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   neostore.transaction.db.0: 2017-10-17T20:49:47+0100 - 16.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   schema:
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:     label:
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:       lucene:
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:         write.lock: 2017-10-17T20:49:46+0100 - 0.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:       - Total: 2017-10-17T20:49:46+0100 - 0.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:     - Total: 2017-10-17T20:49:46+0100 - 0.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   - Total: 2017-10-17T20:49:46+0100 - 0.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]:   store_lock: 2017-10-17T20:49:43+0100 - 0.00 B
+2017-10-17 19:49:48.924+0000 INFO  [o.n.k.i.DiagnosticsManager]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles END ---
+2017-10-17 19:49:49.049+0000 INFO  [o.n.k.EmbeddedGraphDatabase]: Database is now ready
+2017-10-17 19:49:53.784+0000 WARN  [o.n.k.EmbeddedGraphDatabase]: GC Monitor: Application threads blocked for 367ms.
+2017-10-17 19:51:56.538+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`Investment`) return n
+2017-10-17 19:51:56.542+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:51:56.543+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:51:56.545+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:51:56.547+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.086+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`AssetRegion`) return n
+2017-10-17 19:52:01.091+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(AssetRegion)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.092+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(AssetRegion)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.093+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(AssetRegion)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.096+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(AssetRegion)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.431+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`Risk`) return n
+2017-10-17 19:52:01.433+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Risk)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.434+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Risk)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.435+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Risk)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.435+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Risk)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.470+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`InvestmentGroup`) return n
+2017-10-17 19:52:01.474+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.475+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.476+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.476+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.516+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`InfluenceFactor`) return n
+2017-10-17 19:52:01.521+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InfluenceFactor)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.522+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InfluenceFactor)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.525+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InfluenceFactor)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:01.525+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InfluenceFactor)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:17.821+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`Investment`) return n
+2017-10-17 19:52:17.825+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:17.828+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:17.828+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:17.830+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:52:44.472+0000 WARN  [o.n.k.EmbeddedGraphDatabase]: GC Monitor: Application threads blocked for 292ms.
+2017-10-17 19:54:47.794+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`InfluenceFactor`) return n
+2017-10-17 19:54:47.797+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InfluenceFactor)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:54:47.798+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InfluenceFactor)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:54:47.799+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InfluenceFactor)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:54:47.799+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InfluenceFactor)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:56:13.015+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`AssetRegion`) return n
+2017-10-17 19:56:13.026+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(AssetRegion)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:56:13.028+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(AssetRegion)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:56:13.029+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(AssetRegion)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:56:13.030+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(AssetRegion)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:56:50.142+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`InvestmentGroup`) return n
+2017-10-17 19:56:50.146+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:56:50.147+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:56:50.147+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:56:50.147+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:58:50.115+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`Risk`) return n
+2017-10-17 19:58:50.116+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Risk)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:58:50.117+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Risk)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:58:50.117+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Risk)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 19:58:50.117+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Risk)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 20:02:35.683+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`InvestmentGroup`) return n
+2017-10-17 20:02:35.684+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 20:02:35.685+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 20:02:35.685+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 20:02:35.685+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(InvestmentGroup)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 20:02:52.537+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 match (n:`Investment`) return n
+2017-10-17 20:02:52.538+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 20:02:52.539+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 20:02:52.539+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 20:02:52.539+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(NodePattern(Some(Identifier(n)),List(),None,false)))),List(),Some(Where(HasLabels(Identifier(n),List(LabelName(Investment)))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Identifier(n),Identifier(n)))),None,None,None))))
+2017-10-17 20:04:14.953+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 MATCH (m:Investment)-[:RISKS]->(r:Risk) RETURN m.name as investment, collect(r.name) as risk LIMIT {limit}
+2017-10-17 20:04:14.959+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: CYPHER 2.2 MATCH (m:Investment)-[:GROUPS]->(g:InvestmentGroup) RETURN m.name as investment, collect(g.name) as group LIMIT {limit}
+2017-10-17 20:04:14.961+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(m)),List(),None,false),RelationshipPattern(Some(Identifier(  UNNAMED21)),false,List(RelTypeName(RISKS)),None,None,OUTGOING),NodePattern(Some(Identifier(r)),List(),None,false))))),List(),Some(Where(And(HasLabels(Identifier(m),List(LabelName(Investment))),HasLabels(Identifier(r),List(LabelName(Risk))))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Property(Identifier(m),PropertyKeyName(name)),Identifier(investment)), AliasedReturnItem(FunctionInvocation(FunctionName(collect),false,Vector(Property(Identifier(r),PropertyKeyName(name)))),Identifier(risk)))),None,None,Some(Limit(Parameter(limit)))))))
+2017-10-17 20:04:14.962+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(m)),List(),None,false),RelationshipPattern(Some(Identifier(  UNNAMED21)),false,List(RelTypeName(RISKS)),None,None,OUTGOING),NodePattern(Some(Identifier(r)),List(),None,false))))),List(),Some(Where(And(HasLabels(Identifier(m),List(LabelName(Investment))),HasLabels(Identifier(r),List(LabelName(Risk))))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Property(Identifier(m),PropertyKeyName(name)),Identifier(investment)), AliasedReturnItem(FunctionInvocation(FunctionName(collect),false,Vector(Property(Identifier(r),PropertyKeyName(name)))),Identifier(risk)))),None,None,Some(Limit(Parameter(limit)))))))
+2017-10-17 20:04:14.962+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(m)),List(),None,false),RelationshipPattern(Some(Identifier(  UNNAMED21)),false,List(RelTypeName(GROUPS)),None,None,OUTGOING),NodePattern(Some(Identifier(g)),List(),None,false))))),List(),Some(Where(And(HasLabels(Identifier(m),List(LabelName(Investment))),HasLabels(Identifier(g),List(LabelName(InvestmentGroup))))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Property(Identifier(m),PropertyKeyName(name)),Identifier(investment)), AliasedReturnItem(FunctionInvocation(FunctionName(collect),false,Vector(Property(Identifier(g),PropertyKeyName(name)))),Identifier(group)))),None,None,Some(Limit(Parameter(limit)))))))
+2017-10-17 20:04:14.962+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(m)),List(),None,false),RelationshipPattern(Some(Identifier(  UNNAMED21)),false,List(RelTypeName(RISKS)),None,None,OUTGOING),NodePattern(Some(Identifier(r)),List(),None,false))))),List(),Some(Where(And(HasLabels(Identifier(m),List(LabelName(Investment))),HasLabels(Identifier(r),List(LabelName(Risk))))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Property(Identifier(m),PropertyKeyName(name)),Identifier(investment)), AliasedReturnItem(FunctionInvocation(FunctionName(collect),false,Vector(Property(Identifier(r),PropertyKeyName(name)))),Identifier(risk)))),None,None,Some(Limit(Parameter(limit)))))))
+2017-10-17 20:04:14.963+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(m)),List(),None,false),RelationshipPattern(Some(Identifier(  UNNAMED21)),false,List(RelTypeName(RISKS)),None,None,OUTGOING),NodePattern(Some(Identifier(r)),List(),None,false))))),List(),Some(Where(And(HasLabels(Identifier(m),List(LabelName(Investment))),HasLabels(Identifier(r),List(LabelName(Risk))))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Property(Identifier(m),PropertyKeyName(name)),Identifier(investment)), AliasedReturnItem(FunctionInvocation(FunctionName(collect),false,Vector(Property(Identifier(r),PropertyKeyName(name)))),Identifier(risk)))),None,None,Some(Limit(Parameter(limit)))))))
+2017-10-17 20:04:14.963+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(m)),List(),None,false),RelationshipPattern(Some(Identifier(  UNNAMED21)),false,List(RelTypeName(GROUPS)),None,None,OUTGOING),NodePattern(Some(Identifier(g)),List(),None,false))))),List(),Some(Where(And(HasLabels(Identifier(m),List(LabelName(Investment))),HasLabels(Identifier(g),List(LabelName(InvestmentGroup))))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Property(Identifier(m),PropertyKeyName(name)),Identifier(investment)), AliasedReturnItem(FunctionInvocation(FunctionName(collect),false,Vector(Property(Identifier(g),PropertyKeyName(name)))),Identifier(group)))),None,None,Some(Limit(Parameter(limit)))))))
+2017-10-17 20:04:14.963+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(m)),List(),None,false),RelationshipPattern(Some(Identifier(  UNNAMED21)),false,List(RelTypeName(GROUPS)),None,None,OUTGOING),NodePattern(Some(Identifier(g)),List(),None,false))))),List(),Some(Where(And(HasLabels(Identifier(m),List(LabelName(Investment))),HasLabels(Identifier(g),List(LabelName(InvestmentGroup))))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Property(Identifier(m),PropertyKeyName(name)),Identifier(investment)), AliasedReturnItem(FunctionInvocation(FunctionName(collect),false,Vector(Property(Identifier(g),PropertyKeyName(name)))),Identifier(group)))),None,None,Some(Limit(Parameter(limit)))))))
+2017-10-17 20:04:14.964+0000 INFO  [o.n.k.i.q.QueryExecutionEngine]: Discarded stale query from the query cache: Query(None,SingleQuery(List(Match(false,Pattern(List(EveryPath(RelationshipChain(NodePattern(Some(Identifier(m)),List(),None,false),RelationshipPattern(Some(Identifier(  UNNAMED21)),false,List(RelTypeName(GROUPS)),None,None,OUTGOING),NodePattern(Some(Identifier(g)),List(),None,false))))),List(),Some(Where(And(HasLabels(Identifier(m),List(LabelName(Investment))),HasLabels(Identifier(g),List(LabelName(InvestmentGroup))))))), Return(false,ReturnItems(false,List(AliasedReturnItem(Property(Identifier(m),PropertyKeyName(name)),Identifier(investment)), AliasedReturnItem(FunctionInvocation(FunctionName(collect),false,Vector(Property(Identifier(g),PropertyKeyName(name)))),Identifier(group)))),None,None,Some(Limit(Parameter(limit)))))))
+2017-10-17 20:07:59.791+0000 WARN  [o.n.k.EmbeddedGraphDatabase]: GC Monitor: Application threads blocked for 241ms.
