@@ -27,6 +27,11 @@ namespace WinInvestmentTracker.Common
         [Dependency]
         protected IEntityApplicationDbContext<T> EntityRepository { get; set; }
 
+        public void AddEntityApplicationDbContext(IEntityApplicationDbContext<T> entityRepo)
+        {
+            EntityRepository = entityRepo;
+        }
+        
         /// <summary>
         /// Primarily used to update entities using x-editable post backs
         /// </summary>
