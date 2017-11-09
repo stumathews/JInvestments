@@ -8,16 +8,37 @@ namespace WinInvestmentTracker
 {
     public static class UnityConfig
     {
+        static private UnityContainer container = null;
+        static private bool alreadyRegisteredComponents = false;
+        static private UnityContainer Container
+        {
+            get
+            {
+                if (container == null)
+                {
+                    container = new UnityContainer();
+                    if (!alreadyRegisteredComponents)
+                    {
+                        RegisterComponents();
+                        alreadyRegisteredComponents = true;
+
+                    }
+                    return container;
+                }
+                return container;
+            }
+            set { }
+        }
+
+        public static T Resolve<T>()
+        {
+            return (T)Container.Resolve(typeof(T), null);
+        }
+
         public static void RegisterComponents()
         {
-            var container = new UnityContainer();
-
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
-
-            // e.g. container.RegisterType<ITestService, TestService>();
-            UnityUtilities.RegisterTypes(container);
-            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+            UnityUtilities.RegisterTypes(Container);
+            DependencyResolver.SetResolver(new UnityDependencyResolver(Container));
         }
     }
 }

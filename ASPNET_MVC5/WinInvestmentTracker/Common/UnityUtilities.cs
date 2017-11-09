@@ -6,7 +6,7 @@ using WinInvestmentTracker.Models.DAL.Interfaces;
 
 namespace WinInvestmentTracker
 {
-    static internal class UnityUtilities
+    static public class UnityUtilities
     {
         
         public static void  RegisterTypes(UnityContainer container)
