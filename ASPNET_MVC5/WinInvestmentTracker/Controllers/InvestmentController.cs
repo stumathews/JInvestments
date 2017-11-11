@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using WinInvestmentTracker.Common;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.BOLO;
-using WinInvestmentTracker.Models.DAL;
 
 namespace WinInvestmentTracker.Controllers
 {
+    [GlobalLogging]
     public class InvestmentController : EntityManagedController<Investment>
-    {        
+    {
         public ActionResult SelectFactors()
         {
             var checkModels = EntityRepository.
@@ -72,7 +68,6 @@ namespace WinInvestmentTracker.Controllers
         {
             TempData["factorIDs"] = checkModels.Where(o=>o.Checked).Select(o=>o.ID).ToArray();
             return RedirectToAction("SelectRisks");
-
         }
 
         public ActionResult SelectRisks()
@@ -130,7 +125,11 @@ namespace WinInvestmentTracker.Controllers
               {
                   ID = o.ID,
                   Name = o.Name,
-                  Checked = false
+                  Checked = false,
+                  Fields = new List<CustomField<string, string>> {
+                      new CustomField<string, string> { Name = nameof(o.Type), Value = o.Type },
+                      new CustomField<string, string> { Name = nameof(o.ID), Value = o.ID.ToString() },
+                  }
               }
           ).ToList();
             AddCustomCreateAndCustomCreateRedirect(checkItemsViewTitle: "Groups", createActionControllerName: "Group", createActionName: "Create", redirectToControllerName: "Investment", redirectToAction: "SelectGroups");
@@ -201,6 +200,8 @@ namespace WinInvestmentTracker.Controllers
             var risks = risk.Investments;
             ViewBag.ExtraTitle = $"By Investment Risk: {risk.Name}";
             return View("Index", risks);
+
+            
         }
 
         public ActionResult InvestmentByFactor(int id)
@@ -348,12 +349,13 @@ namespace WinInvestmentTracker.Controllers
             var model = new ParentChildEntity<CheckModel, Investment>
             {
                 Parent = investment,
-                Children = EntityRepository.GetEntityByType<InvestmentGroup>().Select(risk => new CheckModel
+                Children = EntityRepository.GetEntityByType<InvestmentGroup>().Select(group => new CheckModel
                 {
-                    ID = risk.ID,
-                    Name = risk.Name,
-                    Description = risk.Description,
-                    Checked = false
+                    ID = group.ID,
+                    Name = group.Name,
+                    Description = group.Description,
+                    Checked = false,                    
+                    
                 }).ToList()
             };
             AddCustomCreateAndCustomCreateRedirect(checkItemsViewTitle: "Groups", createActionControllerName: "Group", createActionName: "Create", redirectToControllerName: "Investment", redirectToAction: "AssociateGroup", routeValues: new { Id = id });
@@ -404,6 +406,7 @@ namespace WinInvestmentTracker.Controllers
 
         [HttpPost]
         [ClearCustomRedirects]
+        [GlobalLoggingAttribute]
         public ActionResult AssociateRegion(int id, List<CheckModel> Children)
         {
             var investment = EntityRepository.Entities.Find(id);
@@ -426,8 +429,10 @@ namespace WinInvestmentTracker.Controllers
             return RedirectToAction("Details", investment);
         }
 
+        [GlobalLoggingAttribute]
         public ActionResult ShowGraph()
         {
+            Logger.Debug("ShowGraph");
             return View();
         }
     }

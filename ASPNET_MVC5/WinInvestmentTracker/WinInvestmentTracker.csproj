@@ -55,6 +55,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
     </Reference>
@@ -199,6 +202,9 @@
     <Reference Include="Unity.WebApi, Version=5.2.3.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.WebAPI.5.2.3\lib\net45\Unity.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="UnityLog4NetExtension, Version=2.0.1.0, Culture=neutral, PublicKeyToken=4f2e406647ebdbb7, processorArchitecture=MSIL">
+      <HintPath>..\packages\UnityLog4NetExtension.2.0.1.0\lib\net45\UnityLog4NetExtension.dll</HintPath>
+    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
@@ -212,8 +218,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BOL\AOPProxy.cs" />
+    <Compile Include="BOL\Factory.cs" />
     <Compile Include="Common\EntityManagedController.cs" />
     <Compile Include="Common\EntityManagedODataController.cs" />
+    <Compile Include="Common\IMyLogger.cs" />
+    <Compile Include="Common\ActionFilters\GlobalLoggingAttribute.cs" />
+    <Compile Include="Common\MyLogger.cs" />
     <Compile Include="Common\RiskType.cs" />
     <Compile Include="Common\ActionFilters\ClearCustomRedirectsAttribute.cs" />
     <Compile Include="Common\UnityUtilities.cs" />
@@ -246,6 +257,7 @@
     <Compile Include="Models\DEL\InvestmentGroup.cs" />
     <Compile Include="Models\DEL\InvestmentInfluenceFactor.cs" />
     <Compile Include="Models\DEL\InvestmentRisk.cs" />
+    <Compile Include="Models\DEL\InvestmentNote.cs" />
     <Compile Include="Models\DEL\Region.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -389,6 +401,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="BSL\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\EntityManagedOData\" />
   </ItemGroup>

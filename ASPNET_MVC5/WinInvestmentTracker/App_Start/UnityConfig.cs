@@ -4,13 +4,14 @@ using Unity.Mvc5;
 using WinInvestmentTracker.Models.DAL;
 using WinInvestmentTracker.Models.DAL.Interfaces;
 
+
 namespace WinInvestmentTracker
 {
     public static class UnityConfig
     {
         static private UnityContainer container = null;
         static private bool alreadyRegisteredComponents = false;
-        static private UnityContainer Container
+        static public UnityContainer Container
         {
             get
             {

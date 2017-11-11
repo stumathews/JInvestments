@@ -25,6 +25,7 @@ namespace WinInvestmentTracker.Common
         // PUT: odata/Risks(5)
         public async Task<IHttpActionResult> Put([FromODataUri] int key, Delta<T> patch)
         {
+            Console.WriteLine($"Put {key}");
             Validate(patch.GetEntity());
 
             if (!ModelState.IsValid)
@@ -62,6 +63,7 @@ namespace WinInvestmentTracker.Common
         // POST: odata/Risks
         public async Task<IHttpActionResult> Post(T T)
         {
+            Console.WriteLine($"Post {T.Name}");
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

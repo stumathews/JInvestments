@@ -21,6 +21,7 @@ namespace WinInvestmentTracker.Controllers
 {
     public class InvestmentsController : EntityManagedODataController<Investment>
     {
+        [GlobalLoggingAttribute]
         // GET: odata/Investments
         [EnableQuery]
         public IQueryable<Investment> GetInvestments()

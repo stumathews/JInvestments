@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using WinInvestmentTracker.Models.DEL;
 
 namespace WinInvestmentTracker.Models.DAL
 {
@@ -22,6 +23,7 @@ namespace WinInvestmentTracker.Models.DAL
         public DbSet<InvestmentInfluenceFactor> Factors { get; set; }
         public DbSet<InvestmentRisk> Risks { get; set; }
         public DbSet<Region> Regions { get; set; }
+        public DbSet<InvestmentNote> Notes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

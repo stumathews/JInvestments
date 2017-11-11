@@ -8,39 +8,60 @@
         <h4>Select @ViewBag.Title</h4>
         <hr />
         
-        <table  class="table table-hover">
+        <table class="table table-hover">
             <thead>
-                <td></td>
-                <td>Name</td>
-                <td>Description</td>
-            </thead>
-            @for (var i = 0; i < Model.Children.Count(); i++)
-            {
-                <tr>
-                    <td>@Html.CheckBoxFor(x => x.Children[i].Checked)</td>
-                    <td>
-                        @Html.DisplayFor(x => x.Children[i].Name)
-                        @Html.HiddenFor(x => x.Children[i].Name)                        
-                    </td>
-                    <td>
-                        @Html.HiddenFor(x => x.Children[i].ID)                                               
-                        @Html.HiddenFor(x => x.Children[i].Description)   
-                        @Html.DisplayFor(x => x.Children[i].Description)
-                        
-                    </td>                    
+                <tr>            
+            <th>Name</th>
+            <th>Description</th> 
+                @{
+                    var first = Model.Children.First();
+                    if (first != null && first.Fields != null)
+                    {
+                        for (var f = 0; f < first.Fields.Count; f++)
+                        {
+                            <th>@first.Fields[f].Name</th>
+                        }
+                    }
+                }                    
                 </tr>
+                </thead>
+                @for (var i = 0; i < Model.Children.Count(); i++)
+                {
+                    <tr>
+                        <td>@Html.CheckBoxFor(x => x.Children[i].Checked)
+                        
+                            @Html.DisplayFor(x => x.Children[i].Name)
+                            @Html.HiddenFor(x => x.Children[i].Name)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(x => x.Children[i].ID)
+                            @Html.HiddenFor(x => x.Children[i].Description)
+                            @Html.DisplayFor(x => x.Children[i].Description)
 
-            }
-            <tr>
-                <td>
-                    <div class="form-group">
-                        <div class="col-md-10">
-                            <input id="Next" type="submit" value="Next" class="btn btn-default" />
+                        </td>
+                        @{
+                            var fields = Model.Children[i].Fields;
+                            if (fields != null)
+                            {
+                                for (int f = 0; f < fields.Count; f++)
+                                {
+                                    <td>@fields[f].Value</td>
+                                }
+                            }
+                        }
+                    </tr>
+
+                            }
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input id="Next" type="submit" value="Next" class="btn btn-default" />
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        </table>        
-    </div>
+                    </td>
+                </tr>
+            </table>
+</div>
 }
 <a href="@ViewBag.CustomActionUrl">@ViewBag.CustomActionName</a>

@@ -12,5 +12,13 @@ namespace WinInvestmentTracker.Models
         public string Name { get; set; }
         public bool Checked { get; set; }
         public string Description { get; set; }
+               
+        public List<CustomField<string,string>> Fields { get; set; }
+    }
+
+    public class CustomField<K,V>
+    {
+        public K Name { get; set; }
+        public V Value { get; set; }
     }
 }

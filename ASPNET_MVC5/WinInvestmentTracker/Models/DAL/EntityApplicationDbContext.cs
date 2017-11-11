@@ -20,11 +20,13 @@ namespace WinInvestmentTracker.Models.DAL
         readonly ApplicationDbContext _db = new ApplicationDbContext();
         public DbSet<T> Entities => _db.Set<T>();
 
+        public Database Database => _db.Database;
+
         public DbSet<T1> GetEntityByType<T1>() where T1 : class => _db.Set<T1>();
 
         public void SaveChanges() => _db.SaveChanges();
 
-        public async Task SaveChangesAsync() => await _db.SaveChangesAsync();
+        public async Task SaveChangesAsync() => await _db.SaveChangesAsync();              
 
         public void Dispose() => _db.Dispose();
     }

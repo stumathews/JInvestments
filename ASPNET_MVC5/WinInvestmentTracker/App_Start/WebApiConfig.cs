@@ -7,6 +7,7 @@ using System.Web.Http.OData.Extensions;
 using Microsoft.Practices.Unity;
 using Unity.WebApi;
 using WinInvestmentTracker.Models;
+using WinInvestmentTracker.Common;
 
 namespace WinInvestmentTracker
 {
@@ -15,11 +16,8 @@ namespace WinInvestmentTracker
         public static void Register(HttpConfiguration config)
         {
             var container = new UnityContainer();
-
             UnityUtilities.RegisterTypes(container);
-
             config.DependencyResolver = new UnityDependencyResolver(container);
-
 
             var builder = new ODataConventionModelBuilder();
             builder.EntitySet<Investment>("Investments");
@@ -27,7 +25,7 @@ namespace WinInvestmentTracker
             builder.EntitySet<InvestmentGroup>("Groups"); 
             builder.EntitySet<Region>("Regions"); 
             builder.EntitySet<InvestmentRisk>("Risks");
-            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());            
         }
     }
 }

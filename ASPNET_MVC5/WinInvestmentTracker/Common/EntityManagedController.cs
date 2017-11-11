@@ -11,9 +11,11 @@ using WinInvestmentTracker.Models.DAL;
 using WinInvestmentTracker.Models.DAL.Interfaces;
 using WinInvestmentTracker.Models.DEL.Interfaces;
 using System.Threading.Tasks;
+using log4net;
 
 namespace WinInvestmentTracker.Common
-{
+{    
+    [GlobalLogging]
     /// <summary>
     /// A controller that has access the the strongly typed entity type specified through the EntityRepository memeber.
     /// Also contains the common controller Actions
@@ -21,6 +23,9 @@ namespace WinInvestmentTracker.Common
     /// <typeparam name="T"></typeparam>
     public class EntityManagedController<T> : Controller where T : class, IDbInvestmentEntity
     {
+        [Dependency]
+        protected IMyLogger Logger { get; set; }
+        
         /// <summary>
         /// Access to te underlying store of entities
         /// </summary>
@@ -49,6 +54,7 @@ namespace WinInvestmentTracker.Common
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
+        
         /// <summary>
         /// Returns the Index view for this controller
         /// </summary>
@@ -94,9 +100,10 @@ namespace WinInvestmentTracker.Common
                 // We'll support a custom redirect if we've got one
                 var returnAction = (string)TempData["ReturnAction"];
                 var returnController = (string)TempData["ReturnController"];
-                var returnRouteValues = (object)TempData["ReturnRouteValues"];
+                var returnRouteValues = TempData["ReturnRouteValues"];
                 if (returnAction != null && returnController != null)
                 {
+                    Logger.Debug($"Using custom direct to '{returnAction}' via controller {returnController}");
                     return RedirectToAction(returnAction, returnController, returnRouteValues);
                 }
                 return RedirectToAction("Details", entity);

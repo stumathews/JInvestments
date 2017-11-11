@@ -24,6 +24,8 @@ namespace WinInvestmentTracker.Models.DAL.Interfaces
 
         void Dispose();
 
+        Database Database { get; }
+
         DbSet<T1> GetEntityByType<T1>() where T1 : class;
     }
 }

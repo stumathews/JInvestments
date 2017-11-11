@@ -24,6 +24,7 @@ namespace WinInvestmentTracker
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //Database.SetInitializer<DatabaseTestDataInitializer>(CreateDatabaseIfNotExists)
             
+            log4net.Config.XmlConfigurator.Configure();
         }
     }
 }
