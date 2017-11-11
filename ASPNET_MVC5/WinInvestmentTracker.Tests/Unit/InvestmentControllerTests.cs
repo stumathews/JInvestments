@@ -17,7 +17,8 @@ namespace WinInvestmentTracker.Tests.Controllers
         [TestMethod]
         public void TestMethod1()
         {
-            //var mock = new Mock<IEntityApplicationDbContext<Investment>>();
+            var mock = new Mock<InvestmentController>();
+            
             
         }
     }
