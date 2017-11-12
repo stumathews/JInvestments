@@ -8,24 +8,25 @@ using Microsoft.Practices.Unity;
 using Unity.WebApi;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Common;
+using WinInvestmentTracker.Common.ActionFilters.WebApi;
 
 namespace WinInvestmentTracker
 {
     public static class WebApiConfig
     {
+        public static HttpConfiguration GlobalConfiguration;
         public static void Register(HttpConfiguration config)
-        {
-            var container = new UnityContainer();
-            UnityUtilities.RegisterTypes(container);
-            config.DependencyResolver = new UnityDependencyResolver(container);
-
+        {            
+            UnityUtilities.RegisterTypes(UnityConfig.Container);
             var builder = new ODataConventionModelBuilder();
             builder.EntitySet<Investment>("Investments");
             builder.EntitySet<InvestmentInfluenceFactor>("Factors"); 
             builder.EntitySet<InvestmentGroup>("Groups"); 
             builder.EntitySet<Region>("Regions"); 
             builder.EntitySet<InvestmentRisk>("Risks");
-            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());            
+            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());                        
+            config.DependencyResolver = new UnityDependencyResolver(UnityConfig.Container);
+            config.Filters.Add(new GlobalLoggingWebApiAttribute());            
         }
     }
 }

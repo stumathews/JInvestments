@@ -16,12 +16,13 @@ using WinInvestmentTracker.Common;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL;
 using WinInvestmentTracker.Models.DAL.Interfaces;
+using WinInvestmentTracker.Common.ActionFilters.WebApi;
 
 namespace WinInvestmentTracker.Controllers
 {
     public class InvestmentsController : EntityManagedODataController<Investment>
     {
-        [GlobalLoggingAttribute]
+        [GlobalLoggingWebApi]
         // GET: odata/Investments
         [EnableQuery]
         public IQueryable<Investment> GetInvestments()

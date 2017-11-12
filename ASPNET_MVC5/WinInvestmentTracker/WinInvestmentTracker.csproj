@@ -220,6 +220,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BOL\AOPProxy.cs" />
     <Compile Include="BOL\Factory.cs" />
+    <Compile Include="Common\ActionFilters\WebApi\GlobalLoggingWebApiAttribute.cs" />
     <Compile Include="Common\EntityManagedController.cs" />
     <Compile Include="Common\EntityManagedODataController.cs" />
     <Compile Include="Common\IMyLogger.cs" />
@@ -230,16 +231,16 @@
     <Compile Include="Common\UnityUtilities.cs" />
     <Compile Include="Common\Utilities.cs" />
     <Compile Include="Controllers\FactorController.cs" />
-    <Compile Include="Controllers\FactorsController.cs" />
+    <Compile Include="WebApiControllers\FactorsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvestmentController.cs" />
-    <Compile Include="Controllers\GroupsController.cs" />
-    <Compile Include="Controllers\InvestmentsController.cs" />
+    <Compile Include="WebApiControllers\GroupsController.cs" />
+    <Compile Include="WebApiControllers\InvestmentsController.cs" />
     <Compile Include="Controllers\RegionController.cs" />
-    <Compile Include="Controllers\RegionsController.cs" />
+    <Compile Include="WebApiControllers\RegionsController.cs" />
     <Compile Include="Controllers\RiskController.cs" />
-    <Compile Include="Controllers\RisksController.cs" />
+    <Compile Include="WebApiControllers\RisksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

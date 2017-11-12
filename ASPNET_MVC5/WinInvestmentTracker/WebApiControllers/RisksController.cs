@@ -12,11 +12,13 @@ using System.Web.Http.ModelBinding;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Routing;
 using WinInvestmentTracker.Common;
+using WinInvestmentTracker.Common.ActionFilters.WebApi;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL;
 
 namespace WinInvestmentTracker.Controllers
 {
+    [GlobalLoggingWebApi]
     public class RisksController : EntityManagedODataController<InvestmentRisk>
     {
 

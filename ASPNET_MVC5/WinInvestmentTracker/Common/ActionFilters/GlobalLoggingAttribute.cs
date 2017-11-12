@@ -1,5 +1,5 @@
-﻿using log4net;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+
 namespace WinInvestmentTracker.Common
 {
     public class GlobalLoggingAttribute : ActionFilterAttribute
@@ -23,5 +23,5 @@ namespace WinInvestmentTracker.Common
             Log.Debug(string.Format("{0} Response Code: {1}", actionExecutedContext.HttpContext.Request.Url.ToString(), actionExecutedContext.HttpContext.Response.StatusCode.ToString()));
             base.OnActionExecuted(actionExecutedContext);
         }
-    }
+    }   
 }

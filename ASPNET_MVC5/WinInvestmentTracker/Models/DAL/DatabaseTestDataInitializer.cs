@@ -22,7 +22,7 @@ namespace WinInvestmentTracker.Models.DAL
         const int MAX = 10;        
         protected override void Seed(ApplicationDbContext db)
         {
-            var MAX = 10;
+            
             var factors = new List<InvestmentInfluenceFactor> {
                     new InvestmentInfluenceFactor {
                         Name = "Weather", Description = "The climate will affect the investment.",
