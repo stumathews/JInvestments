@@ -126,10 +126,11 @@ namespace WinInvestmentTracker.Models.DAL
             db.SaveChanges();
             ;
             var investments = new List<Investment>();
+            var random = new Random();
             foreach(var investment in MakeRealInvestments())
             {
                 investment.InitialInvestment = new Random().Next(100);
-                investment.Value = new Random().Next(100);
+                investment.Value = random.Next(0,100);
 
                 investment.Factors = new List<InvestmentInfluenceFactor>();
                 investment.Groups = new List<InvestmentGroup>();

@@ -9,41 +9,46 @@
 
 @section Scripts {
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var url = "/odata/Investments";
             d3.json(url, handleGraphData);
             var rect_width = 30;
-            var rect_height = 100;
             var svg_width = 960;
-            var svg_height = 960;
+            var svg_height = 200;
 
             function handleGraphData(error, graph) {
 
-                var svg = d3.select("body svg");
-                svg.attr("height", svg_height)
-                    .attr("width", svg_width);
-                var values =
-                var yScale = d3.scale.linear().domain([0, d3.max(values)])
+                var svg = d3.select("body svg").attr("height", svg_height).attr("width", svg_width);
+                var values = graph.value;
+                var valueExtentRange = d3.extent(values, function(d) { return d.Value });
+                var colourSpan = d3.scale.linear().domain(valueExtentRange).range(["green", "red"]);
+                var yScale = d3.scale.linear().domain(valueExtentRange).range([0, svg_height]);
 
-                svg.selectAll("rect")
+                var rects = svg.selectAll("rect")
                     .data(graph.value)
                     .enter()
                     .append("rect")
                     .attr("width", rect_width)
-                    .attr("height", function (d) {
-                        return d.Value + 100;
-                    })
-                    .style("fill", "blue")
-                    .style("stroke-width", 3)
+                    .attr("height",
+                        function(d) {
+                            return yScale(d.Value);
+                        })
+                    .style("fill",
+                        function(d) {
+                            var value = colourSpan(d.Value);
+                            return value;
+                        })
+                    .style("stroke-width", 2)
                     .style("stroke", "black")
-                    .attr("x", function (d, i) {
-                        return rect_width * i;
-                    })
-                    .attr("y", function (d, i) {
-                        return rect_height - d.Value;
-                    });
-
+                    .attr("x",
+                        function(d, i) {
+                            return i * rect_width;
+                        })
+                    .attr("y",
+                        function(d) {
+                            return svg_height - yScale(d.Value);
+                        });
             }
         });
     </script>

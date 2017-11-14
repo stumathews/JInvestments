@@ -20,9 +20,10 @@ using WinInvestmentTracker.Common.ActionFilters.WebApi;
 
 namespace WinInvestmentTracker.Controllers
 {
+    [GlobalLoggingWebApi]
     public class InvestmentsController : EntityManagedODataController<Investment>
     {
-        [GlobalLoggingWebApi]
+        
         // GET: odata/Investments
         [EnableQuery]
         public IQueryable<Investment> GetInvestments()
