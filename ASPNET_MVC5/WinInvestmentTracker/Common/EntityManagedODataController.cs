@@ -8,12 +8,14 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.OData;
 using Microsoft.Practices.Unity;
+using WinInvestmentTracker.Common.ActionFilters.WebApi;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.DAL.Interfaces;
 using WinInvestmentTracker.Models.DEL.Interfaces;
 
 namespace WinInvestmentTracker.Common
 {
+    [GlobalLoggingWebApi]
     public class EntityManagedODataController<T> : ODataController where T : class, IDbInvestmentEntity
     {
         /// <summary>
@@ -75,10 +77,12 @@ namespace WinInvestmentTracker.Common
             return Created(T);
         }
 
+        
         // PATCH: odata/Risks(5)
-        [System.Web.Mvc.AcceptVerbs("PATCH", "MERGE")]
+        [AcceptVerbs("PATCH", "MERGE")]
         public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<T> patch)
         {
+            
             Validate(patch.GetEntity());
 
             if (!ModelState.IsValid)
