@@ -10,6 +10,52 @@ namespace WinInvestmentTracker.Controllers
     [GlobalLogging]
     public class InvestmentController : EntityManagedController<Investment>
     {
+
+        public ActionResult GenerateGraph()
+        {
+
+            /*
+               var data = {
+                "nodes":[
+                    { "name": "index", "value": 5},
+                    { "name": "about", "value": 5},
+                    { "name": "contact", "value": 5},
+                    { "name": "store", "value": 8},
+                    { "name": "cheese", "value": 8},
+                    { "name": "yoghurt", "value": 10},
+                    { "name": "milk", "value": 2}
+                    ],
+                    "links":[
+                    {"source":0,"target":1,"value":25},
+                    {"source":0,"target":2,"value":10},
+                    {"source":0,"target":3,"value":40},
+                    {"source":1,"target":2,"value":10},
+                    {"source":3,"target":4,"value":25},
+                    {"source":3,"target":5,"value":10},
+                    {"source":3,"target":6,"value":5},
+                    {"source":4,"target":6,"value":5},
+                    {"source":4,"target":5,"value":15}
+                ]
+            }
+             */
+
+            var list = new List<object>();
+            var nodes = new List<object> {new { name = "[The Investment]" }};
+            var links = new List<object>();
+
+            foreach (var entity in EntityRepository.Entities)
+            {
+                nodes.Add(new { source = "", target = "", value = entity.Value });
+                links.Add(new { source = "", target="", value= entity.Value});
+            }
+
+            object data = null;
+
+
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult SelectFactors()
         {
             var checkModels = EntityRepository.
