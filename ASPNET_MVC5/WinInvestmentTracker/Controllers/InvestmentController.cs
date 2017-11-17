@@ -11,7 +11,7 @@ namespace WinInvestmentTracker.Controllers
     public class InvestmentController : EntityManagedController<Investment>
     {
 
-        public ActionResult GenerateGraph()
+        public ActionResult GenerateFactorsGraph(int ID)
         {
 
             /*
@@ -39,21 +39,20 @@ namespace WinInvestmentTracker.Controllers
             }
              */
 
-            var list = new List<object>();
-            var nodes = new List<object> {new { name = "[The Investment]" }};
+            var investment = EntityRepository.Entities.Find(ID);
+            var nodes = new List<object> {new { name = investment.Name, value = 1 } };
             var links = new List<object>();
-
-            foreach (var entity in EntityRepository.Entities)
+            var index = 1;
+            foreach (var factor in investment.Factors)
             {
-                nodes.Add(new { source = "", target = "", value = entity.Value });
-                links.Add(new { source = "", target="", value= entity.Value});
+                nodes.Add(new { name = factor.Name, value = factor.Investments.Count });
+                links.Add(new { source = 0, target=index, value = factor.Investments.Count });
+                index++;
             }
 
-            object data = null;
+            
 
-
-
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json( new { nodes = nodes, links = links }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SelectFactors()

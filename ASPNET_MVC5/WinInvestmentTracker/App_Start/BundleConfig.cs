@@ -35,7 +35,8 @@ namespace WinInvestmentTracker
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap3-editable/css/bootstrap-editable.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/networks.css"));
 
             BundleTable.EnableOptimizations = false; // disable minification and combining of bundle files
             bundles.UseCdn = false;
