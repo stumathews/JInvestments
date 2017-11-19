@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\OData Service\ODataClient.cs" />
+    <Compile Include="Integrations\HomeControllerTests.cs" />
     <Compile Include="Service\ODataTests.cs" />
     <Compile Include="Unit\InvestmentControllerTests.cs" />
     <Compile Include="Integrations\EntityManagedControllerTests.cs" />

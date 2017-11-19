@@ -18,12 +18,12 @@ namespace WinInvestmentTracker.Models.DAL
             // The name of the connection string in web.config is passed into this constructor
         }
 
-        public DbSet<Investment> Investments { get; set; }
-        public DbSet<InvestmentGroup> Groups { get; set; }
-        public DbSet<InvestmentInfluenceFactor> Factors { get; set; }
-        public DbSet<InvestmentRisk> Risks { get; set; }
-        public DbSet<Region> Regions { get; set; }
-        public DbSet<InvestmentNote> Notes { get; set; }
+        public virtual DbSet<Investment> Investments { get; set; }
+        public virtual DbSet<InvestmentGroup> Groups { get; set; }
+        public virtual DbSet<InvestmentInfluenceFactor> Factors { get; set; }
+        public virtual DbSet<InvestmentRisk> Risks { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<InvestmentNote> Notes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

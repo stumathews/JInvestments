@@ -16,26 +16,5 @@ namespace WinInvestmentTracker.Controllers
         {
             return View(); // look for a view whos name matches matches the method
         }
-
-        // GET: /home/about
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application Description page.s";
-
-            return View();
-        }
-
-        // GET: /home/contact
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Foo()
-        {
-            return View("Contact");
-        }
     }
 }

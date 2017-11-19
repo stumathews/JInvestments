@@ -121,7 +121,7 @@ namespace WinInvestmentTracker.Common
         /// <returns>View of the details page for this entity</returns>
         public virtual ActionResult Details(int id)
         {
-            return View(EntityRepository.Entities.Single(entity => entity.ID == id));
+            return View(EntityRepository.Entities.Find(id));
         }
 
         /// <summary>

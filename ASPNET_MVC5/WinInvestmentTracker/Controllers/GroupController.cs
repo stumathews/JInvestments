@@ -10,8 +10,5 @@ using WinInvestmentTracker.Models.DAL;
 namespace WinInvestmentTracker.Controllers
 {
     [GlobalLogging]
-    public class GroupController : EntityManagedController<InvestmentGroup>
-    {
-        
-    }
+    public class GroupController : EntityManagedController<InvestmentGroup> { }
 }

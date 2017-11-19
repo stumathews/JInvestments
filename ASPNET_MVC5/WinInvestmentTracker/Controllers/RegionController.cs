@@ -13,8 +13,5 @@ namespace WinInvestmentTracker.Controllers
     /// <summary>
     /// This automaticall maps /controller/method such as /region/xvz
     /// </summary>
-    public class RegionController : EntityManagedController<Models.Region>
-    {
-        
-    }
+    public class RegionController : EntityManagedController<Models.Region> { }
 }

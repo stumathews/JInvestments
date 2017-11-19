@@ -11,8 +11,5 @@ using WinInvestmentTracker.Models.DAL;
 namespace WinInvestmentTracker.Controllers
 {
     [GlobalLogging]
-    public class FactorController : EntityManagedController<InvestmentInfluenceFactor> 
-    {
-        
-    }
+    public class FactorController : EntityManagedController<InvestmentInfluenceFactor> { }
 }

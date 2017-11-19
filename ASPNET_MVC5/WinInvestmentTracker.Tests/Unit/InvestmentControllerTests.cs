@@ -6,20 +6,15 @@ using WinInvestmentTracker.Models.DAL;
 using Moq;
 using WinInvestmentTracker.Models;
 using System.Collections.Generic;
+using WinInvestmentTracker.Common;
+using WinInvestmentTracker.Models.DEL.Interfaces;
+using System.Data.Entity;
+using System.Linq;
 
 namespace WinInvestmentTracker.Tests.Controllers
 {
     [TestClass]
     public class InvestmentControllerTests
     {
-        
-
-        [TestMethod]
-        public void TestMethod1()
-        {
-            var mock = new Mock<InvestmentController>();
-            
-            
-        }
     }
 }
