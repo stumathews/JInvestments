@@ -28,40 +28,40 @@ namespace WinInvestmentTracker.Tests.Controllers
     [TestClass]
     public class EntityManagedControllerTests 
     {
-        EntityManagedController<IDbInvestmentEntity> controller = new EntityManagedController<IDbInvestmentEntity>();
-        Mock<EntityApplicationDbContext<IDbInvestmentEntity>> dbContext = new Mock<EntityApplicationDbContext<IDbInvestmentEntity>>();
-        Mock<DbSet<IDbInvestmentEntity>> entities = new Mock<DbSet<IDbInvestmentEntity>>();
-        List<IDbInvestmentEntity> rawData;
-        IQueryable<IDbInvestmentEntity> data;
+        readonly EntityManagedController<IDbInvestmentEntity> _controller = new EntityManagedController<IDbInvestmentEntity>();
+        readonly Mock<EntityApplicationDbContext<IDbInvestmentEntity>> _dbContext = new Mock<EntityApplicationDbContext<IDbInvestmentEntity>>();
+        readonly Mock<DbSet<IDbInvestmentEntity>> _entities = new Mock<DbSet<IDbInvestmentEntity>>();
+        List<IDbInvestmentEntity> _rawData;
+        IQueryable<IDbInvestmentEntity> _data;
 
         [TestMethod]
         public void CreatePost()
         {
-            entities.Setup(m => m.Add(It.IsAny<IDbInvestmentEntity>())).Callback<IDbInvestmentEntity>((e) => { rawData.Add(e); });
-            
+            _entities.Setup(m => m.Add(It.IsAny<IDbInvestmentEntity>())).Callback<IDbInvestmentEntity>((e) => { _rawData.Add(e); });
             var newEntity = new AnyIDbInvestmentEntity { Name = "Test Name", Description = "Test Description" };
+            var result = (RedirectToRouteResult) _controller.Create(newEntity);
 
-            var result = (RedirectToRouteResult) controller.Create(newEntity);
             Assert.AreEqual(result.RouteValues["action"], "Details");
-            dbContext.Verify(v => v.Entities, Times.AtLeastOnce);
-            dbContext.Verify(v => v.SaveChanges(), Times.AtLeastOnce);
-            Assert.AreEqual(rawData.Count, 4);
-            Assert.IsTrue(rawData.Contains(newEntity));
+            _dbContext.Verify(v => v.Entities, Times.AtLeastOnce);
+            _dbContext.Verify(v => v.SaveChanges(), Times.AtLeastOnce);
+            Assert.AreEqual(_rawData.Count, 4);
+            Assert.IsTrue(_rawData.Contains(newEntity));
         }
 
         [TestMethod]
         public void Create2()
         {          
-            var result = (ViewResult) controller.Create();
+            var result = (ViewResult) _controller.Create();
             
         }
 
         [TestMethod]
         public void Details()
         {
-            var entity = data.First();
-            entities.Setup(m => m.Find(It.IsAny<int>())).Returns(entity);
-            var result = (ViewResult) controller.Details(entity.ID);
+            var entity = _data.First();
+            _entities.Setup(m => m.Find(It.IsAny<int>())).Returns(entity);
+            var result = (ViewResult) _controller.Details(entity.ID);
+
             Assert.AreEqual(result.View, null);
             Assert.AreEqual(result.Model, entity);            
         }
@@ -71,28 +71,29 @@ namespace WinInvestmentTracker.Tests.Controllers
         [TestMethod]
         public void Delete()
         {
-            var entity = data.First();
-            entities.Setup(m => m.Find(It.IsAny<int>())).Returns(entity);
-            var result = (ViewResult)controller.Delete(entity.ID);
+            var entity = _data.First();
+            _entities.Setup(m => m.Find(It.IsAny<int>())).Returns(entity);
+            var result = (ViewResult)_controller.Delete(entity.ID);
+
             Assert.AreEqual(result.Model, entity);
         }
 
         [TestMethod]
         public void DeletePost()
         {
-            var entity = data.First();
-            entities.Setup(m => m.Remove(It.IsAny<IDbInvestmentEntity>())).Callback<IDbInvestmentEntity>((i) => 
+            var entity = _data.First();
+            _entities.Setup(m => m.Remove(It.IsAny<IDbInvestmentEntity>())).Callback<IDbInvestmentEntity>((i) => 
             {
-                rawData.Remove(i);
-                Assert.AreEqual<int>(2, rawData.Count);
+                _rawData.Remove(i);
+                Assert.AreEqual<int>(2, _rawData.Count);
             });
-            entities.Setup(m => m.Find(It.IsAny<int>())).Returns(entity);
+            _entities.Setup(m => m.Find(It.IsAny<int>())).Returns(entity);
             
-            var result = (RedirectToRouteResult) controller.Delete(entity);
+            var result = (RedirectToRouteResult) _controller.Delete(entity);
             
             Assert.AreEqual(result.RouteValues.Values.First(), "Index");
-            dbContext.Verify(context => context.SaveChanges(), Times.Once);
-            entities.Verify(db => db.Remove(It.IsAny<IDbInvestmentEntity>()), Times.Once);
+            _dbContext.Verify(context => context.SaveChanges(), Times.Once);
+            _entities.Verify(db => db.Remove(It.IsAny<IDbInvestmentEntity>()), Times.Once);
         }
         
 
@@ -100,32 +101,32 @@ namespace WinInvestmentTracker.Tests.Controllers
         public void IndexViewRawWorks()
         {
            
-            var result = (PartialViewResult) controller.IndexViewRaw();
+            var result = (PartialViewResult) _controller.IndexViewRaw();
             Assert.AreEqual(result.ViewName, "Index");
             Assert.AreEqual(result.Model.GetType(), typeof(List<IDbInvestmentEntity>));
             var resultModelIDs  = ((List<IDbInvestmentEntity>) result.Model).Select(o=>o.ID).ToList();
-            var rawDataIds = rawData.Select(o => o.ID).ToList();
+            var rawDataIds = _rawData.Select(o => o.ID).ToList();
             Assert.IsTrue( resultModelIDs.All( a => rawDataIds.Contains(a)) );
         }
 
         [TestMethod]
         public void Index()
         {
-            var result = (ViewResult)controller.Index();            
+            var result = (ViewResult)_controller.Index();            
             Assert.AreEqual(result.Model.GetType(), typeof(List<IDbInvestmentEntity>));
             var resultModelIDs = ((List<IDbInvestmentEntity>)result.Model).Select(o => o.ID).ToList();
-            var rawDataIds = rawData.Select(o => o.ID).ToList();
+            var rawDataIds = _rawData.Select(o => o.ID).ToList();
             Assert.IsTrue(resultModelIDs.All(a => rawDataIds.Contains(a)));
         }
 
         [TestMethod]
         public void Update()
         {
-            var entity = data.First();
-            entities.Setup(m => m.Find(It.IsAny<int>())).Returns(entity);
-            var result = (HttpStatusCodeResult) controller.Update("Name", "Poo", entity.ID);
+            var entity = _data.First();
+            _entities.Setup(m => m.Find(It.IsAny<int>())).Returns(entity);
+            var result = (HttpStatusCodeResult) _controller.Update("Name", "Poo", entity.ID);
 
-            dbContext.Verify(m => m.SaveChanges(), Times.AtLeastOnce);
+            _dbContext.Verify(m => m.SaveChanges(), Times.AtLeastOnce);
             Assert.AreEqual(entity.Name, "Poo");
             Assert.AreEqual(result.StatusCode, (int)System.Net.HttpStatusCode.OK);
         }
@@ -188,22 +189,22 @@ namespace WinInvestmentTracker.Tests.Controllers
         public void RunBeforeEachTest()
         {
             // Set the test data 
-            rawData = new List<IDbInvestmentEntity>
+            _rawData = new List<IDbInvestmentEntity>
             {
                 new AnyIDbInvestmentEntity { Name = "A", Description = "Some description", ID = 1 },
                 new AnyIDbInvestmentEntity { Name = "B", Description = "Some description", ID = 2 },
                 new AnyIDbInvestmentEntity { Name = "C", Description = "Some description", ID = 3 }
 
             };
-            data = rawData.AsQueryable();
+            _data = _rawData.AsQueryable();
 
-            entities.As<IQueryable<IDbInvestmentEntity>>().Setup(m => m.Provider).Returns(data.Provider);
-            entities.As<IQueryable<IDbInvestmentEntity>>().Setup(m => m.Expression).Returns(data.Expression);
-            entities.As<IQueryable<IDbInvestmentEntity>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            entities.As<IQueryable<IDbInvestmentEntity>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            _entities.As<IQueryable<IDbInvestmentEntity>>().Setup(m => m.Provider).Returns(_data.Provider);
+            _entities.As<IQueryable<IDbInvestmentEntity>>().Setup(m => m.Expression).Returns(_data.Expression);
+            _entities.As<IQueryable<IDbInvestmentEntity>>().Setup(m => m.ElementType).Returns(_data.ElementType);
+            _entities.As<IQueryable<IDbInvestmentEntity>>().Setup(m => m.GetEnumerator()).Returns(_data.GetEnumerator());
             
-            dbContext.Setup(db => db.Entities).Returns(entities.Object);
-            controller.AddEntityApplicationDbContext(dbContext.Object);
+            _dbContext.Setup(db => db.Entities).Returns(_entities.Object);
+            _controller.AddEntityApplicationDbContext(_dbContext.Object);
 
         }
         
@@ -211,7 +212,7 @@ namespace WinInvestmentTracker.Tests.Controllers
         public void RunAfterEachTest()
         {
             // Reset the test data
-            rawData = new List<IDbInvestmentEntity>
+            _rawData = new List<IDbInvestmentEntity>
             {
                 new AnyIDbInvestmentEntity { Name = "A", Description = "Some description", ID = 1 },
                 new AnyIDbInvestmentEntity { Name = "B", Description = "Some description", ID = 2 },
