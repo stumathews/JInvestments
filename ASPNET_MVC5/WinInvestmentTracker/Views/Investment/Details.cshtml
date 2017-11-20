@@ -1,6 +1,6 @@
 ﻿@using WinInvestmentTracker.Models
 @using WinInvestmentTracker.Models.BOLO
-@model WinInvestmentTracker.Models.Investment
+@model Investment
 
 @{
     ViewBag.Title = "Details";
@@ -9,7 +9,8 @@
 <div>
     <h1><a id="@Html.NameFor(model => model.Name)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.Name</a></h1>    
     <h4>Investment</h4>    
-    <a href="javascript:toggleEditPage()">Edit</a>
+    <button id="toggle" class="btn btn-default">Toggle edit</button>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -83,7 +84,9 @@
 <div class="tab-content">
     <div id="factors" class="tab-pane fade in active">
         
-        @{ Html.RenderPartial("_InvestmentByFactors", Model);}
+        <div id="factor_graph">
+            <svg class="factors"></svg>
+        </div>
 
         @{ Html.RenderPartial("_ListFactors", new ParentChildEntityWithHtmlActions<InvestmentInfluenceFactor, Investment>
            {
@@ -101,58 +104,122 @@
         </p>
     </div>
     <div id="risks" class="tab-pane fade">
-        @{ Html.RenderPartial("_ListRisks", new ParentChildEntityWithHtmlActions<InvestmentRisk, Investment>
-            {
-                Children = Model.Risks.ToList(),
-                Parent = Model,
-                HtmlActions = new List<HtmlAction>()
-        {
-            new HtmlAction("","Dissassociate","DissassociateRisk","Investment"),
+        
+        <div id="risks_graph">
+            <svg class="risks"></svg>
+        </div>
 
-        }
-            });
-        }
+        @{ Html.RenderPartial("_ListRisks", new ParentChildEntityWithHtmlActions<InvestmentRisk, Investment>
+           {
+               Children = Model.Risks.ToList(),
+               Parent = Model,
+               HtmlActions = new List<HtmlAction>()
+               {
+                   new HtmlAction("", "Dissassociate", "DissassociateRisk", "Investment"),
+
+               }
+           }); }
         <p>
-            @Html.ActionLink("Add a risk to this investment", "AssociateRisk", "Investment", new { ID = Model.ID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Add a risk to this investment", "AssociateRisk", "Investment", new {ID = Model.ID}, new {@class = "btn btn-primary"})
         </p>
     </div>
     <div id="groups" class="tab-pane fade">
+        
+        <div id="factor_graph">
+            <svg class="groups"></svg>
+        </div>
         @{ Html.RenderPartial("_ListGroups", new ParentChildEntityWithHtmlActions<InvestmentGroup, Investment>
-            {
-                Children = Model.Groups.ToList(),
-                Parent = Model,
-                HtmlActions = new List<HtmlAction>()
-       {
-           new HtmlAction("","Dissassociate","DissassociateGroup","Investment"),
+           {
+               Children = Model.Groups.ToList(),
+               Parent = Model,
+               HtmlActions = new List<HtmlAction>()
+               {
+                   new HtmlAction("", "Dissassociate", "DissassociateGroup", "Investment"),
 
-       }
-            });
-        }
+               }
+           }); }
         <p>
-            @Html.ActionLink("Add this investment to a group", "AssociateGroup", "Investment", new { ID = Model.ID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Add this investment to a group", "AssociateGroup", "Investment", new {ID = Model.ID}, new {@class = "btn btn-primary"})
         </p>
     </div>
     <div id="regions" class="tab-pane fade">
+        <div id="factor_graph">
+            <svg class="regions"></svg>
+        </div>
         @{ Html.RenderPartial("_ListRegions", new ParentChildEntityWithHtmlActions<Region, Investment>
-            {
-                Children = Model.Regions.ToList(),
-                Parent = Model,
-                HtmlActions = new List<HtmlAction>()
-       {
-           new HtmlAction("","Dissassociate","DissassociateRegion","Investment"),
+           {
+               Children = Model.Regions.ToList(),
+               Parent = Model,
+               HtmlActions = new List<HtmlAction>()
+               {
+                   new HtmlAction("", "Dissassociate", "DissassociateRegion", "Investment"),
 
-       }
-            });
-        }
+               }
+           }); }
         <p>
-            @Html.ActionLink("Add this investment to a region", "AssociateRegion", "Investment", new { ID = Model.ID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Add this investment to a region", "AssociateRegion", "Investment", new {ID = Model.ID}, new {@class = "btn btn-primary"})
         </p>
     </div>
-    
 </div>
 
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("/Scripts/graphs/InvestmentByFactors/InvestmentByFactors.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/graphs/GraphUtils.js")"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            // We land on the Influence factors tab so show the graph for it
+            drawGraph("/Investment/GenerateFactorsGraph/@Model.ID", { element: "svg.factors" });
+        });
+
+        $.fn.editable.defaults.mode = 'inline';
+        $('#@Html.NameFor(model => model.Name)').editable('toggleDisabled');
+        $('#@Html.NameFor(model => model.Description)').editable('toggleDisabled');
+        $('#@Html.NameFor(model => model.ValueProposition)').editable('toggleDisabled');
+        $('#@Html.NameFor(model => model.Symbol)').editable('toggleDisabled');
+        $('#@Html.NameFor(model => model.DesirabilityStatement)').editable('toggleDisabled');
+        $('#@Html.NameFor(model => model.Value)').editable('toggleDisabled');
+        $('#@Html.NameFor(model => model.InitialInvestment)').editable('toggleDisabled');
+
+        //enable / disable
+        $('#toggle').click(function() {
+            $('#@Html.NameFor(model => model.Name)').editable('toggleDisabled');
+            $('#@Html.NameFor(model => model.Description)').editable('toggleDisabled');
+            $('#@Html.NameFor(model => model.ValueProposition)').editable('toggleDisabled');
+            $('#@Html.NameFor(model => model.Symbol)').editable('toggleDisabled');
+            $('#@Html.NameFor(model => model.DesirabilityStatement)').editable('toggleDisabled');
+            $('#@Html.NameFor(model => model.Value)').editable('toggleDisabled');
+            $('#@Html.NameFor(model => model.InitialInvestment)').editable('toggleDisabled');
+
+        });
+
+        $("#toggle-on").click(function(e) {
+
+        });
+
+
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab',
+            function(e) {
+                var target = $(e.target).attr("href"); // activated tab
+                // target is like #risks, #factors, #groups
+                // alert("svg." + target.substr(1));
+                switch (target.substr(1)) {
+                case 'risks':
+                    drawGraph("/Investment/GenerateRisksGraph/@Model.ID", { element: "svg.risks" });
+                    break;
+                case 'groups':
+                    drawGraph("/Investment/GenerateGroupsGraph/@Model.ID", { element: "svg.groups" });
+                    break;
+                case 'factors':
+                    drawGraph("/Investment/GenerateFactorsGraph/@Model.ID", { element: "svg.factors" });
+                    break;
+                case 'regions':
+                    drawGraph("/Investment/GenerateRegionsGraph/@Model.ID", { element: "svg.regions" });
+                    break;
+                }
+
+            });
+    </script>
 }
 

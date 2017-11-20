@@ -8,7 +8,7 @@ using WinInvestmentTracker.Models.DEL.Interfaces;
 
 namespace WinInvestmentTracker.Models
 {
-    public class InvestmentInfluenceFactor : IDbInvestmentEntity
+    public class InvestmentInfluenceFactor : IDbInvestmentEntity, IDbInvestmentEntityHasInvestments
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

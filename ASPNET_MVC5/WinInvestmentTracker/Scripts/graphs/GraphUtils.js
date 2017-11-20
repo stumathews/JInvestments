@@ -1,11 +1,20 @@
-﻿$(document).ready(function () {
-    //$.fn.editable.defaults.mode = 'inline';
-    
+﻿function forceTick() {
+    d3.selectAll("line.link")
+        .attr("x1", function (d) { return d.source.x; })
+        .attr("x2", function (d) { return d.target.x; })
+        .attr("y1", function (d) { return d.source.y; })
+        .attr("y2", function (d) { return d.target.y; });
 
-    d3.json(url, handleGraphData);
+    d3.selectAll("g.node")
+        .attr("transform",
+            function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
 
+}
 
-    function handleGraphData(error, graph) {
+function drawGraph(GenerateGraphUrl, model) {
+    d3.json(GenerateGraphUrl, function handleGraphData(error, graph) {
         var svg_width = 960;
         var svg_height = 300;
 
@@ -35,15 +44,15 @@
             }
             */
 
-        var FactorInvestmentsCount = d3.scale.linear().interpolate(d3.interpolateHcl)
+        var aspectInvestmentsCount = d3.scale.linear().interpolate(d3.interpolateHcl)
             .domain(d3.extent(data.nodes, function (d) { return d.value; })).range(["green", "red"]);
 
-        var svg = d3.select("svg").attr("height", svg_height).attr("width", svg_width);
+        var svg = d3.select(model.element).attr("height", svg_height).attr("width", svg_width);
         var createdLinks = svg.selectAll("line.link").data(data.links).enter().append("line")
             .attr("class", "link");
         var createdNodes = svg.selectAll("g.node").data(data.nodes).enter().append("g").attr("class", "node");
         var createdCircles = createdNodes.append("circle").attr("r", function (d) { return d.value; })
-            .style("fill", function (d) { return FactorInvestmentsCount(d.value) });
+            .style("fill", function (d) { return aspectInvestmentsCount(d.value) });
         var firstCircle = createdCircles.filter(function (d, i) { return i === 0 });
         firstCircle.attr("r", 20).style("fill", "blue").style("stroke", "blue");
         var createdLabels = createdNodes.append("text").style("class", "label").style("text-anchor", "right").attr("y", 15).attr("x", 20)
@@ -66,37 +75,6 @@
         force.start();
 
 
-    } // handleGraphData
-
-
-});
-
-function forceTick() {
-    d3.selectAll("line.link")
-        .attr("x1", function (d) { return d.source.x; })
-        .attr("x2", function (d) { return d.target.x; })
-        .attr("y1", function (d) { return d.source.y; })
-        .attr("y2", function (d) { return d.target.y; });
-
-    d3.selectAll("g.node")
-        .attr("transform",
-            function (d) {
-                return "translate(" + d.x + "," + d.y + ")";
-            });
-
+    });
 }
 
-function toggleEditPage() {
-    $('#@Html.NameFor(model => model.Name)').editable();
-    $('#@Html.NameFor(model => model.Description)').editable();
-    $('#@Html.NameFor(model => model.ValueProposition)').editable();
-    $('#@Html.NameFor(model => model.Symbol)').editable();
-    $('#@Html.NameFor(model => model.DesirabilityStatement)').editable();
-    $('#@Html.NameFor(model => model.Value)').editable();
-    $('#@Html.NameFor(model => model.InitialInvestment)').editable();
-}
-
-$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    var target = $(e.target).attr("href"); // activated tab
-    alert(target);
-});

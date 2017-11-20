@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using WinInvestmentTracker.Common;
 using WinInvestmentTracker.Models;
 using WinInvestmentTracker.Models.BOLO;
+using WinInvestmentTracker.Models.DEL.Interfaces;
 
 namespace WinInvestmentTracker.Controllers
 {
@@ -11,9 +12,21 @@ namespace WinInvestmentTracker.Controllers
     public class InvestmentController : EntityManagedController<Investment>
     {
 
-        public ActionResult GenerateFactorsGraph(int ID)
+        public ActionResult GenerateRisksGraph(int ID)
         {
+            var investment = EntityRepository.Entities.Find(ID);
+            return GenerateGraph(ID, investment.Risks);
+        }
 
+        /// <summary>
+        /// Easily Generate investment graphs of entities that implement IDbInvestmentEntity, IDbInvestmentEntityHasInvestments
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="investmentId"></param>
+        /// <param name="aspects"></param>
+        /// <returns></returns>
+        private ActionResult GenerateGraph<T>(int investmentId, IEnumerable<T> aspects) where T : IDbInvestmentEntity, IDbInvestmentEntityHasInvestments
+        {
             /*
                var data = {
                 "nodes":[
@@ -39,20 +52,37 @@ namespace WinInvestmentTracker.Controllers
             }
              */
 
-            var investment = EntityRepository.Entities.Find(ID);
-            var nodes = new List<object> {new { name = investment.Name, value = 1 } };
+            var investment = EntityRepository.Entities.Find(investmentId);
+            var nodes = new List<object> { new { name = investment.Name, value = 1 } };
             var links = new List<object>();
             var index = 1;
-            foreach (var factor in investment.Factors)
+            foreach (var aspect in aspects)
             {
-                nodes.Add(new { name = factor.Name, value = factor.Investments.Count });
-                links.Add(new { source = 0, target=index, value = factor.Investments.Count });
+                nodes.Add(new { name = aspect.Name, value = aspect.Investments.Count });
+                links.Add(new { source = 0, target = index, value = aspect.Investments.Count });
                 index++;
             }
+            return Json(new { nodes, links }, JsonRequestBehavior.AllowGet);
+        }
 
-            
 
-            return Json( new { nodes = nodes, links = links }, JsonRequestBehavior.AllowGet);
+
+        public ActionResult GenerateFactorsGraph(int ID)
+        {
+            var investment = EntityRepository.Entities.Find(ID);
+            return GenerateGraph(ID, investment.Factors);
+        }
+
+        public ActionResult GenerateGroupsGraph(int ID)
+        {
+            var investment = EntityRepository.Entities.Find(ID);
+            return GenerateGraph(ID, investment.Groups);
+        }
+
+        public ActionResult GenerateRegionsGraph(int ID)
+        {
+            var investment = EntityRepository.Entities.Find(ID);
+            return GenerateGraph(ID, investment.Regions);
         }
 
         public ActionResult SelectFactors()

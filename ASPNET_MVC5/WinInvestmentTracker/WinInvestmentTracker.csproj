@@ -231,6 +231,7 @@
     <Compile Include="Common\UnityUtilities.cs" />
     <Compile Include="Common\Utilities.cs" />
     <Compile Include="Controllers\FactorController.cs" />
+    <Compile Include="Models\DEL\IDbInvestmentEntityHasInvestments.cs" />
     <Compile Include="WebApiControllers\FactorsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -328,7 +329,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap3-editable\js\bootstrap-editable.js" />
     <Content Include="Scripts\bootstrap3-editable\js\bootstrap-editable.min.js" />
-    <Content Include="Scripts\graphs\InvestmentByFactors\InvestmentByFactors.js" />
+    <Content Include="Scripts\graphs\GraphUtils.js" />
     <Content Include="Scripts\inputs-ext\address\address.js" />
     <Content Include="Scripts\inputs-ext\typeaheadjs\lib\typeahead.js" />
     <Content Include="Scripts\inputs-ext\typeaheadjs\typeaheadjs.js" />
@@ -401,7 +402,6 @@
     <Content Include="Views\Investment\SelectItemsWithParent.cshtml" />
     <Content Include="Views\Shared\_ListInvestments.cshtml" />
     <Content Include="Views\Investment\ShowGraph.cshtml" />
-    <Content Include="Views\Investment\_InvestmentByFactors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

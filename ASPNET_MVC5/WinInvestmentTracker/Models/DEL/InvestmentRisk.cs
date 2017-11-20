@@ -9,7 +9,7 @@ using WinInvestmentTracker.Models.DEL.Interfaces;
 
 namespace WinInvestmentTracker.Models
 {
-    public class InvestmentRisk : IDbInvestmentEntity
+    public class InvestmentRisk : IDbInvestmentEntity, IDbInvestmentEntityHasInvestments
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
