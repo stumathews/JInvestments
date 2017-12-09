@@ -1,0 +1,68 @@
+﻿@model List<WinInvestmentTracker.Models.CheckModel>
+
+@{
+    //ViewBag.Title = "SelectFactors";
+}
+
+<h2> @ViewBag.Title</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Select @ViewBag.Title</h4>
+        <hr />
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>                    
+                    @{ 
+                        var first = Model.First();
+                        if(first != null && first.Fields != null) {
+                            for (var f = 0; f < first.Fields.Count; f++)
+                            {
+                            <th>@first.Fields[f].Name</th>
+                            }
+                        }
+                    }
+
+                </tr>
+            <thead>
+
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.CheckBoxFor(x => x[i].Checked)
+                        @Html.HiddenFor(x => x[i].ID)
+                        @Html.DisplayFor(x => x[i].Name)
+                        @Html.HiddenFor(x => x[i].Name)
+                    </td>
+                    @{
+                        var fields = Model[i].Fields;
+                        if (fields != null)
+                        {
+                            for (int f = 0; f < fields.Count; f++)
+                            {
+                                <td>@fields[f].Value</td>
+                            }
+                        }
+                    }
+                </tr>
+
+                        }
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input id="Next" type="submit" value="Next" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+    </div>
+}
+<a href="@ViewBag.CustomActionUrl">@ViewBag.CustomActionName</a>

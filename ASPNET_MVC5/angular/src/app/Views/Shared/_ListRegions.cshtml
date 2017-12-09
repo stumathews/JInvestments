@@ -1,0 +1,38 @@
+﻿@model WinInvestmentTracker.Models.BOLO.ParentChildEntityWithHtmlActions<WinInvestmentTracker.Models.Region, WinInvestmentTracker.Models.Investment>
+@{
+    Layout = null;
+}
+
+<div>
+    <hr />
+    <h3>Regions</h3>
+    <p>Investments can be within different geographic locations that have specific influences on them. Defining regions that investments share can show how these investments are affected by those influences.</p>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Investments</th>
+            <th>Description</th>
+            @foreach (var action in Model.HtmlActions)
+            {
+                <th>@action.DisplayName</th>
+            }
+        </tr>
+        </thead>
+        @foreach (var region in Model.Children)
+        {
+            <tr>
+                <td>@Html.ActionLink(region.Name, "details", "Region", new { Id = region.ID }, htmlAttributes: null)</td>
+                <td>@Html.ActionLink(region.Investments.Count.ToString(), "InvestmentByRegion", "Investment", new { ID = region.ID }, null)</td>
+                <td>@Html.DisplayFor(model => region.Description)</td>
+                @foreach (var action in Model.HtmlActions)
+                {
+                    <td> @Html.ActionLink(action.LinkTitle, action.ActionName, action.ControllerName, new { regionID = region.ID, InvestmentID = Model.Parent.ID }, null)</td>
+                }
+            </tr>
+        }
+
+    </table>
+    <p><strong>Total: @Model.Children.Count()</strong></p>
+</div>

@@ -1,0 +1,81 @@
+﻿@model WinInvestmentTracker.Models.Investment
+
+@{
+    ViewBag.Title = "Summary";
+}
+
+<h2>Summary</h2>
+
+<div>
+    <h4>Summary of new investment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Symbol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Symbol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValueProposition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValueProposition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesirabilityStatement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesirabilityStatement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitialInvestment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitialInvestment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Value)
+        </dd>
+
+    </dl>
+</div>
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="Finish" type="submit" name="outcome" value="Finish" class="btn btn-default" />
+                <input id="Cancel" type="submit" name="outcome" value="Cancel" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

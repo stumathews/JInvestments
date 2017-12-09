@@ -1,0 +1,56 @@
+﻿@using WinInvestmentTracker.Models
+@using WinInvestmentTracker.Models.BOLO
+@model WinInvestmentTracker.Models.InvestmentInfluenceFactor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <h1><a id="@Html.NameFor(model => model.Name)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Factor", new { ID = @Model.ID})">@Html.DisplayFor(model => model.Name)</a></h1>
+    <h4>Investment Influence Factor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            <a id="@Html.NameFor(model => model.Description)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Factor", new { ID = @Model.ID})">@Html.DisplayFor(model => model.Description)</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Influence)
+        </dt>
+
+        <dd>
+            <a id="@Html.NameFor(model => model.Influence)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Factor", new { ID = @Model.ID})">@Html.DisplayFor(model => model.Influence)</a>
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @{ Html.RenderPartial("_ListInvestments", new EntityWithHtmlActions<Investment>
+        {
+            Entities = Model.Investments.ToList(),
+            HtmlActions = new List<HtmlAction>()
+        {
+            //new HtmlAction("","Dissassociate","DissassociateRisk","Investment"),
+
+        }
+        });
+    }
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.fn.editable.defaults.mode = 'inline';
+            $('#@Html.NameFor(model => model.Name)').editable();
+            $('#@Html.NameFor(model => model.Description)').editable();
+            $('#@Html.NameFor(model => model.Influence)').editable();
+        });
+    </script>
+}

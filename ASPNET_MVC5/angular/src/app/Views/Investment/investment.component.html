@@ -1,0 +1,55 @@
+﻿<h1>Investments</h1>
+<p>Investments represent the assets that are valuable to you. </p>
+
+<p>
+    <a class="btn btn-primary" >Create Investment</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Regions</th>
+            <th>Risks</th>
+            <th>Factors</th>
+            <th>Groups</th>
+            <th>Value</th>
+            <th></th> <!--Delete -->
+        </tr>
+    </thead>   
+        <tr *ngFor="let investment of Investments">
+            <td>         
+                <a >{{ investment.name }}</a>      
+                
+            </td>
+            <td>
+                <span *ngFor="let region of investment.regions">
+                        <a >{{ region.regionID }}</a> 
+                </span>
+                
+            </td>
+            <td>
+                    <span *ngFor="let risk of investment.risks">
+                            <a >{{ risk.investmentRiskID }}</a>  
+                    </span>
+                
+            </td>
+            <td>
+                    <span *ngFor="let factor of investment.factors">
+                            <a >{{ factor.investmentInfluenceFactorID }}</a> 
+                    </span>
+                
+            </td>
+            <td>
+                    <span *ngFor="let group of investment.groups">
+                            <a >{{ group.investmentGroupID }}</a>
+                    </span>
+            </td>
+            <td>
+                <span>{{ investment.value }}</span><br />
+            </td>
+            <td><a>Delete investment</a></td>            
+        </tr>
+    
+
+</table>
+<a class="btn btn-primary" >Create Investment</a>

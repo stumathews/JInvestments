@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Show Graph";
+}
+
+<h2>@ViewBag.Title </h2>
+<svg></svg>
+
+<svg class="chart1"></svg>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var url = "/odata/Investments";
+            d3.json(url, handleGraphData);
+            var rect_width = 30;
+            var svg_width = 960;
+            var svg_height = 200;
+
+            function handleGraphData(error, graph) {
+
+                var svg = d3.select("body svg").attr("height", svg_height).attr("width", svg_width);
+                var valueExtentRange = d3.extent(graph.value, function(d) { return d.Value });
+                var colourSpan = d3.scale.linear().interpolate(d3.interpolateHcl).domain(valueExtentRange).range(["yellow", "blue"]);
+                var yScale = d3.scale.linear().domain(valueExtentRange).range([0, svg_height]);
+                var groups = svg.selectAll("g").data(graph.value).enter().append("g");
+
+                // add bars
+                var bars = groups.append("rect").transition().delay(function(d, i) { return i * 50; }).duration(500)
+                    .attr("width", rect_width)
+                    .attr("height", function(d) { return yScale(d.Value); })
+                    .style("fill", function(d) { return colourSpan(d.Value); })
+                    .style("stroke-width", 2)
+                    .style("stroke", "black")
+                    .attr("x", function(d, i) { return i * rect_width; })
+                    .attr("y", function(d) { return svg_height - yScale(d.Value); });
+                
+
+                var chart1 = d3.select("svg.chart1").attr("height", svg_height).attr("width", svg_width);
+                var chart1Groups = chart1.append("g").attr("id", "wrapper_group")
+                    // move to x=10, y=10 as the viewport so it shows up in the middle
+                    .attr("transform", "translate(10,100)")
+                    .selectAll("g")
+                    .data(graph.value)
+                    .enter()
+                    .append("g")
+                    .attr("transform", function(d, i) { return "translate(" + (i * 30) + ",0)"; });
+
+                var circles = chart1Groups.append("circle").attr("r", 10)
+                    .style("fill", function(d) { return colourSpan(d.Value); }).style("stroke", "black")
+                    .style("stroke-width", "1px");
+
+                var label_groups = chart1Groups.append("g").attr("transform", "rotate(90)");
+
+                label_groups.append("text").style("text-anchor", "middle").attr("y", 20).style("font-size", "10px")
+                    .text(function(d) { return d.Name; });
+
+                // lets make some buttons with events
+
+                circles.on("click", function(d) { alert(d.Name + "=" + d.Value) });
+
+
+            } // handleGraphData
+
+
+        });
+    </script>
+}

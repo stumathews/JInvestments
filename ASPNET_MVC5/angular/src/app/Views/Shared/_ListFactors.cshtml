@@ -1,0 +1,44 @@
+﻿@model WinInvestmentTracker.Models.BOLO.ParentChildEntityWithHtmlActions<WinInvestmentTracker.Models.InvestmentInfluenceFactor, WinInvestmentTracker.Models.Investment>
+@{
+    Layout = null;
+}
+
+<div>
+    <hr />
+    <h3>Influence Factors</h3>
+    <p>
+        Influence Factors are anything what influences the companies balance sheet(assets and liabilities) or income(profit/loss) statement.
+        These factors usually affect the underlying value of the investment either positively and negatively.
+    </p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Linked investments</th>
+            @foreach (var action in Model.HtmlActions)
+            {
+                <th>@action.DisplayName</th>
+            }
+           
+        </tr>
+        </thead>
+        @foreach (var factor in Model.Children)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(factor.Name, "details", "Factor", new { ID = factor.ID }, null)
+                </td>
+
+                <td>@factor.Description</td>
+                <td>@Html.ActionLink(factor.Investments.Count.ToString(), "InvestmentByFactor", "Investment", new { ID = factor.ID }, null)</td>
+                @foreach (var action in Model.HtmlActions)
+                {
+                    <td> @Html.ActionLink(action.LinkTitle, action.ActionName, action.ControllerName, new { factorID = factor.ID, InvestmentID = Model.Parent.ID }, null)</td>
+                }
+            </tr>
+        }
+
+    </table>
+    <p><strong>Total: @Model.Children.Count()</strong></p>
+</div>
