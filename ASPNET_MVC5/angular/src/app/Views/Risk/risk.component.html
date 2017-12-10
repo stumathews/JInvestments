@@ -1,10 +1,4 @@
-﻿@model IEnumerable<WinInvestmentTracker.Models.InvestmentRisk>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h1>Investment Risks</h1>
+﻿<h1>Investment Risks</h1>
 <p>
     Risks are unknowns that affect the value of the investment. Usually risks generate split opinions and are speculative.
     Usually difficult to predict the effect on the value of the investment.
@@ -15,9 +9,7 @@
     'Company' risks are specific to the company and thus it can influence the value such as directory dismissal, product retirement and lay-offs.
 </p>
 
-<p>
-    @Html.ActionLink("New Risk", "Create", "Risk", new { @class = "btn btn-primary" })
-</p>
+<p><a class="btn btn-primary" >Create Risk</a></p>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -28,19 +20,13 @@
             <th></th> <!--Delete -->
         </tr>
     </thead>
-    @foreach (var risk in Model)
-    {
-        <tr>
-            <td>                
-                @Html.ActionLink(risk.Name, "details", "Risk", new { id = risk.ID}, null)
-            </td>
-
-            <td>@risk.Description</td>
-            <td>@risk.Type.ToString()</td>
-            <td>@Html.ActionLink(risk.Investments.Count.ToString(), "InvestmentByRisk", "Investment", new { Id=risk.ID }, null)</td>
-            <td>@Html.ActionLink("delete", "delete", "Risk", new { id = risk.ID }, null)</td>
-        </tr>            
-    }
+    <tr *ngFor="let risk of Risks">
+        <td><a>{{ risk.name }}</a></td>
+        <td><a>{{ risk.description }}</a></td>
+        <td><a>{{ risk.type }}</a></td>
+        <td><a>{{ risk.investments.length }}</a></td>
+        <td><a>Delete</a></td>
+    </tr>
 </table>
-<p><strong>Total: @Model.Count()</strong></p>
+<p><strong>Total: {{ Risks.length }}</strong></p>
 

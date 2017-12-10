@@ -1,66 +1,33 @@
-﻿@using WinInvestmentTracker.Models
-@using WinInvestmentTracker.Models.BOLO
-@model Investment
-
-@{
-    ViewBag.Title = "Details";
-}
-
-<div>
-    <h1><a id="@Html.NameFor(model => model.Name)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.Name</a></h1>    
+﻿<div>
+    <h1><a>{{ investment.name }} </a></h1>    
     <h4>Investment</h4>    
     <button id="toggle" class="btn btn-default">Toggle edit</button>
     
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+        <dt>Description</dt>
 
-        <dd>
-            <!-- @Html.DisplayFor(model => model.Description) -->
-            <a id="Description" data-pk="@Model.ID" data-title="Enter data" data-type="textarea" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.Description</a>
-        </dd>
+        <dd>{{ investment.description }}</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Symbol)
-        </dt>
+        <dt>Symbol</dt>
 
-        <dd>
-            <a id="@Html.NameFor(model => model.Symbol)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.Symbol</a>
-        </dd>
+        <dd>{{ investment.symbol }}</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ValueProposition)
-        </dt>
+        <dt>Value proposition</dt>
 
-        <dd>
-            <a id="@Html.NameFor(model => model.ValueProposition)" data-pk="@Model.ID" data-type="textarea" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.ValueProposition</a>            
-        </dd>
+        <dd>{{ investment.valueProposition}}</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DesirabilityStatement)
-        </dt>
+        <dt>DesirabilityStatement</dt>
 
-        <dd>
-            <a id="@Html.NameFor(model => model.DesirabilityStatement)" data-pk="@Model.ID" data-type="textarea" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.DesirabilityStatement</a>            
-        </dd>
+        <dd>{{ investment.desirabilityStatement }}</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.InitialInvestment)
-        </dt>
+        <dt>Initial Investment</dt>
 
-        <dd>
-            <a id="@Html.NameFor(model => model.InitialInvestment)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.InitialInvestment</a>            
-        </dd>
+        <dd>{{ investment.initialInvestment }}</dd>
                 
-        <dt>
-            @Html.DisplayNameFor(model => model.Value)
-        </dt>
+        <dt>Value</dt>
 
-        <dd>
-            <a id="@Html.NameFor(model => model.Value)" data-pk="@Model.ID" data-title="Enter data" data-url="@Url.Action("Update","Investment", new { ID = @Model.ID})">@Model.Value</a>            
-        </dd>
+        <dd>{{ investment.value }}</dd>
 
     </dl>
 </div>
@@ -80,7 +47,7 @@
 </ul>
 
 
-
+<!--
 <div class="tab-content">
     <div id="factors" class="tab-pane fade in active">
         
@@ -162,7 +129,6 @@
     </div>
 </div>
 
-
 @section Scripts {
     <script type="text/javascript" src="@Url.Content("/Scripts/graphs/GraphUtils.js")"></script>
     <script type="text/javascript">
@@ -222,4 +188,5 @@
             });
     </script>
 }
+-->
 

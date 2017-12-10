@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../apiservice.service';
-import { IInvestment } from './investment';
+import { Investment } from './investment';
+import { InvestmentDetailComponent } from './investment.detail.component';
 
 @Component({
   selector: 'app-investment',
@@ -8,7 +9,7 @@ import { IInvestment } from './investment';
 })
 export class InvestmentComponent {
   title = 'Home';
-  Investments: IInvestment[];
+  Investments: Investment[];
   constructor(private apiService: ApiService) { }
 
   errorMessage: string;

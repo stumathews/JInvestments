@@ -9,12 +9,18 @@ import { HomeComponent } from './Views/Home/home.component';
 import { MessagesComponent } from './Views/Message/messages.component';
 import { SideNavComponent } from './Views/Shared/side-nav.component';
 import { InvestmentComponent } from './Views/Investment/investment.component';
+import { FactorComponent } from './Views/Factor/factor.component';
+import { GroupComponent } from './Views/Group/group.component';
+import { RiskComponent } from './Views/Risk/risk.component';
+import { RegionComponent } from './Views/Region/region.component';
+import { InvestmentDetailComponent } from './Views/Investment/investment.detail.component';
 
 import { ApiService } from './apiservice.service';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, MessagesComponent, SideNavComponent, InvestmentComponent
+    AppComponent, HomeComponent, MessagesComponent, SideNavComponent, InvestmentComponent,
+    FactorComponent, GroupComponent, RiskComponent, RegionComponent, InvestmentDetailComponent
   ],
   imports: [
     BrowserModule, APP_ROUTING, AlertModule.forRoot(), HttpModule

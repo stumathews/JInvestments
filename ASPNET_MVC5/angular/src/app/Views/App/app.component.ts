@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HTTP_PROVIDERS } from '@angular/http';
+//import { HTTP_PROVIDERS } from '@angular/http';
 import 'rxjs/Rx';
 
 @Component({
