@@ -1,0 +1,33 @@
+﻿<div>
+    <hr/>   
+    <h3>Risks</h3>
+    <p>
+        Risks are unknowns that affect the value of the investment. Usually risks generate split opinions and are speculative.
+        Usually difficult to predict the effect on the value of the investment.
+        Consumer perception for example can change and the affect of it can influence the value of the underlying company or it can improve it.
+    </p>
+    <p>
+        'Market' risks are those that are external to the company but affect the companies value such as the market conditions, supply and demand and customer satisfaction.
+        'Company' risks are specific to the company and thus it can influence the value such as directory dismissal, product retirement and lay-offs.
+    </p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Linked investments</th>
+            <th *ngFor="let action of HtmlActions">{{action.DisplayName}}</th>
+        </tr>
+        </thead>           
+        <tr *ngFor="let risk of Risks">                    
+            <td><a>{{ risk.name }}</a></td>
+            <td><a>{{ risk.description }}</a></td>
+            <td><a>{{ risk.type }}</a></td>
+            <td><a>{{ risk.investments?.length }}</a></td>
+            <td *ngFor="let action of HtmlActions"><a>{{action.LinkTitle}}</a></td>                
+        </tr>
+    </table>
+    <p><strong>Total: {{Risks.length}}</strong></p>
+</div>
+

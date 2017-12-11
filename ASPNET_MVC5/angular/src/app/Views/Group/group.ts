@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../../apiservice.service';
-import { InvestmentGroup } from './InvestmentGroup';
+import { InvestmentGroup } from '../../Models/InvestmentGroup';
 
 @Component({
   selector: 'app-group',
-  templateUrl: './group.component.html'
+  templateUrl: './group.html'
 })
-export class GroupComponent {
+export class GroupComponent implements OnInit {
   Groups: InvestmentGroup[];
   constructor(private apiService: ApiService) { }
 

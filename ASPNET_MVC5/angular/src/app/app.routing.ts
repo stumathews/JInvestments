@@ -1,20 +1,18 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { HomeComponent } from './Views/Home/home.component';
-import { MessagesComponent } from './Views/Message/messages.component';
 import { ModuleWithComponentFactories } from '@angular/core/src/linker/compiler';
-import { InvestmentComponent } from './Views/Investment/investment.component';
-import { InvestmentDetailComponent } from './Views/Investment/investment.detail.component';
-import { FactorComponent } from './Views/Factor/factor.component';
-import { GroupComponent } from './Views/Group/group.component';
-import { RiskComponent } from './Views/Risk/risk.component';
-import { RegionComponent } from './Views/Region/region.component';
+
+import { HomeComponent } from './Views/Home/home';
+import { InvestmentComponent } from './Views/Investment/investment';
+import { InvestmentDetailComponent } from './Views/Investment/investment.detail';
+import { FactorComponent } from './Views/Factor/factor';
+import { GroupComponent } from './Views/Group/group';
+import { RiskComponent } from './Views/Risk/risk';
+import { RegionComponent } from './Views/Region/region';
 
 const appRoutes: Routes = [
     { path : '', redirectTo: 'Home', pathMatch: 'full'},
     { path : 'Home', component: HomeComponent },
-    { path : 'Messages', component: MessagesComponent },
     { path : 'Investments', component: InvestmentComponent },
     { path : 'InvestmentDetails/:id', component: InvestmentDetailComponent },
     { path : 'Factors', component: FactorComponent },

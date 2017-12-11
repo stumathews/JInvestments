@@ -1,34 +1,22 @@
-﻿export interface Investment {
-  id: number;
-  description: string;
-  symbol: string;
-  valueProposition: string;
-  desirabilityStatement: string;
-  initialInvestment: number;
-  name: string;
-  value: number;
-  factors?: (FactorsEntity)[] | null;
-  regions?: (RegionsEntity)[] | null;
-  risks?: (RisksEntity)[] | null;
-  groups?: (GroupsEntity)[] | null;
-}
-export interface FactorsEntity {
-  investmentID: number;
-  investmentInfluenceFactorID: number;
-  investmentInfluenceFactor?: null;
-}
-export interface RegionsEntity {
-  investmentID: number;
-  regionID: number;
-  region?: null;
-}
-export interface RisksEntity {
-  investmentID: number;
-  investmentRiskID: number;
-  investmentRisk?: null;
-}
-export interface GroupsEntity {
-  investmentID: number;
-  investmentGroupID: number;
-  investmentGroup?: null;
+import { Component, OnInit, Input } from '@angular/core';
+import { ApiService } from '../../apiservice.service';
+import { Investment } from '../../Models/investment';
+import { InvestmentDetailComponent } from './investment.detail';
+
+@Component({
+  selector: 'app-investment',
+  templateUrl: './investment.html'
+})
+export class InvestmentComponent implements OnInit {
+  title = 'Home';
+  Investments: Investment[];
+  constructor(private apiService: ApiService) { }
+
+  errorMessage: string;
+  ngOnInit(): void {
+    console.log('Hello world');
+    this.apiService.GetInvestments()
+        .subscribe(investments => this.Investments = investments,
+                   error => this.errorMessage = <any>error);
+  }
 }

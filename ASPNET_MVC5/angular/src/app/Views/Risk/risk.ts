@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../../apiservice.service';
-import { InvestmentRisk } from './InvestmentRisk';
+import { InvestmentRisk } from '../../Models/InvestmentRisk';
 
 @Component({
   selector: 'app-risk',
-  templateUrl: './risk.component.html'
+  templateUrl: './risk.html'
 })
-export class RiskComponent {
+export class RiskComponent implements OnInit {
   Risks: InvestmentRisk[];
   constructor(private apiService: ApiService) { }
 

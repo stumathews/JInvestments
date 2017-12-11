@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-//import { HTTP_PROVIDERS } from '@angular/http';
 import 'rxjs/Rx';
 
 @Component({
@@ -17,7 +16,7 @@ import 'rxjs/Rx';
   </footer>
   </div>
 </div>`,
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.css']
 })
 export class AppComponent {
   title = 'Investment Tracker';

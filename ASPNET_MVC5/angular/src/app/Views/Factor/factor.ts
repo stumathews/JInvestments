@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../../apiservice.service';
-import { InvestmentInfluenceFactor } from './InvestmentInfluenceFactor';
+import { InvestmentInfluenceFactor } from '../../Models/InvestmentInfluenceFactor';
 
 @Component({
   selector: 'app-factor',
-  templateUrl: './factor.component.html'
+  templateUrl: './factor.html'
 })
-export class FactorComponent {
+export class FactorComponent implements OnInit {
   Factors: InvestmentInfluenceFactor[];
   constructor(private apiService: ApiService) { }
 
   errorMessage: string;
   ngOnInit(): void {
-    this.apiService.GetFactors()
-        .subscribe(factors => this.Factors = factors,
+    this.apiService.GetFactors().subscribe(factors => this.Factors = factors,
                    error => this.errorMessage = <any>error);
   }
 }

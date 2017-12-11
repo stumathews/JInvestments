@@ -1,4 +1,4 @@
-﻿<div>
+﻿<div *ngIf="investment">
     <h1><a>{{ investment.name }} </a></h1>    
     <h4>Investment</h4>    
     <button id="toggle" class="btn btn-default">Toggle edit</button>
@@ -32,22 +32,10 @@
     </dl>
 </div>
 
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#factors">Influence Factors</a></li>    
-    <li><a data-toggle="tab" href="#risks">Risks</a></li>
-    <li><a data-toggle="tab" href="#groups">Groupings</a></li>
-    <li><a data-toggle="tab" href="#regions">Regions</a></li>
-    <li><a data-toggle="tab" href="#regions">Products &  Services</a></li>
-    <li><a data-toggle="tab" href="#regions">Dependencies</a></li>
-    <li><a data-toggle="tab" href="#regions">Subsiduaries</a></li>
-    <li><a data-toggle="tab" href="#regions">Notes</a></li>
-    <li><a data-toggle="tab" href="#regions">Sector & Industry</a></li>
-    <li><a data-toggle="tab" href="#regions">Vested interests</a></li>
-    <li><a data-toggle="tab" href="#regions">Composition</a></li>
-</ul>
-
-
-<!--
+<app-list-risks *ngIf="investment" [RiskLinks]="investment.risks"></app-list-risks>
+<app-list-factors *ngIf="investment" [FactorLinks]="investment.factors"></app-list-factors>
+<app-list-groups *ngIf="investment" [GroupLinks]="investment.groups"></app-list-groups>
+<app-list-regions *ngIf="investment" [RegionLinks]="investment.regions"></app-list-regions>
 <div class="tab-content">
     <div id="factors" class="tab-pane fade in active">
         
@@ -55,6 +43,9 @@
             <svg class="factors"></svg>
         </div>
 
+        
+        <!--
+            <app-list-factors></app-list-factors>
         @{ Html.RenderPartial("_ListFactors", new ParentChildEntityWithHtmlActions<InvestmentInfluenceFactor, Investment>
            {
                Children = Model.Factors.ToList(),
@@ -65,9 +56,9 @@
 
                }
            }); }
-
-        <p>
-            @Html.ActionLink("Add a factor to this investment", "AssociateFactor", "Investment", new {ID = Model.ID}, new {@class = "btn btn-primary"})
+        -->
+        <p>            
+            <a class="btn btn-primary">Add a factor to this investment</a>
         </p>
     </div>
     <div id="risks" class="tab-pane fade">
@@ -76,6 +67,8 @@
             <svg class="risks"></svg>
         </div>
 
+        
+        <!--
         @{ Html.RenderPartial("_ListRisks", new ParentChildEntityWithHtmlActions<InvestmentRisk, Investment>
            {
                Children = Model.Risks.ToList(),
@@ -86,8 +79,9 @@
 
                }
            }); }
+        -->
         <p>
-            @Html.ActionLink("Add a risk to this investment", "AssociateRisk", "Investment", new {ID = Model.ID}, new {@class = "btn btn-primary"})
+            <a class="btn btn-primary">Add a risk to this investment</a>
         </p>
     </div>
     <div id="groups" class="tab-pane fade">
@@ -95,6 +89,9 @@
         <div id="factor_graph">
             <svg class="groups"></svg>
         </div>
+        
+            <!--
+        <app-list-factors></app-list-factors>
         @{ Html.RenderPartial("_ListGroups", new ParentChildEntityWithHtmlActions<InvestmentGroup, Investment>
            {
                Children = Model.Groups.ToList(),
@@ -105,14 +102,18 @@
 
                }
            }); }
+        -->
         <p>
-            @Html.ActionLink("Add this investment to a group", "AssociateGroup", "Investment", new {ID = Model.ID}, new {@class = "btn btn-primary"})
+            <a class="btn btn-primary">Add this investment to a group</a>
         </p>
     </div>
     <div id="regions" class="tab-pane fade">
         <div id="factor_graph">
             <svg class="regions"></svg>
         </div>
+        
+        <!--
+        <app-list-regions></app-list-regions>
         @{ Html.RenderPartial("_ListRegions", new ParentChildEntityWithHtmlActions<Region, Investment>
            {
                Children = Model.Regions.ToList(),
@@ -122,13 +123,13 @@
                    new HtmlAction("", "Dissassociate", "DissassociateRegion", "Investment"),
 
                }
-           }); }
+           }); } -->
         <p>
-            @Html.ActionLink("Add this investment to a region", "AssociateRegion", "Investment", new {ID = Model.ID}, new {@class = "btn btn-primary"})
+            <a class="btn btn-primary">Add this investment to a region</a>
         </p>
     </div>
 </div>
-
+<!--
 @section Scripts {
     <script type="text/javascript" src="@Url.Content("/Scripts/graphs/GraphUtils.js")"></script>
     <script type="text/javascript">
