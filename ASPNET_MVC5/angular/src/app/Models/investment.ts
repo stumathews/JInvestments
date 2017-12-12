@@ -1,4 +1,9 @@
-﻿export interface Investment {
+﻿import { InvestmentInfluenceFactor } from './InvestmentInfluenceFactor';
+import { InvestmentRisk } from './InvestmentRisk';
+import { InvestmentGroup } from './InvestmentGroup';
+import { Region } from './Region';
+
+export interface Investment {
   id: number;
   description: string;
   symbol: string;
@@ -15,20 +20,20 @@
 export interface FactorsLink {
   investmentID: number;
   investmentInfluenceFactorID: number;
-  investmentInfluenceFactor?: null;
+  investmentInfluenceFactor?: InvestmentInfluenceFactor;
 }
 export interface RegionsLink {
   investmentID: number;
   regionID: number;
-  region?: null;
+  region?: Region;
 }
 export interface RisksLink {
   investmentID: number;
   investmentRiskID: number;
-  investmentRisk?: null;
+  investmentRisk?: InvestmentRisk;
 }
 export interface GroupsLink {
   investmentID: number;
   investmentGroupID: number;
-  investmentGroup?: null;
+  investmentGroup?: InvestmentGroup;
 }

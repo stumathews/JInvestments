@@ -6,18 +6,18 @@
 <table class="table table-hover">
     <thead>
         <th>Name</th>
-        <th>Investments</th>
         <th>Description</th>
+        <th>Investments</th>
         <th><!--Delete--></th>        
     </thead>
     
     <tr *ngFor="let region of Regions">
-        <td><a> {{ region.name }} </a></td>
-        <td><a *ngIf="region.investments"> {{ region.investments.length }} </a></td>
-        <td><a> {{ region.description }} </a></td>
+        <td><a [routerLink]="['/RegionDetails', region.id]">{{ region.name }}</a></td>
+        <td>{{ region.description }}</td>
+        <td><a [routerLink]="['/RegionDetails', region.id]">{{ region.investments.length }}</a></td>
         <td><a>Delete</a></td>
     </tr>
 
 </table>
-<p><strong>Total: {{ Regions.length }}</strong></p>
+<p><strong>Total: {{ Regions?.length }}</strong></p>
 

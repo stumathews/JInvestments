@@ -4,7 +4,7 @@
 <p>
     <a class="btn btn-primary" >Create Investment</a>
 </p>
-<table class="table table-hover">
+<table *ngIf="Investments" class="table table-hover">
     <thead>
         <tr>
             <th>Name</th>
@@ -18,30 +18,30 @@
     </thead>   
         <tr *ngFor="let investment of Investments">
             <td>         
-                <a [routerLink]="['/InvestmentDetails', investment.id]">{{ investment.name }}</a>
+                <a *ngIf="investment" [routerLink]="['/InvestmentDetails', investment.id]">{{ investment.name }}</a>
                 
             </td>
             <td>
                 <span *ngFor="let region of investment.regions">
-                        <a >{{ region.regionID }}</a> 
+                    <a *ngIf="region" [routerLink]="['/RegionDetails', region.region?.id]">{{ region.region?.name }}</a>
                 </span>
                 
             </td>
             <td>
                     <span *ngFor="let risk of investment.risks">
-                            <a >{{ risk.investmentRiskID }}</a>  
+                            <a *ngIf="risk" [routerLink]="['/RiskDetails', risk?.investmentRisk?.id]">{{ risk.investmentRisk?.name }}</a>  
                     </span>
                 
             </td>
             <td>
                     <span *ngFor="let factor of investment.factors">
-                            <a >{{ factor.investmentInfluenceFactorID }}</a> 
+                        <a *ngIf="factor" [routerLink]="['/FactorDetails', factor.investmentInfluenceFactorID]">{{ factor.investmentInfluenceFactor?.name }}</a> 
                     </span>
                 
             </td>
             <td>
                     <span *ngFor="let group of investment.groups">
-                            <a >{{ group.investmentGroupID }}</a>
+                            <a *ngIf="group" [routerLink]="['/GroupDetails', group.investmentGroupID]">{{ group.investmentGroup?.name }}</a> 
                     </span>
             </td>
             <td>

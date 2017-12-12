@@ -1,0 +1,18 @@
+﻿<div *ngIf="Factor">
+    <h1>{{ Factor.name }}</h1>
+    <h4>Investment Influence Factor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>Description</dt>
+
+        <dd><a>{{ Factor.description }}</a></dd>
+
+        <dt>Influence</dt>
+
+        <dd>{{ Factor.influence }} </dd>
+
+    </dl>
+    <div><app-list-investments [Entity]="Factor"></app-list-investments>
+</div>
+</div>

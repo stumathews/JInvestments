@@ -1,0 +1,14 @@
+﻿<div>
+    <h1><a>{{ Risk.name }}</a></h1>
+    <h4>Investment Risk</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Description</dt>
+        <dd><a>{{ Risk.description }}</a></dd>
+        <dt>Type</dt>
+        <dd><a>{{ Risk.type }}</a></dd>
+    </dl>
+</div>
+<div>
+        <div><app-list-investments [Entity]="Risk"></app-list-investments>  
+</div>

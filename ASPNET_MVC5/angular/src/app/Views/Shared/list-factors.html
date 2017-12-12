@@ -16,9 +16,9 @@
         </tr>
         </thead>
         <tr *ngFor="let factor of Factors">
-            <td><a>{{ factor.name }}</a></td>
+            <td><a [routerLink]="['/FactorDetails', factor.id]">{{ factor.name }}</a>   </td>
 
-            <td><a>{{ factor.description }}</a></td>
+            <td>{{ factor.description }}</td>
             <td><a>{{ factor.investments.length }}</a></td>
             <td *ngFor="let action of HtmlActions"><a>{{action.LinkTitle}}</a></td>
         </tr>

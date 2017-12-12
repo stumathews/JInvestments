@@ -20,7 +20,7 @@
     </thead>
     <tr *ngFor="let group of Groups">
         <td>
-            <a>{{ group.name }}</a>                
+            <a [routerLink]="['/GroupDetails', group.id]">{{ group.name }}</a>                 
         </td>
 
         <td>{{ group.description }}</td>

@@ -20,10 +20,10 @@
             <th *ngFor="let action of HtmlActions">{{action.DisplayName}}</th>
         </tr>
         </thead>           
-        <tr *ngFor="let risk of Risks">                    
-            <td><a>{{ risk.name }}</a></td>
-            <td><a>{{ risk.description }}</a></td>
-            <td><a>{{ risk.type }}</a></td>
+        <tr *ngFor="let risk of Risks">
+            <td><a [routerLink]="['/RiskDetails', risk.id]">{{ risk.name }}</a>      </td>
+            <td>{{ risk.description }}</td>
+            <td>{{ risk.type }}</td>
             <td><a>{{ risk.investments?.length }}</a></td>
             <td *ngFor="let action of HtmlActions"><a>{{action.LinkTitle}}</a></td>                
         </tr>

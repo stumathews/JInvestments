@@ -16,14 +16,21 @@ import { InvestmentDetailComponent } from './Views/Investment/investment.detail'
 import { ApiService } from './apiservice.service';
 import { ListRiskComponent } from './Views/Shared/list-risks';
 import { ListFactorsComponent } from './Views/Shared/list-factors';
+import { ListInvestmentsComponent } from './Views/Shared/list-investments';
 import { ListGroupsComponent } from './Views/Shared/list-groups';
 import { ListRegionsComponent } from './Views/Shared/list-regions';
+import { FactorDetailsComponent } from './Views/Factor/factor-details';
+import { GroupDetailsComponent } from './Views/Group/group-details';
+import { RegionDetailsComponent } from './Views/Region/region-details';
+import { RiskDetailsComponent } from './Views/Risk/risk-details';
 
 @NgModule({
   declarations: [
     AppComponent, HomeComponent, SideNavComponent, InvestmentComponent,
     FactorComponent, GroupComponent, RiskComponent, RegionComponent, InvestmentDetailComponent,
-    ListRiskComponent, ListFactorsComponent, ListGroupsComponent, ListRegionsComponent
+    ListRiskComponent, ListFactorsComponent, ListGroupsComponent, ListRegionsComponent,
+    FactorDetailsComponent, GroupDetailsComponent, RegionDetailsComponent, ListInvestmentsComponent,
+    RiskDetailsComponent
   ],
   imports: [
     BrowserModule, APP_ROUTING, AlertModule.forRoot(), HttpModule

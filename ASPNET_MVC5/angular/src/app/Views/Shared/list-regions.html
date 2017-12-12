@@ -13,9 +13,9 @@
         </tr>
         </thead>       
         <tr *ngFor="let region of Regions">
-                <td><a>{{ region.name }}</a></td>
+                <td><a [routerLink]="['/RegionDetails', region.id]">{{ region.name }}</a></td>
+                <td>{{ region.description }}</td>
                 <td><a>{{ region.investments?.length }}</a></td>
-                <td><a>{{ region.description }}</a></td>
                 <td *ngFor="let action of HtmlActions"><a>{{action.LinkTitle}}</a></td>
         </tr>
         
