@@ -9,6 +9,7 @@ import { RiskComponent } from './Views/Risk/risk';
 import { InvestmentGroup } from './Models/InvestmentGroup';
 import { Region } from './Models/Region';
 import { InvestmentRisk } from './Models/InvestmentRisk';
+import { EntityTypes  } from './Utilities';
 
 
 @Injectable()
@@ -112,6 +113,72 @@ export class ApiService {
                         .catch(this.handleError);
     }
 
+    CreateInvestment(investment: Investment): Observable<Investment> {
+        console.log('CreateInvestment...' + JSON.stringify(investment));
+        return this.http.post(this.InvestmentsUrlEndpoint, investment)
+            .map((response: Response) => <Investment>response.json())
+            .do( (data => console.log('do CreateInvestment: ' + JSON.stringify(data))))
+            .catch(this.handleError);
+    }
+
+    CreateInvestmentInfluenceFactor(factor: InvestmentInfluenceFactor): Observable<InvestmentInfluenceFactor> {
+        console.log('CreateInvestmentInfluenceFactor...' + JSON.stringify(factor));
+        return this.http.post(this.FactorsUrlEndpoint, factor)
+        .map((response: Response) => <InvestmentInfluenceFactor>response.json())
+        .do( (data => console.log('do CreateInvestmentInfluenceFactor: ' + JSON.stringify(data))))
+        .catch(this.handleError);
+    }
+
+    CreateInvestmentGroup(group: InvestmentGroup): Observable<InvestmentGroup> {
+        console.log('CreateInvestmentGroup...' + JSON.stringify(group));
+        return this.http.post(this.GroupsUrlEndpoint, group)
+        .map((response: Response) => <InvestmentGroup>response.json())
+        .do( (data => console.log('do CreateInvestmentGroup: ' + JSON.stringify(data))))
+        .catch(this.handleError);
+    }
+
+    CreateInvestmentRisk(risk: InvestmentRisk): Observable<InvestmentRisk> {
+        console.log('CreateRisk...' + JSON.stringify(risk));
+        return this.http.post(this.RisksUrlEndpoint, risk)
+        .map((response: Response) => <InvestmentRisk>response.json())
+        .do( (data => console.log('do CreateRisk: ' + JSON.stringify(data))))
+        .catch(this.handleError);
+    }
+
+    CreateRegion(region: Region): Observable<Region> {
+        console.log('CreateRegion...' + JSON.stringify(region));
+        return this.http.post(this.RegionsUrlEndpoint, region)
+        .map((response: Response) => <Region>response.json())
+        .do( (data => console.log('do CreateRegion: ' + JSON.stringify(data))))
+        .catch(this.handleError);
+    }
+
+    DeleteEntity(entityType: EntityTypes, id: number): Observable<any>  {
+        let mapFunction;
+        let url;
+
+        if (entityType === EntityTypes.Investment) {
+            url =  this.InvestmentByIdUrlEndpoint.replace('{id}', '' + id);
+            mapFunction = (response: Response) => <Region>response.json();
+        } else if (entityType === EntityTypes.InvestmentInfluenceFactor) {
+            url =  this.FactorByIdUrlEndpoint.replace('{id}', '' + id);
+            mapFunction = (response: Response) => <InvestmentInfluenceFactor>response.json();
+        } else if (entityType === EntityTypes.InvestmentRisk) {
+            url =  this.RiskByIdUrlEndpoint.replace('{id}', '' + id);
+            mapFunction = (response: Response) => <InvestmentRisk>response.json();
+        } else if (entityType === EntityTypes.InvestmentGroup) {
+            url =  this.GroupByIdUrlEndpoint.replace('{id}', '' + id);
+            mapFunction = (response: Response) => <InvestmentGroup>response.json();
+        } else if (entityType === EntityTypes.Region) {
+            url =  this.RegionByIdUrlEndpoint.replace('{id}', '' + id);
+            mapFunction = (response: Response) => <Region>response.json();
+        }
+
+        console.log('Delete entity via url:' + url);
+        return this.http.delete(url).map(mapFunction)
+        .do((data => console.log('do DeleteEntity: ' + JSON.stringify(data))))
+        .catch(this.handleError);
+    }
 
     private handleError(error: Response) {
         console.error(error);

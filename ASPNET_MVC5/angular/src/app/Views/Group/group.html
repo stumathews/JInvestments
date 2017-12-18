@@ -4,7 +4,7 @@
     Investments can be grouped into the same containers to add a relationship between them.
     Grouped investments share a commonality.
 </p>
-<p><a class="btn btn-primary" >Create Group</a></p>
+<a [routerLink]="['/NewGroup']" class="btn btn-primary">Create Group</a>
 <p>These are all the factors that are loaded in the database</p>
 <table class="table table-hover">
     <thead>
@@ -28,7 +28,7 @@
         <td>{{ Groups.length }} </td>
         <td>n/a</td>
         <td>n/a</td>
-        <td><a>Delete</a></td>
+        <td><a (click)="delete(group.id)" href="javascript:void(0)">Delete</a></td>
     </tr>
 </table>
 <p><strong>Total: {{ Groups.length }}</strong></p>

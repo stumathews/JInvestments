@@ -2,7 +2,7 @@
 <p>Investments represent the assets that are valuable to you. </p>
 
 <p>
-    <a class="btn btn-primary" >Create Investment</a>
+    <a [routerLink]="['/NewInvestment']" class="btn btn-primary">Create Investment</a>
 </p>
 <table *ngIf="Investments" class="table table-hover">
     <thead>
@@ -47,7 +47,7 @@
             <td>
                 <span>{{ investment.value }}</span><br />
             </td>
-            <td><a>Delete investment</a></td>            
+            <td><a (click)="delete(investment.id)" href="javascript:void(0)">Delete investment</a></td>            
         </tr>
     
 

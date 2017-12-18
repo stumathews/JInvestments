@@ -23,6 +23,12 @@ import { FactorDetailsComponent } from './Views/Factor/factor-details';
 import { GroupDetailsComponent } from './Views/Group/group-details';
 import { RegionDetailsComponent } from './Views/Region/region-details';
 import { RiskDetailsComponent } from './Views/Risk/risk-details';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NewInvestmentComponent } from './Views/Investment/new-investment';
+import { NewFactorComponent } from './Views/Factor/new-factor';
+import { NewGroupComponent } from './Views/Group/new-group';
+import { NewRegionComponent } from './Views/Region/new-region';
+import { NewRiskComponent } from './Views/Risk/new-risk';
 
 @NgModule({
   declarations: [
@@ -30,10 +36,11 @@ import { RiskDetailsComponent } from './Views/Risk/risk-details';
     FactorComponent, GroupComponent, RiskComponent, RegionComponent, InvestmentDetailComponent,
     ListRiskComponent, ListFactorsComponent, ListGroupsComponent, ListRegionsComponent,
     FactorDetailsComponent, GroupDetailsComponent, RegionDetailsComponent, ListInvestmentsComponent,
-    RiskDetailsComponent
+    RiskDetailsComponent, NewInvestmentComponent, NewFactorComponent, NewGroupComponent,
+    NewRegionComponent, NewRiskComponent
   ],
   imports: [
-    BrowserModule, APP_ROUTING, AlertModule.forRoot(), HttpModule
+    BrowserModule, APP_ROUTING, AlertModule.forRoot(), HttpModule, ReactiveFormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

@@ -1,6 +1,29 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Investment } from './Models/investment';
 import { ApiService } from './apiservice.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+
+
+export function GetRequiredTextValidators() {
+    return Validators.compose( [
+      Validators.required,
+      Validators.pattern('[\\w\\-\\s\\|$|£/]+')]);
+   }
+
+ export function GetRequiredNumberValidators() {
+    return Validators.compose( [
+      Validators.required,
+      Validators.pattern('\\d+')]);
+   }
+
+export enum EntityTypes {
+    Investment = 1,
+    InvestmentInfluenceFactor,
+    InvestmentRisk,
+    InvestmentGroup,
+    Region,
+}
 
 @Component({})
 

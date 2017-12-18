@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../../apiservice.service';
 import { Region } from '../../Models/Region';
+import { EntityTypes  } from '../../Utilities';
 
 @Component({
   selector: 'app-region',
@@ -16,5 +17,15 @@ export class RegionComponent  implements OnInit {
     this.apiService.GetRegions()
         .subscribe(regions => this.Regions = regions,
                    error => this.errorMessage = <any>error);
+  }
+
+  public delete(id: string) {
+    console.log('deleting id=' + id);
+    this.apiService.DeleteEntity(EntityTypes.Region, +id)
+                    .finally(() => {
+                      this.ngOnInit();
+                    })
+                   .subscribe(entity => console.log(JSON.stringify(entity)),
+                              error => this.errorMessage = <any>error);
   }
 }
