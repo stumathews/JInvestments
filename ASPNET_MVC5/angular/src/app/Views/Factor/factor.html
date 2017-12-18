@@ -17,7 +17,7 @@
             <td><a [routerLink]="['/FactorDetails', factor.id]">{{ factor.name }}</a></td>
             <td>{{ factor.description }}</td>
             <td><a [routerLink]="['/FactorDetails', factor.id]">{{ factor.investments.length }}</a></td>
-            <td><a (click)="delete(factor.id)" href="javascript:void(0)">Delete</a></td>
+            <td><a *ngIf="factor" (click)="delete(factor.id)" href="javascript:void(0)">Delete</a></td>
         </tr>
     </table>
 

@@ -18,8 +18,7 @@
     </thead>   
         <tr *ngFor="let investment of Investments">
             <td>         
-                <a *ngIf="investment" [routerLink]="['/InvestmentDetails', investment.id]">{{ investment.name }}</a>
-                
+                <a *ngIf="investment" [routerLink]="['/InvestmentDetails', investment.id]">{{ investment.name }}</a>                
             </td>
             <td>
                 <span *ngFor="let region of investment.regions">

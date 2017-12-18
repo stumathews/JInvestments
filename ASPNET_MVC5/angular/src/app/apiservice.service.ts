@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions, URLSearchParams, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Investment } from './Models/investment';
 import { InvestmentInfluenceFactor } from './Models/InvestmentInfluenceFactor';
@@ -10,6 +10,7 @@ import { InvestmentGroup } from './Models/InvestmentGroup';
 import { Region } from './Models/Region';
 import { InvestmentRisk } from './Models/InvestmentRisk';
 import { EntityTypes  } from './Utilities';
+
 
 
 @Injectable()
@@ -177,6 +178,37 @@ export class ApiService {
         console.log('Delete entity via url:' + url);
         return this.http.delete(url).map(mapFunction)
         .do((data => console.log('do DeleteEntity: ' + JSON.stringify(data))))
+        .catch(this.handleError);
+    }
+
+    UpdateEntity(entityType: EntityTypes, id: number, property: string, value: any): Observable<number> {
+        const patchObj = [{
+            'value': value,
+            'path': '/' + property,
+            'op': 'replace'
+        }];
+        let url;
+
+        console.log('patch is : ' + JSON.stringify(patchObj));
+
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        const options = new RequestOptions({ headers: headers }); // Create a request option
+
+        if (entityType === EntityTypes.Investment) {
+            url =  this.InvestmentByIdUrlEndpoint.replace('{id}', '' + id);
+        } else if (entityType === EntityTypes.InvestmentInfluenceFactor) {
+            url =  this.FactorByIdUrlEndpoint.replace('{id}', '' + id);
+        } else if (entityType === EntityTypes.InvestmentRisk) {
+            url =  this.RiskByIdUrlEndpoint.replace('{id}', '' + id);
+        } else if (entityType === EntityTypes.InvestmentGroup) {
+            url =  this.GroupByIdUrlEndpoint.replace('{id}', '' + id);
+        } else if (entityType === EntityTypes.Region) {
+            url =  this.RegionByIdUrlEndpoint.replace('{id}', '' + id);
+        }
+
+        return this.http.patch(url, patchObj, options)
+        .map((response: Response) => <number>response.json(), (error: any) => {})
+        .do((data => console.log('do patch risk: ' + JSON.stringify(data))))
         .catch(this.handleError);
     }
 

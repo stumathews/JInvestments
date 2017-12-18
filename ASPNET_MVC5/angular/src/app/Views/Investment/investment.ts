@@ -23,6 +23,7 @@ export class InvestmentComponent implements OnInit {
                    .subscribe(entity => console.log(JSON.stringify(entity)),
                               error => this.errorMessage = <any>error);
   }
+
   ngOnInit(): void {
     this.apiService.GetInvestments().subscribe(investments => {
       this.Investments = investments;

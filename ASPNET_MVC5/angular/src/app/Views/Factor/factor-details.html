@@ -1,18 +1,18 @@
-﻿<div *ngIf="Factor">
-    <h1>{{ Factor.name }}</h1>
-    <h4>Investment Influence Factor</h4>
+﻿<div *ngIf="Entity">
+    <h1><inline-editor #thisElement *ngIf="Entity?.name" type="text" [(ngModel)]="Entity.name" (onSave)="saveEditable(thisElement, Entity.id)" name="name" size="8"></inline-editor></h1>
+    <h4>Investment Influence Entity</h4>
     <hr />
     <dl class="dl-horizontal">
        
         <dt>Description</dt>
 
-        <dd><a>{{ Factor.description }}</a></dd>
+        <dd><inline-editor #thisElement *ngIf="Entity?.description" type="text" [(ngModel)]="Entity.description" (onSave)="saveEditable(thisElement, Entity.id)" name="description" size="8"></inline-editor></dd>
 
         <dt>Influence</dt>
 
-        <dd>{{ Factor.influence }} </dd>
+        <dd><inline-editor #thisElement *ngIf="Entity?.influence" type="text" [(ngModel)]="Entity.influence" (onSave)="saveEditable(thisElement, Entity.id)" name="influence" size="8"></inline-editor></dd>
 
     </dl>
-    <div><app-list-investments [Entity]="Factor"></app-list-investments>
+    <div><app-list-investments [Entity]="Entity"></app-list-investments>
 </div>
 </div>

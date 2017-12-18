@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ngx-bootstrap';
 import { APP_ROUTING } from './app.routing';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './Views/App/app';
 import { HomeComponent } from './Views/Home/home';
 import { SideNavComponent } from './Views/Shared/side-nav';
@@ -29,6 +29,9 @@ import { NewFactorComponent } from './Views/Factor/new-factor';
 import { NewGroupComponent } from './Views/Group/new-group';
 import { NewRegionComponent } from './Views/Region/new-region';
 import { NewRiskComponent } from './Views/Risk/new-risk';
+import { InlineEditorModule } from '@qontu/ngx-inline-editor';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { NewRiskComponent } from './Views/Risk/new-risk';
     NewRegionComponent, NewRiskComponent
   ],
   imports: [
-    BrowserModule, APP_ROUTING, AlertModule.forRoot(), HttpModule, ReactiveFormsModule
+    BrowserModule, APP_ROUTING, AlertModule.forRoot(), HttpModule, FormsModule, ReactiveFormsModule,
+    InlineEditorModule, Angular2FontawesomeModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
