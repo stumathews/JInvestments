@@ -16,11 +16,6 @@ import { EntityTypes  } from './Utilities';
 @Injectable()
 export class ApiService {
 
-    Investments: Investment[];
-    Factors: InvestmentInfluenceFactor[];
-    Groups: InvestmentGroup[];
-    Regions: Region[];
-
     private baseURL = 'http://localhost:49921/api';
     private InvestmentsUrlEndpoint = this.baseURL + '/Investment';
     private FactorsUrlEndpoint = this.baseURL + '/Factor';
@@ -189,7 +184,7 @@ export class ApiService {
         }];
         let url;
 
-        console.log('patch is : ' + JSON.stringify(patchObj));
+        console.log('Patch for Entity' + EntityTypes[entityType] + ' patch is : ' + JSON.stringify(patchObj));
 
         const headers = new Headers({ 'Content-Type': 'application/json' });
         const options = new RequestOptions({ headers: headers }); // Create a request option

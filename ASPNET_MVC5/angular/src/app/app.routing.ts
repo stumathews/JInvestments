@@ -18,6 +18,13 @@ import { NewFactorComponent } from './Views/Factor/new-factor';
 import { NewGroupComponent } from './Views/Group/new-group';
 import { NewRegionComponent } from './Views/Region/new-region';
 import { NewRiskComponent } from './Views/Risk/new-risk';
+import { SelectItemsComponent } from './Views/Investment/select-items';
+import { SelectFactorsComponent } from './Views/Investment/select-factors';
+import { SelectRisksComponent } from './Views/Investment/select-risks';
+import { SelectGroupsComponent } from './Views/Investment/select-groups';
+import { SelectRegionsComponent } from './Views/Investment/select-regions';
+import { SummaryOfNewInvestmentComponent } from './Views/Investment/summary-of-new-investment';
+import { NewInvestmentWizardComponent } from './Views/Investment/new-investment-wizard';
 
 const appRoutes: Routes = [
     { path : '', redirectTo: 'Home', pathMatch: 'full'},
@@ -37,6 +44,15 @@ const appRoutes: Routes = [
     { path : 'NewGroup', component: NewGroupComponent },
     { path : 'NewRegion', component: NewRegionComponent },
     { path : 'NewRisk', component: NewRiskComponent },
+   /* { path : 'SelectItems', component: SelectItemsComponent, }, */
+    { path : 'NewInvestmentWizard', component: NewInvestmentWizardComponent,  children: [
+           { path : 'NewInvestment', component: NewInvestmentComponent, outlet: 'NewInvestmentWizardOutlet' },
+           { path : 'SelectFactors', component: SelectFactorsComponent, outlet: 'NewInvestmentWizardOutlet' },
+           { path : 'SelectRisks', component: SelectRisksComponent, outlet: 'NewInvestmentWizardOutlet' },
+           { path : 'SelectGroups', component: SelectGroupsComponent, outlet: 'NewInvestmentWizardOutlet' },
+           { path : 'SelectRegions', component: SelectRegionsComponent, outlet: 'NewInvestmentWizardOutlet' },
+           { path : 'SummaryOfNewInvestment', component: SummaryOfNewInvestmentComponent, outlet: 'NewInvestmentWizardOutlet' }
+    ] },
 ];
 
 export const APP_ROUTING: ModuleWithProviders = RouterModule.forRoot(appRoutes);

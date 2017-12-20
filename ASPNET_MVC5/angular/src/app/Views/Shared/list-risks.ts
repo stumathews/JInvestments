@@ -21,7 +21,7 @@ export class ListRiskComponent implements OnInit {
     Risks.forEach((value, index, risks) => {
       console.log('Attempting to get the RealRisk for ' + value.investmentRiskID);
       this.apiService.GetRisk(value.investmentRiskID)
-      .subscribe(realRisk => this.Risks.push(realRisk),error => this.errorMessage = <any>error);
+      .subscribe(realRisk => this.Risks.push(realRisk), error => this.errorMessage = <any>error);
     });
     this._RiskLinks = Risks;
   }

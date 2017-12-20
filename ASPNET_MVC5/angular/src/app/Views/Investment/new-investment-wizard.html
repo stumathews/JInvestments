@@ -1,0 +1,12 @@
+<h1>New investment wizard</h1>
+<p>This wizard will guide you though the steps of creating a new investment.</p>
+<ul>
+    <li><a [routerLink]="['/NewInvestmentWizard', { outlets: {'NewInvestmentWizardOutlet': ['SelectFactors']}}]">Select Factors</a></li>
+    <li><a [routerLink]="['/NewInvestmentWizard', { outlets: {'NewInvestmentWizardOutlet': ['SelectRisks']}}]">Select Risks</a></li>
+    <li><a [routerLink]="['/NewInvestmentWizard', { outlets: {'NewInvestmentWizardOutlet': ['SelectGroups']}}]">Select Groups</a></li>
+    <li><a [routerLink]="['/NewInvestmentWizard', { outlets: {'NewInvestmentWizardOutlet': ['SelectRegions']}}]">Select Regions</a></li>    
+    <li><a [routerLink]="['/NewInvestmentWizard', { outlets: {'NewInvestmentWizardOutlet': ['SummaryOfNewInvestment']}}]">Summary</a></li>
+</ul>
+
+
+<router-outlet name="NewInvestmentWizardOutlet"></router-outlet>

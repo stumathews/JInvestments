@@ -31,6 +31,14 @@ import { NewRegionComponent } from './Views/Region/new-region';
 import { NewRiskComponent } from './Views/Risk/new-risk';
 import { InlineEditorModule } from '@qontu/ngx-inline-editor';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+import { InvestmentService } from './investment.service';
+import { SelectItemsComponent } from './Views/Investment/select-items';
+import { SelectFactorsComponent } from './Views/Investment/select-factors';
+import { SelectRisksComponent } from './Views/Investment/select-risks';
+import { SelectGroupsComponent } from './Views/Investment/select-groups';
+import { SelectRegionsComponent } from './Views/Investment/select-regions';
+import { SummaryOfNewInvestmentComponent } from './Views/Investment/summary-of-new-investment';
+import { NewInvestmentWizardComponent } from './Views/Investment/new-investment-wizard';
 
 
 @NgModule({
@@ -40,13 +48,15 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
     ListRiskComponent, ListFactorsComponent, ListGroupsComponent, ListRegionsComponent,
     FactorDetailsComponent, GroupDetailsComponent, RegionDetailsComponent, ListInvestmentsComponent,
     RiskDetailsComponent, NewInvestmentComponent, NewFactorComponent, NewGroupComponent,
-    NewRegionComponent, NewRiskComponent
+    NewRegionComponent, NewRiskComponent, SelectItemsComponent, SelectFactorsComponent,
+    NewInvestmentWizardComponent, SelectRisksComponent, SelectGroupsComponent, SelectRegionsComponent,
+    SummaryOfNewInvestmentComponent
   ],
   imports: [
     BrowserModule, APP_ROUTING, AlertModule.forRoot(), HttpModule, FormsModule, ReactiveFormsModule,
     InlineEditorModule, Angular2FontawesomeModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, InvestmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

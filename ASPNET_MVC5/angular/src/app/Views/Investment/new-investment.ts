@@ -4,6 +4,7 @@ import { Investment } from '../../Models/investment';
 import { ActivatedRoute , Router} from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { InvestmentService } from '../../investment.service';
 
 
 
@@ -17,8 +18,9 @@ export class NewInvestmentComponent implements OnInit {
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private location: Location,
-              private router: Router) { }
-  i: Investment;
+              private router: Router,
+              private investmentService: InvestmentService) { }
+  Entity: Investment;
   errorMessage: string;
 
   GetRequiredTextValidators() {
@@ -35,23 +37,31 @@ export class NewInvestmentComponent implements OnInit {
 
   ngOnInit(): void {
       this.form = new FormGroup({
-        name: new FormControl('', this.GetRequiredTextValidators()),
-        description: new FormControl('', this.GetRequiredTextValidators()),
-        symbol: new FormControl('£', this.GetRequiredTextValidators()),
-        valueProposition: new FormControl('', this.GetRequiredTextValidators()),
-        desirabilityStatement: new FormControl('', this.GetRequiredTextValidators()),
-        initialInvestment: new FormControl('', this.GetRequiredNumberValidators()),
-        value: new FormControl('', this.GetRequiredNumberValidators()),
+        name: new FormControl(this.investmentService.Investment.name, this.GetRequiredTextValidators()),
+        description: new FormControl(this.investmentService.Investment.description, this.GetRequiredTextValidators()),
+        symbol: new FormControl(this.investmentService.Investment.symbol, this.GetRequiredTextValidators()),
+        valueProposition: new FormControl(this.investmentService.Investment.valueProposition, this.GetRequiredTextValidators()),
+        desirabilityStatement: new FormControl(this.investmentService.Investment.desirabilityStatement, this.GetRequiredTextValidators()),
+        initialInvestment: new FormControl(this.investmentService.Investment.initialInvestment, this.GetRequiredNumberValidators()),
+        value: new FormControl(this.investmentService.Investment.value, this.GetRequiredNumberValidators()),
     });
   }
 
   onSubmit(form: Investment) {
+    this.investmentService.Investment = form;
+    this.router.navigateByUrl('/NewInvestmentWizard/(NewInvestmentWizardOutlet:SelectFactors)');
+
+    /*
     this.apiService.CreateInvestment(form)
     .finally(() => {
-      this.router.navigate(['/Investments']);
+      this.investmentService.Investment = form;
+      this.router.navigateByUrl('/NewInvestmentWizard/(NewInvestmentWizardOutlet:SelectFactors)');
+
     })
     .subscribe( (value) => {
       console.log('received response: ' + JSON.stringify(value));
+      this.investmentService.Investment = form;
     });
+    */
   }
 }

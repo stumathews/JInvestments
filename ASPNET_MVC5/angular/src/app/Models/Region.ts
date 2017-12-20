@@ -1,11 +1,7 @@
-﻿export interface Region {
+﻿import { RegionsLink } from './investment';
+export interface Region {
   id: number;
   description: string;
   name: string;
-  investments?: (InvestmentsEntity)[] | null;
-}
-export interface InvestmentsEntity {
-  investmentID: number;
-  investment?: null;
-  regionID: number;
+  investments?: (RegionsLink)[] | null;
 }
