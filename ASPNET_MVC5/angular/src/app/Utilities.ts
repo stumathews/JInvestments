@@ -6,10 +6,18 @@ import { InvestmentRisk } from './Models/InvestmentRisk';
 import { Region } from './Models/Region';
 import { ApiService } from './apiservice.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CheckModel } from './Models/CheckModel';
+
+
+export abstract class SelectEntitiesComponent {
+    EntityTypes = EntityTypes;
+    error: string;
+    Items: CheckModel[] = [];
+}
 
 export abstract class DetailComponentBase implements OnInit  {
     Entity: Investment | InvestmentGroup | InvestmentInfluenceFactor | InvestmentRisk | Region;
-    MyType: EntityTypes = EntityTypes.InvestmentRisk;
+    MyType: EntityTypes;
     errorMessage: string;
     constructor(protected apiService: ApiService) { }
 

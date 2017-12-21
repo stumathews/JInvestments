@@ -8,30 +8,20 @@ import {Router} from '@angular/router';
 import { GetRequiredTextValidators, GetRequiredNumberValidators, EntityTypes } from '../../Utilities';
 import { CheckModel } from '../../Models/CheckModel';
 
-
-
 @Component({
   selector: 'app-select-items',
   templateUrl: 'select-items.html',
   })
 
-export class SelectItemsComponent implements OnInit {
+export class SelectItemsComponent {
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private location: Location,
               private router: Router) { }
-  ItemsType: EntityTypes;
   @Input() Items: CheckModel[];
-  // @Output() ItemsChange: EventEmitter<CheckModel[]> = new EventEmitter<CheckModel[]>();
-  ngOnInit(): void {
-      /* Restore the checkmodel array for this item type */
+
+  tryme(event) {
+    console.log(event);
   }
-
-  onNext() {
-      /* Store this type type's array*/
-    console.log('On Next pressed');
-  }
-
-
 
 }

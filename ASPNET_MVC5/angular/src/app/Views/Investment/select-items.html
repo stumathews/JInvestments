@@ -1,17 +1,21 @@
-﻿<form>
-        
+﻿<form>        
    <div class="form-horizontal">
        <hr />
        <table class="table table-hover">
-        <thead>                
-            <th>Name</th>            
-        </thead>
-        <tr *ngFor="let item of Items">
-            <td>
-                <input  type="checkbox" name="item" [(ngModel)]="item.checked" value="{{item.name}}"/>{{ item.name }} 
-            </td>
-            
-        </tr>
+            <thead>                
+                <th>Name</th>            
+            </thead>
+            <tr *ngFor="let item of Items">
+                <td>
+                    <input type="checkbox" 
+                           name="item" 
+                           [(ngModel)]="item.checked"
+                           value="{{item.name}}"/>{{ item.name }} 
+                </td>            
+            </tr>
         </table>
    </div>
 </form>
+<!--
+<pre>{{ Items | json }}</pre>
+-->

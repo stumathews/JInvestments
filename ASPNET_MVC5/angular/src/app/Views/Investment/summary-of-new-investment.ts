@@ -32,24 +32,21 @@ export class SummaryOfNewInvestmentComponent implements OnInit {
               private router: Router,
               private investmentService: InvestmentService) { }
   EntityTypes = EntityTypes;
-  Factors: InvestmentInfluenceFactor[];
-  Groups: InvestmentGroup[];
-  Regions: Region[];
-  Risks: InvestmentRisk[];
+  Factors: CheckModel[];
+  Groups: CheckModel[];
+  Regions: CheckModel[];
+  Risks: CheckModel[];
   Investment: Investment;
 
   error: string;
   ngOnInit(): void {
     this.Investment = this.investmentService.Investment || null;
-    this.Factors = this.investmentService.SelectedFactors || null;
-    this.Groups = this.investmentService.SelectedGroups || null;
-    this.Regions = this.investmentService.SelectedRegions || null;
-    this.Risks = this.investmentService.SelectedRisks || null;
-
+    this.Factors = this.investmentService.SelectedFactors.filter((item) => {if (item) { return item; } });
+    this.Groups = this.investmentService.SelectedGroups.filter((item) => {if (item) { return item; } });
+    this.Regions = this.investmentService.SelectedRegions.filter((item) => {if (item) { return item; } });
+    this.Risks = this.investmentService.SelectedRisks.filter((item) => {if (item) { return item; } });
    }
   onFinished() {
-
-
     this.apiService.CreateInvestment(this.Investment)
     .toPromise()
     .then ( (investment) => {
@@ -121,6 +118,11 @@ export class SummaryOfNewInvestmentComponent implements OnInit {
                 console.log('All new links created for investment');
             });
     }).then(() => {
+        console.log('Clearing selected items');
+        this.investmentService.SelectedFactors = null;
+        this.investmentService.SelectedRisks = null;
+        this.investmentService.SelectedGroups = null;
+        this.investmentService.SelectedRegions = null;
         this.router.navigateByUrl('/Investments');
     });
    }

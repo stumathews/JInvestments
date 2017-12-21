@@ -7,20 +7,21 @@ import { InvestmentRisk } from './Models/InvestmentRisk';
 import { InvestmentGroup } from './Models/InvestmentGroup';
 import { Region } from './Models/Region';
 import { InvestmentComponent } from './Views/Investment/investment';
+import { CheckModel } from './Models/CheckModel';
 
 
 @Injectable()
-export class InvestmentService implements OnInit {
+export class InvestmentService {
     Investment: Investment;
-    Factors: InvestmentInfluenceFactor[];
-    Risks: InvestmentRisk[];
-    Groups: InvestmentGroup[];
-    Regions: Region[];
+    Factors: InvestmentInfluenceFactor[] = [];
+    Risks: InvestmentRisk[] = [];
+    Groups: InvestmentGroup[] = [];
+    Regions: Region[] = [];
 
-    SelectedFactors: InvestmentInfluenceFactor[];
-    SelectedRisks: InvestmentRisk[];
-    SelectedGroups: InvestmentGroup[];
-    SelectedRegions: Region[];
+    SelectedFactors: CheckModel[];
+    SelectedRisks: CheckModel[];
+    SelectedGroups: CheckModel[];
+    SelectedRegions: CheckModel[];
 
     constructor() {
         this.Investment = <Investment>

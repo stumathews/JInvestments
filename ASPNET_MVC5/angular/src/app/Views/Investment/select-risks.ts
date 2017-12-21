@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
-import { GetRequiredTextValidators, GetRequiredNumberValidators, EntityTypes } from '../../Utilities';
+import { GetRequiredTextValidators, GetRequiredNumberValidators, EntityTypes, SelectEntitiesComponent } from '../../Utilities';
 import { CheckModel } from '../../Models/CheckModel';
 import { SelectItemsComponent } from './select-items';
 import { InvestmentRisk } from '../../Models/InvestmentRisk';
@@ -18,31 +18,42 @@ import { InvestmentService } from '../../investment.service';
   templateUrl: 'select-entities.html',
   })
 
-export class SelectRisksComponent implements OnInit {
+export class SelectRisksComponent extends SelectEntitiesComponent implements OnInit {
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private location: Location,
               private router: Router,
-              private investmentService: InvestmentService) { }
-  Type: EntityTypes = EntityTypes.InvestmentRisk;
-  EntityTypes = EntityTypes;
-  Risks: InvestmentRisk[];
-  error: string;
-  Items: CheckModel[];
+              private investmentService: InvestmentService) {
+                  super();
+              }
   ngOnInit(): void {
+    /* Get all Risks from db and convert to CheckModels */
+    if (this.investmentService.SelectedRisks && this.investmentService.SelectedRisks.length > 0) {
+        console.log('Restoring slected risks');
+        this.Items = this.investmentService.SelectedRisks;
+    } else {
     this.apiService.GetRisks().subscribe(risks => {
-         this.Items = risks.map( (value, index, array) => {
-            return  <CheckModel> {  id: value.id, name: value.name, description: value.description, checked: false };  });
+        this.Items = this.ConvertRisksToCheckModels(risks);
         },
         error => this.error = <any>error);
+    }
+  }
+
+  ConvertRisksToCheckModels(risks: InvestmentRisk[]): CheckModel[] {
+    if (risks) {
+      return risks.filter((item) => { if (item) { return item; } }).map( (value, index, array) => {
+          return  <CheckModel> {
+              id: value.id,
+              name: value.name,
+              description: value.description,
+              checked: false
+          };
+      });
+    }
   }
   onNext() {
-    this.investmentService.SelectedRisks = this.Items.map((value) => {
-      if (value.checked === true) {
-        return <InvestmentRisk> {  id: value.id,
-             name: value.name, description: value.description, type: 0, influence: '', investments: null };
-      }
-    });
+      /* Convert Selected items to Risks */
+    this.investmentService.SelectedRisks = this.Items.filter((value) => {  if (value.checked) { return value; } });
     console.log('saved risks selection');
     this.router.navigateByUrl('/NewInvestmentWizard/(NewInvestmentWizardOutlet:SelectGroups)');
   }
