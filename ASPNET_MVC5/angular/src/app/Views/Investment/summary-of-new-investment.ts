@@ -119,6 +119,7 @@ export class SummaryOfNewInvestmentComponent implements OnInit {
             });
     }).then(() => {
         console.log('Clearing selected items');
+        this.investmentService.Investment = <Investment>{};
         this.investmentService.SelectedFactors = null;
         this.investmentService.SelectedRisks = null;
         this.investmentService.SelectedGroups = null;
