@@ -5,6 +5,7 @@ import { Region } from '../../Models/Region';
 import { RegionsLink } from '../../Models/Investment';
 import { HtmlAction } from '../../Models/HtmlAction';
 import { forEach } from '@angular/router/src/utils/collection';
+import { EntityTypes } from '../../Utilities';
 
 @Component({
   selector: 'app-list-regions',
@@ -14,6 +15,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class ListRegionsComponent implements OnInit {
   Regions: Region[] = [];
   private _RegionsLinks: RegionsLink[];
+  @Input() ParentId: number;
   @Input()
   set RegionLinks(Regions: RegionsLink[]) {
     Regions.forEach((value, index, risks) => {
@@ -26,14 +28,18 @@ export class ListRegionsComponent implements OnInit {
   get RegionLinks(): RegionsLink[] {
     return this._RegionsLinks;
   }
-  HtmlActions: HtmlAction[] = [ {
-    id: 0,
-    name: '',
-    DisplayName: 'Dissassociate',
-    LinkTitle: 'Dissassociate',
-    ActionName: 'DissassociateRisk',
-    ControllerName: 'DissassociateRisk'}
-  ];
+
+  DissasociateEntityFromInvestment(entityId: number, parentId: number) {
+    this.apiService
+    .DissassociateEntityFromInvestment(EntityTypes.Region, entityId, parentId )
+    .finally(() => {
+      const toRemove = this.Regions.filter((each) => { if (each.id === entityId) { return each; } });
+      const i = this.Regions.indexOf(toRemove[0]);
+      this.Regions.splice(i, 1);
+      this.ngOnInit();
+    })
+    .subscribe( code => console.log('code was' + code) , error => this.errorMessage = error);
+  }
   constructor(private apiService: ApiService) { }
   errorMessage: string;
 

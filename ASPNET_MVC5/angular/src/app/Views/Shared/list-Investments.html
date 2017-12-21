@@ -1,6 +1,6 @@
 ﻿<div>
     <hr />
-    <h3>Investments</h3>
+    <h4>Investments</h4>
     <p>Investments represent the assets that are valuable to you. </p>
     <table class="table table-hover">
         <thead>
@@ -11,7 +11,6 @@
                 <th>Factors</th>
                 <th>Groups</th>
                 <th>Value</th>
-                <th *ngFor="let action of HtmlActions">{{action.DisplayName}}</th>
             </tr>
         </thead>
         <tr *ngFor="let investment of Investments">
@@ -45,8 +44,7 @@
                 <td>
                     <span>{{ investment.value }}</span><br />
                 </td>
-                <td><a>Delete investment</a></td> 
-                <td *ngFor="let action of HtmlActions"><a>{{action.LinkTitle}}</a></td>           
+     
             </tr>
                 
         

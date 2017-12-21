@@ -3,7 +3,6 @@ export interface HtmlAction {
   name: string;
   DisplayName: string;
   LinkTitle: string;
-  ActionName: string;
-  ControllerName: string;
-  RouteValues?: {} | null;
+  ActionUrl: string;
+  ActionParams: string[];
 }

@@ -1,6 +1,6 @@
 ﻿<div>
     <hr/>   
-    <h3>Risks</h3>
+    <h4>Risks</h4>
     <p>
         Risks are unknowns that affect the value of the investment. Usually risks generate split opinions and are speculative.
         Usually difficult to predict the effect on the value of the investment.
@@ -17,7 +17,7 @@
             <th>Description</th>
             <th>Type</th>
             <th>Linked investments</th>
-            <th *ngFor="let action of HtmlActions">{{action.DisplayName}}</th>
+            <th>Disassociate</th>
         </tr>
         </thead>           
         <tr *ngFor="let risk of Risks">
@@ -25,7 +25,7 @@
             <td>{{ risk.description }}</td>
             <td>{{ risk.type }}</td>
             <td><a>{{ risk.investments?.length }}</a></td>
-            <td *ngFor="let action of HtmlActions"><a>{{action.LinkTitle}}</a></td>                
+            <td><a *ngIf="risk"  href="javascript:void(0)" (click)="DissasociateEntityFromInvestment(risk.id, ParentId)">Dissasociate</a></td>               
         </tr>
     </table>
     <p><strong>Total: {{Risks.length}}</strong></p>

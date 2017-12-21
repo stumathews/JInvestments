@@ -27,6 +27,11 @@ export class ApiService {
     private FactorByIdUrlEndpoint = this.baseURL + '/Factor/{id}';
     private GroupByIdUrlEndpoint = this.baseURL + '/Group/{id}';
     private RegionByIdUrlEndpoint = this.baseURL + '/Region/{id}';
+    DissassociateGroupFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateGroup/{groupID}/{investmentID}';
+    DissassociateRegionFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateRegion/{regionID}/{investmentID}';
+    DissassociateFactorFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateFactor/{factorID}/{investmentID}';
+    DissassociateRiskFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateRisk/{riskID}/{investmentID}';
+
     constructor(private http: Http) { }
 
     GetInvestments(): Observable<Investment[]> {
@@ -106,6 +111,28 @@ export class ApiService {
         return this.http.get(this.RegionByIdUrlEndpoint.replace('{id}', '' + id))
                         .map((response: Response) => <Region>response.json())
                         .do((data => console.log('GetRisk: ' + JSON.stringify(data))))
+                        .catch(this.handleError);
+    }
+
+    DissassociateEntityFromInvestment(entityType: EntityTypes, entityID: number, investmentId: number): Observable<any> {
+        console.log('Entity=' + EntityTypes[entityType] +
+                    ' DissassociateEntityFromInvestment id=' + entityID +
+                    ' investmentID=' + investmentId );
+        let url;
+        if (entityType === EntityTypes.InvestmentInfluenceFactor) {
+            url =  this.DissassociateFactorFromInvestmentUrl.replace('{factorID}', '' + entityID);
+        } else if (entityType === EntityTypes.InvestmentRisk) {
+            url =  this.DissassociateRiskFromInvestmentUrl.replace('{riskID}', '' + entityID);
+        } else if (entityType === EntityTypes.InvestmentGroup) {
+            url =  this.DissassociateGroupFromInvestmentUrl.replace('{groupID}', '' + entityID);
+        } else if (entityType === EntityTypes.Region) {
+            url =  this.DissassociateRegionFromInvestmentUrl.replace('{regionID}', '' + entityID);
+        }
+        url = url.replace('{investmentID}', '' + investmentId);
+        console.log('url is ' + url);
+        return this.http.post(url, {})
+                        .map((response: Response) => <any|null>response.json())
+                        .do((data => console.log('DissassociateEntityFromInvestment: ' + JSON.stringify(data))))
                         .catch(this.handleError);
     }
 

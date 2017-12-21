@@ -5,6 +5,7 @@ import { InvestmentRisk } from '../../Models/InvestmentRisk';
 import { RisksLink } from '../../Models/Investment';
 import { HtmlAction } from '../../Models/HtmlAction';
 import { forEach } from '@angular/router/src/utils/collection';
+import { EntityTypes } from '../../Utilities';
 
 @Component({
   selector: 'app-list-risks',
@@ -16,6 +17,7 @@ export class ListRiskComponent implements OnInit {
   private _RiskLinks: RisksLink[];
   /* We get the RiskLink objects that are references to the risks via RiskIDs.
      So, lets use those IDs and get the full risks. */
+  @Input() ParentId: number;
   @Input()
   set RiskLinks(Risks: RisksLink[]) {
     Risks.forEach((value, index, risks) => {
@@ -28,16 +30,21 @@ export class ListRiskComponent implements OnInit {
   get RiskLinks(): RisksLink[] {
     return this._RiskLinks;
   }
-  HtmlActions: HtmlAction[] = [ {
-    id: 0,
-    name: '',
-    DisplayName: 'Dissassociate',
-    LinkTitle: 'Dissassociate',
-    ActionName: 'DissassociateRisk',
-    ControllerName: 'DissassociateRisk'}
-  ];
+
   constructor(private apiService: ApiService) { }
   errorMessage: string;
+
+  DissasociateEntityFromInvestment(entityId: number, parentId: number) {
+    this.apiService
+    .DissassociateEntityFromInvestment(EntityTypes.InvestmentRisk, entityId, parentId )
+    .finally(() => {
+      const toRemove = this.Risks.filter((each) => { if (each.id === entityId) { return each; } });
+      const i = this.Risks.indexOf(toRemove[0]);
+      this.Risks.splice(i, 1);
+      this.ngOnInit();
+    })
+    .subscribe( code => console.log('code was' + code) , error => this.errorMessage = error);
+  }
 
   ngOnInit(): void { }
 }

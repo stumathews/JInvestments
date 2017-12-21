@@ -1,6 +1,6 @@
 ﻿<div>
     <hr />
-    <h3>Influence Factors</h3>
+    <h4>Influence Factors</h4>
     <p>
         Influence Factors are anything what influences the companies balance sheet(assets and liabilities) or income(profit/loss) statement.
         These factors usually affect the underlying value of the investment either positively and negatively.
@@ -11,7 +11,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Linked investments</th>
-            <th *ngFor="let action of HtmlActions">{{action.DisplayName}}</th>
+            <th>Dissasociate</th>
            
         </tr>
         </thead>
@@ -20,7 +20,7 @@
 
             <td>{{ factor.description }}</td>
             <td><a>{{ factor.investments.length }}</a></td>
-            <td *ngFor="let action of HtmlActions"><a>{{action.LinkTitle}}</a></td>
+            <td><a *ngIf="factor"  href="javascript:void(0)" (click)="DissasociateEntityFromInvestment(factor.id, ParentId)">Dissasociate</a></td>
         </tr>
 
     </table>

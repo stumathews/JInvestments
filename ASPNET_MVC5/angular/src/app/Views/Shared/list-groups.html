@@ -1,6 +1,6 @@
 ﻿<div>
     <hr/>
-    <h3>Groups</h3>
+    <h4>Groups</h4>
     <p>
         Investments can be grouped into the same containers to add a relationship between them.
         Grouped investments share a commonality.
@@ -14,7 +14,7 @@
             <th>Linked investments</th>
             <th>#Children</th>
             <th>Parent</th>            
-            <th *ngFor="let action of HtmlActions">{{action.DisplayName}}</th>
+            <th>Dissasociate</th>
         </tr>
         </thead>
         <tr *ngFor="let group of Groups">
@@ -24,7 +24,7 @@
             <td><a>{{ group.investments?.length }}</a></td>
             <td>n/a</td>
             <td>n/a</td>
-            <td *ngFor="let action of HtmlActions"><a>{{action.LinkTitle}}</a></td>
+            <td><a *ngIf="group"  href="javascript:void(0)" (click)="DissasociateEntityFromInvestment(group.id, ParentId)">Dissasociate</a></td>
         </tr>
         
 

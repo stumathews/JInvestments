@@ -31,10 +31,10 @@
     </dl>
 </div>
 
-<app-list-risks *ngIf="Entity" [RiskLinks]="Entity.risks"></app-list-risks>
-<app-list-factors *ngIf="Entity" [FactorLinks]="Entity.factors"></app-list-factors>
-<app-list-groups *ngIf="Entity" [GroupLinks]="Entity.groups"></app-list-groups>
-<app-list-regions *ngIf="Entity" [RegionLinks]="Entity.regions"></app-list-regions>
+<app-list-risks *ngIf="Entity" [ParentId]="Entity.id" [RiskLinks]="Entity.risks"></app-list-risks>
+<app-list-factors *ngIf="Entity" [ParentId]="Entity.id" [FactorLinks]="Entity.factors"></app-list-factors>
+<app-list-groups *ngIf="Entity" [ParentId]="Entity.id" [GroupLinks]="Entity.groups"></app-list-groups>
+<app-list-regions *ngIf="Entity" [ParentId]="Entity.id" [RegionLinks]="Entity.regions"></app-list-regions>
 <div class="tab-content">
     <div id="factors" class="tab-pane fade in active">
         

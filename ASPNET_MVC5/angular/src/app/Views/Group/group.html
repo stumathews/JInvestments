@@ -25,7 +25,7 @@
 
         <td>{{ group.description }}</td>
         <td>{{ group.type }}</td>
-        <td>{{ Groups.length }} </td>
+        <td><a [routerLink]="['/GroupDetails', group.id]">{{ group?.investments.length }}</a> </td>
         <td>n/a</td>
         <td>n/a</td>
         <td><a (click)="delete(group.id)" href="javascript:void(0)">Delete</a></td>
