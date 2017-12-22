@@ -2,13 +2,13 @@
     <h1><inline-editor #thisElement *ngIf="Entity?.name" type="text" [(ngModel)]="Entity.name" (onSave)="saveEditable(thisElement, Entity.id)" name="name" size="8"></inline-editor></h1>
     <h4>Investment Risk</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl *ngIf="Entity" class="dl-horizontal">
         <dt>Description</dt>
         <dd>
-            <inline-editor #thisElement *ngIf="Entity?.description" type="text" [(ngModel)]="Entity.description" (onSave)="saveEditable(thisElement, Entity.id)" name="description" size="8"></inline-editor>
+            <inline-editor #thisElement type="text" [(ngModel)]="Entity.description" (onSave)="saveEditable(thisElement, Entity.id)" name="description" size="8"></inline-editor>
         </dd>
         <dt>Type</dt>
-        <dd><inline-editor #thisElement *ngIf="Entity?.type" type="text" [(ngModel)]="Entity.type" (onSave)="saveEditable(thisElement, Entity.id)" name="type" size="8"></inline-editor></dd>
+        <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.type" (onSave)="saveEditable(thisElement, Entity.id)" name="type" size="8"></inline-editor></dd>
     </dl>
 </div>
 <div>

@@ -6,7 +6,7 @@
 
         <dt>Description</dt>
 
-        <dd><inline-editor #thisElement *ngIf="Entity?.description" type="text" [(ngModel)]="Entity.description" (onSave)="saveEditable(thisElement, Entity.id)" name="description" size="8"></inline-editor></dd>
+        <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.description" (onSave)="saveEditable(thisElement, Entity.id)" name="description" size="8"></inline-editor></dd>
 
     </dl>
 </div>
