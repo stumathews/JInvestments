@@ -32,33 +32,29 @@
 </div>
 
 <app-list-risks *ngIf="Entity" [ParentId]="Entity.id" [RiskLinks]="Entity.risks"></app-list-risks>
+<p>
+    <a [routerLink]="['/AssociateRisks', Entity.id]"  class="btn btn-primary" href="javascript:void(0)">Add a risk to this Entity</a>
+</p>
 <app-list-factors *ngIf="Entity" [ParentId]="Entity.id" [FactorLinks]="Entity.factors"></app-list-factors>
+<p>            
+    <a [routerLink]="['/AssociateFactors', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add a factor to this Entity</a>
+</p>
 <app-list-groups *ngIf="Entity" [ParentId]="Entity.id" [GroupLinks]="Entity.groups"></app-list-groups>
+<p>
+    <a [routerLink]="['/AssociateGroups', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add this Entity to a group</a>
+</p>
 <app-list-regions *ngIf="Entity" [ParentId]="Entity.id" [RegionLinks]="Entity.regions"></app-list-regions>
+<p>
+    <a [routerLink]="['/AssociateRegions', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add this Entity to a region</a>
+</p>
 <div class="tab-content">
     <div id="factors" class="tab-pane fade in active">
         
         <div id="factor_graph">
             <svg class="factors"></svg>
         </div>
-
         
-        <!--
-            <app-list-factors></app-list-factors>
-        @{ Html.RenderPartial("_ListFactors", new ParentChildEntityWithHtmlActions<EntityInfluenceFactor, Entity>
-           {
-               Children = Model.Factors.ToList(),
-               Parent = Model,
-               HtmlActions = new List<HtmlAction>()
-               {
-                   new HtmlAction("", "Dissassociate", "DissassociateFactor", "Entity"),
-
-               }
-           }); }
-        -->
-        <p>            
-            <a class="btn btn-primary">Add a factor to this Entity</a>
-        </p>
+       
     </div>
     <div id="risks" class="tab-pane fade">
         
@@ -67,21 +63,6 @@
         </div>
 
         
-        <!--
-        @{ Html.RenderPartial("_ListRisks", new ParentChildEntityWithHtmlActions<EntityRisk, Entity>
-           {
-               Children = Model.Risks.ToList(),
-               Parent = Model,
-               HtmlActions = new List<HtmlAction>()
-               {
-                   new HtmlAction("", "Dissassociate", "DissassociateRisk", "Entity"),
-
-               }
-           }); }
-        -->
-        <p>
-            <a class="btn btn-primary">Add a risk to this Entity</a>
-        </p>
     </div>
     <div id="groups" class="tab-pane fade">
         
@@ -89,40 +70,14 @@
             <svg class="groups"></svg>
         </div>
         
-            <!--
-        <app-list-factors></app-list-factors>
-        @{ Html.RenderPartial("_ListGroups", new ParentChildEntityWithHtmlActions<EntityGroup, Entity>
-           {
-               Children = Model.Groups.ToList(),
-               Parent = Model,
-               HtmlActions = new List<HtmlAction>()
-               {
-                   new HtmlAction("", "Dissassociate", "DissassociateGroup", "Entity"),
-
-               }
-           }); }
-        -->
-        <p>
-            <a class="btn btn-primary">Add this Entity to a group</a>
-        </p>
+          
+        
     </div>
     <div id="regions" class="tab-pane fade">
         <div id="factor_graph">
             <svg class="regions"></svg>
         </div>
-        
-        <!--
-        <app-list-regions></app-list-regions>
-        @{ Html.RenderPartial("_ListRegions", new ParentChildEntityWithHtmlActions<Region, Entity>
-           {
-               Children = Model.Regions.ToList(),
-               Parent = Model,
-               HtmlActions = new List<HtmlAction>()
-               {
-                   new HtmlAction("", "Dissassociate", "DissassociateRegion", "Entity"),
-
-               }
-           }); } -->
+       
         <p>
             <a class="btn btn-primary">Add this Entity to a region</a>
         </p>

@@ -13,6 +13,61 @@ export abstract class SelectEntitiesComponent {
     EntityTypes = EntityTypes;
     error: string;
     Items: CheckModel[] = [];
+
+    public ConvertRegionsToCheckModels(regions: Region[]) {
+        if (regions) {
+            return regions.filter((item) => { if (item) { return item; } }).map( (value, index, array) => {
+                return  <CheckModel> {
+                    id: value.id,
+                    name: value.name,
+                    description: value.description,
+                    checked: false
+                };
+            });
+        }
+      }
+    public ConvertFactorsToCheckModels(factors: InvestmentInfluenceFactor[]): CheckModel[] {
+        if (factors && factors.length > 0) {
+          return factors.filter((item) => { if (item) { return item; } }).map( (factor, index, array) => {
+            return <CheckModel> {
+              id: factor.id,
+              name: factor.name,
+              description:
+              factor.description,
+              checked: false
+            };
+          });
+        }
+      }
+    public ConvertGroupsToCheckModel(groups: InvestmentGroup[]): CheckModel[] {
+        if (groups) {
+          return groups.filter((item) => { if (item) { return item; } }).map( (value, index, array) => {
+              return  <CheckModel> {
+                  id: value.id,
+                  name: value.name,
+                  description: value.description,
+                  checked: false
+              };
+          });
+        }
+      }
+    public ConvertRisksToCheckModels(risks: InvestmentRisk[]): CheckModel[] {
+        if (risks) {
+          return risks.filter((item) => { if (item) { return item; } }).map( (value, index, array) => {
+              return  <CheckModel> {
+                  id: value.id,
+                  name: value.name,
+                  description: value.description,
+                  checked: false
+              };
+          });
+        }
+      }
+    public GetEntityIds(): number[] {
+        return this.Items.map((item) => {
+            if (item.checked) { return item.id; }
+        }).filter((id) => { if (id !== null) { return id; } });
+    }
 }
 
 export abstract class DetailComponentBase implements OnInit  {
@@ -32,7 +87,8 @@ export abstract class DetailComponentBase implements OnInit  {
             this.apiService.UpdateEntity(this.MyType, +id, property, newVal)
                            .subscribe(code =>  console.log('back from patch'),
                                       error => this.errorMessage = <any>error);
-          }
+    }
+
 }
 
 export function GetRequiredTextValidators() {

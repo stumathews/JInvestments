@@ -27,10 +27,16 @@ export class ApiService {
     private FactorByIdUrlEndpoint = this.baseURL + '/Factor/{id}';
     private GroupByIdUrlEndpoint = this.baseURL + '/Group/{id}';
     private RegionByIdUrlEndpoint = this.baseURL + '/Region/{id}';
-    DissassociateGroupFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateGroup/{groupID}/{investmentID}';
-    DissassociateRegionFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateRegion/{regionID}/{investmentID}';
-    DissassociateFactorFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateFactor/{factorID}/{investmentID}';
-    DissassociateRiskFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateRisk/{riskID}/{investmentID}';
+    private DissassociateGroupFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateGroup/{groupID}/{investmentID}';
+    private DissassociateRegionFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateRegion/{regionID}/{investmentID}';
+    private DissassociateFactorFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateFactor/{factorID}/{investmentID}';
+    private DissassociateRiskFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateRisk/{riskID}/{investmentID}';
+
+    /* Body contains the list of entities */ 
+    private AssociateGroupWithInvestmentUrl = this.InvestmentsUrlEndpoint + '/AssociateGroups/{investmentID}';
+    private AssociateRegionWithInvestmentUrl = this.InvestmentsUrlEndpoint + '/AssociateRegions/{investmentID}';
+    private AssociateFactorWithInvestmentUrl = this.InvestmentsUrlEndpoint + '/AssociateFactors/{investmentID}';
+    private AssociateRiskWithInvestmentUrl = this.InvestmentsUrlEndpoint + '/AssociateRisks/{investmentID}';
 
     constructor(private http: Http) { }
 
@@ -112,6 +118,29 @@ export class ApiService {
                         .map((response: Response) => <Region>response.json())
                         .do((data => console.log('GetRisk: ' + JSON.stringify(data))))
                         .catch(this.handleError);
+    }
+
+    AssociateEntityWithInvestment(entityType: EntityTypes, entityIDs: number[], investmentId: number): Observable<any> {
+        console.log('Entity=' + EntityTypes[entityType] +
+        ' AssociateEntityWithInvestment ids=' + entityIDs.join(',') +
+        ' investmentID=' + investmentId );
+        let url;
+        if (entityType === EntityTypes.InvestmentInfluenceFactor) {
+            url =  this.AssociateFactorWithInvestmentUrl;
+        } else if (entityType === EntityTypes.InvestmentRisk) {
+            url =  this.AssociateRiskWithInvestmentUrl;
+        } else if (entityType === EntityTypes.InvestmentGroup) {
+            url =  this.AssociateGroupWithInvestmentUrl;
+        } else if (entityType === EntityTypes.Region) {
+            url =  this.AssociateRegionWithInvestmentUrl;
+        }
+
+        console.log('url is ' + url);
+        url = url.replace('{investmentID}', '' + investmentId);
+        return this.http.post(url, entityIDs)
+        .map((response: Response) => <any|null>response.json())
+        .do((data => console.log('AssociateEntityFromInvestment: ' + JSON.stringify(data))))
+        .catch(this.handleError);
     }
 
     DissassociateEntityFromInvestment(entityType: EntityTypes, entityID: number, investmentId: number): Observable<any> {

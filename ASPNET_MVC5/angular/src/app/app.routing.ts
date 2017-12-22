@@ -25,6 +25,10 @@ import { SelectGroupsComponent } from './Views/Investment/select-groups';
 import { SelectRegionsComponent } from './Views/Investment/select-regions';
 import { SummaryOfNewInvestmentComponent } from './Views/Investment/summary-of-new-investment';
 import { NewInvestmentWizardComponent } from './Views/Investment/new-investment-wizard';
+import { AssociateFactorsComponent } from './Views/Investment/associate-factors';
+import { AssociateRisksComponent } from './Views/Investment/associate-risks';
+import { AssociateGroupsComponent } from './Views/Investment/associate-groups';
+import { AssociateRegionsComponent } from './Views/Investment/associate-regions';
 
 const appRoutes: Routes = [
     { path : '', redirectTo: 'Home', pathMatch: 'full'},
@@ -53,6 +57,10 @@ const appRoutes: Routes = [
            { path : 'SelectRegions', component: SelectRegionsComponent, outlet: 'NewInvestmentWizardOutlet' },
            { path : 'SummaryOfNewInvestment', component: SummaryOfNewInvestmentComponent, outlet: 'NewInvestmentWizardOutlet' }
     ] },
+    { path : 'AssociateFactors/:id', component: AssociateFactorsComponent },
+    { path : 'AssociateRisks/:id', component: AssociateRisksComponent },
+    { path : 'AssociateGroups/:id', component: AssociateGroupsComponent },
+    { path : 'AssociateRegions/:id', component: AssociateRegionsComponent },
 ];
 
 export const APP_ROUTING: ModuleWithProviders = RouterModule.forRoot(appRoutes);

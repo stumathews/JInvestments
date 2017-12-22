@@ -14,37 +14,33 @@ import { InvestmentService } from '../../investment.service';
 
 
 @Component({
-  selector: 'app-select-risks',
+  selector: 'app-associate-risks',
   templateUrl: 'select-entities.html',
   })
 
-export class SelectRisksComponent extends SelectEntitiesComponent implements OnInit {
+export class AssociateRisksComponent extends SelectEntitiesComponent implements OnInit {
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private location: Location,
-              private router: Router,
-              private investmentService: InvestmentService) {
+              private router: Router) {
                   super();
               }
   ngOnInit(): void {
-    /* Get all Risks from db and convert to CheckModels */
-    if (this.investmentService.SelectedRisks && this.investmentService.SelectedRisks.length > 0) {
-        console.log('Restoring slected risks');
-        this.Items = this.investmentService.SelectedRisks;
-    } else {
     this.apiService.GetRisks().subscribe(risks => {
         this.Items = this.ConvertRisksToCheckModels(risks);
         },
         error => this.error = <any>error);
-    }
   }
 
-  
   onNext() {
-      /* Convert Selected items to Risks */
-    this.investmentService.SelectedRisks = this.Items.filter((value) => {  if (value.checked) { return value; } });
-    console.log('saved risks selection');
-    this.router.navigateByUrl('/NewInvestmentWizard/(NewInvestmentWizardOutlet:SelectGroups)');
+    const investmentId = +this.route.snapshot.paramMap.get('id');
+    const entityIds = this.GetEntityIds();
+
+    this.apiService
+    .AssociateEntityWithInvestment(EntityTypes.InvestmentRisk, entityIds, investmentId)
+    .subscribe((value) => {
+        this.router.navigateByUrl('/InvestmentDetails/' + investmentId);
+    }, error => {});
   }
 }
 
