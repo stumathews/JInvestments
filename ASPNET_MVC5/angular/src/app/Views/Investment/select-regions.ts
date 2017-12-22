@@ -27,9 +27,7 @@ export class SelectRegionsComponent extends SelectEntitiesComponent implements O
                   super();
               }
 
-
 ngOnInit(): void {
-    /* Get all regions from db and convert to checkmodels */
     if (this.investmentService.SelectedRegions && this.investmentService.SelectedRegions.length > 0) {
         console.log('Restoring selected regions');
         this.Items = this.investmentService.SelectedRegions;
@@ -40,21 +38,7 @@ ngOnInit(): void {
             error => this.error = <any>error);
     }
   }
-
-  ConvertRegionsToCheckModels(regions: Region[]) {
-    if (regions) {
-        return regions.filter((item) => { if (item) { return item; } }).map( (value, index, array) => {
-            return  <CheckModel> {
-                id: value.id,
-                name: value.name,
-                description: value.description,
-                checked: false
-            };
-        });
-    }
-  }
   onNext() {
-      /* Convert selected items and convert to regions */
     this.investmentService.SelectedRegions = this.Items.filter((value) => {  if (value.checked) { return value; } });
     console.log('saved regions selection');
     this.router.navigateByUrl('/NewInvestmentWizard/(NewInvestmentWizardOutlet:SummaryOfNewInvestment)');

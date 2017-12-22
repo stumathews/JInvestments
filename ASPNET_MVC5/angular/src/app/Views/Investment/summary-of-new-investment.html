@@ -6,9 +6,9 @@
         <th>Type</th>
     </thead>
     <tr *ngFor="let factor of Factors">
-            <td>{{ factor.name}}</td>
-            <td>Investment Influence Factor</td>
-        </tr> 
+        <td>{{ factor.name}}</td>
+        <td>Investment Influence Factor</td>
+    </tr> 
     <tr *ngFor="let investment of Investments">
         <td>{{ investment.name}}</td>
         <td>Investment</td>
@@ -26,5 +26,4 @@
         <td>Investment Region</td>
     </tr>        
 </table>
-
 <button class="class="btn btn-default (click)="onFinished()" href="javascript:void(0)">Finished</button>

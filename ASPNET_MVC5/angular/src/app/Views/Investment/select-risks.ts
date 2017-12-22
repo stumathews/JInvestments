@@ -27,7 +27,6 @@ export class SelectRisksComponent extends SelectEntitiesComponent implements OnI
                   super();
               }
   ngOnInit(): void {
-    /* Get all Risks from db and convert to CheckModels */
     if (this.investmentService.SelectedRisks && this.investmentService.SelectedRisks.length > 0) {
         console.log('Restoring slected risks');
         this.Items = this.investmentService.SelectedRisks;
@@ -39,7 +38,6 @@ export class SelectRisksComponent extends SelectEntitiesComponent implements OnI
     }
   }
 
-  
   onNext() {
       /* Convert Selected items to Risks */
     this.investmentService.SelectedRisks = this.Items.filter((value) => {  if (value.checked) { return value; } });

@@ -25,7 +25,6 @@ export class SelectGroupsComponent extends SelectEntitiesComponent implements On
                   super();
                 }
   ngOnInit(): void {
-    /* Get groups from the db and convert to check items */
     if (this.investmentService.SelectedGroups && this.investmentService.SelectedGroups.length > 0) {
         console.log('Restoring selected groups');
         this.Items = this.investmentService.SelectedGroups;
@@ -36,21 +35,7 @@ export class SelectGroupsComponent extends SelectEntitiesComponent implements On
         error => this.error = <any>error);
   }
 }
-
-  ConvertGroupsToCheckModel(groups: InvestmentGroup[]): CheckModel[] {
-    if (groups) {
-      return groups.filter((item) => { if (item) { return item; } }).map( (value, index, array) => {
-          return  <CheckModel> {
-              id: value.id,
-              name: value.name,
-              description: value.description,
-              checked: false
-          };
-      });
-    }
-  }
   onNext() {
-    /* Convert checked items (selected) to Groups */
     this.investmentService.SelectedGroups = this.Items.filter((value) => {  if (value.checked) { return value; } });;
     console.log('saved group selection');
     this.router.navigateByUrl('/NewInvestmentWizard/(NewInvestmentWizardOutlet:SelectRegions)');

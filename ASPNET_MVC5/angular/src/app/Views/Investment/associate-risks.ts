@@ -26,10 +26,8 @@ export class AssociateRisksComponent extends SelectEntitiesComponent implements 
                   super();
               }
   ngOnInit(): void {
-    this.apiService.GetRisks().subscribe(risks => {
-        this.Items = this.ConvertRisksToCheckModels(risks);
-        },
-        error => this.error = <any>error);
+    this.apiService.GetRisks().subscribe(risks => { this.Items = this.ConvertRisksToCheckModels(risks); },
+                                         error => this.error = <any>error);
   }
 
   onNext() {
@@ -38,9 +36,8 @@ export class AssociateRisksComponent extends SelectEntitiesComponent implements 
 
     this.apiService
     .AssociateEntityWithInvestment(EntityTypes.InvestmentRisk, entityIds, investmentId)
-    .subscribe((value) => {
-        this.router.navigateByUrl('/InvestmentDetails/' + investmentId);
-    }, error => {});
+    .subscribe((value) => {  this.router.navigateByUrl('/InvestmentDetails/' + investmentId); },
+               error => {});
   }
 }
 

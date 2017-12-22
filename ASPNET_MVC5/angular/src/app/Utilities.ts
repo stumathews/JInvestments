@@ -111,10 +111,8 @@ export enum EntityTypes {
     Region,
 }
 
-@Component({})
-
-export class InvestmentUtilities {
-    constructor(private apiService: ApiService) { }
+export abstract class InvestmentUtilities {
+    constructor(protected apiService: ApiService) { }
     errorMessage: string;
     populateInvestmentFully(investment: Investment) {
         investment.factors.forEach((factor, findex) => {

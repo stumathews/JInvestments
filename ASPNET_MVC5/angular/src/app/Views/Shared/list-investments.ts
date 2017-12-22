@@ -7,17 +7,16 @@ import { InvestmentUtilities } from '../../Utilities';
   selector: 'app-list-investments',
   templateUrl: './list-investments.html'
 })
-export class ListInvestmentsComponent {
+export class ListInvestmentsComponent extends InvestmentUtilities {
   errorMessage: string;
   Investments: Investment[] = [];
-  private util: InvestmentUtilities;
   _Entity: any;
   @Input()
   set Entity(e: any) {
     this._Entity = e;
     this._Entity.investments.forEach((i, index) => {
       this.apiService.GetInvestment(+i.investmentID).subscribe( (investment) => {
-        this.Investments.push(this.util.populateInvestmentFully(investment));
+        this.Investments.push(this.populateInvestmentFully(investment));
       },  error => this.errorMessage = <any>error);
     });
   }
@@ -26,7 +25,7 @@ export class ListInvestmentsComponent {
   }
 
 
-  constructor(private apiService: ApiService) {
-    this.util = new InvestmentUtilities(this.apiService);
+  constructor(protected apiService: ApiService) {
+    super(apiService);
   }
 }

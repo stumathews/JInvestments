@@ -20,8 +20,4 @@ export class SelectItemsComponent {
               private router: Router) { }
   @Input() Items: CheckModel[];
 
-  tryme(event) {
-    console.log(event);
-  }
-
 }

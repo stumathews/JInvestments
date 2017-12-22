@@ -1,3 +1,6 @@
+/* TODO:
+1. Fix restoring wizard data
+*/
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { ApiService } from '../../apiservice.service';
 import { InvestmentGroup } from '../../Models/InvestmentGroup';
@@ -27,33 +30,17 @@ export class SelectFactorsComponent extends SelectEntitiesComponent implements O
                }
   Entities: InvestmentInfluenceFactor[];
   ngOnInit(): void {
-    /* Get all factors from the db and convert them to CheckModels */
     if (this.investmentService.SelectedFactors && this.investmentService.SelectedFactors.length > 0) {
-      console.log('Restoring selected factors');
+      console.log('Restoring selected factors..');
       this.Items = this.investmentService.SelectedFactors;
     } else {
-      this.apiService.GetFactors().subscribe(factors => {
-        this.Items = this.ConvertFactorsToCheckModels(factors);
-       },
-       error => this.error = <any>error);
+      this.apiService.GetFactors()
+                     .subscribe(factors => { this.Items = this.ConvertFactorsToCheckModels(factors); },
+                                error => this.error = <any>error);
     }
   }
 
-  ConvertFactorsToCheckModels(factors: InvestmentInfluenceFactor[]): CheckModel[] {
-    if (factors && factors.length > 0) {
-      return factors.filter((item) => { if (item) { return item; } }).map( (factor, index, array) => {
-        return <CheckModel> {
-          id: factor.id,
-          name: factor.name,
-          description:
-          factor.description,
-          checked: false
-        };
-      });
-    }
-  }
   onNext() {
-    /* Get selected CheckItems and convert them to Factors */
     this.investmentService.SelectedFactors = this.Items.filter((value) => {  if (value.checked) { return value; } });
     console.log('Saved selected factor selection');
     this.router.navigateByUrl('/NewInvestmentWizard/(NewInvestmentWizardOutlet:SelectRisks)');

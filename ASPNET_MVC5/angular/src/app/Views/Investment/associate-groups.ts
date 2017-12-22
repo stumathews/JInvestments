@@ -25,7 +25,7 @@ export class AssociateGroupsComponent extends SelectEntitiesComponent implements
                 }
   ngOnInit(): void {
         this.apiService.GetGroups().subscribe(groups => {
-        this.Items = this.ConvertGroupsToCheckModel(groups);
+          this.Items = this.ConvertGroupsToCheckModel(groups);
         },
         error => this.error = <any>error);
 }
@@ -35,9 +35,10 @@ export class AssociateGroupsComponent extends SelectEntitiesComponent implements
     const entityIds = this.GetEntityIds();
     this.apiService
     .AssociateEntityWithInvestment(EntityTypes.InvestmentGroup, entityIds, investmentId)
-    .subscribe((value) => {
-        this.router.navigateByUrl('/InvestmentDetails/' + investmentId);
-    }, error => {});
+    .subscribe((value) => { this.router.navigateByUrl('/InvestmentDetails/' + investmentId); },
+               error => {
+                 console.log('Error while associating investment group with entity');
+               });
   }
 }
 

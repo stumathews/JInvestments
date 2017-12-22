@@ -28,19 +28,18 @@ export class AssociateRegionsComponent extends SelectEntitiesComponent implement
 
 
 ngOnInit(): void {
-    this.apiService.GetRegions().subscribe(regions => {
-        this.Items = this.ConvertRegionsToCheckModels(regions);
-        },
-        error => this.error = <any>error);
+    this.apiService.GetRegions().subscribe(regions => { this.Items = this.ConvertRegionsToCheckModels(regions); },
+                                           error => this.error = <any>error);
   }
-  onNext() {const investmentId = +this.route.snapshot.paramMap.get('id');
-  const entityIds = this.GetEntityIds();
 
-  this.apiService
-  .AssociateEntityWithInvestment(EntityTypes.Region, entityIds, investmentId)
-  .subscribe((value) => {
-      this.router.navigateByUrl('/InvestmentDetails/' + investmentId);
-  }, error => {});
+  onNext(): void {
+    const investmentId = +this.route.snapshot.paramMap.get('id');
+    const entityIds = this.GetEntityIds();
+
+    this.apiService
+    .AssociateEntityWithInvestment(EntityTypes.Region, entityIds, investmentId)
+    .subscribe((value) => { this.router.navigateByUrl('/InvestmentDetails/' + investmentId); },
+                error => {});
   }
 }
 

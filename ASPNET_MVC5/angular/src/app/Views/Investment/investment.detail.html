@@ -1,35 +1,21 @@
 ﻿<div *ngIf="Entity">
     <h1><inline-editor #thisElement *ngIf="Entity?.name" type="text" [(ngModel)]="Entity.name" (onSave)="saveEditable(thisElement, Entity.id)" name="name" size="8"></inline-editor></h1>    
-    <h4>Investment</h4>    
-    
+    <h4>Investment</h4>        
     <hr />
     <dl class="dl-horizontal">
         <dt>Description</dt>
-
-        <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.description" (onSave)="saveEditable(thisElement, Entity.id)" name="description" size="8"></inline-editor></dd>
-
+            <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.description" (onSave)="saveEditable(thisElement, Entity.id)" name="description" size="8"></inline-editor></dd>
         <dt>Symbol</dt>
-
-        <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.symbol" (onSave)="saveEditable(thisElement, Entity.id)" name="symbol" size="8"></inline-editor></dd>
-
+            <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.symbol" (onSave)="saveEditable(thisElement, Entity.id)" name="symbol" size="8"></inline-editor></dd>
         <dt>Value proposition</dt>
-
-        <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.valueProposition" (onSave)="saveEditable(thisElement, Entity.id)" name="valueProposition" size="8"></inline-editor></dd>
-
+            <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.valueProposition" (onSave)="saveEditable(thisElement, Entity.id)" name="valueProposition" size="8"></inline-editor></dd>
         <dt>DesirabilityStatement</dt>
-
-        <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.desirabilityStatement" (onSave)="saveEditable(thisElement, Entity.id)" name="desirabilityStatement" size="8"></inline-editor></dd>
-
+            <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.desirabilityStatement" (onSave)="saveEditable(thisElement, Entity.id)" name="desirabilityStatement" size="8"></inline-editor></dd>
         <dt>Initial Investment</dt>
-
-        <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.initialInvestment" (onSave)="saveEditable(thisElement, Entity.id)" name="initialInvestment" size="8"></inline-editor></dd>
-                        
+            <dd><inline-editor #thisElement type="text" [(ngModel)]="Entity.initialInvestment" (onSave)="saveEditable(thisElement, Entity.id)" name="initialInvestment" size="8"></inline-editor></dd>
         <dt>Value</dt>
-
-        <dd><inline-editor #thisElement  type="text" [(ngModel)]="Entity.value" (onSave)="saveEditable(thisElement, Entity.id)" name="value" size="8"></inline-editor></dd>
-
+            <dd><inline-editor #thisElement  type="text" [(ngModel)]="Entity.value" (onSave)="saveEditable(thisElement, Entity.id)" name="value" size="8"></inline-editor></dd>
     </dl>
-
 
 <app-list-risks *ngIf="Entity" [ParentId]="Entity.id" [RiskLinks]="Entity.risks"></app-list-risks>
 <p>
@@ -49,100 +35,47 @@
     <a [routerLink]="['/AssociateRegions', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add this Entity to a region</a>
 </p>
 <div class="tab-content">
-    <div id="factors" class="tab-pane fade in active">
-        
+    <div id="factors" class="tab-pane fade in active">        
         <div id="factor_graph">
             <svg class="factors"></svg>
         </div>
-        
-       
     </div>
     <div id="risks" class="tab-pane fade">
         
         <div id="risks_graph">
             <svg class="risks"></svg>
         </div>
-
-        
     </div>
     <div id="groups" class="tab-pane fade">
         
         <div id="factor_graph">
             <svg class="groups"></svg>
         </div>
-        
-          
-        
     </div>
     <div id="regions" class="tab-pane fade">
         <div id="factor_graph">
             <svg class="regions"></svg>
         </div>
-       
         <p>
             <a class="btn btn-primary">Add this Entity to a region</a>
         </p>
     </div>
 </div>
 <!--
-@section Scripts {
-    <script type="text/javascript" src="@Url.Content("/Scripts/graphs/GraphUtils.js")"></script>
-    <script type="text/javascript">
 
-        $(document).ready(function() {
-            // We land on the Influence factors tab so show the graph for it
-            drawGraph("/Entity/GenerateFactorsGraph/@Model.ID", { element: "svg.factors" });
-        });
+    case 'risks':
+        drawGraph("/Entity/GenerateRisksGraph/@Model.ID", { element: "svg.risks" });
+        break;
+    case 'groups':
+        drawGraph("/Entity/GenerateGroupsGraph/@Model.ID", { element: "svg.groups" });
+        break;
+    case 'factors':
+        drawGraph("/Entity/GenerateFactorsGraph/@Model.ID", { element: "svg.factors" });
+        break;
+    case 'regions':
+        drawGraph("/Entity/GenerateRegionsGraph/@Model.ID", { element: "svg.regions" });
+        break;
 
-        $.fn.editable.defaults.mode = 'inline';
-        $('#@Html.NameFor(model => model.Name)').editable('toggleDisabled');
-        $('#@Html.NameFor(model => model.Description)').editable('toggleDisabled');
-        $('#@Html.NameFor(model => model.ValueProposition)').editable('toggleDisabled');
-        $('#@Html.NameFor(model => model.Symbol)').editable('toggleDisabled');
-        $('#@Html.NameFor(model => model.DesirabilityStatement)').editable('toggleDisabled');
-        $('#@Html.NameFor(model => model.Value)').editable('toggleDisabled');
-        $('#@Html.NameFor(model => model.InitialEntity)').editable('toggleDisabled');
-
-        //enable / disable
-        $('#toggle').click(function() {
-            $('#@Html.NameFor(model => model.Name)').editable('toggleDisabled');
-            $('#@Html.NameFor(model => model.Description)').editable('toggleDisabled');
-            $('#@Html.NameFor(model => model.ValueProposition)').editable('toggleDisabled');
-            $('#@Html.NameFor(model => model.Symbol)').editable('toggleDisabled');
-            $('#@Html.NameFor(model => model.DesirabilityStatement)').editable('toggleDisabled');
-            $('#@Html.NameFor(model => model.Value)').editable('toggleDisabled');
-            $('#@Html.NameFor(model => model.InitialEntity)').editable('toggleDisabled');
-
-        });
-
-        $("#toggle-on").click(function(e) {
-
-        });
-
-
-
-        $('a[data-toggle="tab"]').on('shown.bs.tab',
-            function(e) {
-                var target = $(e.target).attr("href"); // activated tab
-                // target is like #risks, #factors, #groups
-                // alert("svg." + target.substr(1));
-                switch (target.substr(1)) {
-                case 'risks':
-                    drawGraph("/Entity/GenerateRisksGraph/@Model.ID", { element: "svg.risks" });
-                    break;
-                case 'groups':
-                    drawGraph("/Entity/GenerateGroupsGraph/@Model.ID", { element: "svg.groups" });
-                    break;
-                case 'factors':
-                    drawGraph("/Entity/GenerateFactorsGraph/@Model.ID", { element: "svg.factors" });
-                    break;
-                case 'regions':
-                    drawGraph("/Entity/GenerateRegionsGraph/@Model.ID", { element: "svg.regions" });
-                    break;
-                }
-
-            });
-    </script>
 }
 -->
 </div>

@@ -24,12 +24,11 @@ export class AssociateFactorsComponent extends SelectEntitiesComponent implement
               private router: Router) {
                 super();
                }
+
   Entities: InvestmentInfluenceFactor[];
   ngOnInit(): void {
-      this.apiService.GetFactors().subscribe(factors => {
-        this.Items = this.ConvertFactorsToCheckModels(factors);
-       },
-       error => this.error = <any>error);
+      this.apiService.GetFactors().subscribe(factors => { this.Items = this.ConvertFactorsToCheckModels(factors); },
+                                             error => this.error = <any>error);
   }
 
   onNext() {
@@ -38,9 +37,8 @@ export class AssociateFactorsComponent extends SelectEntitiesComponent implement
 
     this.apiService
     .AssociateEntityWithInvestment(EntityTypes.InvestmentInfluenceFactor, entityIds, investmentId)
-    .subscribe((value) => {
-        this.router.navigateByUrl('/InvestmentDetails/' + investmentId);
-    }, error => {});
+    .subscribe((value) => { this.router.navigateByUrl('/InvestmentDetails/' + investmentId); },
+               error => {});
   }
 }
 

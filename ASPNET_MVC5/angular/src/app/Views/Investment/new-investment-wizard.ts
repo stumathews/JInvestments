@@ -6,15 +6,12 @@ import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { InvestmentService } from '../../investment.service';
 
-
-
 @Component({
   selector: 'app-new-investment-wizard',
   templateUrl: 'new-investment-wizard.html',
   })
 
 export class NewInvestmentWizardComponent implements OnInit {
-  form;
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private location: Location,
