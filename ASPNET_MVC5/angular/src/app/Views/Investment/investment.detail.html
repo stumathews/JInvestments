@@ -29,12 +29,13 @@
         <dd><inline-editor #thisElement  type="text" [(ngModel)]="Entity.value" (onSave)="saveEditable(thisElement, Entity.id)" name="value" size="8"></inline-editor></dd>
 
     </dl>
-</div>
+
 
 <app-list-risks *ngIf="Entity" [ParentId]="Entity.id" [RiskLinks]="Entity.risks"></app-list-risks>
 <p>
     <a [routerLink]="['/AssociateRisks', Entity.id]"  class="btn btn-primary" href="javascript:void(0)">Add a risk to this Entity</a>
-</p>
+    <app-risks-graph></app-risks-graph>
+</p> 
 <app-list-factors *ngIf="Entity" [ParentId]="Entity.id" [FactorLinks]="Entity.factors"></app-list-factors>
 <p>            
     <a [routerLink]="['/AssociateFactors', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add a factor to this Entity</a>
@@ -144,4 +145,4 @@
     </script>
 }
 -->
-
+</div>
