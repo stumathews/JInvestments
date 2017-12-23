@@ -20,7 +20,7 @@
 <app-list-risks *ngIf="Entity" [ParentId]="Entity.id" [RiskLinks]="Entity.risks"></app-list-risks>
 <p>
     <a [routerLink]="['/AssociateRisks', Entity.id]"  class="btn btn-primary" href="javascript:void(0)">Add a risk to this Entity</a>
-    <app-risks-graph></app-risks-graph>
+    <app-risks-graph [InvestmentId]="Entity.id"></app-risks-graph>
 </p> 
 <app-list-factors *ngIf="Entity" [ParentId]="Entity.id" [FactorLinks]="Entity.factors"></app-list-factors>
 <p>            

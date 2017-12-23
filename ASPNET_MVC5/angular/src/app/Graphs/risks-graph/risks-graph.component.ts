@@ -1,13 +1,45 @@
-import { Component, NgModule, OnInit, AfterViewInit, OnDestroy, ViewEncapsulation  } from '@angular/core';
+import { Component, Input, NgModule, OnInit, AfterViewInit, OnDestroy, ViewEncapsulation  } from '@angular/core';
+import { ApiService } from './../../apiservice.service';
 import { miserables } from './miserables';
 import { GraphData } from '../../Models/GraphData';
+import { EntityTypes  } from '../../Utilities';
 import * as d3 from 'd3';
 
-interface DataType {
-   x: any;
-    y: any;
-    id: any;
-  }
+
+interface Datum {
+  name: string;
+  value: number;
+}
+
+  const TestData:  GraphData = {
+    'nodes':  [
+      {
+        'name': 'Test investment name',
+        'value': 1
+      },
+      {
+        'name': 'Director dismissal',
+        'value': 3
+      },
+      {
+        'name': 'Bad Earnings report',
+        'value': 3
+      }
+    ],
+      'links': [
+        {
+          'source': 0,
+          'target': 1,
+          'value': 3
+        },
+        {
+          'source': 0,
+          'target': 2,
+          'value': 3
+        }
+    ]
+};
+
 
 @Component({
   selector: 'app-risks-graph',
@@ -16,13 +48,14 @@ interface DataType {
   encapsulation: ViewEncapsulation.None
 })
 export class RisksGraphComponent implements OnInit, AfterViewInit, OnDestroy  {
+  @Input() InvestmentId: number;
   name: string;
   svg;
   color;
   simulation;
   link;
   node;
-  constructor() { }
+  constructor(protected apiService: ApiService) { }
   ngOnInit() {
 
   }
@@ -34,10 +67,12 @@ export class RisksGraphComponent implements OnInit, AfterViewInit, OnDestroy  {
 
     this.color = d3.scaleOrdinal(d3.schemeCategory20);
     this.simulation = d3.forceSimulation()
-        .force('link', d3.forceLink().id(function(d: DataType) { return d.id; }))
+        .force('link', d3.forceLink().distance(90))
         .force('charge', d3.forceManyBody())
         .force('center', d3.forceCenter(width / 2, height / 2));
-    this.render(miserables);
+         this.apiService.GetInvestmentGraphData(EntityTypes.InvestmentRisk, this.InvestmentId)
+         .subscribe( (graphData) => this.render(graphData),
+          error => console.log('Error occured getting graph data:' + error));
   }
   ticked() {
     this.link
@@ -52,26 +87,27 @@ export class RisksGraphComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
   render(graph) {
     this.link = this.svg.append('g')
-    .attr('class', 'links')
-    .selectAll('line')
-    .data(graph.links)
-    .enter().append('line')
-      .attr('stroke-width', function(d) { return Math.sqrt(d.value); });
+                .attr('class', 'links')
+                .selectAll('line')
+                .data(graph.links)
+                .enter().append('line')
+                .attr('stroke-width', function(d) { return Math.sqrt(d.value); });
 
     this.node = this.svg.append('g')
-    .attr('class', 'nodes')
-    .selectAll('circle')
-    .data(graph.nodes)
-    .enter().append('circle')
-      .attr('r', 5)
-      .attr('fill', (d) => this.color(d.group))
-      .call(d3.drag()
-          .on('start', (d) => this.dragstarted(d))
-          .on('drag', (d) => this.dragged(d))
-          .on('end', (d) => this.dragended(d)));
+                .attr('class', 'nodes')
+                .selectAll('circle')
+                .data(graph.nodes)
+                .enter().append('g').append('circle')
+                .text(function (d) { return d.name; })
+                  .attr('r', function(d) { return Math.sqrt(d.value) * 20; })
+                  .attr('fill', (d) => this.color(d.value))
+                  .call(d3.drag()
+                      .on('start', (d) => this.dragstarted(d))
+                      .on('drag', (d) => this.dragged(d))
+                      .on('end', (d) => this.dragended(d)));
 
-    this.node.append('title')
-      .text(function(d) { return d.id; });
+      this.node.append('title')
+      .text(function(d) { return d.name; });
 
     this.simulation
       .nodes(graph.nodes)

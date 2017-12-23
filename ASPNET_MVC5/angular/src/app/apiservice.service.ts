@@ -10,6 +10,7 @@ import { InvestmentGroup } from './Models/InvestmentGroup';
 import { Region } from './Models/Region';
 import { InvestmentRisk } from './Models/InvestmentRisk';
 import { EntityTypes  } from './Utilities';
+import { GraphData } from './Models/GraphData';
 
 
 
@@ -32,13 +33,39 @@ export class ApiService {
     private DissassociateFactorFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateFactor/{factorID}/{investmentID}';
     private DissassociateRiskFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateRisk/{riskID}/{investmentID}';
 
-    /* Body contains the list of entities */ 
+    /* Body contains the list of entities */
     private AssociateGroupWithInvestmentUrl = this.InvestmentsUrlEndpoint + '/AssociateGroups/{investmentID}';
     private AssociateRegionWithInvestmentUrl = this.InvestmentsUrlEndpoint + '/AssociateRegions/{investmentID}';
     private AssociateFactorWithInvestmentUrl = this.InvestmentsUrlEndpoint + '/AssociateFactors/{investmentID}';
     private AssociateRiskWithInvestmentUrl = this.InvestmentsUrlEndpoint + '/AssociateRisks/{investmentID}';
 
+    private InvestmentRisksGraphUrl = this.InvestmentsUrlEndpoint + '/RisksGraph/{id}';
+    private InvestmentGroupsGraphUrl = this.InvestmentsUrlEndpoint + '/GroupsGraph/{id}';
+    private InvestmentFactorsGraphUrl = this.InvestmentsUrlEndpoint + '/FactorsGraph/{id}';
+    private InvestmentRegionsGraphUrl = this.InvestmentsUrlEndpoint + '/RegionsGraph/{id}';
     constructor(private http: Http) { }
+
+    GetInvestmentGraphData(type: EntityTypes , investmentID: number): Observable<GraphData> {
+
+        let url;
+
+        if ( type === EntityTypes.InvestmentGroup) {
+            url = this.InvestmentGroupsGraphUrl;
+        } else if (type === EntityTypes.InvestmentInfluenceFactor) {
+            url = this.InvestmentFactorsGraphUrl;
+        } else if (type === EntityTypes.InvestmentRisk) {
+            url = this.InvestmentRisksGraphUrl;
+        } else if ( type === EntityTypes.Region) {
+            url = this.InvestmentRegionsGraphUrl;
+        }
+
+        url = url.replace('{id}', investmentID);
+        console.log('Getting graph data for...' + EntityTypes[type]);
+        return this.http.post(url, {})
+                        .map((response: Response) => <GraphData[]>response.json())
+                        .do((data => console.log('All: ' + JSON.stringify(data))))
+                        .catch(this.handleError);
+    }
 
     GetInvestments(): Observable<Investment[]> {
         console.log('Getting investments...');
