@@ -20,19 +20,22 @@
 <app-list-risks *ngIf="Entity" [ParentId]="Entity.id" [RiskLinks]="Entity.risks"></app-list-risks>
 <p>
     <a [routerLink]="['/AssociateRisks', Entity.id]"  class="btn btn-primary" href="javascript:void(0)">Add a risk to this Entity</a>
-    <app-risks-graph [InvestmentId]="Entity.id"></app-risks-graph>
+    <app-graph [EntityType]="EntityTypes.InvestmentRisk" [InvestmentId]="Entity.id"></app-graph>
 </p> 
 <app-list-factors *ngIf="Entity" [ParentId]="Entity.id" [FactorLinks]="Entity.factors"></app-list-factors>
 <p>            
     <a [routerLink]="['/AssociateFactors', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add a factor to this Entity</a>
+    <app-graph [EntityType]="EntityTypes.InvestmentInfluenceFactor" [InvestmentId]="Entity.id"></app-graph>
 </p>
 <app-list-groups *ngIf="Entity" [ParentId]="Entity.id" [GroupLinks]="Entity.groups"></app-list-groups>
 <p>
     <a [routerLink]="['/AssociateGroups', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add this Entity to a group</a>
+    <app-graph [EntityType]="EntityTypes.InvestmentGroup" [InvestmentId]="Entity.id"></app-graph>
 </p>
 <app-list-regions *ngIf="Entity" [ParentId]="Entity.id" [RegionLinks]="Entity.regions"></app-list-regions>
 <p>
     <a [routerLink]="['/AssociateRegions', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add this Entity to a region</a>
+    <app-graph [EntityType]="EntityTypes.Region" [InvestmentId]="Entity.id"></app-graph>
 </p>
 <div class="tab-content">
     <div id="factors" class="tab-pane fade in active">        

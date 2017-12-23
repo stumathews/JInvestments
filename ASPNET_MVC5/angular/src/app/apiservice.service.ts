@@ -46,7 +46,8 @@ export class ApiService {
     constructor(private http: Http) { }
 
     GetInvestmentGraphData(type: EntityTypes , investmentID: number): Observable<GraphData> {
-
+        console.log('Entity=' + EntityTypes[type] +
+        ' investmentID=' + investmentID );
         let url;
 
         if ( type === EntityTypes.InvestmentGroup) {
@@ -61,7 +62,7 @@ export class ApiService {
 
         url = url.replace('{id}', investmentID);
         console.log('Getting graph data for...' + EntityTypes[type]);
-        return this.http.post(url, {})
+        return this.http.get(url)
                         .map((response: Response) => <GraphData[]>response.json())
                         .do((data => console.log('All: ' + JSON.stringify(data))))
                         .catch(this.handleError);

@@ -1,6 +1,5 @@
 import { Component, Input, NgModule, OnInit, AfterViewInit, OnDestroy, ViewEncapsulation  } from '@angular/core';
 import { ApiService } from './../../apiservice.service';
-import { miserables } from './miserables';
 import { GraphData } from '../../Models/GraphData';
 import { EntityTypes  } from '../../Utilities';
 import * as d3 from 'd3';
@@ -42,13 +41,15 @@ interface Datum {
 
 
 @Component({
-  selector: 'app-risks-graph',
-  templateUrl: './risks-graph.component.html',
-  styleUrls: ['./risks-graph.component.css'],
+  selector: 'app-graph',
+  templateUrl: './graph.component.html',
+  styleUrls: ['./graph.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class RisksGraphComponent implements OnInit, AfterViewInit, OnDestroy  {
+export class GraphComponent implements OnInit, AfterViewInit, OnDestroy  {
+  EntityTypes = EntityTypes;
   @Input() InvestmentId: number;
+  @Input() EntityType: EntityTypes;
   name: string;
   svg;
   color;
@@ -61,7 +62,10 @@ export class RisksGraphComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   ngAfterViewInit() {
-    this.svg = d3.select('svg');
+
+    const SvgTagName = '#' + EntityTypes[this.EntityType];
+    console.log('svgtagname=' + SvgTagName);
+    this.svg = d3.select(SvgTagName);
     const width = +this.svg.attr('width');
     const height = +this.svg.attr('height');
 
@@ -70,7 +74,7 @@ export class RisksGraphComponent implements OnInit, AfterViewInit, OnDestroy  {
         .force('link', d3.forceLink().distance(90))
         .force('charge', d3.forceManyBody())
         .force('center', d3.forceCenter(width / 2, height / 2));
-         this.apiService.GetInvestmentGraphData(EntityTypes.InvestmentRisk, this.InvestmentId)
+         this.apiService.GetInvestmentGraphData(this.EntityType, this.InvestmentId)
          .subscribe( (graphData) => this.render(graphData),
           error => console.log('Error occured getting graph data:' + error));
   }
@@ -115,6 +119,8 @@ export class RisksGraphComponent implements OnInit, AfterViewInit, OnDestroy  {
 
     this.simulation.force('link')
       .links(graph.links);
+
+      this.simulation.alpha(0.8).restart();
   }
 
   dragged(d) {

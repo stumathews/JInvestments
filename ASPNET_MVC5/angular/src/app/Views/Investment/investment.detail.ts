@@ -11,6 +11,7 @@ import { EntityTypes, DetailComponentBase } from '../../Utilities';
   })
 
 export class InvestmentDetailComponent extends DetailComponentBase implements OnInit {
+  EntityTypes = EntityTypes;
   Entity: Investment;
   constructor(protected apiService: ApiService, private route: ActivatedRoute, private location: Location) {
     super(apiService);

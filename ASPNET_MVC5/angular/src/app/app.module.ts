@@ -43,7 +43,7 @@ import { AssociateFactorsComponent } from './Views/Investment/associate-factors'
 import { AssociateRisksComponent } from './Views/Investment/associate-risks';
 import { AssociateGroupsComponent } from './Views/Investment/associate-groups';
 import { AssociateRegionsComponent } from './Views/Investment/associate-regions';
-import { RisksGraphComponent } from './Graphs/risks-graph/risks-graph.component';
+import { GraphComponent } from './Graphs/graph/graph.component';
 
 
 @NgModule({
@@ -56,7 +56,7 @@ import { RisksGraphComponent } from './Graphs/risks-graph/risks-graph.component'
     NewRegionComponent, NewRiskComponent, SelectItemsComponent, SelectFactorsComponent,
     NewInvestmentWizardComponent, SelectRisksComponent, SelectGroupsComponent, SelectRegionsComponent,
     SummaryOfNewInvestmentComponent, AssociateFactorsComponent, AssociateRisksComponent,
-    AssociateGroupsComponent, AssociateRegionsComponent, RisksGraphComponent
+    AssociateGroupsComponent, AssociateRegionsComponent, GraphComponent
   ],
   imports: [
     BrowserModule, APP_ROUTING, AlertModule.forRoot(), HttpModule, FormsModule, ReactiveFormsModule,
