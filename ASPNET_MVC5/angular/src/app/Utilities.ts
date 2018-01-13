@@ -72,7 +72,7 @@ export abstract class SelectEntitiesComponent {
 
 export abstract class DetailComponentBase implements OnInit  {
     EntityTypes = EntityTypes;
-    Entity: Investment | InvestmentGroup | InvestmentInfluenceFactor | InvestmentFactor | Region;
+    Entity: Investment | InvestmentGroup | InvestmentInfluenceFactor | InvestmentRisk | Region;
     MyType: EntityTypes;
     errorMessage: string;
     constructor(protected apiService: ApiService) { }

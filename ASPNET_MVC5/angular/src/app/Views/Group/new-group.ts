@@ -33,6 +33,7 @@ export class NewGroupComponent implements OnInit {
   onSubmit(form: InvestmentGroup) {
     this.apiService.CreateInvestmentGroup(form).finally(() => {
       this.CreatedGroupEvent.emit(form);
+      this.router.navigate(['/Groups']);
     }).subscribe( (value) => {
       console.log('received response: ' + JSON.stringify(value));
     });
