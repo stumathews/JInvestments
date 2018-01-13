@@ -1,6 +1,6 @@
 ﻿<div>
     <hr/>
-    <h4>{{ Title }}</h4>
+    <h4>Groups</h4>
     <p>
         Investments can be grouped into the same containers to add a relationship between them.
         Grouped investments share a commonality.
@@ -13,7 +13,8 @@
             <th>Type</th>
             <th>Linked investments</th>
             <th>#Children</th>
-            <th>Parent</th>            
+            <!-- <th>Parent</th> -->
+            <th>Dissasociate</th>
         </tr>
         </thead>
         <tr *ngFor="let group of Groups">
@@ -22,9 +23,11 @@
             <td>{{ group.type }}</td>
             <td><a [routerLink]="['/GroupDetails', group.id]">{{ group.investments?.length }}</a></td>
             <td>{{ group.children?.length }}</td>
-            <td>{{ ParentGroup?.name }}</td>            
+            <!-- <td>{{ group.parent?.name}}</td> -->
+            <td><a *ngIf="group"  href="javascript:void(0)" (click)="DissasociateEntityFromInvestment(group.id, ParentId)">Dissasociate</a></td>
         </tr>
         
+
     </table>
-    <p><strong>Total: {{ Groups.length }}</strong></p>    
+    <p><strong>Total: {{ Groups.length }}</strong></p>
 </div>

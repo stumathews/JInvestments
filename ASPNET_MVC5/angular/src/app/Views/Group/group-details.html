@@ -15,7 +15,14 @@
     </dl>
 </div>
 <div>
-        <div><app-list-investments [Entity]="Entity"></app-list-investments>    
+    <app-list-investments [Entity]="Entity"></app-list-investments>      
+</div>
+<div>
+    <h3>Sub groups</h3>
+    <app-list-groups [ParentGroup]="Entity" [Groups]="Entity.children"></app-list-groups>
+</div>
+<div>
+        <app-list-notes *ngIf="Entity" [OwningEntityType]="EntityTypes[EntityTypes.InvestmentGroup]" [OwningEntityId]="Entity.id"></app-list-notes>
 </div>
 
 

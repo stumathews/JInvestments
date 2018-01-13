@@ -11,23 +11,28 @@ import { Region } from './Models/Region';
 import { InvestmentRisk } from './Models/InvestmentRisk';
 import { EntityTypes  } from './Utilities';
 import { GraphData } from './Models/GraphData';
+import { InvestmentNote } from './Models/InvestmentNote';
 
 
 
 @Injectable()
 export class ApiService {
 
-    private baseURL = 'http://localhost:49921/api';
+    private baseURL = 'http://localhost:5000/api';
     private InvestmentsUrlEndpoint = this.baseURL + '/Investment';
     private FactorsUrlEndpoint = this.baseURL + '/Factor';
     private GroupsUrlEndpoint = this.baseURL + '/Group';
     private RisksUrlEndpoint = this.baseURL + '/Risk';
     private RegionsUrlEndpoint = this.baseURL + '/Region';
+    private NotesUrlEndpoint = this.baseURL + '/Notes';
     private InvestmentByIdUrlEndpoint = this.baseURL + '/Investment/{id}';
     private RiskByIdUrlEndpoint = this.baseURL + '/Risk/{id}';
     private FactorByIdUrlEndpoint = this.baseURL + '/Factor/{id}';
     private GroupByIdUrlEndpoint = this.baseURL + '/Group/{id}';
     private RegionByIdUrlEndpoint = this.baseURL + '/Region/{id}';
+
+    private OwningEntityNotesUrlEndpoint = this.NotesUrlEndpoint + '/{owningEntityID}/{owningEntityType}';
+
     private DissassociateGroupFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateGroup/{groupID}/{investmentID}';
     private DissassociateRegionFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateRegion/{regionID}/{investmentID}';
     private DissassociateFactorFromInvestmentUrl = this.InvestmentsUrlEndpoint + '/DissassociateFactor/{factorID}/{investmentID}';
@@ -136,8 +141,17 @@ export class ApiService {
         console.log('Getting Group id=' + id);
         return this.http.get(this.GroupByIdUrlEndpoint.replace('{id}', '' + id))
                         .map((response: Response) => <InvestmentGroup>response.json())
-                        .do((data => console.log('GetRisk: ' + JSON.stringify(data))))
+                        .do((data => console.log('GetGroup: ' + JSON.stringify(data))))
                         .catch(this.handleError);
+    }
+
+    GetNotes(OwningEntityType: EntityTypes, OwningEntityId: number): Observable<InvestmentNote[]> {
+        console.log('Getting ' + OwningEntityType + 'notes...');
+        return this.http.get(this.OwningEntityNotesUrlEndpoint.replace('{owningEntityID}', '' + OwningEntityId)
+                                                               .replace('{owningEntityType}', EntityTypes[OwningEntityType]))
+        .map((response: Response) => <InvestmentNote[]>response.json())
+        .do((data => console.log('Got Note:' + JSON.stringify(data))))
+        .catch(this.handleError);
     }
 
     GetRegion(id: number): Observable<Region> {
@@ -225,11 +239,19 @@ export class ApiService {
         .catch(this.handleError);
     }
 
+    CreateInvestmentNote(investmentNote: InvestmentNote): Observable<InvestmentNote> {
+        console.log('Create Note...' + JSON.stringify(investmentNote));
+        return this.http.post(this.NotesUrlEndpoint, investmentNote)
+        .map((response: Response) => <InvestmentNote>response.json())
+        .do( (data => console.log('do Create note: ' + JSON.stringify(data))))
+        .catch(this.handleError);
+    }
+
     CreateRegion(region: Region): Observable<Region> {
-        console.log('CreateRegion...' + JSON.stringify(region));
+        console.log('Create Region...' + JSON.stringify(region));
         return this.http.post(this.RegionsUrlEndpoint, region)
         .map((response: Response) => <Region>response.json())
-        .do( (data => console.log('do CreateRegion: ' + JSON.stringify(data))))
+        .do( (data => console.log('do Region note: ' + JSON.stringify(data))))
         .catch(this.handleError);
     }
 

@@ -71,7 +71,8 @@ export abstract class SelectEntitiesComponent {
 }
 
 export abstract class DetailComponentBase implements OnInit  {
-    Entity: Investment | InvestmentGroup | InvestmentInfluenceFactor | InvestmentRisk | Region;
+    EntityTypes = EntityTypes;
+    Entity: Investment | InvestmentGroup | InvestmentInfluenceFactor | InvestmentFactor | Region;
     MyType: EntityTypes;
     errorMessage: string;
     constructor(protected apiService: ApiService) { }
@@ -104,14 +105,15 @@ export function GetRequiredTextValidators() {
    }
 
 export enum EntityTypes {
-    Investment = 1,
-    InvestmentInfluenceFactor,
-    InvestmentRisk,
+    Investment = 0,
     InvestmentGroup,
+    InvestmentRisk,
+    InvestmentInfluenceFactor,
     Region,
 }
 
 export abstract class InvestmentUtilities {
+    EntityTypes = EntityTypes;
     constructor(protected apiService: ApiService) { }
     errorMessage: string;
     populateInvestmentFully(investment: Investment) {

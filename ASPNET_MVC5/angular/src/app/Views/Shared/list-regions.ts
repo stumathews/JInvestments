@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, SimpleChange, KeyValueDiffers, DoCheck } from '@angular/core';
 import { ApiService } from '../../apiservice.service';
 import { Region } from '../../Models/Region';
 import { RegionsLink } from '../../Models/Investment';
@@ -7,22 +7,23 @@ import { HtmlAction } from '../../Models/HtmlAction';
 import { forEach } from '@angular/router/src/utils/collection';
 import { EntityTypes } from '../../Utilities';
 
+
 @Component({
   selector: 'app-list-regions',
   templateUrl: './list-regions.html'
 })
 
-export class ListRegionsComponent implements OnInit {
+export class ListRegionsComponent implements OnInit, DoCheck {
+  constructor(private apiService: ApiService, private differs: KeyValueDiffers ) {
+    this.differ = differs.find({}).create();
+  }
+  differ: any;
+  errorMessage: string;
   Regions: Region[] = [];
   private _RegionsLinks: RegionsLink[];
   @Input() ParentId: number;
   @Input()
   set RegionLinks(Regions: RegionsLink[]) {
-    Regions.forEach((value, index, risks) => {
-      console.log('Attempting to get the Region for ' + value.regionID);
-      this.apiService.GetRegion(value.regionID)
-      .subscribe(realRegion => this.Regions.push(realRegion), error => this.errorMessage = <any>error);
-    });
     this._RegionsLinks = Regions;
   }
   get RegionLinks(): RegionsLink[] {
@@ -40,8 +41,20 @@ export class ListRegionsComponent implements OnInit {
     })
     .subscribe( code => console.log('code was' + code) , error => this.errorMessage = error);
   }
-  constructor(private apiService: ApiService) { }
-  errorMessage: string;
+
+  ngDoCheck(): void {
+    const changes = this.differ.diff(this.RegionLinks);
+    if  (changes) {
+      changes.forEachChangedItem( r =>  console.log('changed ', r.currentValue));
+      changes.forEachAddedItem( r => {
+          const v: RegionsLink = r.currentValue;
+          console.log('Added RegionID: ' + v.regionID );
+          this.apiService.GetRegion(v.regionID)
+            .subscribe(realRegion => this.Regions.push(realRegion), error => this.errorMessage = <any>error);
+      });
+      changes.forEachRemovedItem( r =>  console.log('removed ', r.currentValue));
+   }
+  }
 
   ngOnInit(): void { }
 }

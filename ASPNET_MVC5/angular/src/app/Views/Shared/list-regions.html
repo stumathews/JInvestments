@@ -7,15 +7,15 @@
         <thead>
         <tr>
             <th>Name</th>
-            <th>Investments</th>
-            <th>Description</th>            
+            <th>Description</th> 
+            <th>Linked investments</th>           
             <th>Dissasociate</th>
         </tr>
         </thead>       
         <tr *ngFor="let region of Regions">
                 <td><a [routerLink]="['/RegionDetails', region.id]">{{ region.name }}</a></td>
                 <td>{{ region.description }}</td>
-                <td><a>{{ region.investments?.length }}</a></td>
+                <td><a [routerLink]="['/RegionDetails', region.id]">{{ region.investments?.length }}</a></td>
                 <td><a *ngIf="region"  href="javascript:void(0)" (click)="DissasociateEntityFromInvestment(region.id, ParentId)">Dissasociate</a></td>
         </tr>
         

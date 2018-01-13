@@ -31,10 +31,10 @@ export class NewRiskComponent implements OnInit {
 
   onSubmit(form: InvestmentRisk) {
     this.apiService.CreateInvestmentRisk(form).finally(() => {
-      this.router.navigate(['/Risks']);
+      // this.router.navigate(['/Risks']);
     }).subscribe( (value) => {
       console.log('received response: ' + JSON.stringify(value));
-      this.goHome();
+      // this.goHome();
     });
   }
 

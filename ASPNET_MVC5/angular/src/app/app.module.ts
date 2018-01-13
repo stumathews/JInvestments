@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
 import { APP_ROUTING } from './app.routing';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './Views/App/app';
@@ -17,7 +18,7 @@ import { ApiService } from './apiservice.service';
 import { ListRiskComponent } from './Views/Shared/list-risks';
 import { ListFactorsComponent } from './Views/Shared/list-factors';
 import { ListInvestmentsComponent } from './Views/Shared/list-investments';
-import { ListGroupsComponent } from './Views/Shared/list-groups';
+import { ListGroupsViaGroupLinksComponent } from './Views/Shared/list-groups-via-grouplinks';
 import { ListRegionsComponent } from './Views/Shared/list-regions';
 import { FactorDetailsComponent } from './Views/Factor/factor-details';
 import { GroupDetailsComponent } from './Views/Group/group-details';
@@ -44,25 +45,32 @@ import { AssociateRisksComponent } from './Views/Investment/associate-risks';
 import { AssociateGroupsComponent } from './Views/Investment/associate-groups';
 import { AssociateRegionsComponent } from './Views/Investment/associate-regions';
 import { GraphComponent } from './Graphs/graph/graph.component';
-
+import { ListGroupsComponent } from './Views/Shared/list-groups';
+import { ListNotesComponent } from './Views/Shared/list-notes';
+import { NewInvestmentNoteComponent } from './Views/Note/new-note';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
     AppComponent, HomeComponent, SideNavComponent, InvestmentComponent,
     FactorComponent, GroupComponent, RiskComponent, RegionComponent, InvestmentDetailComponent,
-    ListRiskComponent, ListFactorsComponent, ListGroupsComponent, ListRegionsComponent,
+    ListRiskComponent, ListFactorsComponent, ListGroupsViaGroupLinksComponent, ListRegionsComponent,
     FactorDetailsComponent, GroupDetailsComponent, RegionDetailsComponent, ListInvestmentsComponent,
     RiskDetailsComponent, NewInvestmentComponent, NewFactorComponent, NewGroupComponent,
     NewRegionComponent, NewRiskComponent, SelectItemsComponent, SelectFactorsComponent,
     NewInvestmentWizardComponent, SelectRisksComponent, SelectGroupsComponent, SelectRegionsComponent,
     SummaryOfNewInvestmentComponent, AssociateFactorsComponent, AssociateRisksComponent,
-    AssociateGroupsComponent, AssociateRegionsComponent, GraphComponent
+    AssociateGroupsComponent, AssociateRegionsComponent, GraphComponent, ListGroupsComponent,
+    ListNotesComponent, NewInvestmentNoteComponent
   ],
   imports: [
-    BrowserModule, APP_ROUTING, AlertModule.forRoot(), HttpModule, FormsModule, ReactiveFormsModule,
+    BrowserModule, APP_ROUTING, AlertModule.forRoot(), ModalModule.forRoot(), HttpModule, FormsModule, ReactiveFormsModule,
     InlineEditorModule, Angular2FontawesomeModule
   ],
-  providers: [ApiService, InvestmentService],
+  entryComponents: [
+    ListGroupsComponent,
+  ],
+  providers: [ApiService, InvestmentService, BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

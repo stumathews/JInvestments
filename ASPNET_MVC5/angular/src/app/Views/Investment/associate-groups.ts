@@ -23,6 +23,9 @@ export class AssociateGroupsComponent extends SelectEntitiesComponent implements
               private router: Router) {
                   super();
                 }
+
+  @Input() InvestmentId: number;
+  @Output() AssociatedGroupEvent = new EventEmitter<InvestmentGroup>();
   ngOnInit(): void {
         this.apiService.GetGroups().subscribe(groups => {
           this.Items = this.ConvertGroupsToCheckModel(groups);
@@ -31,14 +34,18 @@ export class AssociateGroupsComponent extends SelectEntitiesComponent implements
 }
 
   onNext() {
-    const investmentId = +this.route.snapshot.paramMap.get('id');
-    const entityIds = this.GetEntityIds();
+  const investmentId = this.InvestmentId ? this.InvestmentId : +this.route.snapshot.paramMap.get('id');
+  const entityIds = this.GetEntityIds();
     this.apiService
     .AssociateEntityWithInvestment(EntityTypes.InvestmentGroup, entityIds, investmentId)
-    .subscribe((value) => { this.router.navigateByUrl('/InvestmentDetails/' + investmentId); },
-               error => {
-                 console.log('Error while associating investment group with entity');
-               });
+    .subscribe((value) => {
+      entityIds.forEach(id => {
+        this.apiService.GetGroup( id).subscribe( group => {
+          console.log('pushing newly associated group ' + group.name);
+          this.AssociatedGroupEvent.emit(group);
+        }, error => { this.error = <any>error; });
+      });
+     }, error => console.log('Error while associating investment group with entity') );
   }
 }
 

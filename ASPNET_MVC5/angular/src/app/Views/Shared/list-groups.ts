@@ -6,6 +6,9 @@ import { GroupsLink } from '../../Models/Investment';
 import { HtmlAction } from '../../Models/HtmlAction';
 import { forEach } from '@angular/router/src/utils/collection';
 import { EntityTypes } from '../../Utilities';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { NewGroupComponent } from '../Group/new-group';
 
 @Component({
   selector: 'app-list-groups',
@@ -13,34 +16,22 @@ import { EntityTypes } from '../../Utilities';
 })
 
 export class ListGroupsComponent implements OnInit {
-  Groups: InvestmentGroup[] = [];
-  private _GroupLinks: GroupsLink[];
-  @Input() ParentId: number;
-  @Input()
-  set GroupLinks(groups: GroupsLink[]) {
-    groups.forEach((value, index, array) => {
-      console.log('Attempting to get the real group for GroupLinks  ' + value.investmentGroupID);
-      this.apiService.GetGroup(value.investmentGroupID)
-      .subscribe(realGroup => this.Groups.push(realGroup), error => this.errorMessage = <any>error);
-    });
-    this._GroupLinks = groups;
-  }
-  get GroupLinks(): GroupsLink[] {
-    return this._GroupLinks;
-  }
-  constructor(private apiService: ApiService) { }
+  private _parentGroup: InvestmentGroup | null;
   errorMessage: string;
-
-  DissasociateEntityFromInvestment(entityId: number, parentId: number) {
-    this.apiService
-    .DissassociateEntityFromInvestment(EntityTypes.InvestmentGroup, entityId, parentId )
-    .finally(() => {
-      const toRemove = this.Groups.filter((each) => { if (each.id === entityId) { return each; } });
-      const i = this.Groups.indexOf(toRemove[0]);
-      this.Groups.splice(i, 1);
-      this.ngOnInit();
-    })
-    .subscribe( code => console.log('code was' + code) , error => this.errorMessage = error);
+  modalRef: BsModalRef;
+  @Input() Groups: InvestmentGroup[] = [];
+  @Input() Title: string;
+  @Input() set ParentGroup(parentGroup: InvestmentGroup | null) {
+    this._parentGroup = parentGroup;
+    console.log('ListGroupsComponent: ParentGroup set to ' + this._parentGroup.name);
   }
-  ngOnInit(): void { }
+  get ParentGroup(): InvestmentGroup {
+    return this._parentGroup;
+  }
+
+  constructor(private apiService: ApiService) { }
+
+  ngOnInit(): void {
+    this.Title = 'Groups';
+   }
 }

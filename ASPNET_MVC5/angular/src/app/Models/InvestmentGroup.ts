@@ -5,4 +5,6 @@ export interface InvestmentGroup {
   description: string;
   type: string;
   investments?: (GroupsLink)[] | null;
+  parent: InvestmentGroup;
+  children: InvestmentGroup[];
 }

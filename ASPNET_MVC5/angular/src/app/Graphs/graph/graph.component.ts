@@ -103,7 +103,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnDestroy  {
                 .data(graph.nodes)
                 .enter().append('g').append('circle')
                 .text(function (d) { return d.name; })
-                  .attr('r', function(d) { return Math.sqrt(d.value) * 20; })
+                  .attr('r', function(d) { return Math.sqrt(d.value) * 5; })
                   .attr('fill', (d) => this.color(d.value))
                   .call(d3.drag()
                       .on('start', (d) => this.dragstarted(d))

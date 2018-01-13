@@ -26,19 +26,28 @@ export class AssociateRegionsComponent extends SelectEntitiesComponent implement
                   super();
               }
 
-
+@Input() InvestmentId: number;
+@Output() AssociatedRegionEvent = new EventEmitter<Region>();
 ngOnInit(): void {
     this.apiService.GetRegions().subscribe(regions => { this.Items = this.ConvertRegionsToCheckModels(regions); },
                                            error => this.error = <any>error);
   }
 
   onNext(): void {
-    const investmentId = +this.route.snapshot.paramMap.get('id');
+    const investmentId = this.InvestmentId ? this.InvestmentId : +this.route.snapshot.paramMap.get('id');
     const entityIds = this.GetEntityIds();
 
     this.apiService
     .AssociateEntityWithInvestment(EntityTypes.Region, entityIds, investmentId)
-    .subscribe((value) => { this.router.navigateByUrl('/InvestmentDetails/' + investmentId); },
+    .subscribe((value) => {
+      entityIds.forEach( id => {
+        this.apiService.GetRegion(id).subscribe( region => {
+          console.log('pushing newly associated region ' + region.name);
+          this.AssociatedRegionEvent.emit(region);
+        }, error => { this.error = <any>error; });
+
+      });
+     },
                 error => {});
   }
 }

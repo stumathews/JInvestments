@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../../apiservice.service';
 import { InvestmentGroup } from '../../Models/InvestmentGroup';
 import { ActivatedRoute } from '@angular/router';
@@ -20,6 +20,7 @@ export class NewGroupComponent implements OnInit {
               private location: Location,
               private router: Router) { }
   errorMessage: string;
+  @Output() CreatedGroupEvent = new EventEmitter<InvestmentGroup>();
 
   ngOnInit(): void {
       this.form = new FormGroup({
@@ -31,15 +32,9 @@ export class NewGroupComponent implements OnInit {
 
   onSubmit(form: InvestmentGroup) {
     this.apiService.CreateInvestmentGroup(form).finally(() => {
-      this.router.navigate(['/Groups']);
+      this.CreatedGroupEvent.emit(form);
     }).subscribe( (value) => {
       console.log('received response: ' + JSON.stringify(value));
-      this.goHome();
     });
   }
-
-  goHome() {
-    this.router.navigate(['']);
-  }
-
 }

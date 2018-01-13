@@ -25,6 +25,8 @@ export class AssociateFactorsComponent extends SelectEntitiesComponent implement
                 super();
                }
 
+  @Input() InvestmentId: number;
+  @Output() AssociatedFactorEvent = new EventEmitter<InvestmentInfluenceFactor>();
   Entities: InvestmentInfluenceFactor[];
   ngOnInit(): void {
       this.apiService.GetFactors().subscribe(factors => { this.Items = this.ConvertFactorsToCheckModels(factors); },
@@ -32,13 +34,18 @@ export class AssociateFactorsComponent extends SelectEntitiesComponent implement
   }
 
   onNext() {
-    const investmentId = +this.route.snapshot.paramMap .get('id');
-    const entityIds = this.GetEntityIds();
+  const investmentId = this.InvestmentId ? this.InvestmentId : +this.route.snapshot.paramMap.get('id');
+  const entityIds = this.GetEntityIds();
 
     this.apiService
     .AssociateEntityWithInvestment(EntityTypes.InvestmentInfluenceFactor, entityIds, investmentId)
-    .subscribe((value) => { this.router.navigateByUrl('/InvestmentDetails/' + investmentId); },
-               error => {});
-  }
+    .subscribe((value) => {
+      entityIds.forEach(id => {
+        this.apiService.GetFactor( id).subscribe( factor => {
+          console.log('pushing newly associated factor ' + factor.name);
+          this.AssociatedFactorEvent.emit(factor);
+        }, error => { this.error = <any>error; });
+      });
+  }, error => console.log('an error occured associating factors:' + error));
 }
-
+}

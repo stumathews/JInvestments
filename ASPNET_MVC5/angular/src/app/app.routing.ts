@@ -30,6 +30,7 @@ import { AssociateRisksComponent } from './Views/Investment/associate-risks';
 import { AssociateGroupsComponent } from './Views/Investment/associate-groups';
 import { AssociateRegionsComponent } from './Views/Investment/associate-regions';
 import { GraphComponent } from './Graphs/graph/graph.component';
+import { NewInvestmentNoteComponent } from './Views/Note/new-note';
 
 const appRoutes: Routes = [
     { path : '', redirectTo: 'Home', pathMatch: 'full'},
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
     { path : 'AssociateGroups/:id', component: AssociateGroupsComponent },
     { path : 'AssociateRegions/:id', component: AssociateRegionsComponent },
     { path : 'RisksGraph', component: GraphComponent },
+    { path : 'NewNote/:owningEntityType/:owningEntityId', component: NewInvestmentNoteComponent }
 ];
 
 export const APP_ROUTING: ModuleWithProviders = RouterModule.forRoot(appRoutes);

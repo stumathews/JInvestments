@@ -24,7 +24,7 @@
             <td><a [routerLink]="['/RiskDetails', risk.id]">{{ risk.name }}</a>      </td>
             <td>{{ risk.description }}</td>
             <td>{{ risk.type }}</td>
-            <td><a>{{ risk.investments?.length }}</a></td>
+            <td><a [routerLink]="['/RiskDetails', risk.id]">{{ risk.investments?.length }}</a></td>
             <td><a *ngIf="risk"  href="javascript:void(0)" (click)="DissasociateEntityFromInvestment(risk.id, ParentId)">Dissasociate</a></td>               
         </tr>
     </table>

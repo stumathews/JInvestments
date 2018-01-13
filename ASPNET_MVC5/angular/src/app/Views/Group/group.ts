@@ -9,7 +9,7 @@ import { ActivatedRoute , Router} from '@angular/router';
   templateUrl: './group.html'
 })
 export class GroupComponent implements OnInit {
-  Groups: InvestmentGroup[];
+  @Input() Groups: InvestmentGroup[];
   constructor(private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router) { }

@@ -16,27 +16,27 @@
         <dt>Value</dt>
             <dd><inline-editor #thisElement  type="text" [(ngModel)]="Entity.value" (onSave)="saveEditable(thisElement, Entity.id)" name="value" size="8"></inline-editor></dd>
     </dl>
-
+    
 <app-list-risks *ngIf="Entity" [ParentId]="Entity.id" [RiskLinks]="Entity.risks"></app-list-risks>
-<p>
-    <a [routerLink]="['/AssociateRisks', Entity.id]"  class="btn btn-primary" href="javascript:void(0)">Add a risk to this Entity</a>
-    <app-graph [EntityType]="EntityTypes.InvestmentRisk" [InvestmentId]="Entity.id"></app-graph>
-</p> 
+<button type="button" class="btn btn-primary" (click)="openModalWithAssociateRisksComponent()">Add a risk</button>
+<app-graph [EntityType]="EntityTypes.InvestmentRisk" [InvestmentId]="Entity.id"></app-graph>
+
 <app-list-factors *ngIf="Entity" [ParentId]="Entity.id" [FactorLinks]="Entity.factors"></app-list-factors>
-<p>            
-    <a [routerLink]="['/AssociateFactors', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add a factor to this Entity</a>
-    <app-graph [EntityType]="EntityTypes.InvestmentInfluenceFactor" [InvestmentId]="Entity.id"></app-graph>
-</p>
-<app-list-groups *ngIf="Entity" [ParentId]="Entity.id" [GroupLinks]="Entity.groups"></app-list-groups>
-<p>
-    <a [routerLink]="['/AssociateGroups', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add this Entity to a group</a>
-    <app-graph [EntityType]="EntityTypes.InvestmentGroup" [InvestmentId]="Entity.id"></app-graph>
-</p>
+<button type="button" class="btn btn-primary" (click)="openModalWithAssociateFactorsComponent()">Add a factor</button>
+<app-graph [EntityType]="EntityTypes.InvestmentInfluenceFactor" [InvestmentId]="Entity.id"></app-graph>
+
+<app-list-groups-via-grouplinks *ngIf="Entity" [ParentId]="Entity.id" [GroupLinks]="Entity.groups"></app-list-groups-via-grouplinks>
+<button type="button" class="btn btn-primary" (click)="openModalWithAssociateGroupsComponent()">Add a group</button>
+<app-graph [EntityType]="EntityTypes.InvestmentGroup" [InvestmentId]="Entity.id"></app-graph>
+
 <app-list-regions *ngIf="Entity" [ParentId]="Entity.id" [RegionLinks]="Entity.regions"></app-list-regions>
-<p>
-    <a [routerLink]="['/AssociateRegions', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add this Entity to a region</a>
-    <app-graph [EntityType]="EntityTypes.Region" [InvestmentId]="Entity.id"></app-graph>
-</p>
+<!-- <a [routerLink]="['/AssociateRegions', Entity.id]" class="btn btn-primary" href="javascript:void(0)">Add to a region</a>-->
+<button type="button" class="btn btn-primary" (click)="openModalWithAssociateRegionsComponent()">Add a region(modal)</button>
+<app-graph [EntityType]="EntityTypes.Region" [InvestmentId]="Entity.id"></app-graph>
+
+<app-list-notes *ngIf="Entity" [Notes]="Notes" [OwningEntityType]="EntityTypes[EntityTypes.Investment]" [OwningEntityId]="Entity.id"></app-list-notes>
+<button type="button" class="btn btn-primary" (click)="openModalWithNewNoteComponent()">Add a note</button>
+
 <div class="tab-content">
     <div id="factors" class="tab-pane fade in active">        
         <div id="factor_graph">
