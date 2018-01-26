@@ -49,6 +49,7 @@ import { ListGroupsComponent } from './Views/Shared/list-groups';
 import { ListNotesComponent } from './Views/Shared/list-notes';
 import { NewInvestmentNoteComponent } from './Views/Note/new-note';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     ListNotesComponent, NewInvestmentNoteComponent
   ],
   imports: [
+    TabsModule.forRoot(),
     BrowserModule, APP_ROUTING, AlertModule.forRoot(), ModalModule.forRoot(), HttpModule, FormsModule, ReactiveFormsModule,
     InlineEditorModule, Angular2FontawesomeModule
   ],

@@ -16,6 +16,7 @@ import { InvestmentService } from '../../investment.service';
 @Component({
   selector: 'app-associate-regions',
   templateUrl: 'select-entities.html',
+  styleUrls: ['select-entities.css']
   })
 
 export class AssociateRegionsComponent extends SelectEntitiesComponent implements OnInit {

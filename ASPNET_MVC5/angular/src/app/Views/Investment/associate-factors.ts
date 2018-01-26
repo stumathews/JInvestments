@@ -15,6 +15,7 @@ import { FactorsLink } from '../../Models/Investment';
 @Component({
   selector: 'app-associate-factors',
   templateUrl: 'select-entities.html',
+  styleUrls: ['select-entities.css']
   })
 
 export class AssociateFactorsComponent extends SelectEntitiesComponent implements OnInit {

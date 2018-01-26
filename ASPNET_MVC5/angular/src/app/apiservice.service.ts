@@ -30,6 +30,7 @@ export class ApiService {
     private FactorByIdUrlEndpoint = this.baseURL + '/Factor/{id}';
     private GroupByIdUrlEndpoint = this.baseURL + '/Group/{id}';
     private RegionByIdUrlEndpoint = this.baseURL + '/Region/{id}';
+    private NotesByParamsUrlEndpoint = this.baseURL + '/Notes/{owningEntityId}/{owningEntityType}/{id}';
 
     private OwningEntityNotesUrlEndpoint = this.NotesUrlEndpoint + '/{owningEntityID}/{owningEntityType}';
 
@@ -281,6 +282,20 @@ export class ApiService {
         .do((data => console.log('do DeleteEntity: ' + JSON.stringify(data))))
         .catch(this.handleError);
     }
+
+
+    DeleteInvestmentNote(OwningEntityId: number, OwningEntityType: EntityTypes, id: number): Observable<any> {
+        console.log(`OwningEntityId=${OwningEntityId}, OwningEntityType=${OwningEntityType}, id=${id}`);
+            let mapFunction;
+            const url = this.NotesByParamsUrlEndpoint.replace('{owningEntityId}', '' + OwningEntityId)
+                                                    .replace('{owningEntityType}', '' + EntityTypes[OwningEntityType])
+                                                    .replace('{id}', '' + id);
+            mapFunction = (response: Response) => <InvestmentNote>response.json();
+            console.log('Delete entity via url:' + url);
+            return this.http.delete(url).map(mapFunction)
+            .do((data => console.log('do DeleteEntity: ' + JSON.stringify(data))))
+            .catch(this.handleError);
+        }
 
     UpdateEntity(entityType: EntityTypes, id: number, property: string, value: any): Observable<number> {
         const patchObj = [{

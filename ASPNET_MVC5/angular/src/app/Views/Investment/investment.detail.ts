@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { EntityTypes, DetailComponentBase } from '../../Utilities';
 import { BsModalService, ModalDirective  } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { TabsModule } from 'ngx-bootstrap';
 
 import { AssociateRisksComponent } from './associate-risks';
 import { InvestmentRisk } from '../../Models/InvestmentRisk';
@@ -51,8 +52,6 @@ export class InvestmentDetailComponent extends DetailComponentBase implements On
     this.modalRef.content.AssociatedRiskEvent.subscribe((risk: InvestmentRisk) => {
       console.log('event recieved:' + JSON.stringify(risk));
       const link: RisksLink = {investmentRisk: null, investmentID: this.Entity.id, investmentRiskID: risk.id};
-      // this doens;t seem to register the change, it looks like we need to change the whole collection of entity.Risks to trigger change
-      // not desirable so until i figure that out, this doesn't work
       this.Entity.risks.push(link);
       this.modalRef.hide();
     });
@@ -64,8 +63,6 @@ export class InvestmentDetailComponent extends DetailComponentBase implements On
     this.modalRef.content.AssociatedFactorEvent.subscribe((factor: InvestmentInfluenceFactor) => {
       console.log('event recieved:' + JSON.stringify(factor));
       const link: FactorsLink = {investmentInfluenceFactor: null, investmentID: this.Entity.id, investmentInfluenceFactorID: factor.id};
-      // this doens;t seem to register the change, it looks like we need to change the whole collection of entity.Risks to trigger change
-      // not desirable so until i figure that out, this doesn't work
       this.Entity.factors.push(link);
       this.modalRef.hide();
     });
@@ -77,8 +74,6 @@ export class InvestmentDetailComponent extends DetailComponentBase implements On
     this.modalRef.content.AssociatedGroupEvent.subscribe((group: InvestmentGroup) => {
       console.log('event recieved:' + JSON.stringify(group));
       const link: GroupsLink = {investmentGroup: null, investmentID: this.Entity.id, investmentGroupID: group.id};
-      // this doens;t seem to register the change, it looks like we need to change the whole collection of entity.Risks to trigger change
-      // not desirable so until i figure that out, this doesn't work
       this.Entity.groups.push(link);
       this.modalRef.hide();
     });
@@ -90,8 +85,6 @@ export class InvestmentDetailComponent extends DetailComponentBase implements On
     this.modalRef.content.AssociatedRegionEvent.subscribe((region: Region) => {
       console.log('event recieved:' + JSON.stringify(region));
       const link: RegionsLink = {region: null, investmentID: this.Entity.id, regionID: region.id};
-      // this doens;t seem to register the change, it looks like we need to change the whole collection of entity.Risks to trigger change
-      // not desirable so until i figure that out, this doesn't work
       this.Entity.regions.push(link);
       this.modalRef.hide();
     });

@@ -1,5 +1,4 @@
 <div *ngIf="Notes">
-        <hr/>
         <h4>{{ Title }}</h4>
         <p>
             Investment notes add small extra pieces of information that inform about the investment.
@@ -8,10 +7,12 @@
             <thead>
                 <th>Note name</th>
                 <th>Note Description</th>
+                <th>Action</th>
             </thead>
             <tr *ngFor="let note of Notes">
                 <td>{{ note.name  }}</td>
-                <td>{{ note.description }}</td>            
+                <td>{{ note.description }}</td> 
+                <td><a *ngIf="note"  href="javascript:void(0)" (click)="DeleteNote(note.id)">Delete</a></td>               
             </tr>
             
         </table>

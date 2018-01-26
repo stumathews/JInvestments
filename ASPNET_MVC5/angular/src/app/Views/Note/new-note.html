@@ -1,6 +1,6 @@
 ﻿<div id="content">
 
-<h2>Create {{ OwningEntityType }} Note</h2>
+<h2>Create {{ EntityTypes[OwningEntityType] }} Note</h2>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
    <div class="form-horizontal">

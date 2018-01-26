@@ -33,7 +33,7 @@ export class NewInvestmentNoteComponent extends InvestmentUtilities implements O
       this.OwningEntityType = this.OwningEntityType ? this.OwningEntityType : +this.route.snapshot.paramMap.get('owningEntityType');
       this.form = new FormGroup({
         name: new FormControl('', GetRequiredTextValidators()),
-        description: new FormControl('', GetRequiredTextValidators()),
+        description: new FormControl('', null),
     });
   }
 

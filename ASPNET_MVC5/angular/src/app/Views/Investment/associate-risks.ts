@@ -27,7 +27,10 @@ export class AssociateRisksComponent extends SelectEntitiesComponent implements 
               private location: Location,
               private router: Router) {
                   super();
-              }
+                  this.ExtraLinks = [ {displayName: 'Add New Risk', url: '/NewRisk'},
+                                      {displayName: 'test1', url: 'testUrl1'}];
+                }
+
   @Input() InvestmentId: number;
   @Output() AssociatedRiskEvent = new EventEmitter<InvestmentRisk>();
   ngOnInit(): void {

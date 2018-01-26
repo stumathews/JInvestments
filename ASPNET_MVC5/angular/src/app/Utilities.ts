@@ -7,12 +7,14 @@ import { Region } from './Models/Region';
 import { ApiService } from './apiservice.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CheckModel } from './Models/CheckModel';
+import { Link } from './Models/Link';
 
 
 export abstract class SelectEntitiesComponent {
     EntityTypes = EntityTypes;
     error: string;
     Items: CheckModel[] = [];
+    ExtraLinks: Link[] = [];
 
     public ConvertRegionsToCheckModels(regions: Region[]) {
         if (regions) {
@@ -95,7 +97,7 @@ export abstract class DetailComponentBase implements OnInit  {
 export function GetRequiredTextValidators() {
     return Validators.compose( [
       Validators.required,
-      Validators.pattern('[\\w\\-\\s\\|$|£/]+')]);
+      Validators.pattern('.+')]);
    }
 
  export function GetRequiredNumberValidators() {
@@ -110,6 +112,7 @@ export enum EntityTypes {
     InvestmentRisk,
     InvestmentInfluenceFactor,
     Region,
+    Note
 }
 
 export abstract class InvestmentUtilities {
